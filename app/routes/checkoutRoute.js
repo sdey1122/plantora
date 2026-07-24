@@ -1,0 +1,28 @@
+const express = require("express");
+
+const router = express.Router();
+
+const CheckoutController = require("../controllers/CheckoutController");
+
+const authMiddleware = require("../middlewares/authMiddleware");
+
+const authorizeRoles = require("../middlewares/authorizeRoles");
+
+// Protect all routes
+router.use(authMiddleware);
+
+router.use(authorizeRoles("customer"));
+
+// Checkout Page
+router.get("/", CheckoutController.showCheckoutPage);
+
+// Apply Coupon
+router.post("/apply-coupon", CheckoutController.applyCoupon);
+
+// Remove Coupon
+router.post("/remove-coupon", CheckoutController.removeCoupon);
+
+// Place Order
+router.post("/place-order", CheckoutController.placeOrder);
+
+module.exports = router;

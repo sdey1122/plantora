@@ -1,0 +1,1370 @@
+const jwt = require("jsonwebtoken");
+const ms = require("ms");
+
+const User = require("../models/User");
+const Token = require("../models/Token");
+
+const logger = require("../config/logger");
+
+const {
+  registerValidation,
+  loginValidation,
+  forgotPasswordValidation,
+  resetPasswordValidation,
+  changePasswordValidation,
+  verifyEmailValidation,
+  resendVerificationValidation,
+  updateProfileValidation,
+} = require("../validations/authValidation");
+
+const {
+  getVerificationEmail,
+  getResetPasswordEmail,
+} = require("../utils/emailTemplates");
+
+const generateAccessToken = require("../utils/generateAccessToken");
+const generateRefreshToken = require("../utils/generateRefreshToken");
+const generateVerificationToken = require("../utils/generateVerificationToken");
+const generateResetToken = require("../utils/generateResetToken");
+
+const hashToken = require("../utils/hashToken");
+
+const sendEmail = require("../utils/sendEmail");
+
+const createAuditLog = require("../utils/createAuditLog");
+
+const cloudinaryImageUpload = require("../utils/cloudinaryImageUpload");
+const cloudinaryImageDelete = require("../utils/cloudinaryImageDelete");
+
+const deleteLocalFile = require("../utils/deleteLocalFile");
+
+const httpStatusCode = require("../utils/httpStatusCode");
+
+class AuthController {
+  // Register Page
+  async showRegisterPage(req, res, next) {
+    try {
+      return res.render("auth/register", {
+        title: "Create Account",
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  // Login Page
+  async showLoginPage(req, res, next) {
+    try {
+      return res.render("auth/login", {
+        title: "Login",
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  // Forgot Password Page
+  async showForgotPasswordPage(req, res, next) {
+    try {
+      return res.render("auth/forgot-password", {
+        title: "Forgot Password",
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  // Reset Password Page
+  async showResetPasswordPage(req, res, next) {
+    try {
+      return res.render("auth/reset-password", {
+        title: "Reset Password",
+        token: req.params.token,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  // Profile Page
+  async showProfilePage(req, res, next) {
+    try {
+      return res.render("auth/profile", {
+        title: "My Profile",
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  // Register
+  async register(req, res, next) {
+    try {
+      // Validate request body
+      const { error, value } = registerValidation.validate(req.body);
+
+      if (error) {
+        return res.status(httpStatusCode.BAD_REQUEST).json({
+          success: false,
+          message: error.details[0].message,
+        });
+      }
+
+      const { name, email, password, termsAccepted } = value;
+
+      // Terms & Conditions validation
+      if (!termsAccepted) {
+        return res.status(httpStatusCode.BAD_REQUEST).json({
+          success: false,
+          message: "You must accept Terms & Conditions.",
+        });
+      }
+
+      // Admin account cannot be registered
+      if (email.toLowerCase() === process.env.ADMIN_EMAIL.toLowerCase()) {
+        return res.status(httpStatusCode.FORBIDDEN).json({
+          success: false,
+          message: "Administrator account cannot be registered.",
+        });
+      }
+
+      // Check duplicate email
+      const existingUser = await User.findOne({
+        email: email.toLowerCase(),
+      });
+
+      if (existingUser) {
+        return res.status(httpStatusCode.CONFLICT).json({
+          success: false,
+          message: "An account with this email already exists.",
+        });
+      }
+
+      // Create customer account
+      const user = await User.create({
+        name,
+        email: email.toLowerCase(),
+        password,
+
+        role: "customer",
+
+        status: "inactive",
+
+        isEmailVerified: false,
+
+        seller: {
+          status: "none",
+        },
+
+        termsAccepted: true,
+
+        termsAcceptedAt: new Date(),
+
+        failedLoginAttempts: 0,
+
+        accountLockedUntil: null,
+
+        lockReason: "",
+
+        lockedBy: null,
+
+        lastLogin: null,
+
+        lastActive: null,
+
+        emailChangedAt: null,
+
+        isDeleted: false,
+
+        deletedAt: null,
+      });
+
+      // Remove previous verification tokens
+      await Token.deleteMany({
+        user: user._id,
+        type: "verify-email",
+      });
+
+      // Generate verification token
+      const verificationToken = generateVerificationToken();
+
+      const hashedVerificationToken = hashToken(verificationToken);
+
+      // Save verification token
+      await Token.create({
+        user: user._id,
+        token: hashedVerificationToken,
+        type: "verify-email",
+        expiresAt: new Date(
+          Date.now() + ms(process.env.EMAIL_VERIFICATION_TOKEN_EXPIRES),
+        ),
+      });
+
+      // Build verification url
+      const verificationUrl = `${process.env.APP_URL}/auth/verify-email/${verificationToken}`;
+
+      // Generate email template
+      const { subject, html, text } = getVerificationEmail(
+        user.name,
+        verificationUrl,
+      );
+
+      // Send verification email
+      await sendEmail({
+        to: user.email,
+        subject,
+        html,
+        text,
+      });
+
+      // Create audit log
+      await createAuditLog({
+        req,
+
+        actor: user,
+
+        module: "Authentication",
+
+        action: "Register",
+
+        severity: "low",
+
+        target: {
+          id: user._id,
+          model: "User",
+        },
+
+        description: "New customer account registered successfully.",
+      });
+
+      logger.info(`Customer registered successfully : ${user.email}`);
+
+      return res.status(httpStatusCode.CREATED).json({
+        success: true,
+        message:
+          "Registration successful. Please verify your email before logging in.",
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+  // Verify Email
+  async verifyEmail(req, res, next) {
+    try {
+      const { token } = req.params;
+
+      const { error } = verifyEmailValidation.validate({
+        token,
+      });
+
+      if (error) {
+        return res.status(httpStatusCode.BAD_REQUEST).json({
+          success: false,
+          message: error.details[0].message,
+        });
+      }
+
+      const hashedToken = hashToken(token);
+
+      const verificationToken = await Token.findOne({
+        token: hashedToken,
+        type: "verify-email",
+      });
+
+      if (!verificationToken) {
+        return res.status(httpStatusCode.BAD_REQUEST).json({
+          success: false,
+          message: "Invalid verification link.",
+        });
+      }
+
+      if (verificationToken.expiresAt < new Date()) {
+        await Token.findByIdAndDelete(verificationToken._id);
+
+        return res.status(httpStatusCode.BAD_REQUEST).json({
+          success: false,
+          message: "Verification link has expired.",
+        });
+      }
+
+      const user = await User.findById(verificationToken.user);
+
+      if (!user) {
+        await Token.findByIdAndDelete(verificationToken._id);
+
+        return res.status(httpStatusCode.NOT_FOUND).json({
+          success: false,
+          message: "User not found.",
+        });
+      }
+
+      if (user.isDeleted) {
+        await Token.findByIdAndDelete(verificationToken._id);
+
+        return res.status(httpStatusCode.FORBIDDEN).json({
+          success: false,
+          message: "Account has been deleted.",
+        });
+      }
+
+      if (user.status === "blocked") {
+        return res.status(httpStatusCode.FORBIDDEN).json({
+          success: false,
+          message: "Account has been blocked.",
+        });
+      }
+
+      if (user.isEmailVerified) {
+        await Token.findByIdAndDelete(verificationToken._id);
+
+        return res.status(httpStatusCode.BAD_REQUEST).json({
+          success: false,
+          message: "Email is already verified.",
+        });
+      }
+
+      user.isEmailVerified = true;
+      user.status = "active";
+
+      await user.save();
+
+      await Token.deleteMany({
+        user: user._id,
+        type: "verify-email",
+      });
+
+      await createAuditLog({
+        req,
+        actor: user,
+        module: "Authentication",
+        action: "Verify Email",
+        severity: "low",
+        target: {
+          id: user._id,
+          model: "User",
+        },
+        description: "Email verified successfully.",
+      });
+
+      logger.info(`Email verified successfully : ${user.email}`);
+
+      return res.status(httpStatusCode.OK).json({
+        success: true,
+        message: "Email verified successfully. You can now login.",
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  // Resend Verification Email
+  async resendVerificationEmail(req, res, next) {
+    try {
+      const { error, value } = resendVerificationValidation.validate(req.body);
+
+      if (error) {
+        return res.status(httpStatusCode.BAD_REQUEST).json({
+          success: false,
+          message: error.details[0].message,
+        });
+      }
+
+      const { email } = value;
+
+      const user = await User.findOne({
+        email: email.toLowerCase(),
+      });
+
+      if (!user) {
+        return res.status(httpStatusCode.NOT_FOUND).json({
+          success: false,
+          message: "User not found.",
+        });
+      }
+
+      if (user.isDeleted) {
+        return res.status(httpStatusCode.FORBIDDEN).json({
+          success: false,
+          message: "Account has been deleted.",
+        });
+      }
+
+      if (user.status === "blocked") {
+        return res.status(httpStatusCode.FORBIDDEN).json({
+          success: false,
+          message: "Account has been blocked.",
+        });
+      }
+
+      if (user.isEmailVerified) {
+        return res.status(httpStatusCode.BAD_REQUEST).json({
+          success: false,
+          message: "Email is already verified.",
+        });
+      }
+
+      await Token.deleteMany({
+        user: user._id,
+        type: "verify-email",
+      });
+
+      const verificationToken = generateVerificationToken();
+
+      const hashedToken = hashToken(verificationToken);
+
+      await Token.create({
+        user: user._id,
+        token: hashedToken,
+        type: "verify-email",
+        expiresAt: new Date(
+          Date.now() + ms(process.env.EMAIL_VERIFICATION_TOKEN_EXPIRES),
+        ),
+      });
+
+      const verificationUrl = `${process.env.APP_URL}/auth/verify-email/${verificationToken}`;
+
+      const { subject, html, text } = getVerificationEmail(
+        user.name,
+        verificationUrl,
+      );
+
+      await sendEmail({
+        to: user.email,
+        subject,
+        html,
+        text,
+      });
+
+      await createAuditLog({
+        req,
+        actor: user,
+        module: "Authentication",
+        action: "Resend Verification Email",
+        severity: "low",
+        target: {
+          id: user._id,
+          model: "User",
+        },
+        description: "Verification email resent successfully.",
+      });
+
+      logger.info(`Verification email resent : ${user.email}`);
+
+      return res.status(httpStatusCode.OK).json({
+        success: true,
+        message: "Verification email sent successfully.",
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+  // Login
+  async login(req, res, next) {
+    try {
+      const { error, value } = loginValidation.validate(req.body);
+
+      if (error) {
+        return res.status(httpStatusCode.BAD_REQUEST).json({
+          success: false,
+          message: error.details[0].message,
+        });
+      }
+
+      const { email, password, rememberMe } = value;
+
+      const user = await User.findOne({
+        email: email.toLowerCase(),
+      }).select("+password");
+
+      if (!user) {
+        logger.warn(`Login failed. Email not found : ${email}`);
+
+        return res.status(httpStatusCode.UNAUTHORIZED).json({
+          success: false,
+          message: "Invalid email or password.",
+        });
+      }
+
+      if (user.isDeleted) {
+        return res.status(httpStatusCode.FORBIDDEN).json({
+          success: false,
+          message: "Account has been deleted.",
+        });
+      }
+
+      if (user.status === "blocked") {
+        return res.status(httpStatusCode.FORBIDDEN).json({
+          success: false,
+          message: "Your account has been blocked.",
+        });
+      }
+
+      if (user.accountLockedUntil && user.accountLockedUntil > new Date()) {
+        return res.status(httpStatusCode.FORBIDDEN).json({
+          success: false,
+          message:
+            "Your account is temporarily locked. Please try again later.",
+        });
+      }
+
+      if (!user.isEmailVerified) {
+        return res.status(httpStatusCode.FORBIDDEN).json({
+          success: false,
+          message: "Please verify your email before logging in.",
+        });
+      }
+
+      if (user.status !== "active") {
+        return res.status(httpStatusCode.FORBIDDEN).json({
+          success: false,
+          message: "Your account is inactive.",
+        });
+      }
+
+      const isPasswordMatched = await user.comparePassword(password);
+
+      if (!isPasswordMatched) {
+        user.failedLoginAttempts += 1;
+
+        if (user.failedLoginAttempts >= 5) {
+          user.failedLoginAttempts = 5;
+
+          user.accountLockedUntil = new Date(
+            Date.now() + ms(process.env.LOGIN_LOCK_DURATION),
+          );
+
+          user.lockReason = "Maximum login attempts exceeded.";
+
+          await createAuditLog({
+            req,
+            actor: user,
+            module: "Authentication",
+            action: "Account Locked",
+            severity: "medium",
+            target: {
+              id: user._id,
+              model: "User",
+            },
+            description:
+              "Account locked due to multiple failed login attempts.",
+          });
+
+          logger.warn(`Account locked : ${user.email}`);
+        }
+
+        await user.save();
+
+        logger.warn(`Invalid password : ${user.email}`);
+
+        return res.status(httpStatusCode.UNAUTHORIZED).json({
+          success: false,
+          message: "Invalid email or password.",
+        });
+      }
+
+      user.failedLoginAttempts = 0;
+      user.accountLockedUntil = null;
+      user.lockReason = "";
+      user.lastLogin = new Date();
+      user.lastActive = new Date();
+
+      await user.save();
+
+      const accessToken = generateAccessToken(user);
+
+      const refreshToken = generateRefreshToken(user);
+
+      const hashedRefreshToken = hashToken(refreshToken);
+
+      await Token.deleteMany({
+        user: user._id,
+        type: "refresh-token",
+      });
+
+      await Token.create({
+        user: user._id,
+        token: hashedRefreshToken,
+        type: "refresh-token",
+        expiresAt: new Date(Date.now() + ms(process.env.REFRESH_TOKEN_EXPIRES)),
+      });
+
+      const accessCookieAge = rememberMe
+        ? ms(process.env.ACCESS_TOKEN_REMEMBER_EXPIRES)
+        : ms(process.env.ACCESS_TOKEN_EXPIRES);
+
+      const refreshCookieAge = rememberMe
+        ? ms(process.env.REFRESH_TOKEN_REMEMBER_EXPIRES)
+        : ms(process.env.REFRESH_TOKEN_EXPIRES);
+
+      res.cookie(process.env.ACCESS_TOKEN_COOKIE_NAME, accessToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+        maxAge: accessCookieAge,
+      });
+
+      res.cookie(process.env.REFRESH_TOKEN_COOKIE_NAME, refreshToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+        maxAge: refreshCookieAge,
+      });
+
+      await createAuditLog({
+        req,
+        actor: user,
+        module: "Authentication",
+        action: "Login",
+        severity: "low",
+        target: {
+          id: user._id,
+          model: "User",
+        },
+        description: "User logged in successfully.",
+      });
+
+      logger.info(`Login successful : ${user.email}`);
+
+      return res.status(httpStatusCode.OK).json({
+        success: true,
+        message: "Login successful.",
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+  // Refresh Access Token
+  async refreshAccessToken(req, res, next) {
+    try {
+      const refreshToken = req.cookies[process.env.REFRESH_TOKEN_COOKIE_NAME];
+
+      if (!refreshToken) {
+        return res.status(httpStatusCode.UNAUTHORIZED).json({
+          success: false,
+          message: "Refresh token is required.",
+        });
+      }
+
+      let decoded;
+
+      try {
+        decoded = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET);
+      } catch (error) {
+        return res.status(httpStatusCode.UNAUTHORIZED).json({
+          success: false,
+          message: "Invalid or expired refresh token.",
+        });
+      }
+
+      const user = await User.findById(decoded.id);
+
+      if (!user) {
+        return res.status(httpStatusCode.NOT_FOUND).json({
+          success: false,
+          message: "User not found.",
+        });
+      }
+
+      if (user.isDeleted) {
+        return res.status(httpStatusCode.FORBIDDEN).json({
+          success: false,
+          message: "Account has been deleted.",
+        });
+      }
+
+      if (user.status !== "active") {
+        return res.status(httpStatusCode.FORBIDDEN).json({
+          success: false,
+          message: "Your account is inactive.",
+        });
+      }
+
+      if (!user.isEmailVerified) {
+        return res.status(httpStatusCode.FORBIDDEN).json({
+          success: false,
+          message: "Email is not verified.",
+        });
+      }
+
+      if (user.accountLockedUntil && user.accountLockedUntil > new Date()) {
+        return res.status(httpStatusCode.FORBIDDEN).json({
+          success: false,
+          message: "Account is temporarily locked.",
+        });
+      }
+
+      const hashedRefreshToken = hashToken(refreshToken);
+
+      const token = await Token.findOne({
+        user: user._id,
+        token: hashedRefreshToken,
+        type: "refresh-token",
+      });
+
+      if (!token) {
+        return res.status(httpStatusCode.UNAUTHORIZED).json({
+          success: false,
+          message: "Refresh token is invalid.",
+        });
+      }
+
+      if (token.expiresAt < new Date()) {
+        await Token.findByIdAndDelete(token._id);
+
+        return res.status(httpStatusCode.UNAUTHORIZED).json({
+          success: false,
+          message: "Refresh token has expired.",
+        });
+      }
+
+      const newAccessToken = generateAccessToken(user);
+
+      const newRefreshToken = generateRefreshToken(user);
+
+      const hashedNewRefreshToken = hashToken(newRefreshToken);
+
+      token.token = hashedNewRefreshToken;
+
+      token.expiresAt = new Date(
+        Date.now() + ms(process.env.REFRESH_TOKEN_EXPIRES),
+      );
+
+      await token.save();
+
+      res.cookie(process.env.ACCESS_TOKEN_COOKIE_NAME, newAccessToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+        maxAge: ms(process.env.ACCESS_TOKEN_EXPIRES),
+      });
+
+      res.cookie(process.env.REFRESH_TOKEN_COOKIE_NAME, newRefreshToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+        maxAge: ms(process.env.REFRESH_TOKEN_EXPIRES),
+      });
+
+      user.lastActive = new Date();
+
+      await user.save();
+
+      logger.info(`Access token refreshed : ${user.email}`);
+
+      return res.status(httpStatusCode.OK).json({
+        success: true,
+        message: "Access token refreshed successfully.",
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  // Logout
+  async logout(req, res, next) {
+    try {
+      const refreshToken = req.cookies[process.env.REFRESH_TOKEN_COOKIE_NAME];
+
+      if (refreshToken) {
+        const hashedRefreshToken = hashToken(refreshToken);
+
+        await Token.findOneAndDelete({
+          token: hashedRefreshToken,
+          type: "refresh-token",
+        });
+      }
+
+      res.clearCookie(process.env.ACCESS_TOKEN_COOKIE_NAME);
+
+      res.clearCookie(process.env.REFRESH_TOKEN_COOKIE_NAME);
+
+      if (req.user) {
+        req.user.lastActive = new Date();
+
+        await req.user.save();
+
+        await createAuditLog({
+          req,
+          actor: req.user,
+          module: "Authentication",
+          action: "Logout",
+          severity: "low",
+          target: {
+            id: req.user._id,
+            model: "User",
+          },
+          description: "User logged out successfully.",
+        });
+
+        logger.info(`Logout successful : ${req.user.email}`);
+      }
+
+      return res.status(httpStatusCode.OK).json({
+        success: true,
+        message: "Logout successful.",
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  // Forgot Password
+  async forgotPassword(req, res, next) {
+    try {
+      const { error, value } = forgotPasswordValidation.validate(req.body);
+
+      if (error) {
+        return res.status(httpStatusCode.BAD_REQUEST).json({
+          success: false,
+          message: error.details[0].message,
+        });
+      }
+
+      const { email } = value;
+
+      const user = await User.findOne({
+        email: email.toLowerCase(),
+      });
+
+      if (!user || user.isDeleted || user.role === "admin") {
+        return res.status(httpStatusCode.OK).json({
+          success: true,
+          message: "If the email exists, a password reset link has been sent.",
+        });
+      }
+
+      if (!user.isEmailVerified) {
+        return res.status(httpStatusCode.BAD_REQUEST).json({
+          success: false,
+          message: "Please verify your email first.",
+        });
+      }
+
+      await Token.deleteMany({
+        user: user._id,
+        type: "reset-password",
+      });
+
+      const resetToken = generateResetToken();
+
+      const hashedResetToken = hashToken(resetToken);
+
+      await Token.create({
+        user: user._id,
+        token: hashedResetToken,
+        type: "reset-password",
+        expiresAt: new Date(
+          Date.now() + ms(process.env.RESET_PASSWORD_TOKEN_EXPIRES),
+        ),
+      });
+
+      const resetUrl = `${process.env.APP_URL}/auth/reset-password/${resetToken}`;
+
+      const { subject, html, text } = getResetPasswordEmail(
+        user.name,
+        resetUrl,
+      );
+
+      await sendEmail({
+        to: user.email,
+        subject,
+        html,
+        text,
+      });
+
+      await createAuditLog({
+        req,
+        actor: user,
+        module: "Authentication",
+        action: "Forgot Password",
+        severity: "low",
+        target: {
+          id: user._id,
+          model: "User",
+        },
+        description: "Password reset email sent.",
+      });
+
+      logger.info(`Password reset email sent : ${user.email}`);
+
+      return res.status(httpStatusCode.OK).json({
+        success: true,
+        message: "If the email exists, a password reset link has been sent.",
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+  // Reset Password
+  async resetPassword(req, res, next) {
+    try {
+      const { token } = req.params;
+
+      const { error, value } = resetPasswordValidation.validate({
+        ...req.body,
+        token,
+      });
+
+      if (error) {
+        return res.status(httpStatusCode.BAD_REQUEST).json({
+          success: false,
+          message: error.details[0].message,
+        });
+      }
+
+      const hashedToken = hashToken(token);
+
+      const resetToken = await Token.findOne({
+        token: hashedToken,
+        type: "reset-password",
+      });
+
+      if (!resetToken) {
+        return res.status(httpStatusCode.BAD_REQUEST).json({
+          success: false,
+          message: "Invalid reset password link.",
+        });
+      }
+
+      if (resetToken.expiresAt < new Date()) {
+        await Token.findByIdAndDelete(resetToken._id);
+
+        return res.status(httpStatusCode.BAD_REQUEST).json({
+          success: false,
+          message: "Reset password link has expired.",
+        });
+      }
+
+      const user = await User.findById(resetToken.user).select("+password");
+
+      if (!user) {
+        await Token.findByIdAndDelete(resetToken._id);
+
+        return res.status(httpStatusCode.NOT_FOUND).json({
+          success: false,
+          message: "User not found.",
+        });
+      }
+
+      if (user.isDeleted) {
+        return res.status(httpStatusCode.FORBIDDEN).json({
+          success: false,
+          message: "Account has been deleted.",
+        });
+      }
+
+      if (user.role === "admin") {
+        return res.status(httpStatusCode.FORBIDDEN).json({
+          success: false,
+          message: "Administrator password cannot be reset.",
+        });
+      }
+
+      user.password = value.password;
+      user.failedLoginAttempts = 0;
+      user.accountLockedUntil = null;
+      user.lockReason = "";
+
+      await user.save();
+
+      await Token.deleteMany({
+        user: user._id,
+        type: "reset-password",
+      });
+
+      await Token.deleteMany({
+        user: user._id,
+        type: "refresh-token",
+      });
+
+      await createAuditLog({
+        req,
+        actor: user,
+        module: "Authentication",
+        action: "Reset Password",
+        severity: "medium",
+        target: {
+          id: user._id,
+          model: "User",
+        },
+        description: "Password reset completed successfully.",
+      });
+
+      logger.info(`Password reset successful : ${user.email}`);
+
+      return res.status(httpStatusCode.OK).json({
+        success: true,
+        message: "Password reset successfully. Please login again.",
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  // Change Password
+  async changePassword(req, res, next) {
+    try {
+      const { error, value } = changePasswordValidation.validate(req.body);
+
+      if (error) {
+        return res.status(httpStatusCode.BAD_REQUEST).json({
+          success: false,
+          message: error.details[0].message,
+        });
+      }
+
+      const user = await User.findById(req.user._id).select("+password");
+
+      if (!user) {
+        return res.status(httpStatusCode.NOT_FOUND).json({
+          success: false,
+          message: "User not found.",
+        });
+      }
+
+      if (user.role === "admin") {
+        return res.status(httpStatusCode.FORBIDDEN).json({
+          success: false,
+          message: "Administrator password cannot be changed.",
+        });
+      }
+
+      const isPasswordMatched = await user.comparePassword(
+        value.currentPassword,
+      );
+
+      if (!isPasswordMatched) {
+        return res.status(httpStatusCode.BAD_REQUEST).json({
+          success: false,
+          message: "Current password is incorrect.",
+        });
+      }
+
+      const isSamePassword = await user.comparePassword(value.newPassword);
+
+      if (isSamePassword) {
+        return res.status(httpStatusCode.BAD_REQUEST).json({
+          success: false,
+          message: "New password must be different from current password.",
+        });
+      }
+
+      user.password = value.newPassword;
+
+      await user.save();
+
+      await Token.deleteMany({
+        user: user._id,
+        type: "refresh-token",
+      });
+
+      res.clearCookie(process.env.ACCESS_TOKEN_COOKIE_NAME);
+
+      res.clearCookie(process.env.REFRESH_TOKEN_COOKIE_NAME);
+
+      await createAuditLog({
+        req,
+        actor: user,
+        module: "Authentication",
+        action: "Change Password",
+        severity: "medium",
+        target: {
+          id: user._id,
+          model: "User",
+        },
+        description: "Password changed successfully.",
+      });
+
+      logger.info(`Password changed : ${user.email}`);
+
+      return res.status(httpStatusCode.OK).json({
+        success: true,
+        message: "Password changed successfully. Please login again.",
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  // My Profile
+  async getMyProfile(req, res, next) {
+    try {
+      const user = await User.findById(req.user._id).select("-password").lean();
+
+      if (!user) {
+        return res.status(httpStatusCode.NOT_FOUND).json({
+          success: false,
+          message: "User not found.",
+        });
+      }
+
+      return res.status(httpStatusCode.OK).json({
+        success: true,
+        data: user,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+  // Update Profile
+  async updateProfile(req, res, next) {
+    try {
+      const { error, value } = updateProfileValidation.validate(req.body);
+
+      if (error) {
+        if (req.file) {
+          deleteLocalFile(req.file.path);
+        }
+
+        return res.status(httpStatusCode.BAD_REQUEST).json({
+          success: false,
+          message: error.details[0].message,
+        });
+      }
+
+      const user = await User.findById(req.user._id);
+
+      if (!user) {
+        if (req.file) {
+          deleteLocalFile(req.file.path);
+        }
+
+        return res.status(httpStatusCode.NOT_FOUND).json({
+          success: false,
+          message: "User not found.",
+        });
+      }
+
+      if (req.file) {
+        const uploadedImage = await cloudinaryImageUpload(req.file.path, {
+          folder: "users/profile",
+        });
+
+        deleteLocalFile(req.file.path);
+
+        if (
+          user.profileImage &&
+          user.profileImage.publicId &&
+          !user.profileImage.publicId.includes("default")
+        ) {
+          await cloudinaryImageDelete(user.profileImage.publicId);
+        }
+
+        user.profileImage = {
+          url: uploadedImage.secure_url,
+          publicId: uploadedImage.public_id,
+        };
+      }
+
+      user.name = value.name;
+
+      if (value.phone) {
+        user.phone = value.phone;
+      }
+
+      if (value.gender) {
+        user.gender = value.gender;
+      }
+
+      if (value.dateOfBirth) {
+        user.dateOfBirth = value.dateOfBirth;
+      }
+
+      user.lastActive = new Date();
+
+      await user.save();
+
+      await createAuditLog({
+        req,
+        actor: user,
+        module: "Authentication",
+        action: "Update Profile",
+        severity: "low",
+        target: {
+          id: user._id,
+          model: "User",
+        },
+        description: "Profile updated successfully.",
+      });
+
+      logger.info(`Profile updated : ${user.email}`);
+
+      return res.status(httpStatusCode.OK).json({
+        success: true,
+        message: "Profile updated successfully.",
+        data: user,
+      });
+    } catch (error) {
+      if (req.file) {
+        deleteLocalFile(req.file.path);
+      }
+
+      next(error);
+    }
+  }
+
+  // Change Email
+  async changeEmail(req, res, next) {
+    try {
+      const { email } = req.body;
+
+      if (!email) {
+        return res.status(httpStatusCode.BAD_REQUEST).json({
+          success: false,
+          message: "Email is required.",
+        });
+      }
+
+      const user = await User.findById(req.user._id);
+
+      if (!user) {
+        return res.status(httpStatusCode.NOT_FOUND).json({
+          success: false,
+          message: "User not found.",
+        });
+      }
+
+      if (user.role === "admin") {
+        return res.status(httpStatusCode.FORBIDDEN).json({
+          success: false,
+          message: "Administrator email cannot be changed.",
+        });
+      }
+
+      const existingUser = await User.findOne({
+        email: email.toLowerCase(),
+      });
+
+      if (existingUser && existingUser._id.toString() !== user._id.toString()) {
+        return res.status(httpStatusCode.CONFLICT).json({
+          success: false,
+          message: "Email address is already in use.",
+        });
+      }
+
+      user.email = email.toLowerCase();
+      user.isEmailVerified = false;
+      user.status = "inactive";
+      user.emailChangedAt = new Date();
+
+      await user.save();
+
+      await Token.deleteMany({
+        user: user._id,
+        type: "refresh-token",
+      });
+
+      await Token.deleteMany({
+        user: user._id,
+        type: "verify-email",
+      });
+
+      const verificationToken = generateVerificationToken();
+
+      const hashedVerificationToken = hashToken(verificationToken);
+
+      await Token.create({
+        user: user._id,
+        token: hashedVerificationToken,
+        type: "verify-email",
+        expiresAt: new Date(
+          Date.now() + ms(process.env.EMAIL_VERIFICATION_TOKEN_EXPIRES),
+        ),
+      });
+
+      const verificationUrl = `${process.env.APP_URL}/auth/verify-email/${verificationToken}`;
+
+      const { subject, html, text } = getVerificationEmail(
+        user.name,
+        verificationUrl,
+      );
+
+      await sendEmail({
+        to: user.email,
+        subject,
+        html,
+        text,
+      });
+
+      res.clearCookie(process.env.ACCESS_TOKEN_COOKIE_NAME);
+
+      res.clearCookie(process.env.REFRESH_TOKEN_COOKIE_NAME);
+
+      await createAuditLog({
+        req,
+        actor: user,
+        module: "Authentication",
+        action: "Change Email",
+        severity: "medium",
+        target: {
+          id: user._id,
+          model: "User",
+        },
+        description: "Email changed successfully.",
+      });
+
+      logger.info(`Email changed : ${user.email}`);
+
+      return res.status(httpStatusCode.OK).json({
+        success: true,
+        message:
+          "Email changed successfully. Please verify your new email before logging in again.",
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  // Delete Profile Image
+  async deleteProfileImage(req, res, next) {
+    try {
+      const user = await User.findById(req.user._id);
+
+      if (!user) {
+        return res.status(httpStatusCode.NOT_FOUND).json({
+          success: false,
+          message: "User not found.",
+        });
+      }
+
+      if (
+        user.profileImage &&
+        user.profileImage.publicId &&
+        !user.profileImage.publicId.includes("default")
+      ) {
+        await cloudinaryImageDelete(user.profileImage.publicId);
+      }
+
+      user.profileImage = {
+        url: process.env.DEFAULT_PROFILE_IMAGE_URL,
+        publicId: process.env.DEFAULT_PROFILE_IMAGE_PUBLIC_ID,
+      };
+
+      await user.save();
+
+      await createAuditLog({
+        req,
+        actor: user,
+        module: "Authentication",
+        action: "Delete Profile Image",
+        severity: "low",
+        target: {
+          id: user._id,
+          model: "User",
+        },
+        description: "Profile image deleted successfully.",
+      });
+
+      logger.info(`Profile image deleted : ${user.email}`);
+
+      return res.status(httpStatusCode.OK).json({
+        success: true,
+        message: "Profile image removed successfully.",
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+}
+
+module.exports = new AuthController();
