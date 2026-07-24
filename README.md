@@ -1,11 +1,7 @@
-<p align="center">
-  <img src="public/images/logo/logo-green.svg" alt="PLANTORA Logo" width="480">
-</p>
-
 # 🌿 PLANTORA
 
 <p align="center">
-  <b>Bring Nature Home</b>
+  <img src="public/images/logo/logo-green.svg" alt="PLANTORA Logo" width="380">
 </p>
 
 <p align="center">
