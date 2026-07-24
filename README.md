@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="public/images/logo/logo-green.svg" alt="PLANTORA Logo" width="180">
+</p>
+
 # 🌿 PLANTORA
 
 <p align="center">
@@ -247,7 +251,15 @@ If you have suggestions, improvements, or bug fixes, feel free to fork the repos
 
 ## 📄 License
 
-This project is licensed under the MIT License.
+This project is open-source and free to use (experimental purpose only)
+
+---
+
+## 🌐 Live Demo
+
+**Website:** https://your-app.onrender.com
+
+**Repository:** https://github.com/your-username/plantora
 
 ---
 
