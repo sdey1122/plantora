@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/images/logo/logo-green.svg" alt="PLANTORA Logo" width="580">
+  <img src="public/images/logo/logo-green.svg" alt="PLANTORA Logo" width="580" height="580">
 </p>
 
 # 🌿 PLANTORA
