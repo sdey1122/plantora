@@ -1,0 +1,152 @@
+/* Announcement Bar */
+.announcement-bar {
+  background: var(--primary-dark);
+  color: var(--white);
+  font-size: 0.9rem;
+  padding: 0.7rem 0;
+}
+
+.announcement-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.announcement-left,
+.announcement-center,
+.announcement-right {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.announcement-right a {
+  color: var(--white);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.announcement-right a:hover {
+  opacity: 0.8;
+}
+
+/* Header */
+.main-header {
+  background: var(--white);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+}
+
+.navbar {
+  min-height: 82px;
+}
+
+.logo {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+}
+
+.logo-text {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-left: 0.5rem;
+}
+
+.navbar-nav {
+  gap: 1rem;
+}
+
+.nav-link {
+  font-weight: 500;
+  color: var(--text-dark);
+  transition: var(--transition);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--primary);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.header-icon {
+  width: 45px;
+  height: 45px;
+  border: none;
+  background: #f4f6f8;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-dark);
+  font-size: 1.1rem;
+  transition: var(--transition);
+  position: relative;
+}
+
+.header-icon:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+.icon-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--danger);
+  color: #fff;
+  font-size: 0.7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.guest-buttons {
+  display: flex;
+  gap: 0.7rem;
+  margin-left: 0.5rem;
+}
+
+.btn-login {
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  padding: 0.6rem 1.3rem;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.btn-login:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn-register {
+  background: var(--primary);
+  color: #fff;
+  padding: 0.6rem 1.3rem;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.btn-register:hover {
+  background: var(--primary-dark);
+  color: #fff;
+}
+
+.navbar-toggler {
+  border: none;
+  box-shadow: none !important;
+  font-size: 1.6rem;
+}

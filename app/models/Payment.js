@@ -178,7 +178,7 @@ const paymentSchema = new mongoose.Schema(
 );
 
 // Database indexes
-paymentSchema.index({ order: 1 }, { unique: true });
+// paymentSchema.index({ order: 1 }, { unique: true });
 
 paymentSchema.index({ user: 1 });
 

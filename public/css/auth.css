@@ -1,0 +1,426 @@
+/* ===========================================================
+   Auth Modal
+=========================================================== */
+
+.auth-modal {
+  border: none;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.auth-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 10;
+}
+
+/* ===========================================================
+   Left Panel
+=========================================================== */
+
+.auth-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding: 3rem;
+  color: #ffffff;
+  background: linear-gradient(135deg, #198754 0%, #157347 100%);
+}
+
+.auth-left-content {
+  width: 100%;
+}
+
+.auth-left-content h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.auth-left-content p {
+  margin-bottom: 2rem;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+.auth-features {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.auth-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.auth-features i {
+  font-size: 1.1rem;
+}
+
+/* ===========================================================
+   Right Panel
+=========================================================== */
+
+.auth-form-wrapper {
+  padding: 3rem;
+  background-color: #ffffff;
+}
+
+.auth-form-wrapper h3 {
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #212529;
+}
+
+.auth-subtitle {
+  margin-bottom: 2rem;
+  color: #6c757d;
+}
+
+.reg-modal {
+  padding-top: 50px;
+}
+/* ===========================================================
+   Form
+=========================================================== */
+
+.auth-form-wrapper .form-label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #212529;
+}
+
+.auth-form-wrapper .form-control,
+.auth-form-wrapper .form-select {
+  height: 50px;
+  border: 1px solid #ced4da;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.auth-form-wrapper .form-control:focus,
+.auth-form-wrapper .form-select:focus {
+  border-color: #198754;
+  box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.15);
+}
+
+.auth-form-wrapper textarea.form-control {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.auth-form-wrapper .form-check-label {
+  cursor: pointer;
+}
+
+.text-danger {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.875rem;
+}
+
+/* ===========================================================
+   Input Group
+=========================================================== */
+
+.input-group .form-control {
+  border-right: none;
+}
+
+.input-group .btn {
+  border: 1px solid #ced4da;
+  border-left: none;
+  background-color: #ffffff;
+}
+
+.input-group .btn:hover {
+  background-color: #f8f9fa;
+}
+
+.input-group .btn:focus {
+  box-shadow: none;
+}
+
+.input-group .btn i {
+  font-size: 1rem;
+}
+
+/* ===========================================================
+   Password Strength
+=========================================================== */
+
+.password-strength {
+  margin-top: 0.75rem;
+}
+
+.password-strength-bar {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background-color: #e9ecef;
+  overflow: hidden;
+  position: relative;
+}
+
+.password-strength-bar::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.password-strength-bar.weak::before {
+  width: 33%;
+  background-color: #dc3545;
+}
+
+.password-strength-bar.medium::before {
+  width: 66%;
+  background-color: #ffc107;
+}
+
+.password-strength-bar.strong::before {
+  width: 100%;
+  background-color: #198754;
+}
+
+#passwordStrengthText {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+/* ===========================================================
+   Buttons
+=========================================================== */
+
+.auth-submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 50px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.auth-submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.auth-submit-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.75;
+}
+
+.auth-submit-btn .spinner-border {
+  width: 1rem;
+  height: 1rem;
+}
+
+.auth-form-wrapper a {
+  color: #198754;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.auth-form-wrapper a:hover {
+  color: #146c43;
+  text-decoration: underline;
+}
+
+/* ===========================================================
+   Alert
+=========================================================== */
+
+#registerAlert,
+#loginAlert {
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+}
+
+/* ===========================================================
+   Success Screen
+=========================================================== */
+
+.auth-success {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.auth-success i {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 4rem;
+  color: #198754;
+}
+
+.auth-success h3 {
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: #212529;
+}
+
+.auth-success p {
+  margin-bottom: 0.75rem;
+  color: #6c757d;
+  line-height: 1.6;
+}
+
+.auth-success strong {
+  color: #212529;
+  word-break: break-word;
+}
+
+.auth-success .btn {
+  margin-top: 1rem;
+  min-width: 220px;
+  border-radius: 10px;
+}
+
+.auth-success .login-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+/* ===========================================================
+   Divider
+=========================================================== */
+
+.auth-form-wrapper hr {
+  margin: 2rem 0 1.5rem;
+  opacity: 0.15;
+}
+
+/* ===========================================================
+   Responsive
+=========================================================== */
+
+@media (max-width: 991.98px) {
+  .modal-dialog {
+    margin: 1rem;
+  }
+
+  .auth-left {
+    display: none;
+  }
+
+  .auth-form-wrapper {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .auth-modal {
+    border-radius: 16px;
+  }
+
+  .auth-form-wrapper {
+    padding: 1.75rem;
+  }
+
+  .auth-form-wrapper h3 {
+    font-size: 1.75rem;
+  }
+
+  .auth-subtitle {
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .auth-form-wrapper .form-control,
+  .auth-form-wrapper .form-select,
+  .auth-submit-btn {
+    height: 48px;
+  }
+
+  .auth-success {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .auth-success i {
+    font-size: 3.5rem;
+  }
+
+  .auth-success h3 {
+    font-size: 1.5rem;
+  }
+
+  .auth-success .btn {
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .modal-dialog {
+    margin: 0.75rem;
+  }
+
+  .auth-modal {
+    border-radius: 12px;
+  }
+
+  .auth-close {
+    top: 14px;
+    right: 14px;
+  }
+
+  .auth-form-wrapper {
+    padding: 1.25rem;
+  }
+
+  .auth-form-wrapper h3 {
+    font-size: 1.5rem;
+  }
+
+  .auth-form-wrapper .form-control,
+  .auth-form-wrapper .form-select,
+  .auth-submit-btn {
+    height: 46px;
+    font-size: 0.95rem;
+  }
+
+  .input-group .btn {
+    padding-inline: 0.85rem;
+  }
+
+  .auth-form-wrapper hr {
+    margin: 1.5rem 0;
+  }
+
+  .auth-success i {
+    font-size: 3rem;
+  }
+
+  .auth-success h3 {
+    font-size: 1.35rem;
+  }
+
+  .auth-success p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema(
     profileImage: {
       publicId: {
         type: String,
-        default: "GreenNest/users/default-profile",
+        default: "Plantora/users/default-profile",
       },
 
       url: {
@@ -185,16 +185,14 @@ userSchema.virtual("isLocked").get(function () {
 });
 
 // Password Hashing
-userSchema.pre("save", async function (next) {
+userSchema.pre("save", async function () {
   if (!this.isModified("password")) {
-    return next();
+    return;
   }
 
   this.password = await bcrypt.hash(this.password, 12);
 
-  this.passwordChangedAt = Date.now();
-
-  return next();
+  this.passwordChangedAt = new Date();
 });
 
 // Compare Password

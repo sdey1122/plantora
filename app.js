@@ -15,18 +15,20 @@ dotenv.config();
 // Import logger
 const logger = require("./app/config/logger");
 
+const globalMiddleware = require("./app/middlewares/globalMiddleware");
+
 // Import routes
-const authRoutes = require("./app/routes/authRoutes");
-const userRoutes = require("./app/routes/userRoutes");
-const categoryRoutes = require("./app/routes/categoryRoutes");
-const brandRoutes = require("./app/routes/brandRoutes");
-const productRoutes = require("./app/routes/productRoutes");
-const reviewRoutes = require("./app/routes/reviewRoutes");
-const wishlistRoutes = require("./app/routes/wishlistRoutes");
-const cartRoutes = require("./app/routes/cartRoutes");
-const couponRoutes = require("./app/routes/couponRoutes");
-const orderRoutes = require("./app/routes/orderRoutes");
-const adminRoutes = require("./app/routes/adminRoutes");
+const authRoutes = require("./app/routes/authRoute");
+const userRoutes = require("./app/routes/userRoute");
+const categoryRoutes = require("./app/routes/categoryRoute");
+const brandRoutes = require("./app/routes/brandRoute");
+const productRoutes = require("./app/routes/productRoute");
+const reviewRoutes = require("./app/routes/reviewRoute");
+const wishlistRoutes = require("./app/routes/wishlistRoute");
+const cartRoutes = require("./app/routes/cartRoute");
+const couponRoutes = require("./app/routes/couponRoute");
+const orderRoutes = require("./app/routes/orderRoute");
+// const adminRoutes = require("./app/routes/adminRoute");
 const adminDashboardRoute = require("./app/routes/adminDashboardRoute");
 const sellerDashboardRoute = require("./app/routes/sellerDashboardRoute");
 const notificationRoute = require("./app/routes/notificationRoute");
@@ -69,11 +71,17 @@ app.use(
 // Parse cookies
 app.use(cookieParser());
 
+// Global EJS variables
+app.use((req, res, next) => {
+  res.locals.currentRoute = req.path;
+  next();
+});
+
 // Compress responses
 app.use(compression());
 
 // Prevent MongoDB query injection
-app.use(mongoSanitize());
+// app.use(mongoSanitize());
 
 // Prevent HTTP parameter pollution
 app.use(hpp());
@@ -91,12 +99,13 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
+app.use(globalMiddleware);
+
 // Home page
-app.get("/", (req, res) => {
-  return res.render("index", {
-    title: "GreenNest",
-  });
-});
+const homeRoutes = require("./app/routes/homeRoutes");
+
+// Public Website
+app.use("/", homeRoutes);
 
 // Authentication
 app.use("/auth", authRoutes);
@@ -129,7 +138,7 @@ app.use("/coupons", couponRoutes);
 app.use("/orders", orderRoutes);
 
 // Admin
-app.use("/admin", adminRoutes);
+// app.use("/admin", adminRoutes);
 
 // Admin Dashboard
 app.use("/admin/dashboard", adminDashboardRoute);

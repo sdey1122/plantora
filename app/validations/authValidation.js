@@ -160,6 +160,14 @@ const updateProfileValidation = Joi.object({
   .strict()
   .options(validationOptions);
 
+// Become seller validation
+const becomeSellerValidation = Joi.object({
+  confirm: Joi.boolean().valid(true).required().messages({
+    "any.only": "Please confirm your seller request.",
+    "any.required": "Confirmation is required.",
+  }),
+});
+
 module.exports = {
   registerValidation,
   loginValidation,
@@ -171,4 +179,5 @@ module.exports = {
   resendVerificationValidation,
   requestSellerValidation,
   updateProfileValidation,
+  becomeSellerValidation,
 };

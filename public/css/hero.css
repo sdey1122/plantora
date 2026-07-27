@@ -1,0 +1,761 @@
+/* ==========================================================
+   HERO SECTION
+========================================================== */
+
+.hero-section {
+  position: relative;
+
+  overflow: hidden;
+
+  min-height: calc(100vh - 132px);
+
+  display: flex;
+
+  align-items: center;
+
+  background: linear-gradient(180deg, #fcfefc 0%, #f8fbf8 100%);
+}
+
+/* ==========================================================
+   BACKGROUND
+========================================================== */
+
+.hero-background {
+  position: absolute;
+
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+.hero-blob {
+  position: absolute;
+
+  border-radius: 50%;
+
+  filter: blur(70px);
+
+  opacity: 0.45;
+}
+
+.hero-blob-1 {
+  width: 320px;
+
+  height: 320px;
+
+  top: -120px;
+
+  left: -80px;
+
+  background: rgba(76, 175, 80, 0.35);
+}
+
+.hero-blob-2 {
+  width: 420px;
+
+  height: 420px;
+
+  right: -140px;
+
+  top: 120px;
+
+  background: rgba(129, 199, 132, 0.28);
+}
+
+.hero-blob-3 {
+  width: 260px;
+
+  height: 260px;
+
+  left: 48%;
+
+  bottom: -120px;
+
+  background: rgba(165, 214, 167, 0.35);
+}
+
+/* ==========================================================
+   WRAPPER
+========================================================== */
+
+.hero-wrapper {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 80px;
+
+  padding: 90px 0;
+}
+
+/* ==========================================================
+   CONTENT
+========================================================== */
+
+.hero-content {
+  flex: 0 0 48%;
+}
+
+/* ==========================================================
+   SUBTITLE
+========================================================== */
+
+.hero-subtitle {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 28px;
+
+  padding: 10px 18px;
+
+  border-radius: 999px;
+
+  background: rgba(46, 125, 50, 0.08);
+
+  color: var(--primary);
+
+  font-size: 0.9rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.4px;
+}
+
+.hero-subtitle i {
+  font-size: 1rem;
+}
+
+/* ==========================================================
+   TITLE
+========================================================== */
+
+.hero-title {
+  margin-bottom: 28px;
+
+  color: var(--text-dark);
+
+  font-size: 4.2rem;
+
+  font-weight: 800;
+
+  line-height: 1.1;
+
+  letter-spacing: -0.04em;
+}
+
+.hero-title span {
+  display: block;
+
+  margin-top: 10px;
+
+  color: var(--primary);
+}
+
+/* ==========================================================
+   DESCRIPTION
+========================================================== */
+
+.hero-description {
+  max-width: 620px;
+
+  margin-bottom: 42px;
+
+  color: var(--text-light);
+
+  font-size: 1.12rem;
+
+  line-height: 1.9;
+}
+
+/* ==========================================================
+   ACTIONS
+========================================================== */
+
+.hero-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  margin-bottom: 60px;
+}
+
+/* ==========================================================
+   PRIMARY BUTTON
+========================================================== */
+
+.hero-btn-primary {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 16px 34px;
+
+  border: none;
+
+  border-radius: var(--radius-pill);
+
+  font-weight: 600;
+
+  font-size: 0.95rem;
+
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+
+  box-shadow: 0 14px 34px rgba(46, 125, 50, 0.28);
+
+  transition: 0.35s ease;
+}
+
+.hero-btn-primary:hover {
+  transform: translateY(-4px);
+
+  box-shadow: 0 22px 46px rgba(46, 125, 50, 0.32);
+}
+
+/* ==========================================================
+   SECONDARY BUTTON
+========================================================== */
+
+.hero-btn-secondary {
+  padding: 16px 34px;
+
+  border-radius: var(--radius-pill);
+
+  font-weight: 600;
+
+  transition: 0.35s ease;
+}
+
+.hero-btn-secondary:hover {
+  transform: translateY(-4px);
+}
+
+/* ==========================================================
+   STATS
+========================================================== */
+
+.hero-stats {
+  display: flex;
+
+  gap: 50px;
+}
+
+.hero-stat {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.hero-stat strong {
+  margin-bottom: 6px;
+
+  color: var(--text-dark);
+
+  font-size: 2rem;
+
+  font-weight: 800;
+}
+
+.hero-stat span {
+  color: var(--text-light);
+
+  font-size: 0.92rem;
+}
+
+/* ==========================================================
+   HERO IMAGE
+========================================================== */
+
+.hero-image {
+  flex: 0 0 52%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+
+.hero-image-wrapper {
+  position: relative;
+
+  width: 100%;
+
+  max-width: 640px;
+
+  aspect-ratio: 1 / 1;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+/* ==========================================================
+   GLOW
+========================================================== */
+
+.hero-glow {
+  position: absolute;
+
+  width: 520px;
+
+  height: 520px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(76, 175, 80, 0.28),
+    rgba(76, 175, 80, 0.12),
+    transparent 72%
+  );
+
+  filter: blur(25px);
+
+  z-index: 1;
+}
+
+/* ==========================================================
+   HERO IMAGE
+========================================================== */
+
+.hero-plant-image {
+  position: relative;
+
+  z-index: 5;
+
+  width: 100%;
+
+  max-width: 860px;
+
+  height: auto;
+
+  object-fit: contain;
+
+  user-select: none;
+
+  -webkit-user-drag: none;
+
+  animation: heroFloat 6s ease-in-out infinite;
+
+  filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.12));
+
+  opacity: 0.75;
+
+  border-radius: 20px;
+}
+
+/* ==========================================================
+   FLOATING CARDS
+========================================================== */
+
+.floating-card {
+  position: absolute;
+
+  z-index: 10;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 14px 18px;
+
+  background: rgba(255, 255, 255, 0.82);
+
+  backdrop-filter: blur(14px);
+
+  -webkit-backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(255, 255, 255, 0.55);
+
+  border-radius: 18px;
+
+  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.1);
+
+  font-size: 0.9rem;
+
+  font-weight: 600;
+
+  color: var(--text-dark);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.floating-card i {
+  color: var(--primary);
+
+  font-size: 1.1rem;
+}
+
+.floating-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow: 0 24px 45px rgba(15, 23, 42, 0.14);
+}
+
+/* ==========================================================
+   CARD POSITIONS
+========================================================== */
+
+.floating-card-1 {
+  top: 12%;
+
+  left: -2%;
+
+  animation: floatingCard1 7s ease-in-out infinite;
+}
+
+.floating-card-2 {
+  right: -4%;
+
+  top: 48%;
+
+  animation: floatingCard2 8s ease-in-out infinite;
+}
+
+.floating-card-3 {
+  bottom: 10%;
+
+  left: 8%;
+
+  animation: floatingCard3 6s ease-in-out infinite;
+}
+
+/* ==========================================================
+   SCROLL INDICATOR
+========================================================== */
+
+.hero-scroll {
+  position: absolute;
+
+  left: 50%;
+
+  bottom: 35px;
+
+  transform: translateX(-50%);
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: var(--text-light);
+
+  text-decoration: none;
+
+  font-size: 0.82rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.5px;
+
+  transition: color 0.3s ease;
+}
+
+.hero-scroll:hover {
+  color: var(--primary);
+}
+
+.hero-scroll i {
+  font-size: 1.25rem;
+
+  animation: scrollBounce 2s infinite;
+}
+
+/* ==========================================================
+   ANIMATIONS
+========================================================== */
+
+@keyframes heroFloat {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-14px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatingCard1 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes floatingCard2 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(12px);
+  }
+}
+
+@keyframes floatingCard3 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes scrollBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+/* ==========================================================
+   HERO DECORATIONS
+========================================================== */
+
+.hero-image-wrapper::before,
+.hero-image-wrapper::after {
+  content: "";
+
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  z-index: 2;
+}
+
+.hero-image-wrapper::before {
+  width: 18px;
+  height: 18px;
+
+  top: 14%;
+  right: 14%;
+
+  background: rgba(76, 175, 80, 0.18);
+
+  box-shadow: 0 0 35px rgba(76, 175, 80, 0.45);
+
+  animation: particleFloat1 6s ease-in-out infinite;
+}
+
+.hero-image-wrapper::after {
+  width: 12px;
+  height: 12px;
+
+  bottom: 18%;
+  right: 6%;
+
+  background: rgba(129, 199, 132, 0.3);
+
+  box-shadow: 0 0 25px rgba(129, 199, 132, 0.4);
+
+  animation: particleFloat2 7s ease-in-out infinite;
+}
+
+/* ==========================================================
+   CTA BUTTON POLISH
+========================================================== */
+
+.hero-btn-primary,
+.hero-btn-secondary {
+  position: relative;
+
+  overflow: hidden;
+}
+
+.hero-btn-primary::before,
+.hero-btn-secondary::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.28),
+    transparent
+  );
+
+  transform: translateX(-150%);
+
+  transition: transform 0.8s ease;
+}
+
+.hero-btn-primary:hover::before,
+.hero-btn-secondary:hover::before {
+  transform: translateX(150%);
+}
+
+/* ==========================================================
+   STAT HOVER
+========================================================== */
+
+.hero-stat {
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.hero-stat:hover {
+  transform: translateY(-5px);
+}
+
+.hero-stat:hover strong {
+  color: var(--primary);
+}
+
+/* ==========================================================
+   IMAGE HOVER
+========================================================== */
+
+.hero-image-wrapper:hover .hero-plant-image {
+  transform: scale(1.03);
+}
+
+/* ==========================================================
+   SUBTITLE HOVER
+========================================================== */
+
+.hero-subtitle {
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.hero-subtitle:hover {
+  background: rgba(46, 125, 50, 0.12);
+
+  transform: translateY(-2px);
+}
+
+/* ==========================================================
+   HERO CONTENT ENTRANCE
+========================================================== */
+
+.hero-content {
+  animation: heroContentFade 0.9s ease;
+}
+
+.hero-image {
+  animation: heroImageFade 1.1s ease;
+}
+
+/* ==========================================================
+   PARALLAX READY
+========================================================== */
+
+.hero-image-wrapper {
+  transition: transform 0.25s ease;
+
+  transform-style: preserve-3d;
+}
+
+/* ==========================================================
+   REDUCED MOTION
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-content,
+  .hero-image,
+  .hero-plant-image,
+  .floating-card,
+  .hero-scroll i {
+    animation: none !important;
+  }
+}
+
+/* ==========================================================
+   KEYFRAMES
+========================================================== */
+
+@keyframes heroContentFade {
+  from {
+    opacity: 0;
+
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroImageFade {
+  from {
+    opacity: 0;
+
+    transform: translateX(50px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateX(0);
+  }
+}
+
+@keyframes particleFloat1 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes particleFloat2 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(12px);
+  }
+}

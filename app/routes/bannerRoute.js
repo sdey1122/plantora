@@ -6,7 +6,10 @@ const authMiddleware = require("../middlewares/authMiddleware");
 
 const authorizeRoles = require("../middlewares/authorizeRoles");
 
-const upload = require("../middlewares/upload");
+const {
+  uploadBannerImage,
+  handleUploadError,
+} = require("../middlewares/uploadMiddleware");
 
 const router = express.Router();
 
@@ -32,7 +35,8 @@ router.post(
   "/admin/banners",
   authMiddleware,
   authorizeRoles("admin"),
-  upload.single("image"),
+  uploadBannerImage,
+  handleUploadError,
   BannerController.createBanner,
 );
 
@@ -47,7 +51,8 @@ router.put(
   "/admin/banners/:bannerId",
   authMiddleware,
   authorizeRoles("admin"),
-  upload.single("image"),
+  uploadBannerImage,
+  handleUploadError,
   BannerController.updateBanner,
 );
 

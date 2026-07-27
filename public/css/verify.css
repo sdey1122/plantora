@@ -1,0 +1,51 @@
+/* ===========================================================
+   Verify Email Pages
+=========================================================== */
+
+.verify-card {
+    max-width: 600px;
+    margin: 80px auto;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.verify-icon {
+    font-size: 5rem;
+    line-height: 1;
+}
+
+.verify-card h2 {
+    font-weight: 700;
+}
+
+.verify-card p {
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.verify-actions {
+    margin-top: 2rem;
+}
+
+.verify-actions .btn {
+    min-height: 48px;
+    font-weight: 600;
+}
+
+.verify-countdown {
+    font-size: 0.95rem;
+    color: #6c757d;
+    margin-top: 1rem;
+}
+
+.verify-email-form {
+    margin-top: 2rem;
+}
+
+.verify-email-form .form-control {
+    min-height: 48px;
+}
+
+.toast-container {
+    z-index: 1080;
+}

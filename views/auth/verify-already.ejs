@@ -1,0 +1,87 @@
+<%- include("../partials/main/head", { title: "Already Verified" }) %>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+
+            <div class="card shadow-sm border-0 text-center verify-card">
+                <div class="card-body p-5">
+
+                    <i class="bi bi-info-circle-fill text-primary verify-icon"></i>
+
+                    <h2 class="mt-4">
+                        Email Already Verified
+                    </h2>
+
+                    <p class="text-muted mt-3">
+    Your email has been verified successfully.
+    You can now login to your Plantora account.
+</p>
+
+<p
+    id="countdownMessage"
+    class="verify-countdown"
+>
+    Redirecting to login in
+    <span id="countdown">5</span>
+    seconds...
+</p>
+
+<div class="verify-actions d-grid gap-2 mt-4">
+
+    <button
+        class="btn btn-success"
+        data-bs-toggle="modal"
+        data-bs-target="#loginModal"
+    >
+        Login Now
+    </button>
+
+    <a href="/" class="btn btn-outline-success">
+        Go to Home
+    </a>
+
+</div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div
+    class="toast-container position-fixed top-0 end-0 p-3"
+>
+
+    <div
+        id="verifyToast"
+        class="toast"
+        role="alert"
+    >
+
+        <div class="toast-header">
+
+            <strong class="me-auto">
+                Plantora
+            </strong>
+
+            <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="toast"
+            ></button>
+
+        </div>
+
+        <div
+            class="toast-body"
+            id="toastMessage"
+        ></div>
+
+    </div>
+
+</div>
+
+<%- include("../partials/main/footer") %>

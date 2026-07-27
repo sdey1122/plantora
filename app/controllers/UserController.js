@@ -4,8 +4,15 @@ const User = require("../models/User");
 const createAuditLog = require("../utils/createAuditLog");
 const cloudinaryImageDelete = require("../utils/cloudinaryImageDelete");
 
-
 const logger = require("../config/logger");
+
+const sendNotification = require("../utils/sendNotification");
+const sendEmail = require("../utils/sendEmail");
+
+const {
+  getSellerApprovedEmail,
+  getSellerRejectedEmail,
+} = require("../utils/emailTemplates");
 
 const {
   userQueryValidation,
@@ -646,6 +653,58 @@ class UserController {
       }
 
       await user.save();
+
+      // Notify user
+      if (sellerStatus === "approved") {
+        await sendNotification({
+          recipient: user._id,
+          sender: req.user._id,
+          title: "Seller Request Approved",
+          message: "Congratulations! Your seller account has been approved.",
+          type: "seller",
+          referenceType: "User",
+          referenceId: user._id,
+          actionUrl: "/seller/dashboard",
+        });
+
+        const { subject, html, text } = getSellerApprovedEmail(
+          user.name,
+          `${process.env.APP_URL}/seller/dashboard`,
+        );
+
+        await sendEmail({
+          to: user.email,
+          subject,
+          html,
+          text,
+        });
+      }
+
+      if (sellerStatus === "rejected") {
+        await sendNotification({
+          recipient: user._id,
+          sender: req.user._id,
+          title: "Seller Request Rejected",
+          message:
+            "Your seller request has been rejected. Please review the admin remark.",
+          type: "seller",
+          referenceType: "User",
+          referenceId: user._id,
+          actionUrl: "/profile",
+        });
+
+        const { subject, html, text } = getSellerRejectedEmail(
+          user.name,
+          adminRemark,
+        );
+
+        await sendEmail({
+          to: user.email,
+          subject,
+          html,
+          text,
+        });
+      }
 
       await createAuditLog({
         req,

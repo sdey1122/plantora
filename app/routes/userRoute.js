@@ -8,7 +8,7 @@ const authMiddleware = require("../middlewares/authMiddleware");
 
 const authorizeRoles = require("../middlewares/authorizeRoles");
 
-const upload = require("../middlewares/upload");
+const upload = require("../middlewares/uploadMiddleware");
 
 // Protect all routes
 router.use(authMiddleware);
@@ -27,11 +27,10 @@ router.get("/customers/:userId", UserController.showCustomerDetails);
 router.get("/sellers/:userId", UserController.showSellerDetails);
 
 // Update User
-router.post(
-  "/:userId/edit",
-  upload.single("profileImage"),
-  UserController.updateUser,
-);
+const {
+  uploadProfileImage,
+  handleUploadError,
+} = require("../middlewares/uploadMiddleware");
 
 // Toggle User Status
 router.post("/:userId/status", UserController.toggleUserStatus);
@@ -49,6 +48,6 @@ router.post("/:userId/restore", UserController.restoreUser);
 router.post("/:userId/permanent-delete", UserController.deleteUser);
 
 // User Analytics
-router.get("/analytics", UserController.getUserAnalytics);
+// router.get("/analytics", UserController.getUserAnalytics);
 
 module.exports = router;

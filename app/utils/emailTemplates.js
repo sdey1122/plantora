@@ -1,17 +1,19 @@
-// GreenNest logo URL
-const logoUrl = `${process.env.APP_URL}/images/logo/greennest-logo.png`;
+// Plantora logo URL
+// const logoUrl = `${process.env.APP_URL}/images/logo/logo-green.svg`;
+const logoUrl =
+  "https://res.cloudinary.com/desmwasfe/image/upload/c_fit,h_300,w_300/plantora_c99t9q.png";
 
 // Generate email verification template
 const getVerificationEmail = (name, verificationUrl) => {
   return {
-    subject: "Verify Your GreenNest Account",
+    subject: "Verify Your Plantora Account",
 
     text: `
-Welcome to GreenNest!
+Welcome to Plantora!
 
 Hello ${name},
 
-Thank you for creating your GreenNest account.
+Thank you for creating your Plantora account.
 
 Please verify your email by visiting the link below:
 
@@ -20,7 +22,7 @@ ${verificationUrl}
 If you did not create this account, you can safely ignore this email.
 
 Regards,
-GreenNest Team
+Plantora Team
 `,
 
     html: `
@@ -70,7 +72,7 @@ GreenNest Team
 
 <img
   src="${logoUrl}"
-  alt="GreenNest"
+  alt="Plantora"
   width="180"
   style="display:block;"
 >
@@ -113,7 +115,7 @@ Hello <strong>${name}</strong>,
     line-height:1.8;
   "
 >
-Thank you for registering with <strong>GreenNest</strong>.
+Thank you for registering with <strong>Plantora</strong>.
 
 Before getting started, please verify your email address by clicking the button below.
 </p>
@@ -182,7 +184,7 @@ ${verificationUrl}
     line-height:1.8;
   "
 >
-If you didn't create a GreenNest account,
+If you didn't create a Plantora account,
 you can safely ignore this email.
 No further action is required.
 </p>
@@ -202,7 +204,7 @@ No further action is required.
 >
 
 <p style="margin:0;">
-© ${new Date().getFullYear()} GreenNest.
+© ${new Date().getFullYear()} Plantora.
 All rights reserved.
 </p>
 
@@ -229,14 +231,14 @@ Please do not reply to this message.
 // Generate password reset template
 const getResetPasswordEmail = (name, resetUrl) => {
   return {
-    subject: "Reset Your GreenNest Password",
+    subject: "Reset Your Plantora Password",
 
     text: `
 Password Reset Request
 
 Hello ${name},
 
-We received a request to reset your GreenNest password.
+We received a request to reset your Plantora password.
 
 Reset it using the link below:
 
@@ -245,7 +247,7 @@ ${resetUrl}
 If you didn't request this password reset, simply ignore this email.
 
 Regards,
-GreenNest Team
+Plantora Team
 `,
 
     html: `
@@ -297,7 +299,7 @@ GreenNest Team
 <img
   src="${logoUrl}"
   width="180"
-  alt="GreenNest"
+  alt="Plantora"
 >
 
 </td>
@@ -336,7 +338,7 @@ Hello <strong>${name}</strong>,
     line-height:1.8;
   "
 >
-We received a request to reset your GreenNest account password.
+We received a request to reset your Plantora account password.
 </p>
 
 <div
@@ -418,7 +420,7 @@ please ignore this email immediately.
 >
 
 <p style="margin:0;">
-© ${new Date().getFullYear()} GreenNest.
+© ${new Date().getFullYear()} Plantora.
 All rights reserved.
 </p>
 
@@ -443,7 +445,349 @@ Please do not reply to this message.
   };
 };
 
+// Generate seller request email for admin
+const getSellerRequestEmail = (customerName, customerEmail, dashboardUrl) => {
+  return {
+    subject: "New Seller Request - Plantora",
+
+    text: `
+New Seller Request
+
+Hello Admin,
+
+${customerName} has requested to become a seller.
+
+Customer Name:
+${customerName}
+
+Customer Email:
+${customerEmail}
+
+Review the request from the admin dashboard:
+
+${dashboardUrl}
+
+Regards,
+Plantora
+`,
+
+    html: `
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>New Seller Request</title>
+</head>
+
+<body
+style="
+margin:0;
+padding:40px 0;
+background:#f5f7fa;
+font-family:Arial,Helvetica,sans-serif;
+">
+
+<table
+width="100%"
+cellspacing="0"
+cellpadding="0">
+
+<tr>
+<td align="center">
+
+<table
+width="600"
+cellspacing="0"
+cellpadding="0"
+style="
+background:#ffffff;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 2px 10px rgba(0,0,0,.08);
+">
+
+<tr>
+<td
+align="center"
+style="padding:35px 20px 20px;">
+
+<img
+src="${logoUrl}"
+width="180"
+alt="Plantora">
+
+</td>
+</tr>
+
+<tr>
+<td
+style="
+padding:0 40px 20px;">
+
+<h1
+style="
+margin:0;
+text-align:center;
+color:#198754;">
+New Seller Request
+</h1>
+
+<p
+style="
+margin-top:35px;
+font-size:16px;
+line-height:1.8;">
+A customer has requested to become a seller.
+</p>
+
+<table
+width="100%"
+cellpadding="8"
+style="
+border-collapse:collapse;
+margin-top:25px;">
+
+<tr>
+<td><strong>Name</strong></td>
+<td>${customerName}</td>
+</tr>
+
+<tr>
+<td><strong>Email</strong></td>
+<td>${customerEmail}</td>
+</tr>
+
+</table>
+
+<div
+style="
+text-align:center;
+margin:40px 0;">
+
+<a
+href="${dashboardUrl}"
+style="
+background:#198754;
+color:#ffffff;
+padding:15px 35px;
+text-decoration:none;
+border-radius:8px;
+display:inline-block;
+font-weight:bold;">
+Review Request
+</a>
+
+</div>
+
+</td>
+</tr>
+
+<tr>
+<td
+style="
+background:#f8f9fa;
+padding:25px;
+text-align:center;
+font-size:13px;
+color:#6c757d;">
+
+<p style="margin:0;">
+© ${new Date().getFullYear()} Plantora. All rights reserved.
+</p>
+
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+
+</table>
+
+</body>
+</html>
+`,
+  };
+};
+
+// Generate seller approved email
+const getSellerApprovedEmail = (name, dashboardUrl) => {
+  return {
+    subject: "Seller Account Approved - Plantora",
+
+    text: `
+Congratulations ${name},
+
+Your seller account request has been approved.
+
+You can now start selling products on Plantora.
+
+Seller Dashboard:
+${dashboardUrl}
+
+Regards,
+Plantora Team
+`,
+
+    html: `
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Seller Approved</title>
+</head>
+
+<body style="margin:0;padding:40px 0;background:#f5f7fa;font-family:Arial,Helvetica,sans-serif;">
+
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr>
+<td align="center">
+
+<table width="600" cellspacing="0" cellpadding="0"
+style="background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.08);">
+
+<tr>
+<td align="center" style="padding:35px;">
+<img src="${logoUrl}" width="180">
+</td>
+</tr>
+
+<tr>
+<td style="padding:0 40px 20px;">
+
+<h1 style="color:#198754;text-align:center;">
+Seller Account Approved
+</h1>
+
+<p>Hello <strong>${name}</strong>,</p>
+
+<p>
+Congratulations!
+Your seller request has been approved.
+You can now start selling products on Plantora.
+</p>
+
+<div style="text-align:center;margin:40px 0;">
+<a
+href="${dashboardUrl}"
+style="
+background:#198754;
+color:#fff;
+padding:15px 35px;
+text-decoration:none;
+border-radius:8px;
+display:inline-block;">
+Open Seller Dashboard
+</a>
+</div>
+
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>
+`,
+  };
+};
+
+// Generate seller rejected email
+const getSellerRejectedEmail = (name, remark) => {
+  return {
+    subject: "Seller Request Update - Plantora",
+
+    text: `
+Hello ${name},
+
+Unfortunately your seller request has been rejected.
+
+Admin Remark:
+
+${remark || "No remark provided."}
+
+You may submit a new request after making the necessary changes.
+
+Regards,
+Plantora Team
+`,
+
+    html: `
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Seller Request Rejected</title>
+</head>
+
+<body style="margin:0;padding:40px 0;background:#f5f7fa;font-family:Arial,Helvetica,sans-serif;">
+
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr>
+<td align="center">
+
+<table width="600" cellspacing="0" cellpadding="0"
+style="background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.08);">
+
+<tr>
+<td align="center" style="padding:35px;">
+<img src="${logoUrl}" width="180">
+</td>
+</tr>
+
+<tr>
+<td style="padding:0 40px 20px;">
+
+<h1 style="color:#dc3545;text-align:center;">
+Seller Request Rejected
+</h1>
+
+<p>Hello <strong>${name}</strong>,</p>
+
+<p>
+Unfortunately, your seller request could not be approved.
+</p>
+
+<p>
+<strong>Admin Remark</strong>
+</p>
+
+<div
+style="
+background:#f8f9fa;
+padding:15px;
+border-radius:8px;">
+${remark || "No remark provided."}
+</div>
+
+<p style="margin-top:25px;">
+You may update your information and submit another seller request later.
+</p>
+
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>
+`,
+  };
+};
+
 module.exports = {
   getVerificationEmail,
   getResetPasswordEmail,
+  getSellerRequestEmail,
+  getSellerApprovedEmail,
+  getSellerRejectedEmail,
 };

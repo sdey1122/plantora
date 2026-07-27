@@ -127,9 +127,9 @@ categorySchema.pre("save", function (next) {
 });
 
 // Database indexes
-categorySchema.index({ name: 1 }, { unique: true });
+// categorySchema.index({ name: 1 }, { unique: true });
 
-categorySchema.index({ slug: 1 }, { unique: true });
+// categorySchema.index({ slug: 1 }, { unique: true });
 
 categorySchema.index({ status: 1, isDeleted: 1 });
 

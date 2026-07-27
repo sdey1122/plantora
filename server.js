@@ -11,7 +11,7 @@ const app = require("./app");
 // Import configurations
 const logger = require("./app/config/logger");
 const databaseConnection = require("./app/config/database");
-const { redisConnection } = require("./app/config/redis");
+// const { redisConnection } = require("./app/config/redis");
 const { verifyEmailConnection } = require("./app/config/email");
 
 // Import Socket.IO
@@ -33,7 +33,7 @@ const startServer = async () => {
     await databaseConnection();
 
     // Connect Redis
-    await redisConnection();
+    // await redisConnection();
 
     // Verify email connection
     await verifyEmailConnection();

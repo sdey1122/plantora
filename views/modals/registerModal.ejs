@@ -1,0 +1,235 @@
+<!-- Register Modal -->
+<div
+  class="modal fade"
+  id="registerModal"
+  tabindex="-1"
+  aria-labelledby="registerModalLabel"
+  aria-hidden="true"
+  class="reg-modal"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg reg-modal">
+    <div class="modal-content auth-modal">
+      <!-- Close -->
+      <button
+        type="button"
+        class="btn-close auth-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+      ></button>
+
+      <div class="modal-body p-0 reg-modal">
+        <div class="row g-0">
+          <!-- Left -->
+          <div class="col-lg-5 auth-left">
+            <div class="auth-left-content">
+              <h2>Welcome to Plantora</h2>
+
+              <p>
+                Create your account and start shopping for fresh plants,
+                flowers, seeds and gardening essentials.
+              </p>
+
+              <ul class="auth-features">
+                <li>
+                  <i class="bi bi-check-circle-fill"></i>
+                  Secure Account
+                </li>
+
+                <li>
+                  <i class="bi bi-check-circle-fill"></i>
+                  Email Verification
+                </li>
+
+                <li>
+                  <i class="bi bi-check-circle-fill"></i>
+                  Fast Checkout
+                </li>
+
+                <li>
+                  <i class="bi bi-check-circle-fill"></i>
+                  Wishlist & Orders
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Right -->
+          <div class="col-lg-7">
+            <div class="auth-form-wrapper">
+              <h3 id="registerModalLabel">Create Account</h3>
+
+              <p class="auth-subtitle">Join Plantora today.</p>
+
+              <!-- Global Alert -->
+              <div id="registerAlert" class="alert d-none"></div>
+
+              <form id="registerForm" novalidate>
+                <!-- Name -->
+                <div class="mb-3">
+                  <label for="registerName" class="form-label">
+                    Full Name
+                  </label>
+
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="registerName"
+                    name="name"
+                    placeholder="Enter your full name"
+                    maxlength="50"
+                    autocomplete="name"
+                  />
+
+                  <small class="text-danger" id="registerNameError"></small>
+                </div>
+
+                <!-- Email -->
+                <div class="mb-3">
+                  <label for="registerEmail" class="form-label">
+                    Email Address
+                  </label>
+
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="registerEmail"
+                    name="email"
+                    placeholder="Enter your email"
+                    autocomplete="email"
+                  />
+
+                  <small class="text-danger" id="registerEmailError"></small>
+                </div>
+
+                <!-- Password -->
+                <div class="mb-2">
+                  <label for="registerPassword" class="form-label">
+                    Password
+                  </label>
+
+                  <div class="input-group">
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="registerPassword"
+                      name="password"
+                      placeholder="Create password"
+                      autocomplete="new-password"
+                    />
+
+                    <button
+                      type="button"
+                      class="btn btn-outline-secondary toggle-password"
+                      data-target="registerPassword"
+                    >
+                      <i class="bi bi-eye"></i>
+                    </button>
+                  </div>
+
+                  <small class="text-danger" id="registerPasswordError"></small>
+                </div>
+
+                <!-- Strength -->
+                <div class="mb-3">
+                  <div class="password-strength">
+                    <div
+                      id="passwordStrengthBar"
+                      class="password-strength-bar"
+                    ></div>
+                  </div>
+
+                  <small id="passwordStrengthText" class="text-muted">
+                    Password strength
+                  </small>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="mb-3">
+                  <label for="registerConfirmPassword" class="form-label">
+                    Confirm Password
+                  </label>
+
+                  <div class="input-group">
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="registerConfirmPassword"
+                      name="confirmPassword"
+                      placeholder="Confirm password"
+                      autocomplete="new-password"
+                    />
+
+                    <button
+                      type="button"
+                      class="btn btn-outline-secondary toggle-password"
+                      data-target="registerConfirmPassword"
+                    >
+                      <i class="bi bi-eye"></i>
+                    </button>
+                  </div>
+
+                  <small
+                    class="text-danger"
+                    id="registerConfirmPasswordError"
+                  ></small>
+                </div>
+
+                <!-- Terms -->
+                <div class="form-check mb-4">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="registerTerms"
+                    name="termsAccepted"
+                  />
+
+                  <label class="form-check-label" for="registerTerms">
+                    I agree to the
+
+                    <a href="/terms-and-conditions" target="_blank">
+                      Terms & Conditions
+                    </a>
+
+                    and
+
+                    <a href="/privacy-policy" target="_blank">
+                      Privacy Policy
+                    </a>
+                  </label>
+
+                  <div id="registerTermsError" class="text-danger small"></div>
+                </div>
+
+                <!-- Button -->
+                <div class="d-grid">
+                  <button
+                    type="submit"
+                    id="registerButton"
+                    class="btn btn-success auth-submit-btn"
+                  >
+                    <span id="registerButtonText"> Create Account </span>
+
+                    <span
+                      id="registerSpinner"
+                      class="spinner-border spinner-border-sm d-none"
+                    ></span>
+                  </button>
+                </div>
+              </form>
+
+              <hr />
+
+              <p class="text-center mb-0">
+                Already have an account?
+
+                <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+                  Login
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

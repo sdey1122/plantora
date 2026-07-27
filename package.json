@@ -1,5 +1,5 @@
 {
-  "name": "green_nest_final_project_node_ejs",
+  "name": "plantora_final_project_node_ejs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -34,6 +34,8 @@
     "pdfkit": "^0.19.1",
     "razorpay": "^2.9.8",
     "redis": "^6.1.0",
+    "slugify": "^1.6.9",
+    "socket.io": "^4.8.3",
     "ua-parser-js": "^2.0.10",
     "winston": "^3.19.0",
     "winston-daily-rotate-file": "^5.0.0"

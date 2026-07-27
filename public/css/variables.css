@@ -1,0 +1,47 @@
+:root {
+  /* Brand Colors */
+  --primary: #2e7d32;
+  --primary-dark: #1b5e20;
+  --primary-light: #66bb6a;
+  --primary-soft: #e8f5e9;
+
+  /* Background */
+  --white: #ffffff;
+  --body-bg: #f9fafb;
+  --section-bg: #f4f8f4;
+
+  /* Text */
+  --text-dark: #212529;
+  --text: #495057;
+  --text-light: #6c757d;
+
+  /* Borders */
+  --border: #e9ecef;
+
+  /* Status */
+  --success: #198754;
+  --danger: #dc3545;
+  --warning: #ffc107;
+  --info: #0dcaf0;
+
+  /* Shadow */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.12);
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  /* Transition */
+  --transition: all 0.3s ease;
+
+  /* Navbar */
+  --navbar-height: 82px;
+
+  /* Container */
+  --container-width: 1320px;
+}

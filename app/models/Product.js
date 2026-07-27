@@ -308,9 +308,9 @@ productSchema.virtual("isLowStock").get(function () {
 });
 
 // Database indexes
-productSchema.index({ slug: 1 }, { unique: true });
+// productSchema.index({ slug: 1 }, { unique: true });
 
-productSchema.index({ sku: 1 }, { unique: true });
+// productSchema.index({ sku: 1 }, { unique: true });
 
 productSchema.index({ category: 1 });
 

@@ -1,0 +1,381 @@
+<!-- ==========================================================
+     MAIN HEADER
+=========================================================== -->
+
+<header class="plantora-header">
+
+    <div class="container">
+
+        <div class="header-wrapper">
+
+            <!-- ==========================================
+                 LOGO
+            =========================================== -->
+
+            <a
+                href="/"
+                class="header-logo"
+            >
+
+                <img
+                    src="/images/logo/plantora.png"
+                    alt="Plantora"
+                    class="logo-image"
+                >
+
+            </a>
+
+            <!-- ==========================================
+                 NAVIGATION
+            =========================================== -->
+
+            <nav class="header-nav">
+
+                <ul>
+
+                    <li>
+
+                        <a
+                            href="/"
+                            class="<%= currentRoute === '/' ? 'active' : '' %>"
+                        >
+                            Home
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a
+                            href="/products"
+                            class="<%= currentRoute.startsWith('/products') ? 'active' : '' %>"
+                        >
+                            Shop
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a
+                            href="/about"
+                            class="<%= currentRoute === '/about' ? 'active' : '' %>"
+                        >
+                            About
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a
+                            href="/contact"
+                            class="<%= currentRoute === '/contact' ? 'active' : '' %>"
+                        >
+                            Contact
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </nav>
+
+            <!-- ==========================================
+                 HEADER ACTIONS
+            =========================================== -->
+
+            <div class="header-actions">
+
+                <% if (!user) { %>
+
+                    <button
+                        type="button"
+                        class="btn-login"
+                        data-bs-toggle="modal"
+                        data-bs-target="#loginModal"
+                    >
+
+                        Login
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn-signup"
+                        data-bs-toggle="modal"
+                        data-bs-target="#registerModal"
+                    >
+
+                        Sign Up
+
+                    </button>
+
+                <% } else { %>
+
+                    <!-- Wishlist -->
+
+                    <a
+                        href="/wishlist"
+                        class="header-icon"
+                        aria-label="Wishlist"
+                    >
+
+                        <i class="bi bi-heart"></i>
+
+                    </a>
+
+                    <!-- Cart -->
+
+                    <a
+                        href="/cart"
+                        class="header-icon"
+                        aria-label="Cart"
+                    >
+
+                        <i class="bi bi-bag"></i>
+
+                    </a>
+
+                    <!-- Notifications -->
+
+                    <div class="dropdown">
+
+                        <button
+                            class="header-icon"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+
+                            <i class="bi bi-bell"></i>
+
+                            <% if (notificationCount > 0) { %>
+
+                                <span class="header-badge">
+
+                                    <%= notificationCount %>
+
+                                </span>
+
+                            <% } %>
+
+                        </button>
+
+                        <div class="dropdown-menu dropdown-menu-end notification-dropdown">
+
+                            <div class="notification-header">
+
+                                <h6>
+
+                                    Notifications
+
+                                </h6>
+
+                                <a href="#">
+
+                                    Mark all read
+
+                                </a>
+
+                            </div>
+
+                            <div class="notification-list">
+
+                                <!-- Dynamic notifications -->
+
+                            </div>
+
+                            <div class="notification-footer">
+
+                                <a href="/notifications">
+
+                                    View All Notifications
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Profile -->
+
+                    <div class="dropdown">
+
+                        <button
+                            class="profile-button"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+
+                            <% if (user.profileImage) { %>
+
+                                <img
+                                    src="<%= user.profileImage %>"
+                                    alt="<%= user.name %>"
+                                >
+
+                            <% } else { %>
+
+                                <i class="bi bi-person-fill"></i>
+
+                            <% } %>
+
+                        </button>
+
+                        <div class="dropdown-menu dropdown-menu-end profile-dropdown">
+
+                            <div class="profile-dropdown-header">
+
+                                <% if (user.profileImage) { %>
+
+                                    <img
+                                        src="<%= user.profileImage %>"
+                                        alt="<%= user.name %>"
+                                        class="profile-dropdown-avatar"
+                                    >
+
+                                <% } else { %>
+
+                                    <div class="profile-dropdown-avatar">
+
+                                        <i class="bi bi-person-fill"></i>
+
+                                    </div>
+
+                                <% } %>
+
+                                <div>
+
+                                    <h6>
+
+                                        <%= user.name %>
+
+                                    </h6>
+
+                                    <small>
+
+                                        <%= user.email %>
+
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                            <hr>
+
+                            <a
+                                href="/auth/profile"
+                                class="dropdown-item"
+                            >
+
+                                <i class="bi bi-person"></i>
+
+                                My Profile
+
+                            </a>
+
+                            <a
+                                href="/orders"
+                                class="dropdown-item"
+                            >
+
+                                <i class="bi bi-box-seam"></i>
+
+                                My Orders
+
+                            </a>
+
+                            <a
+                                href="/wishlist"
+                                class="dropdown-item"
+                            >
+
+                                <i class="bi bi-heart"></i>
+
+                                Wishlist
+
+                            </a>
+
+                            <a
+                                href="/addresses"
+                                class="dropdown-item"
+                            >
+
+                                <i class="bi bi-geo-alt"></i>
+
+                                Saved Addresses
+
+                            </a>
+
+                            <% if (user.isSeller) { %>
+
+                                <a
+                                    href="/seller/dashboard"
+                                    class="dropdown-item"
+                                >
+
+                                    <i class="bi bi-shop"></i>
+
+                                    Seller Dashboard
+
+                                </a>
+
+                            <% } %>
+
+                            <% if (user.role === "admin") { %>
+
+                                <a
+                                    href="/admin/dashboard"
+                                    class="dropdown-item"
+                                >
+
+                                    <i class="bi bi-speedometer2"></i>
+
+                                    Admin Dashboard
+
+                                </a>
+
+                            <% } %>
+
+                            <hr>
+
+                            <form
+                                action="/auth/logout"
+                                method="POST"
+                            >
+
+                                <button
+                                    type="submit"
+                                    class="dropdown-item logout-button"
+                                >
+
+                                    <i class="bi bi-box-arrow-right"></i>
+
+                                    Logout
+
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                <% } %>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+<%- include("../../modals/loginModal.ejs") %>
+
+<%- include("../../modals/registerModal.ejs") %>

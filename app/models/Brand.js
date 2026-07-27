@@ -135,9 +135,9 @@ brandSchema.pre("save", function (next) {
 });
 
 // Database indexes
-brandSchema.index({ name: 1 }, { unique: true });
+// brandSchema.index({ name: 1 }, { unique: true });
 
-brandSchema.index({ slug: 1 }, { unique: true });
+// brandSchema.index({ slug: 1 }, { unique: true });
 
 brandSchema.index({ status: 1, isDeleted: 1 });
 

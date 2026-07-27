@@ -6,7 +6,10 @@ const authMiddleware = require("../middlewares/authMiddleware");
 
 const authorizeRoles = require("../middlewares/authorizeRoles");
 
-const upload = require("../middlewares/upload");
+const {
+  uploadCategoryImage,
+  handleUploadError,
+} = require("../middlewares/uploadMiddleware");
 
 const router = express.Router();
 
@@ -33,7 +36,8 @@ router.get("/create", CategoryController.showCreateCategoryPage);
 // Create category
 router.post(
   "/create",
-  upload.single("image"),
+  uploadCategoryImage,
+  handleUploadError,
   CategoryController.createCategory,
 );
 
@@ -43,7 +47,8 @@ router.get("/:categoryId/edit", CategoryController.showEditCategoryPage);
 // Update category
 router.post(
   "/:categoryId/edit",
-  upload.single("image"),
+  uploadCategoryImage,
+  handleUploadError,
   CategoryController.updateCategory,
 );
 

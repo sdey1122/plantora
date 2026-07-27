@@ -306,7 +306,7 @@ class CategoryController {
 
       if (req.file) {
         uploadedImage = await cloudinaryImageUpload(req.file.path, {
-          folder: "GreenNest/categories",
+          folder: "Plantora/categories",
         });
 
         deleteLocalFile(req.file.path);
@@ -504,7 +504,7 @@ class CategoryController {
 
       if (req.file) {
         uploadedImage = await cloudinaryImageUpload(req.file.path, {
-          folder: "GreenNest/categories",
+          folder: "Plantora/categories",
         });
 
         deleteLocalFile(req.file.path);

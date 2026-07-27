@@ -1,8 +1,11 @@
 const express = require("express");
 const ProductController = require("../controllers/ProductController");
 const authMiddleware = require("../middlewares/authMiddleware");
-const authorize = require("../middlewares/authorize");
-const upload = require("../middlewares/upload");
+const authorizeRoles = require("../middlewares/authorizeRoles");
+const {
+  uploadProductImages,
+  handleUploadError,
+} = require("../middlewares/uploadMiddleware");
 
 const router = express.Router();
 
@@ -11,7 +14,7 @@ const router = express.Router();
 router.get(
   "/",
   authMiddleware,
-  authorize("admin", "seller"),
+  authorizeRoles("admin", "seller", "customer"),
   ProductController.showProductsPage,
 );
 
@@ -19,15 +22,16 @@ router.get(
 router.get(
   "/create",
   authMiddleware,
-  authorize("admin", "seller"),
+  authorizeRoles("admin", "seller"),
   ProductController.showCreateProductPage,
 );
 
 router.post(
   "/",
   authMiddleware,
-  authorize("admin", "seller"),
-  upload.array("images", 10),
+  authorizeRoles("admin", "seller"),
+  uploadProductImages,
+  handleUploadError,
   ProductController.createProduct,
 );
 
@@ -35,15 +39,16 @@ router.post(
 router.get(
   "/:productId/edit",
   authMiddleware,
-  authorize("admin", "seller"),
+  authorizeRoles("admin", "seller"),
   ProductController.showEditProductPage,
 );
 
 router.put(
   "/:productId",
   authMiddleware,
-  authorize("admin", "seller"),
-  upload.array("images", 10),
+  authorizeRoles("admin", "seller"),
+  uploadProductImages,
+  handleUploadError,
   ProductController.updateProduct,
 );
 
@@ -51,7 +56,7 @@ router.put(
 router.get(
   "/pending",
   authMiddleware,
-  authorize("admin"),
+  authorizeRoles("admin"),
   ProductController.showPendingProductsPage,
 );
 
@@ -59,7 +64,7 @@ router.get(
 router.put(
   "/:productId/approve",
   authMiddleware,
-  authorize("admin"),
+  authorizeRoles("admin"),
   ProductController.approveProduct,
 );
 
@@ -67,7 +72,7 @@ router.put(
 router.put(
   "/:productId/reject",
   authMiddleware,
-  authorize("admin"),
+  authorizeRoles("admin"),
   ProductController.rejectProduct,
 );
 
@@ -75,7 +80,7 @@ router.put(
 router.patch(
   "/:productId/status",
   authMiddleware,
-  authorize("admin", "seller"),
+  authorizeRoles("admin", "seller"),
   ProductController.toggleProductStatus,
 );
 
@@ -83,7 +88,7 @@ router.patch(
 router.patch(
   "/:productId/featured",
   authMiddleware,
-  authorize("admin"),
+  authorizeRoles("admin"),
   ProductController.toggleFeaturedProduct,
 );
 
@@ -91,7 +96,7 @@ router.patch(
 router.get(
   "/trash",
   authMiddleware,
-  authorize("admin", "seller"),
+  authorizeRoles("admin", "seller"),
   ProductController.showTrashProductsPage,
 );
 
@@ -99,7 +104,7 @@ router.get(
 router.delete(
   "/:productId",
   authMiddleware,
-  authorize("admin", "seller"),
+  authorizeRoles("admin", "seller"),
   ProductController.softDeleteProduct,
 );
 
@@ -107,7 +112,7 @@ router.delete(
 router.patch(
   "/:productId/restore",
   authMiddleware,
-  authorize("admin", "seller"),
+  authorizeRoles("admin", "seller"),
   ProductController.restoreProduct,
 );
 
@@ -115,7 +120,7 @@ router.patch(
 router.delete(
   "/:productId/permanent",
   authMiddleware,
-  authorize("admin", "seller"),
+  authorizeRoles("admin", "seller"),
   ProductController.deleteProduct,
 );
 
@@ -123,7 +128,7 @@ router.delete(
 router.get(
   "/analytics",
   authMiddleware,
-  authorize("admin"),
+  authorizeRoles("admin"),
   ProductController.getProductAnalytics,
 );
 

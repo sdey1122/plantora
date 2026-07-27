@@ -1,0 +1,1172 @@
+/* ==========================================================
+   PLANTORA HEADER
+   Premium Desktop E-Commerce
+========================================================== */
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.plantora-header {
+  position: sticky;
+
+  top: 0;
+
+  z-index: 1050;
+
+  width: 100%;
+
+  height: var(--navbar-height);
+
+  background: rgba(255, 255, 255, 0.92);
+
+  backdrop-filter: blur(20px);
+
+  -webkit-backdrop-filter: blur(20px);
+
+  transition:
+    background 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.plantora-header.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
+}
+
+/* ==========================================================
+   WRAPPER
+========================================================== */
+
+.header-wrapper {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  height: var(--navbar-height);
+}
+
+/* ==========================================================
+   LOGO
+========================================================== */
+
+.header-logo {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  text-decoration: none;
+}
+
+.logo-image {
+  height: 56px;
+
+  width: auto;
+
+  display: block;
+
+  transition:
+    transform 0.35s ease,
+    filter 0.35s ease;
+}
+
+.header-logo:hover .logo-image {
+  transform: scale(1.05);
+
+  filter: brightness(1.05);
+}
+
+/* ==========================================================
+   NAVIGATION
+========================================================== */
+
+.header-nav {
+  height: 100%;
+}
+
+.header-nav ul {
+  display: flex;
+
+  align-items: center;
+
+  gap: 44px;
+
+  height: 100%;
+
+  margin: 0;
+
+  padding: 0;
+
+  list-style: none;
+}
+
+.header-nav li {
+  display: flex;
+
+  align-items: center;
+
+  height: 100%;
+}
+
+.header-nav a {
+  position: relative;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  height: var(--navbar-height);
+
+  padding: 0;
+
+  color: var(--text-dark);
+
+  text-decoration: none;
+
+  font-size: 0.95rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.25px;
+
+  transition: color 0.3s ease;
+}
+
+.header-nav a:hover {
+  color: var(--primary);
+}
+
+.header-nav a::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+
+  bottom: 18px;
+
+  transform: translateX(-50%);
+
+  width: 0;
+
+  height: 2.5px;
+
+  border-radius: 999px;
+
+  background: var(--primary);
+
+  transition: width 0.3s ease;
+}
+
+.header-nav a:hover::before {
+  width: 100%;
+}
+
+.header-nav a.active {
+  color: var(--primary);
+}
+
+.header-nav a.active::before {
+  width: 100%;
+}
+
+/* ==========================================================
+   HEADER ACTIONS
+========================================================== */
+
+.header-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  flex-shrink: 0;
+}
+
+/* ==========================================================
+   AUTHENTICATION BUTTONS
+========================================================== */
+
+.btn-login,
+.btn-signup {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  height: 46px;
+
+  padding: 0 28px;
+
+  border: none;
+
+  border-radius: var(--radius-pill);
+
+  font-size: 0.92rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.2px;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  user-select: none;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* ==========================================================
+   LOGIN
+========================================================== */
+
+.btn-login {
+  background: transparent;
+
+  color: var(--text-dark);
+
+  border: 1px solid var(--border);
+}
+
+.btn-login:hover {
+  color: var(--primary);
+
+  border-color: rgba(46, 125, 50, 0.25);
+
+  background: var(--primary-soft);
+
+  transform: translateY(-2px);
+}
+
+/* ==========================================================
+   SIGN UP
+========================================================== */
+
+.btn-signup {
+  color: var(--white);
+
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+
+  box-shadow: 0 8px 22px rgba(46, 125, 50, 0.22);
+}
+
+.btn-signup:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 16px 34px rgba(46, 125, 50, 0.3);
+}
+
+/* ==========================================================
+   HEADER ICONS
+========================================================== */
+
+.header-icon {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 46px;
+  height: 46px;
+
+  border-radius: 50%;
+
+  background: transparent;
+
+  color: var(--text-dark);
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  border: 1px solid transparent;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.header-icon:hover {
+  background: var(--primary-soft);
+
+  color: var(--primary);
+
+  border-color: rgba(46, 125, 50, 0.12);
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 20px rgba(46, 125, 50, 0.08);
+}
+
+.header-icon:focus {
+  outline: none;
+
+  box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.12);
+}
+
+/* ==========================================================
+   ICONS
+========================================================== */
+
+.header-icon i {
+  font-size: 1.18rem;
+
+  line-height: 1;
+
+  transition: transform 0.3s ease;
+}
+
+.header-icon:hover i {
+  transform: scale(1.08);
+}
+
+/* ==========================================================
+   NOTIFICATION BADGE
+========================================================== */
+
+.header-badge {
+  position: absolute;
+
+  top: -2px;
+  right: -2px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 19px;
+
+  height: 19px;
+
+  padding: 0 5px;
+
+  border-radius: 999px;
+
+  background: var(--danger);
+
+  color: var(--white);
+
+  border: 2px solid var(--white);
+
+  font-size: 0.66rem;
+
+  font-weight: 700;
+
+  line-height: 1;
+
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.28);
+}
+
+/* ==========================================================
+   BADGE ANIMATION
+========================================================== */
+
+.header-badge.pulse {
+  animation: badgePulse 0.45s ease;
+}
+
+@keyframes badgePulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.25);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ==========================================================
+   BUTTON ACTIVE STATE
+========================================================== */
+
+.btn-login:active,
+.btn-signup:active,
+.header-icon:active {
+  transform: scale(0.97);
+}
+
+/* ==========================================================
+   PROFILE
+========================================================== */
+
+.profile-button {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(0, 0, 0, 0.06);
+
+  border-radius: 50%;
+
+  background: var(--white);
+
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.profile-button:hover {
+  border-color: rgba(46, 125, 50, 0.18);
+
+  background: var(--primary-soft);
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 28px rgba(46, 125, 50, 0.12);
+}
+
+.profile-button:focus {
+  outline: none;
+
+  box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.12);
+}
+
+.profile-button img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.profile-button i {
+  font-size: 1.3rem;
+
+  color: var(--primary);
+}
+
+/* ==========================================================
+   PROFILE DROPDOWN
+========================================================== */
+
+.profile-dropdown {
+  width: 320px;
+
+  margin-top: 18px;
+
+  padding: 0;
+
+  overflow: hidden;
+
+  border: none;
+
+  border-radius: var(--radius-lg);
+
+  background: var(--white);
+
+  box-shadow: var(--shadow-lg);
+
+  animation: profileDropdown 0.25s ease;
+}
+
+/* ==========================================================
+   PROFILE HEADER
+========================================================== */
+
+.profile-dropdown-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  padding: 24px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(46, 125, 50, 0.06),
+    rgba(46, 125, 50, 0.02)
+  );
+
+  border-bottom: 1px solid var(--border);
+}
+
+.profile-dropdown-avatar {
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  overflow: hidden;
+
+  border-radius: 50%;
+
+  background: var(--primary-soft);
+
+  border: 2px solid rgba(46, 125, 50, 0.12);
+}
+
+.profile-dropdown-avatar img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.profile-dropdown-avatar i {
+  font-size: 1.5rem;
+
+  color: var(--primary);
+}
+
+.profile-dropdown-header h6 {
+  margin: 0;
+
+  color: var(--text-dark);
+
+  font-size: 1rem;
+
+  font-weight: 700;
+}
+
+.profile-dropdown-header small {
+  display: block;
+
+  margin-top: 4px;
+
+  color: var(--text-light);
+
+  font-size: 0.82rem;
+
+  word-break: break-word;
+}
+
+/* ==========================================================
+   DIVIDER
+========================================================== */
+
+.profile-dropdown hr {
+  margin: 0;
+
+  border-color: var(--border);
+}
+
+/* ==========================================================
+   DROPDOWN ITEMS
+========================================================== */
+
+.profile-dropdown .dropdown-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 15px 22px;
+
+  color: var(--text-dark);
+
+  font-size: 0.92rem;
+
+  font-weight: 500;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    padding-left 0.25s ease;
+}
+
+.profile-dropdown .dropdown-item i {
+  width: 20px;
+
+  font-size: 1rem;
+
+  color: var(--primary);
+}
+
+.profile-dropdown .dropdown-item:hover {
+  background: var(--primary-soft);
+
+  color: var(--primary-dark);
+
+  padding-left: 28px;
+}
+
+/* ==========================================================
+   LOGOUT
+========================================================== */
+
+.logout-button {
+  width: 100%;
+
+  border: none;
+
+  background: transparent;
+
+  text-align: left;
+}
+
+.logout-button:hover {
+  color: var(--danger) !important;
+}
+
+.logout-button:hover i {
+  color: var(--danger) !important;
+}
+
+/* ==========================================================
+   ANIMATION
+========================================================== */
+
+@keyframes profileDropdown {
+  from {
+    opacity: 0;
+
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================
+   NOTIFICATION DROPDOWN
+========================================================== */
+
+.notification-dropdown {
+  width: 390px;
+
+  margin-top: 18px;
+
+  padding: 0;
+
+  overflow: hidden;
+
+  border: none;
+
+  border-radius: var(--radius-lg);
+
+  background: var(--white);
+
+  box-shadow: var(--shadow-lg);
+
+  animation: notificationDropdown 0.25s ease;
+}
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.notification-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 18px 22px;
+
+  border-bottom: 1px solid var(--border);
+
+  background: var(--white);
+}
+
+.notification-header h6 {
+  margin: 0;
+
+  font-size: 1rem;
+
+  font-weight: 700;
+
+  color: var(--text-dark);
+}
+
+.notification-header a {
+  color: var(--primary);
+
+  font-size: 0.84rem;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition: var(--transition);
+}
+
+.notification-header a:hover {
+  color: var(--primary-dark);
+}
+
+/* ==========================================================
+   NOTIFICATION LIST
+========================================================== */
+
+.notification-list {
+  max-height: 420px;
+
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+
+  scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+}
+
+.notification-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.notification-list::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+
+  border-radius: 999px;
+}
+
+.notification-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ==========================================================
+   NOTIFICATION ITEM
+========================================================== */
+
+.notification-item {
+  position: relative;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 14px;
+
+  padding: 18px 22px;
+
+  color: var(--text-dark);
+
+  text-decoration: none;
+
+  border-bottom: 1px solid var(--border);
+
+  transition:
+    background 0.3s ease,
+    padding-left 0.3s ease;
+}
+
+.notification-item:hover {
+  background: var(--primary-soft);
+
+  padding-left: 28px;
+}
+
+/* ==========================================================
+   UNREAD
+========================================================== */
+
+.notification-item.unread {
+  background: rgba(46, 125, 50, 0.03);
+}
+
+.notification-item.unread::before {
+  content: "";
+
+  position: absolute;
+
+  left: 10px;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  width: 8px;
+
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: var(--primary);
+}
+
+/* ==========================================================
+   ICON
+========================================================== */
+
+.notification-icon {
+  width: 44px;
+
+  height: 44px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--primary-soft);
+
+  color: var(--primary);
+}
+
+.notification-icon i {
+  font-size: 1.15rem;
+}
+
+/* ==========================================================
+   CONTENT
+========================================================== */
+
+.notification-content {
+  flex: 1;
+}
+
+.notification-content h6 {
+  margin: 0 0 6px;
+
+  font-size: 0.93rem;
+
+  font-weight: 600;
+
+  color: var(--text-dark);
+}
+
+.notification-content p {
+  margin: 0;
+
+  color: var(--text-light);
+
+  font-size: 0.84rem;
+
+  line-height: 1.5;
+}
+
+.notification-time {
+  display: inline-block;
+
+  margin-top: 8px;
+
+  font-size: 0.75rem;
+
+  color: var(--text-light);
+}
+
+/* ==========================================================
+   EMPTY STATE
+========================================================== */
+
+.notification-empty {
+  padding: 50px 30px;
+
+  text-align: center;
+}
+
+.notification-empty i {
+  display: block;
+
+  margin-bottom: 18px;
+
+  font-size: 3rem;
+
+  color: rgba(46, 125, 50, 0.3);
+}
+
+.notification-empty h6 {
+  margin-bottom: 8px;
+
+  font-size: 1rem;
+
+  font-weight: 700;
+
+  color: var(--text-dark);
+}
+
+.notification-empty p {
+  margin: 0;
+
+  color: var(--text-light);
+
+  font-size: 0.88rem;
+
+  line-height: 1.6;
+}
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+.notification-footer {
+  padding: 16px;
+
+  border-top: 1px solid var(--border);
+
+  background: var(--white);
+
+  text-align: center;
+}
+
+.notification-footer a {
+  color: var(--primary);
+
+  text-decoration: none;
+
+  font-size: 0.9rem;
+
+  font-weight: 600;
+
+  transition: var(--transition);
+}
+
+.notification-footer a:hover {
+  color: var(--primary-dark);
+}
+
+/* ==========================================================
+   ANIMATION
+========================================================== */
+
+@keyframes notificationDropdown {
+  from {
+    opacity: 0;
+
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================
+   DROPDOWN
+========================================================== */
+
+.dropdown-menu {
+  padding: 0;
+
+  border: none;
+
+  overflow: hidden;
+
+  background: var(--white);
+
+  box-shadow: var(--shadow-lg);
+}
+
+.dropdown-menu.show {
+  animation: dropdownFade 0.22s ease;
+}
+
+/* ==========================================================
+   ACCESSIBILITY
+========================================================== */
+
+.header-nav a:focus-visible,
+.btn-login:focus-visible,
+.btn-signup:focus-visible,
+.header-icon:focus-visible,
+.profile-button:focus-visible,
+.dropdown-item:focus-visible {
+  outline: 3px solid rgba(46, 125, 50, 0.18);
+
+  outline-offset: 3px;
+
+  border-radius: var(--radius);
+}
+
+/* ==========================================================
+   ACTIVE PRESS
+========================================================== */
+
+.btn-login:active,
+.btn-signup:active,
+.header-icon:active,
+.profile-button:active {
+  transform: scale(0.96);
+}
+
+/* ==========================================================
+   IMAGE QUALITY
+========================================================== */
+
+.logo-image,
+.profile-button img,
+.profile-dropdown-avatar img {
+  display: block;
+
+  user-select: none;
+
+  -webkit-user-drag: none;
+}
+
+/* ==========================================================
+   DROPDOWN SCROLLBAR
+========================================================== */
+
+.notification-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.notification-list::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12);
+
+  border-radius: 999px;
+}
+
+.notification-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.22);
+}
+
+/* ==========================================================
+   HOVER TRANSITIONS
+========================================================== */
+
+.header-nav a,
+.btn-login,
+.btn-signup,
+.header-icon,
+.profile-button,
+.dropdown-item,
+.track-order {
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    opacity 0.25s ease;
+}
+
+/* ==========================================================
+   HEADER SHADOW WHEN SCROLLED
+========================================================== */
+
+.plantora-header.scrolled {
+  box-shadow:
+    0 8px 30px rgba(15, 23, 42, 0.08),
+    0 1px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================================
+   DROPDOWN ITEM ICON
+========================================================== */
+
+.dropdown-item i {
+  flex-shrink: 0;
+}
+
+/* ==========================================================
+   REMOVE DEFAULT BOOTSTRAP ARROW
+========================================================== */
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+/* ==========================================================
+   SELECTION
+========================================================== */
+
+.header-nav a::selection,
+.btn-login::selection,
+.btn-signup::selection {
+  background: transparent;
+}
+
+/* ==========================================================
+   ANIMATION
+========================================================== */
+
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+
+    transform: translateY(10px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ==========================================================
+   REDUCED MOTION
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+
+    transition: none !important;
+
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================
+   LOGO
+========================================================== */
+
+.header-logo {
+  display: flex;
+
+  align-items: center;
+
+  flex-shrink: 0;
+}
+
+.logo-image {
+  display: block;
+
+  width: auto;
+
+  height: 260px;
+
+  transition:
+    transform 0.5s ease,
+    filter 0.3s ease;
+}
+
+.header-logo:hover .logo-image {
+  transform: scale(1.04);
+}

@@ -106,17 +106,22 @@ const handleUploadError = (error, req, res, next) => {
   next(error);
 };
 
-// Upload profile image
+// // Upload profile image
+// const uploadProfileImage = upload.single("profileImage");
+
+// // Upload category image
+// const uploadCategoryImage = upload.single("categoryImage");
+
+// // Upload brand logo
+// const uploadBrandLogo = upload.single("brandLogo");
+
+// // Upload banner image
+// const uploadBannerImage = upload.single("bannerImage");
+
+const uploadBannerImage = upload.single("image");
+const uploadBrandLogo = upload.single("logo");
+const uploadCategoryImage = upload.single("image");
 const uploadProfileImage = upload.single("profileImage");
-
-// Upload category image
-const uploadCategoryImage = upload.single("categoryImage");
-
-// Upload brand logo
-const uploadBrandLogo = upload.single("brandLogo");
-
-// Upload banner image
-const uploadBannerImage = upload.single("bannerImage");
 
 // Upload product images
 const uploadProductImages = upload.array(

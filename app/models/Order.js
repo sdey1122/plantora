@@ -342,7 +342,7 @@ const orderSchema = new mongoose.Schema(
 );
 
 // Database indexes
-orderSchema.index({ orderNumber: 1 }, { unique: true });
+// orderSchema.index({ orderNumber: 1 }, { unique: true });
 
 orderSchema.index({ user: 1 });
 

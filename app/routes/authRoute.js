@@ -80,6 +80,9 @@ router.put(
   authController.updateProfile,
 );
 
+// Become Seller
+router.post("/become-seller", authMiddleware, authController.becomeSeller);
+
 // Change Email
 router.put("/change-email", authMiddleware, authController.changeEmail);
 

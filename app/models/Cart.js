@@ -50,8 +50,8 @@ const cartSchema = new mongoose.Schema(
 );
 
 // Database indexes
-cartSchema.index({
-  user: 1,
-});
+// cartSchema.index({
+//   user: 1,
+// });
 
 module.exports = mongoose.model("Cart", cartSchema);

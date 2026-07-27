@@ -1,0 +1,229 @@
+2026-07-26 03:23:17 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:23:17 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:23:17 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:23:18 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:23:18 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:23:19 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:23:21 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:23:23 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:23:25 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:23:27 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:23:29 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:23:31 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:23:33 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:23:35 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:23:38 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:23:40 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:23:42 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:23:44 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:23:46 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:23:48 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:23:50 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:23:52 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:23:55 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:23:57 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:23:59 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:01 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:03 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:05 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:08 [ERROR]: Application startup failed: redisConnection is not a function
+2026-07-26 03:24:14 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:14 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:14 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:15 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:15 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:16 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:18 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:20 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:22 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:24 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:26 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:28 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:31 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:33 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:35 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:37 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:39 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:41 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:43 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:46 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:48 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:50 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:52 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:54 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:56 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:24:58 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:25:00 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:25:02 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:25:04 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:25:07 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:25:09 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:25:11 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:25:13 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:25:15 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:25:17 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:25:19 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:25:21 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:25:23 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:25:25 [ERROR]: Redis error: ERR unknown command `HELLO`, with args beginning with: `3`, 
+2026-07-26 03:25:28 [ERROR]: Application startup failed: redisConnection is not defined
+2026-07-26 03:26:17 [ERROR]: TypeError: Cannot set property query of #<IncomingMessage> which has only a getter
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express-mongo-sanitize\index.js:113:18
+    at Array.forEach (<anonymous>)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express-mongo-sanitize\index.js:110:44
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:342:13)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:297:9
+    at processParams (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:582:12)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:291:5)
+    at compression (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\compression\index.js:243:5)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+2026-07-26 03:26:17 [ERROR]: TypeError: Cannot set property query of #<IncomingMessage> which has only a getter
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express-mongo-sanitize\index.js:113:18
+    at Array.forEach (<anonymous>)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express-mongo-sanitize\index.js:110:44
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:342:13)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:297:9
+    at processParams (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:582:12)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:291:5)
+    at compression (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\compression\index.js:243:5)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+2026-07-26 03:26:18 [ERROR]: TypeError: Cannot set property query of #<IncomingMessage> which has only a getter
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express-mongo-sanitize\index.js:113:18
+    at Array.forEach (<anonymous>)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express-mongo-sanitize\index.js:110:44
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:342:13)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:297:9
+    at processParams (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:582:12)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:291:5)
+    at compression (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\compression\index.js:243:5)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+2026-07-26 03:26:22 [ERROR]: TypeError: Cannot set property query of #<IncomingMessage> which has only a getter
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express-mongo-sanitize\index.js:113:18
+    at Array.forEach (<anonymous>)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express-mongo-sanitize\index.js:110:44
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:342:13)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:297:9
+    at processParams (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:582:12)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:291:5)
+    at compression (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\compression\index.js:243:5)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+2026-07-26 03:26:22 [ERROR]: TypeError: Cannot set property query of #<IncomingMessage> which has only a getter
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express-mongo-sanitize\index.js:113:18
+    at Array.forEach (<anonymous>)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express-mongo-sanitize\index.js:110:44
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:342:13)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:297:9
+    at processParams (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:582:12)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:291:5)
+    at compression (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\compression\index.js:243:5)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+2026-07-26 03:26:27 [ERROR]: TypeError: Cannot set property query of #<IncomingMessage> which has only a getter
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express-mongo-sanitize\index.js:113:18
+    at Array.forEach (<anonymous>)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express-mongo-sanitize\index.js:110:44
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:342:13)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:297:9
+    at processParams (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:582:12)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:291:5)
+    at compression (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\compression\index.js:243:5)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+2026-07-26 03:29:38 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\home\home.ejs:3
+    1| <%- include("../partials/main/announcementBar") %>
+    2| 
+ >> 3| <%- include("../partials/main/header") %>
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\partials\main\header.ejs:280
+    278|                 <a
+    279|                     href="/"
+ >> 280|                     class="<%= currentRoute === '/' ? 'active-nav' : '' %>"
+    281|                 >
+    282|                     Home
+    283|                 </a>
+
+currentRoute is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:69:26)
+    at header (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:13:17)
+    at home (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-07-26 03:29:44 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\home\home.ejs:3
+    1| <%- include("../partials/main/announcementBar") %>
+    2| 
+ >> 3| <%- include("../partials/main/header") %>
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\partials\main\header.ejs:280
+    278|                 <a
+    279|                     href="/"
+ >> 280|                     class="<%= currentRoute === '/' ? 'active-nav' : '' %>"
+    281|                 >
+    282|                     Home
+    283|                 </a>
+
+currentRoute is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:69:26)
+    at header (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:13:17)
+    at home (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-07-26 03:29:45 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\home\home.ejs:3
+    1| <%- include("../partials/main/announcementBar") %>
+    2| 
+ >> 3| <%- include("../partials/main/header") %>
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\partials\main\header.ejs:280
+    278|                 <a
+    279|                     href="/"
+ >> 280|                     class="<%= currentRoute === '/' ? 'active-nav' : '' %>"
+    281|                 >
+    282|                     Home
+    283|                 </a>
+
+currentRoute is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:69:26)
+    at header (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:13:17)
+    at home (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-07-26 05:06:38 [ERROR]: Error: Could not find matching close tag for "<%-".
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:693:31
+    at Array.forEach (<anonymous>)
+    at Template.generateSource (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:683:21)
+    at Template.compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:531:18)
+    at Object.compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:359:18)
+    at handleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:216:16)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:22)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+2026-07-26 05:06:40 [ERROR]: Error: Could not find matching close tag for "<%-".
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:693:31
+    at Array.forEach (<anonymous>)
+    at Template.generateSource (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:683:21)
+    at Template.compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:531:18)
+    at Object.compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:359:18)
+    at handleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:216:16)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:22)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)

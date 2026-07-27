@@ -3,6 +3,7 @@ const ms = require("ms");
 
 const User = require("../models/User");
 const Token = require("../models/Token");
+const Notification = require("../models/Notification");
 
 const logger = require("../config/logger");
 
@@ -15,11 +16,15 @@ const {
   verifyEmailValidation,
   resendVerificationValidation,
   updateProfileValidation,
+  becomeSellerValidation,
 } = require("../validations/authValidation");
 
 const {
   getVerificationEmail,
   getResetPasswordEmail,
+  getSellerRequestEmail,
+  getSellerApprovedEmail,
+  getSellerRejectedEmail,
 } = require("../utils/emailTemplates");
 
 const generateAccessToken = require("../utils/generateAccessToken");
@@ -39,6 +44,8 @@ const cloudinaryImageDelete = require("../utils/cloudinaryImageDelete");
 const deleteLocalFile = require("../utils/deleteLocalFile");
 
 const httpStatusCode = require("../utils/httpStatusCode");
+
+const sendNotification = require("../utils/sendNotification");
 
 class AuthController {
   // Register Page
@@ -570,9 +577,14 @@ class AuthController {
 
       await user.save();
 
-      const accessToken = generateAccessToken(user);
+      const tokenPayload = {
+        id: user._id,
+        role: user.role,
+        email: user.email,
+      };
 
-      const refreshToken = generateRefreshToken(user);
+      const accessToken = generateAccessToken(tokenPayload);
+      const refreshToken = generateRefreshToken(tokenPayload);
 
       const hashedRefreshToken = hashToken(refreshToken);
 
@@ -585,25 +597,27 @@ class AuthController {
         user: user._id,
         token: hashedRefreshToken,
         type: "refresh-token",
-        expiresAt: new Date(Date.now() + ms(process.env.REFRESH_TOKEN_EXPIRES)),
+        expiresAt: new Date(
+          Date.now() + ms(process.env.JWT_REFRESH_EXPIRES_IN),
+        ),
       });
 
       const accessCookieAge = rememberMe
-        ? ms(process.env.ACCESS_TOKEN_REMEMBER_EXPIRES)
-        : ms(process.env.ACCESS_TOKEN_EXPIRES);
+        ? ms(process.env.JWT_ACCESS_EXPIRES_IN)
+        : ms(process.env.JWT_ACCESS_EXPIRES_IN);
 
       const refreshCookieAge = rememberMe
-        ? ms(process.env.REFRESH_TOKEN_REMEMBER_EXPIRES)
-        : ms(process.env.REFRESH_TOKEN_EXPIRES);
+        ? ms(process.env.JWT_REFRESH_EXPIRES_IN)
+        : ms(process.env.JWT_REFRESH_EXPIRES_IN);
 
-      res.cookie(process.env.ACCESS_TOKEN_COOKIE_NAME, accessToken, {
+      res.cookie(process.env.COOKIE_ACCESS_TOKEN, accessToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         sameSite: "strict",
         maxAge: accessCookieAge,
       });
 
-      res.cookie(process.env.REFRESH_TOKEN_COOKIE_NAME, refreshToken, {
+      res.cookie(process.env.COOKIE_REFRESH_TOKEN, refreshToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         sameSite: "strict",
@@ -636,7 +650,7 @@ class AuthController {
   // Refresh Access Token
   async refreshAccessToken(req, res, next) {
     try {
-      const refreshToken = req.cookies[process.env.REFRESH_TOKEN_COOKIE_NAME];
+      const refreshToken = req.cookies[process.env.COOKIE_REFRESH_TOKEN];
 
       if (!refreshToken) {
         return res.status(httpStatusCode.UNAUTHORIZED).json({
@@ -726,23 +740,23 @@ class AuthController {
       token.token = hashedNewRefreshToken;
 
       token.expiresAt = new Date(
-        Date.now() + ms(process.env.REFRESH_TOKEN_EXPIRES),
+        Date.now() + ms(process.env.JWT_REFRESH_EXPIRES_IN),
       );
 
       await token.save();
 
-      res.cookie(process.env.ACCESS_TOKEN_COOKIE_NAME, newAccessToken, {
+      res.cookie(process.env.COOKIE_ACCESS_TOKEN, newAccessToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         sameSite: "strict",
-        maxAge: ms(process.env.ACCESS_TOKEN_EXPIRES),
+        maxAge: ms(process.env.JWT_ACCESS_EXPIRES_IN),
       });
 
-      res.cookie(process.env.REFRESH_TOKEN_COOKIE_NAME, newRefreshToken, {
+      res.cookie(process.env.COOKIE_REFRESH_TOKEN, newRefreshToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         sameSite: "strict",
-        maxAge: ms(process.env.REFRESH_TOKEN_EXPIRES),
+        maxAge: ms(process.env.JWT_REFRESH_EXPIRES_IN),
       });
 
       user.lastActive = new Date();
@@ -763,7 +777,7 @@ class AuthController {
   // Logout
   async logout(req, res, next) {
     try {
-      const refreshToken = req.cookies[process.env.REFRESH_TOKEN_COOKIE_NAME];
+      const refreshToken = req.cookies[process.env.COOKIE_REFRESH_TOKEN];
 
       if (refreshToken) {
         const hashedRefreshToken = hashToken(refreshToken);
@@ -774,9 +788,9 @@ class AuthController {
         });
       }
 
-      res.clearCookie(process.env.ACCESS_TOKEN_COOKIE_NAME);
+      res.clearCookie(process.env.COOKIE_ACCESS_TOKEN);
 
-      res.clearCookie(process.env.REFRESH_TOKEN_COOKIE_NAME);
+      res.clearCookie(process.env.COOKIE_REFRESH_TOKEN);
 
       if (req.user) {
         req.user.lastActive = new Date();
@@ -799,10 +813,11 @@ class AuthController {
         logger.info(`Logout successful : ${req.user.email}`);
       }
 
-      return res.status(httpStatusCode.OK).json({
-        success: true,
-        message: "Logout successful.",
-      });
+      // return res.status(httpStatusCode.OK).json({
+      //   success: true,
+      //   message: "Logout successful.",
+      // });
+      return res.redirect("/");
     } catch (error) {
       next(error);
     }
@@ -900,10 +915,7 @@ class AuthController {
     try {
       const { token } = req.params;
 
-      const { error, value } = resetPasswordValidation.validate({
-        ...req.body,
-        token,
-      });
+      const { error, value } = resetPasswordValidation.validate(req.body);
 
       if (error) {
         return res.status(httpStatusCode.BAD_REQUEST).json({
@@ -1058,9 +1070,9 @@ class AuthController {
         type: "refresh-token",
       });
 
-      res.clearCookie(process.env.ACCESS_TOKEN_COOKIE_NAME);
+      res.clearCookie(process.env.COOKIE_ACCESS_TOKEN);
 
-      res.clearCookie(process.env.REFRESH_TOKEN_COOKIE_NAME);
+      res.clearCookie(process.env.COOKIE_REFRESH_TOKEN);
 
       await createAuditLog({
         req,
@@ -1203,6 +1215,119 @@ class AuthController {
     }
   }
 
+  // Become Seller
+  async becomeSeller(req, res, next) {
+    try {
+      // Validate request
+      const { error } = becomeSellerValidation.validate(req.body);
+
+      if (error) {
+        return res.status(httpStatusCode.BAD_REQUEST).json({
+          success: false,
+          message: error.details[0].message,
+        });
+      }
+
+      // Find customer
+      const user = await User.findById(req.user._id);
+
+      if (!user) {
+        return res.status(httpStatusCode.NOT_FOUND).json({
+          success: false,
+          message: "User not found.",
+        });
+      }
+
+      // Prevent admin
+      if (user.role === "admin") {
+        return res.status(httpStatusCode.FORBIDDEN).json({
+          success: false,
+          message: "Administrator cannot become a seller.",
+        });
+      }
+
+      // Already approved
+      if (user.seller.status === "approved") {
+        return res.status(httpStatusCode.BAD_REQUEST).json({
+          success: false,
+          message: "You are already a seller.",
+        });
+      }
+
+      // Already pending
+      if (user.seller.status === "pending") {
+        return res.status(httpStatusCode.BAD_REQUEST).json({
+          success: false,
+          message: "Your seller request is already under review.",
+        });
+      }
+
+      // Request seller account
+      user.seller.status = "pending";
+      user.seller.requestedAt = new Date();
+      user.seller.adminRemark = "";
+
+      await user.save();
+
+      // Find admin
+      const admin = await User.findOne({
+        role: "admin",
+        isDeleted: false,
+      });
+
+      if (admin) {
+        // Notification
+        await sendNotification({
+          recipient: admin._id,
+          sender: user._id,
+          title: "New Seller Request",
+          message: `${user.name} has requested to become a seller.`,
+          type: "seller",
+          referenceType: "User",
+          referenceId: user._id,
+          actionUrl: `/admin/users/customers/${user._id}`,
+        });
+
+        // Email
+        const { subject, html, text } = getSellerRequestEmail(
+          user.name,
+          user.email,
+          `${process.env.APP_URL}/admin/users`,
+        );
+
+        await sendEmail({
+          to: admin.email,
+          subject,
+          html,
+          text,
+        });
+      }
+
+      // Audit log
+      await createAuditLog({
+        req,
+        actor: user,
+        module: "Seller",
+        action: "Become Seller",
+        severity: "low",
+        target: {
+          id: user._id,
+          model: "User",
+        },
+        description: "Seller account request submitted.",
+      });
+
+      logger.info(`Seller request submitted: ${user.email}`);
+
+      return res.status(httpStatusCode.OK).json({
+        success: true,
+        message: "Seller request submitted successfully.",
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
   // Change Email
   async changeEmail(req, res, next) {
     try {
@@ -1286,9 +1411,9 @@ class AuthController {
         text,
       });
 
-      res.clearCookie(process.env.ACCESS_TOKEN_COOKIE_NAME);
+      res.clearCookie(process.env.COOKIE_ACCESS_TOKEN);
 
-      res.clearCookie(process.env.REFRESH_TOKEN_COOKIE_NAME);
+      res.clearCookie(process.env.COOKIE_REFRESH_TOKEN);
 
       await createAuditLog({
         req,

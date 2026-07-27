@@ -144,7 +144,7 @@ const couponSchema = new mongoose.Schema(
 );
 
 // Database indexes
-couponSchema.index({ code: 1 }, { unique: true });
+// couponSchema.index({ code: 1 }, { unique: true });
 
 couponSchema.index({ status: 1, isDeleted: 1 });
 

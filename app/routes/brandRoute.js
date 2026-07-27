@@ -5,7 +5,10 @@ const BrandController = require("../controllers/BrandController");
 const authMiddleware = require("../middlewares/authMiddleware");
 const authorizeRoles = require("../middlewares/authorizeRoles");
 
-const upload = require("../middlewares/uploadMiddleware");
+const {
+  uploadBrandLogo,
+  handleUploadError,
+} = require("../middlewares/uploadMiddleware");
 
 const router = express.Router();
 
@@ -31,7 +34,8 @@ router.post(
   "/admin/brands/create",
   authMiddleware,
   authorizeRoles("admin"),
-  upload.single("logo"),
+  uploadBrandLogo,
+  handleUploadError,
   BrandController.createBrand,
 );
 
@@ -46,7 +50,8 @@ router.post(
   "/admin/brands/:brandId/edit",
   authMiddleware,
   authorizeRoles("admin"),
-  upload.single("logo"),
+  uploadBrandLogo,
+  handleUploadError,
   BrandController.updateBrand,
 );
 

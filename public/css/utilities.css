@@ -1,0 +1,49 @@
+.text-primary-custom {
+  color: var(--primary) !important;
+}
+
+.bg-primary-custom {
+  background: var(--primary) !important;
+}
+
+.bg-soft {
+  background: var(--primary-soft);
+}
+
+.section-padding {
+  padding: 90px 0;
+}
+
+.shadow-custom {
+  box-shadow: var(--shadow);
+}
+
+.rounded-custom {
+  border-radius: var(--radius);
+}
+
+.transition {
+  transition: var(--transition);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.object-cover {
+  object-fit: cover;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}

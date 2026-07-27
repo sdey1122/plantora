@@ -466,6 +466,162 @@ class OrderController {
       return res.redirect("/admin/dashboard");
     }
   }
+
+  // showOrdersPage
+  async showOrdersPage(req, res) {
+    try {
+      // Validate order ID
+      const { error, value } = orderIdValidation.validate(req.params);
+
+      if (error) {
+        req.flash("error", error.details[0].message);
+
+        return res.redirect("/orders/customer");
+      }
+
+      const order = await Order.aggregate([
+        {
+          $match: {
+            _id: new mongoose.Types.ObjectId(value.orderId),
+          },
+        },
+
+        {
+          $lookup: {
+            from: "users",
+            localField: "user",
+            foreignField: "_id",
+            as: "customer",
+          },
+        },
+
+        {
+          $unwind: "$customer",
+        },
+
+        {
+          $lookup: {
+            from: "payments",
+            localField: "payment",
+            foreignField: "_id",
+            as: "payment",
+          },
+        },
+
+        {
+          $unwind: {
+            path: "$payment",
+            preserveNullAndEmptyArrays: true,
+          },
+        },
+
+        {
+          $project: {
+            orderNumber: 1,
+
+            shippingAddress: 1,
+
+            items: 1,
+
+            subtotal: 1,
+
+            discount: 1,
+
+            shippingCharge: 1,
+
+            tax: 1,
+
+            totalAmount: 1,
+
+            couponCode: 1,
+
+            paymentMethod: 1,
+
+            paymentStatus: 1,
+
+            orderStatus: 1,
+
+            notes: 1,
+
+            cancellationReason: 1,
+
+            cancelledAt: 1,
+
+            deliveredAt: 1,
+
+            returnedAt: 1,
+
+            refundedAt: 1,
+
+            createdAt: 1,
+
+            updatedAt: 1,
+
+            customer: {
+              _id: "$customer._id",
+
+              name: "$customer.name",
+
+              email: "$customer.email",
+
+              phone: "$customer.phone",
+            },
+
+            payment: {
+              _id: "$payment._id",
+
+              amount: "$payment.amount",
+
+              currency: "$payment.currency",
+
+              paymentMethod: "$payment.paymentMethod",
+
+              paymentGateway: "$payment.paymentGateway",
+
+              gatewayOrderId: "$payment.gatewayOrderId",
+
+              gatewayPaymentId: "$payment.gatewayPaymentId",
+
+              paymentStatus: "$payment.paymentStatus",
+
+              failureReason: "$payment.failureReason",
+
+              refund: "$payment.refund",
+
+              paidAt: "$payment.paidAt",
+
+              failedAt: "$payment.failedAt",
+
+              refundedAt: "$payment.refundedAt",
+            },
+          },
+        },
+      ]);
+
+      if (!order.length) {
+        req.flash("error", "Order not found.");
+
+        return res.redirect("/orders/customer");
+      }
+
+      logger.info(
+        `Admin viewed order ${order[0].orderNumber}. Admin: ${req.user.email}`,
+      );
+
+      return res.status(httpStatusCode.OK).render("customer/orders/details", {
+        title: "Order Details",
+
+        order: order[0],
+      });
+    } catch (error) {
+      logger.error(`Show admin order details failed: ${error.message}`);
+
+      req.flash("error", "Failed to load order details.");
+
+      return res.redirect("/orders/customer");
+    }
+  }
+
   // Show admin order details
   async showAdminOrderDetailsPage(req, res) {
     try {

@@ -1,0 +1,539 @@
+/* ==========================================================
+   WHY CHOOSE SECTION
+========================================================== */
+
+.why-section {
+  position: relative;
+
+  padding: 50px 0;
+
+  background: linear-gradient(180deg, #ffffff 0%, #f8fcf8 100%);
+
+  overflow: hidden;
+}
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.why-header {
+  max-width: 760px;
+
+  margin: 0 auto 70px;
+}
+
+.why-subtitle {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 10px 18px;
+
+  border-radius: 999px;
+
+  background: #edf9ef;
+
+  color: var(--primary);
+
+  font-size: 0.82rem;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+.why-title {
+  margin: 24px 0 22px;
+
+  font-size: 3.2rem;
+
+  font-weight: 800;
+
+  line-height: 1.15;
+
+  color: var(--text-dark);
+}
+
+.why-description {
+  margin: 0 auto;
+
+  max-width: 620px;
+
+  color: #6b7280;
+
+  font-size: 1.08rem;
+
+  line-height: 1.9;
+}
+
+/* ==========================================================
+   PREMIUM BANNER
+========================================================== */
+
+.why-banner {
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 34px;
+
+  height: 620px;
+
+  margin-bottom: 90px;
+
+  box-shadow: 0 40px 90px rgba(15, 23, 42, 0.12);
+}
+
+.why-banner-image {
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.8s;
+
+  opacity: 0.5;
+}
+
+.why-banner:hover .why-banner-image {
+  transform: scale(1.05);
+
+  opacity: 0.8;
+}
+
+/* ==========================================================
+   OVERLAY
+========================================================== */
+
+.why-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(
+    to top,
+
+    rgba(0, 0, 0, 0.45),
+    rgba(0, 0, 0, 0.08),
+    transparent
+  );
+}
+
+/* ==========================================================
+   STATS BAR
+========================================================== */
+
+.why-stats {
+  position: absolute;
+
+  left: 50%;
+
+  bottom: 35px;
+
+  transform: translateX(-50%);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 26px;
+
+  width: 92%;
+
+  padding: 28px 34px;
+
+  border-radius: 22px;
+
+  background: rgba(255, 255, 255, 0.92);
+
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, 0.45);
+
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.18);
+}
+
+/* ==========================================================
+   INDIVIDUAL STAT
+========================================================== */
+
+.stat-item {
+  flex: 1;
+
+  text-align: center;
+}
+
+.stat-item h3 {
+  margin: 0;
+
+  color: var(--primary);
+
+  font-size: 2.15rem;
+
+  font-weight: 800;
+}
+
+.stat-item span {
+  display: block;
+
+  margin-top: 8px;
+
+  color: #6b7280;
+
+  font-size: 0.92rem;
+}
+
+.stat-divider {
+  width: 1px;
+
+  height: 55px;
+
+  background: #e6e9ed;
+}
+
+/* ==========================================================
+   FEATURES GRID
+========================================================== */
+
+.why-features {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 28px;
+}
+
+/* ==========================================================
+   FEATURE CARD
+========================================================== */
+
+.feature-card {
+  position: relative;
+
+  padding: 42px 34px;
+
+  background: #fff;
+
+  border-radius: 24px;
+
+  overflow: hidden;
+
+  border: 1px solid #edf1f4;
+
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s,
+    border-color 0.45s;
+}
+
+.feature-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  width: 5px;
+
+  height: 0;
+
+  background: linear-gradient(180deg, var(--primary), #78c850);
+
+  transition: height 0.45s ease;
+}
+
+.feature-card::after {
+  content: "";
+
+  position: absolute;
+
+  width: 260px;
+
+  height: 260px;
+
+  right: -120px;
+
+  top: -120px;
+
+  border-radius: 50%;
+
+  background: rgba(46, 125, 50, 0.05);
+
+  transform: scale(0);
+
+  transition: 0.55s;
+}
+
+.feature-card:hover {
+  transform: translateY(-12px);
+
+  border-color: rgba(46, 125, 50, 0.15);
+
+  box-shadow: 0 28px 60px rgba(15, 23, 42, 0.1);
+}
+
+.feature-card:hover::before {
+  height: 100%;
+}
+
+.feature-card:hover::after {
+  transform: scale(1);
+}
+
+/* ==========================================================
+   ICON
+========================================================== */
+
+.feature-icon {
+  position: relative;
+
+  z-index: 2;
+
+  width: 78px;
+
+  height: 78px;
+
+  margin-bottom: 28px;
+
+  border-radius: 22px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #eef8f0;
+
+  color: var(--primary);
+
+  font-size: 2rem;
+
+  transition:
+    transform 0.45s,
+    background 0.45s,
+    color 0.45s;
+}
+
+.feature-card:hover .feature-icon {
+  transform: rotate(-8deg) scale(1.1);
+
+  background: var(--primary);
+
+  color: #fff;
+}
+
+/* ==========================================================
+   TITLE
+========================================================== */
+
+.feature-card h4 {
+  position: relative;
+
+  z-index: 2;
+
+  margin-bottom: 16px;
+
+  color: var(--text-dark);
+
+  font-size: 1.35rem;
+
+  font-weight: 700;
+
+  transition: 0.35s;
+}
+
+.feature-card:hover h4 {
+  color: var(--primary);
+}
+
+/* ==========================================================
+   DESCRIPTION
+========================================================== */
+
+.feature-card p {
+  position: relative;
+
+  z-index: 2;
+
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 0.96rem;
+
+  line-height: 1.9;
+}
+
+/* ==========================================================
+   HOVER ARROW
+========================================================== */
+
+.feature-card .feature-icon::after {
+  content: "→";
+
+  position: absolute;
+
+  right: -38px;
+
+  top: 50%;
+
+  transform: translateY(-50%) translateX(-10px);
+
+  opacity: 0;
+
+  color: var(--primary);
+
+  font-size: 1.25rem;
+
+  font-weight: 700;
+
+  transition: 0.35s;
+}
+
+.feature-card:hover .feature-icon::after {
+  opacity: 1;
+
+  transform: translateY(-50%) translateX(0);
+}
+
+/* ==========================================================
+   INITIAL STATE
+========================================================== */
+
+.why-header,
+.why-banner,
+.feature-card {
+  opacity: 0;
+
+  will-change: transform, opacity;
+}
+
+.why-header {
+  transform: translateY(60px);
+}
+
+.why-banner {
+  transform: scale(0.96);
+}
+
+.feature-card {
+  transform: translateY(60px);
+}
+
+/* ==========================================================
+   ACTIVE
+========================================================== */
+
+.why-section.active .why-header {
+  opacity: 1;
+
+  transform: none;
+
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.why-section.active .why-banner {
+  opacity: 1;
+
+  transform: none;
+
+  transition:
+    opacity 1s ease 0.15s,
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+}
+
+.why-section.active .feature-card:nth-child(1) {
+  opacity: 1;
+
+  transform: none;
+
+  transition: 0.75s ease 0.25s;
+}
+
+.why-section.active .feature-card:nth-child(2) {
+  opacity: 1;
+
+  transform: none;
+
+  transition: 0.75s ease 0.38s;
+}
+
+.why-section.active .feature-card:nth-child(3) {
+  opacity: 1;
+
+  transform: none;
+
+  transition: 0.75s ease 0.51s;
+}
+
+.why-section.active .feature-card:nth-child(4) {
+  opacity: 1;
+
+  transform: none;
+
+  transition: 0.75s ease 0.64s;
+}
+
+/* ==========================================================
+   STATS
+========================================================== */
+
+.stat-item {
+  transition:
+    transform 0.35s,
+    color 0.35s;
+}
+
+.stat-item:hover {
+  transform: translateY(-6px);
+}
+
+.stat-item:hover h3 {
+  color: #1f7a3d;
+}
+
+/* ==========================================================
+   IMAGE
+========================================================== */
+
+.why-banner {
+  cursor: pointer;
+}
+
+.why-banner:hover {
+  box-shadow: 0 50px 110px rgba(15, 23, 42, 0.18);
+}
+
+/* ==========================================================
+   ACCESSIBILITY
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .why-header,
+  .why-banner,
+  .feature-card,
+  .why-banner-image,
+  .feature-icon {
+    animation: none !important;
+
+    transition: none !important;
+
+    transform: none !important;
+
+    opacity: 1 !important;
+  }
+}

@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const TOKEN_TYPES = [
   "verify-email",
   "change-email",
-  "password-reset",
+  "reset-password",
   "refresh-token",
 ];
 
@@ -79,7 +79,7 @@ const tokenSchema = new mongoose.Schema(
 // Database indexes
 tokenSchema.index({ user: 1 });
 
-tokenSchema.index({ token: 1 }, { unique: true });
+// tokenSchema.index({ token: 1 }, { unique: true });
 
 tokenSchema.index({ type: 1 });
 

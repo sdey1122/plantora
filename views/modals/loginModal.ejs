@@ -1,0 +1,170 @@
+<!-- Login Modal -->
+<div
+  class="modal fade"
+  id="loginModal"
+  tabindex="-1"
+  aria-labelledby="loginModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content auth-modal">
+      <button
+        type="button"
+        class="btn-close auth-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+      ></button>
+
+      <div class="modal-body p-0">
+        <div class="row g-0">
+          <!-- Left -->
+          <div class="col-lg-5 auth-left">
+            <div class="auth-left-content">
+              <h2>Welcome Back</h2>
+
+              <p>
+                Login to continue shopping, manage your orders, wishlist and
+                seller dashboard.
+              </p>
+
+              <ul class="auth-features">
+                <li>
+                  <i class="bi bi-check-circle-fill"></i>
+                  Secure Login
+                </li>
+
+                <li>
+                  <i class="bi bi-check-circle-fill"></i>
+                  Order Tracking
+                </li>
+
+                <li>
+                  <i class="bi bi-check-circle-fill"></i>
+                  Wishlist
+                </li>
+
+                <li>
+                  <i class="bi bi-check-circle-fill"></i>
+                  Seller Dashboard
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Right -->
+          <div class="col-lg-7">
+            <div class="auth-form-wrapper">
+              <h3 id="loginModalLabel">Login</h3>
+
+              <p class="auth-subtitle">Sign in to your Plantora account.</p>
+
+              <div id="loginAlert" class="alert d-none"></div>
+
+              <form id="loginForm" novalidate>
+                <!-- Email -->
+
+                <div class="mb-3">
+                  <label class="form-label" for="loginEmail">
+                    Email Address
+                  </label>
+
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="loginEmail"
+                    name="email"
+                    placeholder="Enter your email"
+                    autocomplete="email"
+                  />
+
+                  <small class="text-danger" id="loginEmailError"></small>
+                </div>
+
+                <!-- Password -->
+
+                <div class="mb-3">
+                  <label class="form-label" for="loginPassword">
+                    Password
+                  </label>
+
+                  <div class="input-group">
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="loginPassword"
+                      name="password"
+                      placeholder="Enter your password"
+                      autocomplete="current-password"
+                    />
+
+                    <button
+                      type="button"
+                      class="btn btn-outline-secondary toggle-password"
+                      data-target="loginPassword"
+                    >
+                      <i class="bi bi-eye"></i>
+                    </button>
+                  </div>
+
+                  <small class="text-danger" id="loginPasswordError"></small>
+                </div>
+
+                <!-- Remember -->
+
+                <div
+                  class="d-flex justify-content-between align-items-center mb-4"
+                >
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="rememberMe"
+                      name="rememberMe"
+                    />
+
+                    <label class="form-check-label" for="rememberMe">
+                      Remember Me
+                    </label>
+                  </div>
+
+                  <a href="/auth/forgot-password"> Forgot Password? </a>
+                </div>
+
+                <!-- Button -->
+
+                <div class="d-grid">
+                  <button
+                    type="submit"
+                    class="btn btn-success auth-submit-btn"
+                    id="loginButton"
+                  >
+                    <span id="loginButtonText"> Login </span>
+
+                    <span
+                      class="spinner-border spinner-border-sm d-none"
+                      id="loginSpinner"
+                    ></span>
+                  </button>
+                </div>
+              </form>
+
+              <hr />
+
+              <p class="text-center mb-0">
+                Don't have an account?
+
+                <a
+                  href="#"
+                  data-bs-toggle="modal"
+                  data-bs-target="#registerModal"
+                >
+                  Create Account
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
