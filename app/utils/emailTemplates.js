@@ -766,31 +766,6 @@ track sales, and grow your business with us.
 
 </p>
 
-<div
-    style="
-        margin:45px 0;
-        text-align:center;
-    "
->
-
-<a
-    href="${dashboardUrl}"
-    style="
-        display:inline-block;
-        padding:16px 38px;
-        background:${BRAND.primary};
-        color:#ffffff;
-        text-decoration:none;
-        border-radius:10px;
-        font-size:16px;
-        font-weight:700;
-    "
->
-
-Open Seller Dashboard
-
-</a>
-
 </div>
 
 <div
@@ -821,12 +796,6 @@ Add new products
 <li>
 
 Manage inventory
-
-</li>
-
-<li>
-
-Receive customer orders
 
 </li>
 

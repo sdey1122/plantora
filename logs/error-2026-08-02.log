@@ -46,3 +46,16 @@ Could not find the include file "../toast.ejs"
 2026-08-02 01:22:44 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `update` is not a valid enum value for path `action`.
 2026-08-02 01:23:11 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `reject_seller` is not a valid enum value for path `action`., severity: `warning` is not a valid enum value for path `severity`.
 2026-08-02 01:23:48 [ERROR]: Failed to create audit log: AuditLog validation failed: target.model: Path `model` is required., action: `update` is not a valid enum value for path `action`.
+2026-08-02 02:38:19 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `approve_seller` is not a valid enum value for path `action`., severity: `warning` is not a valid enum value for path `severity`.
+2026-08-02 02:38:35 [ERROR]: Error: Failed to lookup view "seller/dashboard/index" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showDashboard (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\SellerDashboardController.js:14:18)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at sellerMiddleware (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\sellerMiddleware.js:22:10)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authorizeRoles.js:23:12
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+2026-08-02 02:50:04 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `reject_seller` is not a valid enum value for path `action`., severity: `warning` is not a valid enum value for path `severity`.
