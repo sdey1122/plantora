@@ -282,61 +282,25 @@
       }
 
       registerForm.innerHTML = `
-                <div class="text-center py-4">
+<div class="text-center py-4">
 
-                    <i class="bi bi-envelope-check-fill text-success display-2"></i>
+    <i class="bi bi-envelope-check-fill text-success display-2"></i>
 
-                    <h3 class="mt-3">
-                        Registration Successful
-                    </h3>
+    <h3 class="mt-3">
+        Registration Successful
+    </h3>
 
-                    <p class="text-muted">
-                        ${result.message}
-                    </p>
+    <p class="text-muted">
+        ${result.message}
+    </p>
 
-                    <p class="text-muted">
-                        Verification email sent to
-                        <strong>${email}</strong>
-                    </p>
+    <p class="text-muted">
+        Verification email sent to
+        <strong>${email}</strong>
+    </p>
 
-                    <button
-                        type="button"
-                        class="btn btn-success mt-3"
-                        id="resendVerificationButton"
-                    >
-                        Resend Verification Email
-                    </button>
-
-                </div>
-            `;
-
-      const resendButton = document.getElementById("resendVerificationButton");
-
-      resendButton.addEventListener("click", async () => {
-        resendButton.disabled = true;
-
-        try {
-          const response = await fetch("/auth/resend-verification-email", {
-            method: "POST",
-
-            headers: {
-              "Content-Type": "application/json",
-            },
-
-            body: JSON.stringify({
-              email,
-            }),
-          });
-
-          const result = await response.json();
-
-          alert(result.message);
-        } catch (error) {
-          alert("Unable to resend verification email.");
-        } finally {
-          resendButton.disabled = false;
-        }
-      });
+</div>
+`;
     } catch (error) {
       console.error(error);
 
@@ -373,6 +337,15 @@
   const loginEmail = document.getElementById("loginEmail");
   const loginPassword = document.getElementById("loginPassword");
   const rememberMe = document.getElementById("rememberMe");
+
+  // Remember Me
+  const remembered = JSON.parse(localStorage.getItem("rememberMe"));
+
+  if (remembered) {
+    loginEmail.value = remembered.email;
+    loginPassword.value = remembered.password;
+    rememberMe.checked = true;
+  }
 
   const loginEmailError = document.getElementById("loginEmailError");
   const loginPasswordError = document.getElementById("loginPasswordError");
@@ -491,6 +464,20 @@
 
         return;
       }
+
+      if (rememberMe.checked) {
+        localStorage.setItem(
+          "rememberMe",
+          JSON.stringify({
+            email,
+            password,
+          }),
+        );
+      } else {
+        localStorage.removeItem("rememberMe");
+      }
+
+      showAlert("success", result.message);
 
       showAlert("success", result.message);
 

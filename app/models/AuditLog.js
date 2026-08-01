@@ -6,7 +6,7 @@ const USER_ROLES = ["admin", "customer"];
 // Application modules
 const MODULES = [
   "Authentication",
-  "Users",
+  "User Management",
   "Seller",
   "Products",
   "Categories",
@@ -19,39 +19,97 @@ const MODULES = [
   "Reviews",
   "Address",
   "Notifications",
+  "Dashboard",
   "Banner",
   "Settings",
 ];
 
 // Supported actions
 const ACTIONS = [
-  "REGISTER",
-  "LOGIN",
-  "LOGOUT",
-  "VERIFY_EMAIL",
-  "RESEND_VERIFICATION",
-  "FORGOT_PASSWORD",
-  "RESET_PASSWORD",
-  "CHANGE_EMAIL",
-  "CHANGE_PASSWORD",
-  "REQUEST_SELLER",
-  "APPROVE_SELLER",
-  "REJECT_SELLER",
-  "CREATE",
-  "UPDATE",
-  "DELETE",
-  "RESTORE",
-  "HARD_DELETE",
-  "BLOCK",
-  "UNBLOCK",
-  "APPROVE_PRODUCT",
-  "REJECT_PRODUCT",
-  "PAYMENT",
-  "ORDER",
+  // Authentication
+  "Register",
+  "Login",
+  "Logout",
+  "Verify Email",
+  "Resend Verification Email",
+  "Forgot Password",
+  "Reset Password",
+  "Refresh Token",
+  "Update Profile",
+  "Delete Profile Image",
+  "Change Email",
+  "Change Password",
+
+  // User Management
+  "Update User",
+  "Toggle User Status",
+  "Soft Delete User",
+  "Restore User",
+  "Delete User",
+
+  // Seller
+  "Become Seller",
+  "Approve Seller",
+  "Reject Seller",
+  "Seller Approval",
+
+  // Generic CRUD
+  "Create",
+  "Update",
+  "Delete",
+  "Restore",
+  "Permanent Delete",
+
+  // Products
+  "Create Product",
+  "Update Product",
+  "Delete Product",
+  "Approve Product",
+  "Reject Product",
+
+  // Categories
+  "Create Category",
+  "Update Category",
+  "Delete Category",
+
+  // Brands
+  "Create Brand",
+  "Update Brand",
+  "Delete Brand",
+
+  // Wishlist
+  "Add Wishlist",
+  "Remove Wishlist",
+
+  // Cart
+  "Add Cart",
+  "Update Cart",
+  "Remove Cart",
+
+  // Orders
+  "Place Order",
+  "Update Order",
+  "Cancel Order",
+  "Update Order Status",
+
+  // Coupon
+  "Apply Coupon",
+
+  // Review
+  "Add Review",
+  "Update Review",
+  "Delete Review",
+
+  // Payment
+  "Payment",
+  "Refund",
+
+  // Notification
+  "Send Notification",
 ];
 
 // Severity levels
-const SEVERITY_LEVELS = ["info", "warning", "error", "critical"];
+const SEVERITY_LEVELS = ["info", "low", "medium", "high", "critical"];
 
 // Information about the user who performed the action
 const actorSchema = new mongoose.Schema(

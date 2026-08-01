@@ -27,6 +27,7 @@
     "hpp": "^0.2.3",
     "joi": "^18.2.3",
     "jsonwebtoken": "^9.0.3",
+    "method-override": "^3.0.0",
     "mongoose": "^9.8.0",
     "morgan": "^1.11.0",
     "multer": "^2.2.0",

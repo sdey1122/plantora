@@ -8,6 +8,7 @@ const compression = require("compression");
 const cookieParser = require("cookie-parser");
 const mongoSanitize = require("express-mongo-sanitize");
 const hpp = require("hpp");
+const methodOverride = require("method-override");
 
 // Load environment variables
 dotenv.config();
@@ -18,6 +19,7 @@ const logger = require("./app/config/logger");
 const globalMiddleware = require("./app/middlewares/globalMiddleware");
 
 // Import routes
+const homeRoutes = require("./app/routes/homeRoutes");
 const authRoutes = require("./app/routes/authRoute");
 const userRoutes = require("./app/routes/userRoute");
 const categoryRoutes = require("./app/routes/categoryRoute");
@@ -39,6 +41,8 @@ const errorMiddleware = require("./app/middlewares/errorMiddleware");
 
 // Create Express application
 const app = express();
+
+app.use(methodOverride("_method"));
 
 // Trust proxy
 app.set("trust proxy", 1);
@@ -102,7 +106,6 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(globalMiddleware);
 
 // Home page
-const homeRoutes = require("./app/routes/homeRoutes");
 
 // Public Website
 app.use("/", homeRoutes);
@@ -110,8 +113,8 @@ app.use("/", homeRoutes);
 // Authentication
 app.use("/auth", authRoutes);
 
-// User
-app.use("/users", userRoutes);
+// Admin User Management
+app.use("/admin/users", userRoutes);
 
 // Category
 app.use("/categories", categoryRoutes);

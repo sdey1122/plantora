@@ -114,10 +114,10 @@ const changePasswordValidation = Joi.object({
 
 // Change email validation
 const changeEmailValidation = Joi.object({
-  newEmail: Joi.string().trim().lowercase().email().required().messages({
-    "string.empty": "New email is required.",
+  email: Joi.string().trim().lowercase().email().required().messages({
+    "string.empty": "Email is required.",
     "string.email": "Please enter a valid email address.",
-    "any.required": "New email is required.",
+    "any.required": "Email is required.",
   }),
 
   currentPassword: Joi.string().required().messages({
@@ -152,9 +152,15 @@ const requestSellerValidation = Joi.object({})
 
 // Update profile validation
 const updateProfileValidation = Joi.object({
-  name: Joi.string().trim().min(3).max(32).messages({
+  name: Joi.string().trim().min(3).max(32).required().messages({
+    "string.empty": "Name is required.",
     "string.min": "Name must be at least 3 characters long.",
     "string.max": "Name cannot exceed 32 characters.",
+    "any.required": "Name is required.",
+  }),
+
+  bio: Joi.string().trim().max(500).allow("").messages({
+    "string.max": "Bio cannot exceed 500 characters.",
   }),
 })
   .strict()

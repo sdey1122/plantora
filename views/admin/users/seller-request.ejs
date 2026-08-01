@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Review Seller Request</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+
+        padding: 0;
+
+        box-sizing: border-box;
+
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        min-height: 100vh;
+
+        background:
+          radial-gradient(circle at top left, #44c76722, transparent 30%),
+          radial-gradient(circle at bottom right, #28a74522, transparent 35%),
+          linear-gradient(135deg, #eef8f1, #f8faf9);
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        padding: 60px;
+      }
+
+      .approval-card {
+        width: 100%;
+
+        max-width: 900px;
+
+        background: #fff;
+
+        border-radius: 24px;
+
+        overflow: hidden;
+
+        box-shadow: 0 20px 70px rgba(0, 0, 0, 0.08);
+
+        animation: fadeUp 0.6s ease;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+
+          transform: translateY(40px);
+        }
+
+        to {
+          opacity: 1;
+
+          transform: none;
+        }
+      }
+
+      .card-header {
+        background: linear-gradient(135deg, #198754, #42c97a);
+
+        color: #fff;
+
+        padding: 45px;
+
+        position: relative;
+      }
+
+      .card-header::after {
+        content: "";
+
+        position: absolute;
+
+        width: 220px;
+
+        height: 220px;
+
+        border-radius: 50%;
+
+        background: rgba(255, 255, 255, 0.08);
+
+        right: -80px;
+
+        top: -80px;
+      }
+
+      .card-header h2 {
+        font-weight: 700;
+
+        margin-bottom: 12px;
+      }
+
+      .card-header p {
+        opacity: 0.9;
+
+        margin: 0;
+      }
+
+      .card-body {
+        padding: 45px;
+      }
+
+      .profile {
+        display: flex;
+
+        align-items: center;
+
+        gap: 30px;
+
+        margin-bottom: 40px;
+      }
+
+      .profile-image {
+        width: 130px;
+
+        height: 130px;
+
+        border-radius: 50%;
+
+        object-fit: cover;
+
+        border: 6px solid #fff;
+
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+        transition: 0.35s;
+      }
+
+      .profile-image:hover {
+        transform: scale(1.05);
+      }
+
+      .profile-info h3 {
+        font-weight: 700;
+
+        margin-bottom: 8px;
+      }
+
+      .profile-info span {
+        color: #777;
+
+        display: block;
+
+        margin-bottom: 5px;
+      }
+
+      .badge-pending {
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 8px;
+
+        padding: 10px 18px;
+
+        border-radius: 50px;
+
+        background: #fff8e6;
+
+        color: #ad7200;
+
+        font-weight: 600;
+
+        margin-top: 15px;
+      }
+
+      .info-grid {
+        display: grid;
+
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 22px;
+
+        margin-top: 40px;
+      }
+
+      .info-box {
+        background: #f8f9fa;
+
+        border: 1px solid #e7e7e7;
+
+        border-radius: 18px;
+
+        padding: 22px;
+
+        transition: 0.3s;
+      }
+
+      .info-box:hover {
+        transform: translateY(-5px);
+
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.06);
+      }
+
+      .info-box small {
+        display: block;
+
+        color: #888;
+
+        font-size: 0.82rem;
+
+        margin-bottom: 10px;
+
+        text-transform: uppercase;
+
+        letter-spacing: 1px;
+      }
+
+      .info-box h6 {
+        margin: 0;
+
+        font-weight: 600;
+
+        font-size: 1rem;
+
+        color: #222;
+      }
+
+      hr {
+        margin: 45px 0;
+
+        opacity: 0.15;
+      }
+
+      .remark-title {
+        font-weight: 700;
+
+        margin-bottom: 15px;
+
+        color: #333;
+      }
+
+      textarea {
+        resize: none;
+
+        min-height: 160px;
+
+        border-radius: 16px !important;
+
+        padding: 18px !important;
+
+        transition: 0.3s;
+      }
+
+      textarea:focus {
+        border-color: #198754 !important;
+
+        box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.18) !important;
+      }
+
+      .button-group {
+        display: flex;
+
+        gap: 20px;
+
+        margin-top: 35px;
+      }
+
+      .btn {
+        height: 56px;
+
+        border-radius: 14px;
+
+        font-weight: 700;
+
+        font-size: 15px;
+
+        transition: 0.35s;
+      }
+
+      .btn-success:hover {
+        transform: translateY(-3px);
+      }
+
+      .btn-danger:hover {
+        transform: translateY(-3px);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="approval-card">
+      <div class="card-header">
+        <h2>
+          <i class="bi bi-shop-window me-2"></i>
+
+          Seller Account Review
+        </h2>
+
+        <p>Review the customer's seller account request.</p>
+      </div>
+
+      <div class="card-body">
+        <div class="profile">
+          <img
+            src="<%= user.profileImage?.url || '/images/default-profile.png' %>"
+            class="profile-image"
+            alt="<%= user.name %>"
+          />
+
+          <div class="profile-info">
+            <h3><%= user.name %></h3>
+
+            <span>
+              <i class="bi bi-envelope-fill me-2"></i>
+
+              <%= user.email %>
+            </span>
+
+            <span>
+              <i class="bi bi-person-badge-fill me-2"></i>
+
+              Customer Account
+            </span>
+
+            <div class="badge-pending">
+              <i class="bi bi-hourglass-split"></i>
+
+              Pending Seller Approval
+            </div>
+          </div>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-box">
+            <small> Requested On </small>
+
+            <h6><%= new Date(user.seller.requestedAt).toLocaleString() %></h6>
+          </div>
+
+          <div class="info-box">
+            <small> Email Verification </small>
+
+            <h6><%= user.isEmailVerified ? "Verified" : "Not Verified" %></h6>
+          </div>
+
+          <div class="info-box">
+            <small> Account Status </small>
+
+            <h6>
+              <%= user.status.charAt(0).toUpperCase()+user.status.slice(1) %>
+            </h6>
+          </div>
+
+          <div class="info-box">
+            <small> Member Since </small>
+
+            <h6><%= new Date(user.createdAt).toDateString() %></h6>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-6 pe-4">
+            <form
+              action="/admin/users/seller-request/<%= user._id %>/approve"
+              method="POST"
+            >
+              <h5 class="remark-title">Approve Seller</h5>
+
+              <textarea
+                class="form-control"
+                name="adminRemark"
+                placeholder="Optional approval remark..."
+              ></textarea>
+
+              <button class="btn btn-success w-100 mt-4" type="submit">
+                <i class="bi bi-check-circle-fill me-2"></i>
+
+                Approve Seller
+              </button>
+            </form>
+          </div>
+
+          <div class="col-md-6 ps-4">
+            <form
+              action="/admin/users/seller-request/<%= user._id %>/reject"
+              method="POST"
+            >
+              <h5 class="remark-title">Reject Seller</h5>
+
+              <textarea
+                class="form-control"
+                name="adminRemark"
+                placeholder="Reason for rejection..."
+                required
+              ></textarea>
+
+              <button class="btn btn-danger w-100 mt-4" type="submit">
+                <i class="bi bi-x-circle-fill me-2"></i>
+
+                Reject Seller
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="text-center text-muted">
+          <small>
+            <i class="bi bi-shield-lock-fill me-2"></i>
+
+            This action is permanent. Once approved, the customer will
+            immediately gain seller access.
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const forms = document.querySelectorAll("form");
+
+      forms.forEach((form) => {
+        form.addEventListener("submit", () => {
+          const isApprove = form.action.includes("/approve");
+
+          const button = form.querySelector("button");
+
+          button.disabled = true;
+
+          if (isApprove) {
+            button.innerHTML = `
+        <span class="spinner-border spinner-border-sm me-2"></span>
+        Approving...
+      `;
+          } else {
+            button.innerHTML = `
+        <span class="spinner-border spinner-border-sm me-2"></span>
+        Rejecting...
+      `;
+          }
+        });
+      });
+
+      window.addEventListener("load", () => {
+        document.querySelector(".approval-card").animate(
+          [
+            {
+              opacity: 0,
+
+              transform: "translateY(40px)",
+            },
+
+            {
+              opacity: 1,
+
+              transform: "translateY(0)",
+            },
+          ],
+
+          {
+            duration: 700,
+
+            easing: "ease-out",
+          },
+        );
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

@@ -92,41 +92,137 @@ class UserController {
 
       const skip = (page - 1) * limit;
 
-      const users = await User.aggregate([
+      const [result] = await User.aggregate([
         {
           $match: matchStage,
         },
-
         {
-          $project: {
-            name: 1,
-            email: 1,
-            role: 1,
-            status: 1,
-            isEmailVerified: 1,
-            seller: 1,
-            profileImage: 1,
-            lastLogin: 1,
-            createdAt: 1,
+          $facet: {
+            users: [
+              {
+                $project: {
+                  name: 1,
+                  email: 1,
+                  role: 1,
+                  status: 1,
+                  seller: 1,
+                  isEmailVerified: 1,
+                  profileImage: 1,
+                  lastLogin: 1,
+                  createdAt: 1,
+                },
+              },
+              {
+                $sort: sortStage,
+              },
+              {
+                $skip: skip,
+              },
+              {
+                $limit: limit,
+              },
+            ],
+
+            totalUsers: [
+              {
+                $count: "count",
+              },
+            ],
+
+            statistics: [
+              {
+                $group: {
+                  _id: null,
+
+                  totalUsers: {
+                    $sum: 1,
+                  },
+
+                  customers: {
+                    $sum: {
+                      $cond: [
+                        {
+                          $eq: ["$role", "customer"],
+                        },
+                        1,
+                        0,
+                      ],
+                    },
+                  },
+
+                  admins: {
+                    $sum: {
+                      $cond: [
+                        {
+                          $eq: ["$role", "admin"],
+                        },
+                        1,
+                        0,
+                      ],
+                    },
+                  },
+
+                  activeUsers: {
+                    $sum: {
+                      $cond: [
+                        {
+                          $eq: ["$status", "active"],
+                        },
+                        1,
+                        0,
+                      ],
+                    },
+                  },
+
+                  blockedUsers: {
+                    $sum: {
+                      $cond: [
+                        {
+                          $eq: ["$status", "blocked"],
+                        },
+                        1,
+                        0,
+                      ],
+                    },
+                  },
+
+                  pendingSellers: {
+                    $sum: {
+                      $cond: [
+                        {
+                          $eq: ["$seller.status", "pending"],
+                        },
+                        1,
+                        0,
+                      ],
+                    },
+                  },
+
+                  approvedSellers: {
+                    $sum: {
+                      $cond: [
+                        {
+                          $eq: ["$seller.status", "approved"],
+                        },
+                        1,
+                        0,
+                      ],
+                    },
+                  },
+                },
+              },
+            ],
           },
-        },
-
-        {
-          $sort: sortStage,
-        },
-
-        {
-          $skip: skip,
-        },
-
-        {
-          $limit: limit,
         },
       ]);
 
-      const totalUsers = await User.countDocuments(matchStage);
+      const users = result.users;
+
+      const totalUsers = result.totalUsers[0]?.count || 0;
 
       const totalPages = Math.ceil(totalUsers / limit);
+
+      const statistics = result.statistics[0] || {};
 
       return res.render("admin/users/index", {
         title: "Users",
@@ -136,6 +232,7 @@ class UserController {
         totalUsers,
         limit,
         filters: value,
+        statistics,
       });
     } catch (error) {
       logger.error(`Show users page failed: ${error.message}`);
@@ -398,6 +495,181 @@ class UserController {
       });
     }
   }
+
+  // Show Seller Request Page
+  async showSellerRequestPage(req, res) {
+    try {
+      const { userId } = req.params;
+
+      const user = await User.findOne({
+        _id: userId,
+        isDeleted: false,
+      });
+
+      if (!user) {
+        return res.status(404).render("errors/404", {
+          title: "User Not Found",
+        });
+      }
+
+      if (user.seller.status !== "pending") {
+        return res.render("admin/users/seller-rejected", {
+          title: "Seller Request",
+          message: "This seller request is no longer pending.",
+        });
+      }
+
+      return res.render("admin/users/seller-request", {
+        title: "Seller Request",
+        user,
+      });
+    } catch (error) {
+      logger.error(`Show seller request page failed: ${error.message}`);
+
+      return res.status(500).render("errors/500", {
+        title: "Server Error",
+      });
+    }
+  }
+
+  // Approve Seller
+  async approveSeller(req, res) {
+    try {
+      const user = await User.findById(req.params.userId);
+      const adminRemark = req.body.adminRemark || "";
+
+      if (!user) {
+        return res.status(404).render("errors/404", {
+          title: "User Not Found",
+        });
+      }
+
+      user.seller.status = "approved";
+      user.seller.approvedAt = new Date();
+      user.seller.approvedBy = req.user._id;
+      user.seller.adminRemark = adminRemark;
+
+      await user.save();
+
+      await sendNotification({
+        recipient: user._id,
+        sender: req.user._id,
+        title: "Seller Account Approved",
+        message: adminRemark
+          ? `Congratulations! Your seller account has been approved.\n\nAdmin Remark: ${adminRemark}`
+          : "Congratulations! Your seller account has been approved.",
+        type: "seller",
+        referenceType: "User",
+        referenceId: user._id,
+        actionUrl: "/auth/profile",
+      });
+
+      const { subject, html, text } = getSellerApprovedEmail(
+        user.name,
+        `${process.env.APP_URL}/auth/profile`,
+      );
+
+      await sendEmail({
+        to: user.email,
+        subject,
+        html,
+        text,
+      });
+
+      await createAuditLog({
+        req,
+        actor: req.user,
+        module: "Seller",
+        action: "approve_seller",
+        severity: "warning",
+        target: {
+          id: user._id,
+          model: "User",
+        },
+        description: `Approved seller request for ${user.name}.`,
+      });
+
+      return res.render("admin/users/seller-approved", {
+        title: "Seller Approved",
+        user,
+      });
+    } catch (error) {
+      logger.error(error.message);
+
+      return res.status(500).render("errors/500", {
+        title: "Server Error",
+      });
+    }
+  }
+
+  // Reject Seller
+  async rejectSeller(req, res) {
+    try {
+      const user = await User.findById(req.params.userId);
+
+      if (!user) {
+        return res.status(404).render("errors/404", {
+          title: "User Not Found",
+        });
+      }
+
+      const remark = req.body.adminRemark || "No reason provided.";
+
+      user.seller.status = "rejected";
+      user.seller.rejectedAt = new Date();
+      user.seller.adminRemark = remark;
+
+      await user.save();
+
+      await sendNotification({
+        recipient: user._id,
+        sender: req.user._id,
+        title: "Seller Request Rejected",
+        message: remark
+          ? `Your seller application has been rejected.\n\nReason:\n${remark}`
+          : "Your seller application has been rejected.",
+        type: "seller",
+        referenceType: "User",
+        referenceId: user._id,
+        actionUrl: "/auth/profile",
+      });
+
+      const { subject, html, text } = getSellerRejectedEmail(user.name, remark);
+
+      await sendEmail({
+        to: user.email,
+        subject,
+        html,
+        text,
+      });
+
+      await createAuditLog({
+        req,
+        actor: req.user,
+        module: "Seller",
+        action: "reject_seller",
+        severity: "warning",
+        target: {
+          id: user._id,
+          model: "User",
+        },
+        description: `Rejected seller request for ${user.name}.`,
+      });
+
+      return res.render("admin/users/seller-rejected", {
+        title: "Seller Rejected",
+        user,
+        remark,
+      });
+    } catch (error) {
+      logger.error(error.message);
+
+      return res.status(500).render("errors/500", {
+        title: "Server Error",
+      });
+    }
+  }
+
   // Update User
   async updateUser(req, res) {
     try {
@@ -474,7 +746,7 @@ class UserController {
         actor: req.user,
         module: "User Management",
         action: "Update User",
-        severity: "low",
+        severity: "info",
         target: {
           id: user._id,
           model: "User",
@@ -566,7 +838,7 @@ class UserController {
         actor: req.user,
         module: "User Management",
         action: "Toggle User Status",
-        severity: "medium",
+        severity: "warning",
         target: {
           id: user._id,
           model: "User",
@@ -645,11 +917,17 @@ class UserController {
       if (sellerStatus === "approved") {
         user.seller.approvedAt = new Date();
         user.seller.approvedBy = req.user._id;
+
+        // clear previous rejection
+        user.seller.requestedAt = null;
       }
 
       if (sellerStatus === "rejected") {
-        user.seller.approvedAt = null;
+        user.seller.approvedAt = new Date();
         user.seller.approvedBy = null;
+
+        // save rejection time
+        user.seller.requestedAt = new Date();
       }
 
       await user.save();
@@ -660,7 +938,9 @@ class UserController {
           recipient: user._id,
           sender: req.user._id,
           title: "Seller Request Approved",
-          message: "Congratulations! Your seller account has been approved.",
+          message: adminRemark
+            ? `Your seller application has been approved.\n\nRemark:\n${adminRemark}`
+            : "Your seller application has been approved successfully.",
           type: "seller",
           referenceType: "User",
           referenceId: user._id,
@@ -690,7 +970,7 @@ class UserController {
           type: "seller",
           referenceType: "User",
           referenceId: user._id,
-          actionUrl: "/profile",
+          actionUrl: "/auth/profile",
         });
 
         const { subject, html, text } = getSellerRejectedEmail(
@@ -711,7 +991,7 @@ class UserController {
         actor: req.user,
         module: "User Management",
         action: "Seller Approval",
-        severity: "medium",
+        severity: "warning",
         target: {
           id: user._id,
           model: "User",
@@ -836,7 +1116,7 @@ class UserController {
         actor: req.user,
         module: "User Management",
         action: "Restore User",
-        severity: "medium",
+        severity: "warning",
         target: {
           id: user._id,
           model: "User",

@@ -1,5 +1,7 @@
 const jwt = require("jsonwebtoken");
+
 const User = require("../models/User");
+const Notification = require("../models/Notification");
 
 const globalMiddleware = async (req, res, next) => {
   try {
@@ -17,11 +19,25 @@ const globalMiddleware = async (req, res, next) => {
 
     const user = await User.findById(decoded.id).select("-password");
 
-    res.locals.user = user || null;
+    if (!user) {
+      return next();
+    }
+
+    res.locals.user = user;
+
+    const unreadCount = await Notification.countDocuments({
+      recipient: user._id,
+      isRead: false,
+      isDeleted: false,
+    });
+
+    res.locals.notificationCount = unreadCount;
 
     next();
   } catch (error) {
     res.locals.user = null;
+    res.locals.notificationCount = 0;
+
     next();
   }
 };

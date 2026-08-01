@@ -1,14 +1,10 @@
 const { getIO } = require("./socket");
 
-// Emit event to a specific user
+// Emit notification to a specific user
 const emitToUser = (userId, event, data) => {
-  try {
-    const io = getIO();
+  const io = getIO();
 
-    io.to(`user:${userId}`).emit(event, data);
-  } catch (error) {
-    throw error;
-  }
+  io.to(`user:${userId.toString()}`).emit(event, data);
 };
 
 module.exports = emitToUser;

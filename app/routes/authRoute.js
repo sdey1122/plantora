@@ -28,6 +28,8 @@ router.post("/register", registerLimiter, authController.register);
 // Verify Email
 router.get("/verify-email/:token", authController.verifyEmail);
 
+router.get("/resend-verification", authController.showResendVerificationPage);
+
 router.post(
   "/resend-verification-email",
   resendVerificationLimiter,

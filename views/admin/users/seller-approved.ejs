@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Seller Approved</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+
+        padding: 0;
+
+        box-sizing: border-box;
+
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        min-height: 100vh;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        background:
+          radial-gradient(circle at top, #5cd88a22, transparent 30%),
+          linear-gradient(135deg, #eef9f1, #ffffff);
+
+        overflow: hidden;
+      }
+
+      .success-card {
+        width: 650px;
+
+        background: #fff;
+
+        border-radius: 24px;
+
+        padding: 60px;
+
+        text-align: center;
+
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+
+        animation: fade 0.7s ease;
+      }
+
+      @keyframes fade {
+        from {
+          opacity: 0;
+
+          transform: translateY(40px);
+        }
+
+        to {
+          opacity: 1;
+
+          transform: none;
+        }
+      }
+
+      .icon {
+        width: 120px;
+
+        height: 120px;
+
+        margin: auto;
+
+        border-radius: 50%;
+
+        background: #198754;
+
+        color: #fff;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        font-size: 58px;
+
+        margin-bottom: 30px;
+
+        animation: pop 0.6s ease;
+      }
+
+      @keyframes pop {
+        0% {
+          transform: scale(0.4);
+        }
+
+        80% {
+          transform: scale(1.1);
+        }
+
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      h2 {
+        font-weight: 700;
+
+        margin-bottom: 20px;
+      }
+
+      p {
+        color: #666;
+
+        line-height: 1.8;
+      }
+
+      .countdown {
+        margin-top: 35px;
+
+        color: #198754;
+
+        font-weight: 700;
+
+        font-size: 18px;
+      }
+
+      .btn {
+        margin-top: 35px;
+
+        border-radius: 12px;
+
+        padding: 14px 36px;
+
+        font-weight: 600;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="success-card">
+      <div class="icon">
+        <i class="bi bi-check-lg"></i>
+      </div>
+
+      <h2>Seller Approved Successfully</h2>
+
+      <p>
+        <strong> <%= user.name %> </strong>
+
+        is now an approved seller.
+      </p>
+
+      <p>
+        The customer will now see a
+
+        <strong> Seller Dashboard </strong>
+
+        button after logging into Plantora.
+      </p>
+
+      <div class="countdown" id="countdown">
+        Redirecting to Home in 5 seconds...
+      </div>
+
+      <a href="/" class="btn btn-success"> Go Home </a>
+    </div>
+
+    <script>
+      let seconds = 5;
+
+      const countdown = document.getElementById("countdown");
+
+      const timer = setInterval(() => {
+        seconds--;
+
+        countdown.innerHTML = `Redirecting to Home in ${seconds} second${seconds !== 1 ? "s" : ""}...`;
+
+        if (seconds <= 0) {
+          clearInterval(timer);
+
+          window.location.href = "/";
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>

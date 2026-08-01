@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Seller Request Rejected</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+
+        padding: 0;
+
+        box-sizing: border-box;
+
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        min-height: 100vh;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        background:
+          radial-gradient(circle at top, #ff5b5b22, transparent 30%),
+          linear-gradient(135deg, #fff5f5, #ffffff);
+
+        overflow: hidden;
+      }
+
+      .card {
+        width: 700px;
+
+        border: none;
+
+        border-radius: 24px;
+
+        padding: 60px;
+
+        text-align: center;
+
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+
+        animation: fade 0.7s ease;
+      }
+
+      @keyframes fade {
+        from {
+          opacity: 0;
+
+          transform: translateY(40px);
+        }
+
+        to {
+          opacity: 1;
+
+          transform: none;
+        }
+      }
+
+      .icon {
+        width: 120px;
+
+        height: 120px;
+
+        margin: auto;
+
+        border-radius: 50%;
+
+        background: #dc3545;
+
+        color: #fff;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        font-size: 56px;
+
+        margin-bottom: 35px;
+
+        animation: pop 0.6s ease;
+      }
+
+      @keyframes pop {
+        0% {
+          transform: scale(0.4);
+        }
+
+        80% {
+          transform: scale(1.1);
+        }
+
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      h2 {
+        font-weight: 700;
+
+        margin-bottom: 20px;
+      }
+
+      p {
+        color: #666;
+
+        line-height: 1.8;
+      }
+
+      .remark {
+        margin-top: 35px;
+
+        background: #fff6f6;
+
+        border: 1px solid #ffd0d0;
+
+        border-radius: 16px;
+
+        padding: 25px;
+
+        text-align: left;
+      }
+
+      .remark h6 {
+        color: #dc3545;
+
+        margin-bottom: 12px;
+
+        font-weight: 700;
+      }
+
+      .remark p {
+        margin: 0;
+
+        color: #444;
+      }
+
+      .countdown {
+        margin-top: 35px;
+
+        font-weight: 700;
+
+        color: #dc3545;
+
+        font-size: 18px;
+      }
+
+      .btn {
+        margin-top: 35px;
+
+        padding: 14px 34px;
+
+        border-radius: 12px;
+
+        font-weight: 600;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="card">
+      <div class="icon">
+        <i class="bi bi-x-lg"></i>
+      </div>
+
+      <h2>Seller Request Rejected</h2>
+
+      <p>
+        The seller application for
+
+        <strong> <%= user.name %> </strong>
+
+        has been rejected successfully.
+      </p>
+
+      <p>
+        The customer will receive an email and notification. They can submit a
+        new seller request after
+
+        <strong> 7 days </strong>.
+      </p>
+
+      <div class="remark">
+        <h6>
+          <i class="bi bi-chat-left-text-fill me-2"></i>
+
+          Admin Remark
+        </h6>
+
+        <p><%= user.seller.adminRemark || "No remark provided." %></p>
+      </div>
+
+      <div class="countdown" id="countdown">
+        Redirecting to Home in 5 seconds...
+      </div>
+
+      <a href="/" class="btn btn-danger"> Go Home </a>
+    </div>
+
+    <script>
+      let seconds = 5;
+
+      const countdown = document.getElementById("countdown");
+
+      const timer = setInterval(() => {
+        seconds--;
+
+        countdown.innerHTML = `Redirecting to Home in ${seconds} second${seconds !== 1 ? "s" : ""}...`;
+
+        if (seconds <= 0) {
+          clearInterval(timer);
+
+          window.location.href = "/";
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>

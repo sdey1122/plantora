@@ -117,7 +117,7 @@
 
                     <a
                         href="/wishlist"
-                        class="header-icon"
+                        class="header-icon wishlist-icon"
                         aria-label="Wishlist"
                     >
 
@@ -142,6 +142,7 @@
                     <div class="dropdown">
 
                         <button
+                        id="notificationDropdownButton"
                             class="header-icon"
                             type="button"
                             data-bs-toggle="dropdown"
@@ -152,7 +153,8 @@
 
                             <% if (notificationCount > 0) { %>
 
-                                <span class="header-badge">
+                                <span class="header-badge" 
+                                id="notificationBadge">
 
                                     <%= notificationCount %>
 
@@ -172,29 +174,29 @@
 
                                 </h6>
 
-                                <a href="#">
-
-                                    Mark all read
-
-                                </a>
-
-                            </div>
-
-                            <div class="notification-list">
-
-                                <!-- Dynamic notifications -->
+                               <a
+    href="#"
+    id="markAllNotificationsRead"
+>
+    Mark all read
+</a>
 
                             </div>
 
-                            <div class="notification-footer">
+                           <div
+    class="notification-list"
+    id="notificationList"
+>
 
-                                <a href="/notifications">
+    <div class="text-center py-3 text-muted">
 
-                                    View All Notifications
+        Loading...
 
-                                </a>
+    </div>
 
-                            </div>
+</div>
+
+                            
 
                         </div>
 
@@ -205,48 +207,31 @@
                     <div class="dropdown">
 
                         <button
-                            class="profile-button"
-                            type="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                        >
+    class="profile-button"
+    type="button"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+>
 
-                            <% if (user.profileImage) { %>
+    <img
+        src="<%= user.profileImage?.url || process.env.DEFAULT_PROFILE_IMAGE_URL %>"
+        alt="<%= user.name %>"
+    >
 
-                                <img
-                                    src="<%= user.profileImage %>"
-                                    alt="<%= user.name %>"
-                                >
-
-                            <% } else { %>
-
-                                <i class="bi bi-person-fill"></i>
-
-                            <% } %>
-
-                        </button>
+</button>
 
                         <div class="dropdown-menu dropdown-menu-end profile-dropdown">
 
                             <div class="profile-dropdown-header">
 
-                                <% if (user.profileImage) { %>
+                             <div class="profile-dropdown-avatar">
 
-                                    <img
-                                        src="<%= user.profileImage %>"
-                                        alt="<%= user.name %>"
-                                        class="profile-dropdown-avatar"
-                                    >
+    <img
+        src="<%= user.profileImage?.url || process.env.DEFAULT_PROFILE_IMAGE_URL %>"
+        alt="<%= user.name %>"
+    >
 
-                                <% } else { %>
-
-                                    <div class="profile-dropdown-avatar">
-
-                                        <i class="bi bi-person-fill"></i>
-
-                                    </div>
-
-                                <% } %>
+</div>
 
                                 <div>
 
@@ -281,7 +266,7 @@
 
                             <a
                                 href="/orders"
-                                class="dropdown-item"
+                                class="dropdown-item order-icon"
                             >
 
                                 <i class="bi bi-box-seam"></i>

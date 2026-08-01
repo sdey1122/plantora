@@ -350,7 +350,7 @@ class CategoryController {
 
         action: "Create Category",
 
-        severity: "low",
+        severity: "info",
 
         target: {
           id: category._id,
@@ -547,7 +547,7 @@ class CategoryController {
 
         action: "Update Category",
 
-        severity: "low",
+        severity: "info",
 
         target: {
           id: category._id,
@@ -715,7 +715,7 @@ class CategoryController {
 
         action: "Toggle Category Status",
 
-        severity: "low",
+        severity: "info",
 
         target: {
           id: category._id,
@@ -768,7 +768,7 @@ class CategoryController {
 
         action: "Toggle Featured Category",
 
-        severity: "low",
+        severity: "info",
 
         target: {
           id: category._id,

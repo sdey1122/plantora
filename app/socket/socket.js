@@ -1,26 +1,22 @@
 const { Server } = require("socket.io");
 
-let io;
+let io = null;
 
-// Initialize Socket.IO
-const initializeSocket = (server) => {
-  io = new Server(server, {
+const initializeSocket = (httpServer) => {
+  io = new Server(httpServer, {
     cors: {
       origin: process.env.CLIENT_URL || "*",
-
-      methods: ["GET", "POST"],
-
       credentials: true,
+      methods: ["GET", "POST"],
     },
   });
 
   return io;
 };
 
-// Get Socket.IO instance
 const getIO = () => {
   if (!io) {
-    throw new Error("Socket.IO has not been initialized.");
+    throw new Error("Socket.IO not initialized.");
   }
 
   return io;
@@ -28,6 +24,5 @@ const getIO = () => {
 
 module.exports = {
   initializeSocket,
-
   getIO,
 };

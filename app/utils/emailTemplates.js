@@ -1,8 +1,210 @@
-// Plantora logo URL
-// const logoUrl = `${process.env.APP_URL}/images/logo/logo-green.svg`;
-const logoUrl =
-  "https://res.cloudinary.com/desmwasfe/image/upload/c_fit,h_300,w_300/plantora_c99t9q.png";
+// PLANTORA EMAIL TEMPLATES
 
+// Brand Colors
+const BRAND = {
+  primary: "#2e7d32",
+  primaryDark: "#1b5e20",
+  primaryLight: "#66bb6a",
+  primarySoft: "#e8f5e9",
+  white: "#ffffff",
+  body: "#f9fafb",
+  text: "#212529",
+  textLight: "#6c757d",
+  border: "#e9ecef",
+  danger: "#dc3545",
+};
+
+// Create email header
+const createEmailHeader = (title) => `
+<tr>
+<td
+    bgcolor="${BRAND.primaryDark}"
+    style="
+        background-color:${BRAND.primaryDark};
+        padding:40px 30px;
+        text-align:center;
+    "
+>
+
+    <h1
+        style="
+            margin:0;
+            color:#ffffff;
+            font-size:38px;
+            font-weight:800;
+            letter-spacing:3px;
+            font-family:Arial,Helvetica,sans-serif;
+        "
+    >
+        PLANTORA
+    </h1>
+
+    <p
+        style="
+            margin:12px 0 0;
+            color:rgba(255,255,255,.92);
+            font-size:15px;
+            letter-spacing:.5px;
+            font-family:Arial,Helvetica,sans-serif;
+        "
+    >
+        Bringing Nature Closer To Every Home
+    </p>
+
+</td>
+</tr>
+
+<tr>
+
+<td
+    style="
+        padding:35px 40px 15px;
+        text-align:center;
+    "
+>
+
+    <h2
+        style="
+            margin:0;
+            color:${BRAND.primaryDark};
+            font-size:30px;
+            font-family:Arial,Helvetica,sans-serif;
+        "
+    >
+        ${title}
+    </h2>
+
+</td>
+
+</tr>
+`;
+
+// Create email footer
+const createEmailFooter = () => `
+<tr>
+
+<td
+    style="
+        padding:30px 40px;
+        background:${BRAND.body};
+        border-top:1px solid ${BRAND.border};
+        text-align:center;
+    "
+>
+
+    <p
+        style="
+            margin:0;
+            color:${BRAND.textLight};
+            font-size:13px;
+            line-height:1.8;
+            font-family:Arial,Helvetica,sans-serif;
+        "
+    >
+        © ${new Date().getFullYear()} Plantora.
+        All rights reserved.
+    </p>
+
+    <p
+        style="
+            margin:10px 0 0;
+            color:${BRAND.textLight};
+            font-size:13px;
+            font-family:Arial,Helvetica,sans-serif;
+        "
+    >
+        This is an automated email.
+        Please do not reply to this message.
+    </p>
+
+</td>
+
+</tr>
+`;
+
+// Create complete email layout
+const createEmailLayout = ({ title, content }) => `
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>${title}</title>
+
+</head>
+
+<body
+    style="
+        margin:0;
+        padding:40px 20px;
+        background:${BRAND.body};
+        font-family:Arial,Helvetica,sans-serif;
+    "
+>
+
+<table
+    width="100%"
+    cellspacing="0"
+    cellpadding="0"
+>
+
+<tr>
+
+<td align="center">
+
+<table
+    width="600"
+    cellspacing="0"
+    cellpadding="0"
+    style="
+        background:${BRAND.white};
+        border-radius:18px;
+        overflow:hidden;
+        box-shadow:0 12px 35px rgba(0,0,0,.08);
+    "
+>
+
+${createEmailHeader(title)}
+
+<tr>
+
+<td
+    style="
+        padding:10px 40px 40px;
+        color:${BRAND.text};
+        font-size:16px;
+        line-height:1.9;
+    "
+>
+
+${content}
+
+</td>
+
+</tr>
+
+${createEmailFooter()}
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>
+`;
 // Generate email verification template
 const getVerificationEmail = (name, verificationUrl) => {
   return {
@@ -19,215 +221,155 @@ Please verify your email by visiting the link below:
 
 ${verificationUrl}
 
+This verification link will expire automatically.
+
 If you did not create this account, you can safely ignore this email.
 
 Regards,
 Plantora Team
 `,
 
-    html: `
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Verify Your Email</title>
-</head>
+    html: createEmailLayout({
+      title: "Verify Your Email",
 
-<body
-  style="
-    margin:0;
-    padding:40px 0;
-    background:#f5f7fa;
-    font-family:Arial,Helvetica,sans-serif;
-  "
->
-
-<table
-  width="100%"
-  cellspacing="0"
-  cellpadding="0"
->
-<tr>
-<td align="center">
-
-<table
-  width="600"
-  cellspacing="0"
-  cellpadding="0"
-  style="
-    background:#ffffff;
-    border-radius:12px;
-    overflow:hidden;
-    box-shadow:0 2px 10px rgba(0,0,0,.08);
-  "
->
-
-<tr>
-<td
-  align="center"
-  style="
-    padding:35px 20px 20px;
-  "
->
-
-<img
-  src="${logoUrl}"
-  alt="Plantora"
-  width="180"
-  style="display:block;"
->
-
-</td>
-</tr>
-
-<tr>
-<td
-  style="
-    padding:0 40px 20px;
-    color:#212529;
-  "
->
-
-<h1
-  style="
-    margin:0;
-    color:#198754;
-    text-align:center;
-    font-size:28px;
-  "
->
-Verify Your Email
-</h1>
-
+      content: `
 <p
-  style="
-    margin-top:35px;
-    font-size:16px;
-    line-height:1.8;
-  "
+    style="
+        margin-top:0;
+    "
 >
+
 Hello <strong>${name}</strong>,
+
 </p>
 
-<p
-  style="
-    font-size:16px;
-    line-height:1.8;
-  "
->
-Thank you for registering with <strong>Plantora</strong>.
+<p>
 
-Before getting started, please verify your email address by clicking the button below.
+Welcome to <strong>Plantora</strong> 🌿
+
+</p>
+
+<p>
+
+Thank you for creating your account.
+
+Before you start exploring premium plants and gardening products,
+please verify your email address.
+
 </p>
 
 <div
-  style="
-    text-align:center;
-    margin:45px 0;
-  "
+    style="
+        margin:45px 0;
+        text-align:center;
+    "
 >
 
 <a
-  href="${verificationUrl}"
-  style="
-    background:#198754;
-    color:#ffffff;
-    text-decoration:none;
-    padding:15px 35px;
-    border-radius:8px;
-    display:inline-block;
-    font-size:16px;
-    font-weight:bold;
-  "
+    href="${verificationUrl}"
+    style="
+        display:inline-block;
+        padding:16px 38px;
+        background:${BRAND.primary};
+        color:#ffffff;
+        text-decoration:none;
+        border-radius:10px;
+        font-size:16px;
+        font-weight:700;
+    "
 >
+
 Verify Email
+
 </a>
 
 </div>
 
-<p
-  style="
-    font-size:15px;
-    line-height:1.8;
-  "
->
-If the button above doesn't work, copy and paste the following link into your browser:
+<p>
+
+Or copy and paste this link into your browser:
+
 </p>
 
 <p
-  style="
-    word-break:break-word;
-  "
+    style="
+        word-break:break-word;
+    "
 >
+
 <a
-  href="${verificationUrl}"
-  style="
-    color:#198754;
-  "
+    href="${verificationUrl}"
+    style="
+        color:${BRAND.primary};
+        text-decoration:none;
+    "
 >
+
 ${verificationUrl}
+
 </a>
+
 </p>
 
-<hr
-  style="
-    border:none;
-    border-top:1px solid #eeeeee;
-    margin:35px 0;
-  "
+<div
+    style="
+        margin-top:35px;
+        padding:18px 22px;
+        background:${BRAND.primarySoft};
+        border-left:5px solid ${BRAND.primary};
+        border-radius:10px;
+    "
 >
+
+<strong>Important</strong>
+
+<ul
+    style="
+        margin:12px 0 0;
+        padding-left:20px;
+    "
+>
+
+<li>
+
+This verification link will expire automatically.
+
+</li>
+
+<li>
+
+If you did not create a Plantora account,
+no further action is required.
+
+</li>
+
+<li>
+
+Never share verification links with anyone.
+
+</li>
+
+</ul>
+
+</div>
 
 <p
-  style="
-    color:#6c757d;
-    font-size:14px;
-    line-height:1.8;
-  "
->
-If you didn't create a Plantora account,
-you can safely ignore this email.
-No further action is required.
-</p>
-
-</td>
-</tr>
-
-<tr>
-<td
-  style="
-    background:#f8f9fa;
-    padding:25px;
-    text-align:center;
-    color:#6c757d;
-    font-size:13px;
-  "
+    style="
+        margin-top:35px;
+    "
 >
 
-<p style="margin:0;">
-© ${new Date().getFullYear()} Plantora.
-All rights reserved.
+Happy Gardening 🌱
+
+<br>
+
+<strong>Team Plantora</strong>
+
 </p>
-
-<p style="margin-top:10px;">
-This is an automated email.
-Please do not reply to this message.
-</p>
-
-</td>
-</tr>
-
-</table>
-
-</td>
-</tr>
-</table>
-
-</body>
-</html>
 `,
+    }),
   };
 };
-
 // Generate password reset template
 const getResetPasswordEmail = (name, resetUrl) => {
   return {
@@ -238,215 +380,150 @@ Password Reset Request
 
 Hello ${name},
 
-We received a request to reset your Plantora password.
+We received a request to reset your Plantora account password.
 
-Reset it using the link below:
+Reset your password using the link below:
 
 ${resetUrl}
 
-If you didn't request this password reset, simply ignore this email.
+This link will expire automatically.
+
+If you didn't request this password reset, you can safely ignore this email.
 
 Regards,
 Plantora Team
 `,
 
-    html: `
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Reset Password</title>
-</head>
+    html: createEmailLayout({
+      title: "Reset Your Password",
 
-<body
-  style="
-    margin:0;
-    padding:40px 0;
-    background:#f5f7fa;
-    font-family:Arial,Helvetica,sans-serif;
-  "
->
+      content: `
+<p style="margin-top:0;">
 
-<table
-  width="100%"
-  cellspacing="0"
-  cellpadding="0"
->
-
-<tr>
-<td align="center">
-
-<table
-  width="600"
-  cellspacing="0"
-  cellpadding="0"
-  style="
-    background:#ffffff;
-    border-radius:12px;
-    overflow:hidden;
-    box-shadow:0 2px 10px rgba(0,0,0,.08);
-  "
->
-
-<tr>
-<td
-  align="center"
-  style="
-    padding:35px 20px 20px;
-  "
->
-
-<img
-  src="${logoUrl}"
-  width="180"
-  alt="Plantora"
->
-
-</td>
-</tr>
-
-<tr>
-<td
-  style="
-    padding:0 40px 20px;
-  "
->
-
-<h1
-  style="
-    color:#dc3545;
-    text-align:center;
-    margin:0;
-  "
->
-Reset Your Password
-</h1>
-
-<p
-  style="
-    margin-top:35px;
-    font-size:16px;
-    line-height:1.8;
-  "
->
 Hello <strong>${name}</strong>,
+
 </p>
 
-<p
-  style="
-    font-size:16px;
-    line-height:1.8;
-  "
->
-We received a request to reset your Plantora account password.
+<p>
+
+We received a request to reset the password for your
+<strong>Plantora</strong> account.
+
+</p>
+
+<p>
+
+Click the button below to create a new password.
+
 </p>
 
 <div
-  style="
-    text-align:center;
-    margin:45px 0;
-  "
+    style="
+        margin:45px 0;
+        text-align:center;
+    "
 >
 
 <a
-  href="${resetUrl}"
-  style="
-    background:#dc3545;
-    color:#ffffff;
-    padding:15px 35px;
-    text-decoration:none;
-    border-radius:8px;
-    display:inline-block;
-    font-weight:bold;
-  "
+    href="${resetUrl}"
+    style="
+        display:inline-block;
+        background:${BRAND.danger};
+        color:#ffffff;
+        text-decoration:none;
+        padding:16px 38px;
+        border-radius:10px;
+        font-size:16px;
+        font-weight:700;
+    "
 >
+
 Reset Password
+
 </a>
 
 </div>
 
-<p
-  style="
-    font-size:15px;
-    line-height:1.8;
-  "
->
-If the button doesn't work, copy this link into your browser:
+<p>
+
+If the button doesn't work, use the following link:
+
 </p>
 
 <p style="word-break:break-word;">
+
 <a
-  href="${resetUrl}"
-  style="
-    color:#198754;
-  "
+    href="${resetUrl}"
+    style="
+        color:${BRAND.primary};
+        text-decoration:none;
+    "
 >
+
 ${resetUrl}
+
 </a>
+
 </p>
 
-<hr
-  style="
-    border:none;
-    border-top:1px solid #eeeeee;
-    margin:35px 0;
-  "
+<div
+    style="
+        margin-top:35px;
+        padding:18px 22px;
+        background:#fff5f5;
+        border-left:5px solid ${BRAND.danger};
+        border-radius:10px;
+    "
 >
 
-<p
-  style="
-    color:#dc3545;
-    font-size:14px;
-    line-height:1.8;
-    font-weight:bold;
-  "
->
-If you did not request a password reset,
-please ignore this email immediately.
-</p>
+<strong>Security Notice</strong>
 
-</td>
-</tr>
-
-<tr>
-<td
-  style="
-    background:#f8f9fa;
-    padding:25px;
-    text-align:center;
-    color:#6c757d;
-    font-size:13px;
-  "
+<ul
+    style="
+        margin:12px 0 0;
+        padding-left:20px;
+    "
 >
 
-<p style="margin:0;">
-© ${new Date().getFullYear()} Plantora.
-All rights reserved.
+<li>
+
+This reset link expires automatically.
+
+</li>
+
+<li>
+
+Never share this link with anyone.
+
+</li>
+
+<li>
+
+If you didn't request a password reset,
+your account is still secure.
+
+</li>
+
+</ul>
+
+</div>
+
+<p style="margin-top:35px;">
+
+Stay safe 🌿
+
+<br>
+
+<strong>Team Plantora</strong>
+
 </p>
-
-<p style="margin-top:10px;">
-This is an automated email.
-Please do not reply to this message.
-</p>
-
-</td>
-</tr>
-
-</table>
-
-</td>
-</tr>
-
-</table>
-
-</body>
-</html>
 `,
+    }),
   };
 };
 
-// Generate seller request email for admin
-const getSellerRequestEmail = (customerName, customerEmail, dashboardUrl) => {
+// Generate seller request email
+const getSellerRequestEmail = (customerName, customerEmail, reviewUrl) => {
   return {
     subject: "New Seller Request - Plantora",
 
@@ -455,7 +532,7 @@ New Seller Request
 
 Hello Admin,
 
-${customerName} has requested to become a seller.
+A customer has requested to become a seller.
 
 Customer Name:
 ${customerName}
@@ -463,327 +540,429 @@ ${customerName}
 Customer Email:
 ${customerEmail}
 
-Review the request from the admin dashboard:
+Review the seller request below:
 
-${dashboardUrl}
+${reviewUrl}
+
+If the link opens inside an email service (such as YOPmail),
+copy and paste the URL into the browser where you are already
+logged in as an Administrator.
 
 Regards,
 Plantora
 `,
 
-    html: `
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>New Seller Request</title>
-</head>
+    html: createEmailLayout({
+      title: "New Seller Request",
 
-<body
-style="
-margin:0;
-padding:40px 0;
-background:#f5f7fa;
-font-family:Arial,Helvetica,sans-serif;
-">
+      content: `
+<p style="margin-top:0;">
 
-<table
-width="100%"
-cellspacing="0"
-cellpadding="0">
+Hello <strong>Admin</strong>,
 
-<tr>
-<td align="center">
-
-<table
-width="600"
-cellspacing="0"
-cellpadding="0"
-style="
-background:#ffffff;
-border-radius:12px;
-overflow:hidden;
-box-shadow:0 2px 10px rgba(0,0,0,.08);
-">
-
-<tr>
-<td
-align="center"
-style="padding:35px 20px 20px;">
-
-<img
-src="${logoUrl}"
-width="180"
-alt="Plantora">
-
-</td>
-</tr>
-
-<tr>
-<td
-style="
-padding:0 40px 20px;">
-
-<h1
-style="
-margin:0;
-text-align:center;
-color:#198754;">
-New Seller Request
-</h1>
-
-<p
-style="
-margin-top:35px;
-font-size:16px;
-line-height:1.8;">
-A customer has requested to become a seller.
 </p>
 
+<p>
+
+A new customer has submitted a request to become a seller on
+<strong>Plantora</strong>.
+
+</p>
+
+<div
+    style="
+        margin:35px 0;
+        padding:22px;
+        background:${BRAND.primarySoft};
+        border:1px solid ${BRAND.border};
+        border-radius:12px;
+    "
+>
+
 <table
-width="100%"
-cellpadding="8"
-style="
-border-collapse:collapse;
-margin-top:25px;">
+    width="100%"
+    cellpadding="8"
+    cellspacing="0"
+>
 
 <tr>
-<td><strong>Name</strong></td>
-<td>${customerName}</td>
+
+<td width="140">
+
+<strong>Customer Name</strong>
+
+</td>
+
+<td>
+
+${customerName}
+
+</td>
+
 </tr>
 
 <tr>
-<td><strong>Email</strong></td>
-<td>${customerEmail}</td>
+
+<td>
+
+<strong>Email Address</strong>
+
+</td>
+
+<td>
+
+${customerEmail}
+
+</td>
+
 </tr>
 
 </table>
-
-<div
-style="
-text-align:center;
-margin:40px 0;">
-
-<a
-href="${dashboardUrl}"
-style="
-background:#198754;
-color:#ffffff;
-padding:15px 35px;
-text-decoration:none;
-border-radius:8px;
-display:inline-block;
-font-weight:bold;">
-Review Request
-</a>
 
 </div>
 
-</td>
-</tr>
+<p>
 
-<tr>
-<td
-style="
-background:#f8f9fa;
-padding:25px;
-text-align:center;
-font-size:13px;
-color:#6c757d;">
+Please review this seller application.
 
-<p style="margin:0;">
-© ${new Date().getFullYear()} Plantora. All rights reserved.
 </p>
 
-</td>
-</tr>
+<div
+    style="
+        margin:30px 0;
+        padding:18px;
+        background:#f8f9fa;
+        border:1px solid ${BRAND.border};
+        border-radius:10px;
+    "
+>
 
-</table>
+<p
+    style="
+        margin:0 0 12px;
+        font-weight:700;
+        color:${BRAND.primaryDark};
+    "
+>
 
-</td>
-</tr>
+Seller Review URL
 
-</table>
+</p>
 
-</body>
-</html>
+<p
+    style="
+        margin:0;
+        word-break:break-all;
+    "
+>
+
+<a
+    href="${reviewUrl}"
+    style="
+        color:${BRAND.primary};
+        text-decoration:none;
+        font-weight:600;
+    "
+>
+
+${reviewUrl}
+
+</a>
+
+</p>
+
+</div>
+
+<div
+    style="
+        margin-top:25px;
+        padding:18px;
+        background:#fff8e1;
+        border-left:5px solid #ffc107;
+        border-radius:10px;
+    "
+>
+
+<strong>Important</strong>
+
+<p style="margin:10px 0 0;">
+
+If the URL opens inside an email service such as <strong>YOPmail</strong>,
+copy the complete URL above and paste it into the browser where you are
+already logged in as an <strong>Administrator</strong>.
+
+</p>
+
+</div>
+
+<p style="margin-top:35px;">
+
+Regards,
+
+<br>
+
+<strong>Plantora System</strong>
+
+</p>
 `,
+    }),
   };
 };
 
 // Generate seller approved email
 const getSellerApprovedEmail = (name, dashboardUrl) => {
   return {
-    subject: "Seller Account Approved - Plantora",
+    subject: "Your Seller Account Has Been Approved!",
 
     text: `
 Congratulations ${name},
 
-Your seller account request has been approved.
+Great news!
 
-You can now start selling products on Plantora.
+Your Plantora seller account request has been approved.
+
+You can now log in to your seller dashboard and start listing your products.
 
 Seller Dashboard:
+
 ${dashboardUrl}
+
+Welcome to the Plantora Seller Community!
+
+You now have full access to your Seller Dashboard.
 
 Regards,
 Plantora Team
 `,
 
-    html: `
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Seller Approved</title>
-</head>
+    html: createEmailLayout({
+      title: "Seller Account Approved",
 
-<body style="margin:0;padding:40px 0;background:#f5f7fa;font-family:Arial,Helvetica,sans-serif;">
+      content: `
+<p style="margin-top:0;">
 
-<table width="100%" cellspacing="0" cellpadding="0">
-<tr>
-<td align="center">
+Hello <strong>${name}</strong>,
 
-<table width="600" cellspacing="0" cellpadding="0"
-style="background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.08);">
-
-<tr>
-<td align="center" style="padding:35px;">
-<img src="${logoUrl}" width="180">
-</td>
-</tr>
-
-<tr>
-<td style="padding:0 40px 20px;">
-
-<h1 style="color:#198754;text-align:center;">
-Seller Account Approved
-</h1>
-
-<p>Hello <strong>${name}</strong>,</p>
-
-<p>
-Congratulations!
-Your seller request has been approved.
-You can now start selling products on Plantora.
 </p>
 
-<div style="text-align:center;margin:40px 0;">
+<p>
+
+🎉 Congratulations!
+
+</p>
+
+<p>
+
+Your request to become a seller on
+<strong>Plantora</strong> has been
+approved successfully.
+
+</p>
+
+<p>
+
+You can now manage products, receive orders,
+track sales, and grow your business with us.
+
+</p>
+
+<div
+    style="
+        margin:45px 0;
+        text-align:center;
+    "
+>
+
 <a
-href="${dashboardUrl}"
-style="
-background:#198754;
-color:#fff;
-padding:15px 35px;
-text-decoration:none;
-border-radius:8px;
-display:inline-block;">
+    href="${dashboardUrl}"
+    style="
+        display:inline-block;
+        padding:16px 38px;
+        background:${BRAND.primary};
+        color:#ffffff;
+        text-decoration:none;
+        border-radius:10px;
+        font-size:16px;
+        font-weight:700;
+    "
+>
+
 Open Seller Dashboard
+
 </a>
+
 </div>
 
-</td>
-</tr>
+<div
+    style="
+        margin-top:35px;
+        padding:20px 22px;
+        background:${BRAND.primarySoft};
+        border-left:5px solid ${BRAND.primary};
+        border-radius:10px;
+    "
+>
 
-</table>
+<strong>You can now:</strong>
 
-</td>
-</tr>
-</table>
+<ul
+    style="
+        margin:12px 0 0;
+        padding-left:20px;
+    "
+>
 
-</body>
-</html>
+<li>
+
+Add new products
+
+</li>
+
+<li>
+
+Manage inventory
+
+</li>
+
+<li>
+
+Receive customer orders
+
+</li>
+
+<li>
+
+Track sales performance
+
+</li>
+
+<li>
+
+Grow your Plantora business
+
+</li>
+
+</ul>
+
+</div>
+
+<p style="margin-top:35px;">
+
+We wish you great success on Plantora.
+
+<br><br>
+
+<strong>Team Plantora 🌿</strong>
+
+</p>
 `,
+    }),
   };
 };
 
 // Generate seller rejected email
 const getSellerRejectedEmail = (name, remark) => {
   return {
-    subject: "Seller Request Update - Plantora",
+    subject: "Seller Request Update",
 
     text: `
 Hello ${name},
 
-Unfortunately your seller request has been rejected.
+Unfortunately, your seller account request could not be approved.
 
-Admin Remark:
+Reason:
 
 ${remark || "No remark provided."}
 
-You may submit a new request after making the necessary changes.
+You may submit another seller request after 7 days.
+
+Please review the rejection reason before applying again.
 
 Regards,
 Plantora Team
 `,
 
-    html: `
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Seller Request Rejected</title>
-</head>
+    html: createEmailLayout({
+      title: "Seller Request Rejected",
 
-<body style="margin:0;padding:40px 0;background:#f5f7fa;font-family:Arial,Helvetica,sans-serif;">
+      content: `
+<p style="margin-top:0;">
 
-<table width="100%" cellspacing="0" cellpadding="0">
-<tr>
-<td align="center">
+Hello <strong>${name}</strong>,
 
-<table width="600" cellspacing="0" cellpadding="0"
-style="background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.08);">
-
-<tr>
-<td align="center" style="padding:35px;">
-<img src="${logoUrl}" width="180">
-</td>
-</tr>
-
-<tr>
-<td style="padding:0 40px 20px;">
-
-<h1 style="color:#dc3545;text-align:center;">
-Seller Request Rejected
-</h1>
-
-<p>Hello <strong>${name}</strong>,</p>
-
-<p>
-Unfortunately, your seller request could not be approved.
 </p>
 
 <p>
-<strong>Admin Remark</strong>
+
+Thank you for your interest in becoming a
+Plantora seller.
+
+</p>
+
+<p>
+
+After reviewing your application,
+we're unable to approve your seller request
+at this time.
+
 </p>
 
 <div
-style="
-background:#f8f9fa;
-padding:15px;
-border-radius:8px;">
-${remark || "No remark provided."}
-</div>
+    style="
+        margin:35px 0;
+        padding:20px;
+        background:#fff5f5;
+        border-left:5px solid ${BRAND.danger};
+        border-radius:10px;
+    "
+>
 
-<p style="margin-top:25px;">
-You may update your information and submit another seller request later.
+<strong>Reason for Rejection</strong>
+
+<p
+    style="
+        margin:12px 0 0;
+    "
+>
+
+${remark || "No remark was provided."}
+
 </p>
 
-</td>
-</tr>
+</div>
 
-</table>
+<p>
 
-</td>
-</tr>
-</table>
+You may submit another seller request after
+7 days.
 
-</body>
-</html>
+Before applying again, please review the
+reason above and make the necessary changes.
+
+</p>
+
+<p>
+
+If you believe this decision was made in error,
+please contact Plantora support.
+
+</p>
+
+<p style="margin-top:35px;">
+
+Thank you for choosing Plantora.
+
+<br><br>
+
+<strong>Team Plantora 🌿</strong>
+
+</p>
 `,
+    }),
   };
 };
 
+// Export templates
 module.exports = {
   getVerificationEmail,
   getResetPasswordEmail,

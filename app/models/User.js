@@ -36,13 +36,21 @@ const userSchema = new mongoose.Schema(
     profileImage: {
       publicId: {
         type: String,
-        default: "Plantora/users/default-profile",
+        default: "/public/default/profile.png",
       },
 
       url: {
         type: String,
         default: process.env.DEFAULT_PROFILE_IMAGE_URL,
       },
+    },
+
+    // Bio
+    bio: {
+      type: String,
+      trim: true,
+      maxlength: [500, "Bio cannot exceed 500 characters."],
+      default: "",
     },
 
     // Role & Status

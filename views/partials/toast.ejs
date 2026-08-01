@@ -1,0 +1,83 @@
+<div
+  class="toast-container position-fixed top-0 end-0 p-3"
+  style="z-index: 1090"
+>
+  <div
+    id="globalToast"
+    class="toast border-0 shadow"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
+    <div class="toast-header">
+      <i id="toastIcon" class="me-2"></i>
+
+      <strong id="toastTitle" class="me-auto"></strong>
+
+      <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+    </div>
+
+    <div id="toastMessage" class="toast-body"></div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+
+    const type = params.get("type");
+    const message = params.get("message");
+
+    if (!type || !message) return;
+
+    const toastElement = document.getElementById("globalToast");
+    const title = document.getElementById("toastTitle");
+    const body = document.getElementById("toastMessage");
+    const icon = document.getElementById("toastIcon");
+
+    toastElement.classList.remove(
+      "text-bg-success",
+      "text-bg-danger",
+      "text-bg-warning",
+      "text-bg-info",
+    );
+
+    icon.className = "me-2";
+
+    switch (type) {
+      case "success":
+        toastElement.classList.add("text-bg-success");
+        title.textContent = "Success";
+        icon.classList.add("bi", "bi-check-circle-fill");
+        break;
+
+      case "error":
+        toastElement.classList.add("text-bg-danger");
+        title.textContent = "Error";
+        icon.classList.add("bi", "bi-x-circle-fill");
+        break;
+
+      case "warning":
+        toastElement.classList.add("text-bg-warning");
+        title.textContent = "Warning";
+        icon.classList.add("bi", "bi-exclamation-triangle-fill");
+        break;
+
+      default:
+        toastElement.classList.add("text-bg-info");
+        title.textContent = "Information";
+        icon.classList.add("bi", "bi-info-circle-fill");
+    }
+
+    body.textContent = message;
+
+    new bootstrap.Toast(toastElement, {
+      autohide: true,
+      delay: 3000,
+    }).show();
+
+    toastElement.addEventListener("hidden.bs.toast", () => {
+      window.history.replaceState({}, document.title, window.location.pathname);
+    });
+  });
+</script>

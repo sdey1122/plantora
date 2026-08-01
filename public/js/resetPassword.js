@@ -107,12 +107,18 @@
   }
 
   /* ===========================================================
-       Password Toggle
-    =========================================================== */
+   Password Toggle
+=========================================================== */
 
   togglePasswordButtons.forEach((button) => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      console.log("Clicked");
+
       const input = document.getElementById(button.dataset.target);
+
+      console.log(input);
 
       const icon = button.querySelector("i");
 
@@ -232,7 +238,7 @@
       resetStrength();
 
       setTimeout(() => {
-        window.location.href = "/auth/login";
+        window.location.href = "/";
       }, 2000);
     } catch (error) {
       console.error(error);

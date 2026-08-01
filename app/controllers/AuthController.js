@@ -98,6 +98,7 @@ class AuthController {
     try {
       return res.render("auth/profile", {
         title: "My Profile",
+        user: req.user,
       });
     } catch (error) {
       next(error);
@@ -234,7 +235,7 @@ class AuthController {
 
         action: "Register",
 
-        severity: "low",
+        severity: "info",
 
         target: {
           id: user._id,
@@ -265,8 +266,8 @@ class AuthController {
       });
 
       if (error) {
-        return res.status(httpStatusCode.BAD_REQUEST).json({
-          success: false,
+        return res.render("auth/verify-failed", {
+          title: "Verification Failed",
           message: error.details[0].message,
         });
       }
@@ -279,8 +280,8 @@ class AuthController {
       });
 
       if (!verificationToken) {
-        return res.status(httpStatusCode.BAD_REQUEST).json({
-          success: false,
+        return res.render("auth/verify-failed", {
+          title: "Verification Failed",
           message: "Invalid verification link.",
         });
       }
@@ -288,8 +289,8 @@ class AuthController {
       if (verificationToken.expiresAt < new Date()) {
         await Token.findByIdAndDelete(verificationToken._id);
 
-        return res.status(httpStatusCode.BAD_REQUEST).json({
-          success: false,
+        return res.render("auth/verify-failed", {
+          title: "Verification Failed",
           message: "Verification link has expired.",
         });
       }
@@ -299,8 +300,8 @@ class AuthController {
       if (!user) {
         await Token.findByIdAndDelete(verificationToken._id);
 
-        return res.status(httpStatusCode.NOT_FOUND).json({
-          success: false,
+        return res.render("auth/verify-failed", {
+          title: "Verification Failed",
           message: "User not found.",
         });
       }
@@ -308,25 +309,24 @@ class AuthController {
       if (user.isDeleted) {
         await Token.findByIdAndDelete(verificationToken._id);
 
-        return res.status(httpStatusCode.FORBIDDEN).json({
-          success: false,
-          message: "Account has been deleted.",
+        return res.render("auth/verify-failed", {
+          title: "Verification Failed",
+          message: "This account has been deleted.",
         });
       }
 
       if (user.status === "blocked") {
-        return res.status(httpStatusCode.FORBIDDEN).json({
-          success: false,
-          message: "Account has been blocked.",
+        return res.render("auth/verify-failed", {
+          title: "Verification Failed",
+          message: "Your account has been blocked.",
         });
       }
 
       if (user.isEmailVerified) {
         await Token.findByIdAndDelete(verificationToken._id);
 
-        return res.status(httpStatusCode.BAD_REQUEST).json({
-          success: false,
-          message: "Email is already verified.",
+        return res.render("auth/verify-already", {
+          title: "Already Verified",
         });
       }
 
@@ -345,7 +345,7 @@ class AuthController {
         actor: user,
         module: "Authentication",
         action: "Verify Email",
-        severity: "low",
+        severity: "info",
         target: {
           id: user._id,
           model: "User",
@@ -355,9 +355,8 @@ class AuthController {
 
       logger.info(`Email verified successfully : ${user.email}`);
 
-      return res.status(httpStatusCode.OK).json({
-        success: true,
-        message: "Email verified successfully. You can now login.",
+      return res.render("auth/verify-success", {
+        title: "Email Verified",
       });
     } catch (error) {
       next(error);
@@ -370,9 +369,11 @@ class AuthController {
       const { error, value } = resendVerificationValidation.validate(req.body);
 
       if (error) {
-        return res.status(httpStatusCode.BAD_REQUEST).json({
-          success: false,
-          message: error.details[0].message,
+        return res.render("auth/resend-verification", {
+          title: "Resend Verification Email",
+          message: null,
+          type: null,
+          email: "",
         });
       }
 
@@ -383,30 +384,35 @@ class AuthController {
       });
 
       if (!user) {
-        return res.status(httpStatusCode.NOT_FOUND).json({
-          success: false,
-          message: "User not found.",
+        return res.render("auth/resend-verification", {
+          title: "Resend Verification Email",
+          type: "error",
+          message: "No account found with this email address.",
+          email: email || "",
         });
       }
 
       if (user.isDeleted) {
-        return res.status(httpStatusCode.FORBIDDEN).json({
-          success: false,
-          message: "Account has been deleted.",
+        return res.render("auth/resend-verification", {
+          title: "Resend Verification Email",
+          type: "error",
+          message: "This account has been deleted.",
+          email: email || "",
         });
       }
 
       if (user.status === "blocked") {
-        return res.status(httpStatusCode.FORBIDDEN).json({
-          success: false,
-          message: "Account has been blocked.",
+        return res.render("auth/resend-verification", {
+          title: "Resend Verification Email",
+          type: "error",
+          message: "Your account has been blocked.",
+          email: email || "",
         });
       }
 
       if (user.isEmailVerified) {
-        return res.status(httpStatusCode.BAD_REQUEST).json({
-          success: false,
-          message: "Email is already verified.",
+        return res.render("auth/verify-already", {
+          title: "Email Already Verified",
         });
       }
 
@@ -447,7 +453,7 @@ class AuthController {
         actor: user,
         module: "Authentication",
         action: "Resend Verification Email",
-        severity: "low",
+        severity: "info",
         target: {
           id: user._id,
           model: "User",
@@ -457,13 +463,25 @@ class AuthController {
 
       logger.info(`Verification email resent : ${user.email}`);
 
-      return res.status(httpStatusCode.OK).json({
-        success: true,
-        message: "Verification email sent successfully.",
+      return res.render("auth/resend-verification", {
+        title: "Resend Verification Email",
+        type: "success",
+        message:
+          "A new verification email has been sent. Please check your inbox.",
+        email: email || "",
       });
     } catch (error) {
       next(error);
     }
+  }
+
+  async showResendVerificationPage(req, res) {
+    return res.render("auth/resend-verification", {
+      title: "Resend Verification Email",
+      message: null,
+      type: null,
+      email: email || "",
+    });
   }
   // Login
   async login(req, res, next) {
@@ -629,7 +647,7 @@ class AuthController {
         actor: user,
         module: "Authentication",
         action: "Login",
-        severity: "low",
+        severity: "info",
         target: {
           id: user._id,
           model: "User",
@@ -673,10 +691,9 @@ class AuthController {
       const user = await User.findById(decoded.id);
 
       if (!user) {
-        return res.status(httpStatusCode.NOT_FOUND).json({
-          success: false,
-          message: "User not found.",
-        });
+        return res.redirect(
+          `/auth/profile?type=error&message=${encodeURIComponent("User not found.")}`,
+        );
       }
 
       if (user.isDeleted) {
@@ -802,7 +819,7 @@ class AuthController {
           actor: req.user,
           module: "Authentication",
           action: "Logout",
-          severity: "low",
+          severity: "info",
           target: {
             id: req.user._id,
             model: "User",
@@ -892,7 +909,7 @@ class AuthController {
         actor: user,
         module: "Authentication",
         action: "Forgot Password",
-        severity: "low",
+        severity: "info",
         target: {
           id: user._id,
           model: "User",
@@ -952,10 +969,9 @@ class AuthController {
       if (!user) {
         await Token.findByIdAndDelete(resetToken._id);
 
-        return res.status(httpStatusCode.NOT_FOUND).json({
-          success: false,
-          message: "User not found.",
-        });
+        return res.redirect(
+          `/auth/login?type=error&message=${encodeURIComponent("User not found.")}`,
+        );
       }
 
       if (user.isDeleted) {
@@ -1019,19 +1035,17 @@ class AuthController {
       const { error, value } = changePasswordValidation.validate(req.body);
 
       if (error) {
-        return res.status(httpStatusCode.BAD_REQUEST).json({
-          success: false,
-          message: error.details[0].message,
-        });
+        return res.redirect(
+          `/auth/profile?type=error&passwordError=${encodeURIComponent(error.details[0].message)}`,
+        );
       }
 
       const user = await User.findById(req.user._id).select("+password");
 
       if (!user) {
-        return res.status(httpStatusCode.NOT_FOUND).json({
-          success: false,
-          message: "User not found.",
-        });
+        return res.redirect(
+          `/auth/profile?type=error&message=${encodeURIComponent("User not found.")}`,
+        );
       }
 
       if (user.role === "admin") {
@@ -1046,19 +1060,17 @@ class AuthController {
       );
 
       if (!isPasswordMatched) {
-        return res.status(httpStatusCode.BAD_REQUEST).json({
-          success: false,
-          message: "Current password is incorrect.",
-        });
+        return res.redirect(
+          `/auth/profile?type=error&message=${encodeURIComponent("Current password is incorrect.")}`,
+        );
       }
 
       const isSamePassword = await user.comparePassword(value.newPassword);
 
       if (isSamePassword) {
-        return res.status(httpStatusCode.BAD_REQUEST).json({
-          success: false,
-          message: "New password must be different from current password.",
-        });
+        return res.redirect(
+          `/auth/profile?type=error&message=${encodeURIComponent("New password must be different from current password.")}`,
+        );
       }
 
       user.password = value.newPassword;
@@ -1073,6 +1085,10 @@ class AuthController {
       res.clearCookie(process.env.COOKIE_ACCESS_TOKEN);
 
       res.clearCookie(process.env.COOKIE_REFRESH_TOKEN);
+
+      if (req.session) {
+        req.session.destroy(() => {});
+      }
 
       await createAuditLog({
         req,
@@ -1089,10 +1105,11 @@ class AuthController {
 
       logger.info(`Password changed : ${user.email}`);
 
-      return res.status(httpStatusCode.OK).json({
-        success: true,
-        message: "Password changed successfully. Please login again.",
-      });
+      return res.redirect(
+        `/?type=success&message=${encodeURIComponent("Password changed successfully. Please login again.")}`,
+      );
+
+      return res.redirect("/");
     } catch (error) {
       next(error);
     }
@@ -1104,10 +1121,9 @@ class AuthController {
       const user = await User.findById(req.user._id).select("-password").lean();
 
       if (!user) {
-        return res.status(httpStatusCode.NOT_FOUND).json({
-          success: false,
-          message: "User not found.",
-        });
+        return res.redirect(
+          `/auth/profile?type=error&message=${encodeURIComponent("User not found.")}`,
+        );
       }
 
       return res.status(httpStatusCode.OK).json({
@@ -1141,16 +1157,16 @@ class AuthController {
           deleteLocalFile(req.file.path);
         }
 
-        return res.status(httpStatusCode.NOT_FOUND).json({
-          success: false,
-          message: "User not found.",
-        });
+        return res.redirect(
+          `/auth/profile?type=error&message=${encodeURIComponent("User not found.")}`,
+        );
       }
 
       if (req.file) {
-        const uploadedImage = await cloudinaryImageUpload(req.file.path, {
-          folder: "users/profile",
-        });
+        const uploadedImage = await cloudinaryImageUpload(
+          req.file.path,
+          `${process.env.CLOUDINARY_FOLDER}/profile`,
+        );
 
         deleteLocalFile(req.file.path);
 
@@ -1169,18 +1185,7 @@ class AuthController {
       }
 
       user.name = value.name;
-
-      if (value.phone) {
-        user.phone = value.phone;
-      }
-
-      if (value.gender) {
-        user.gender = value.gender;
-      }
-
-      if (value.dateOfBirth) {
-        user.dateOfBirth = value.dateOfBirth;
-      }
+      user.bio = value.bio || "";
 
       user.lastActive = new Date();
 
@@ -1191,7 +1196,7 @@ class AuthController {
         actor: user,
         module: "Authentication",
         action: "Update Profile",
-        severity: "low",
+        severity: "info",
         target: {
           id: user._id,
           model: "User",
@@ -1201,11 +1206,9 @@ class AuthController {
 
       logger.info(`Profile updated : ${user.email}`);
 
-      return res.status(httpStatusCode.OK).json({
-        success: true,
-        message: "Profile updated successfully.",
-        data: user,
-      });
+      return res.redirect(
+        `/auth/profile?type=success&message=${encodeURIComponent("Profile updated successfully.")}`,
+      );
     } catch (error) {
       if (req.file) {
         deleteLocalFile(req.file.path);
@@ -1232,10 +1235,9 @@ class AuthController {
       const user = await User.findById(req.user._id);
 
       if (!user) {
-        return res.status(httpStatusCode.NOT_FOUND).json({
-          success: false,
-          message: "User not found.",
-        });
+        return res.redirect(
+          `/auth/profile?type=error&message=${encodeURIComponent("User not found.")}`,
+        );
       }
 
       // Prevent admin
@@ -1256,11 +1258,28 @@ class AuthController {
 
       // Already pending
       if (user.seller.status === "pending") {
-        return res.status(httpStatusCode.BAD_REQUEST).json({
-          success: false,
-          message: "Your seller request is already under review.",
-        });
+        return res.redirect(
+          `/auth/profile?type=error&message=${encodeURIComponent(
+            "Your seller request is already under review.",
+          )}`,
+        );
       }
+
+      // Rejected -> wait 7 days
+      if (
+        user.seller.status === "rejected" &&
+        user.seller.approvedAt &&
+        Date.now() - new Date(user.seller.approvedAt).getTime() <
+          7 * 24 * 60 * 60 * 1000
+      ) {
+        return res.redirect(
+          `/auth/profile?type=error&message=${encodeURIComponent(
+            "You can apply again after 7 days.",
+          )}`,
+        );
+      }
+
+      // Request seller account
 
       // Request seller account
       user.seller.status = "pending";
@@ -1289,10 +1308,12 @@ class AuthController {
         });
 
         // Email
+        const reviewUrl = `${process.env.APP_URL}/admin/users/seller-request/${user._id}`;
+
         const { subject, html, text } = getSellerRequestEmail(
           user.name,
           user.email,
-          `${process.env.APP_URL}/admin/users`,
+          reviewUrl,
         );
 
         await sendEmail({
@@ -1309,7 +1330,7 @@ class AuthController {
         actor: user,
         module: "Seller",
         action: "Become Seller",
-        severity: "low",
+        severity: "info",
         target: {
           id: user._id,
           model: "User",
@@ -1319,10 +1340,9 @@ class AuthController {
 
       logger.info(`Seller request submitted: ${user.email}`);
 
-      return res.status(httpStatusCode.OK).json({
-        success: true,
-        message: "Seller request submitted successfully.",
-      });
+      return res.redirect(
+        `/auth/profile?type=success&message=${encodeURIComponent("Seller request submitted successfully.")}`,
+      );
     } catch (error) {
       next(error);
     }
@@ -1343,10 +1363,9 @@ class AuthController {
       const user = await User.findById(req.user._id);
 
       if (!user) {
-        return res.status(httpStatusCode.NOT_FOUND).json({
-          success: false,
-          message: "User not found.",
-        });
+        return res.redirect(
+          `/auth/profile?type=error&message=${encodeURIComponent("User not found.")}`,
+        );
       }
 
       if (user.role === "admin") {
@@ -1415,6 +1434,10 @@ class AuthController {
 
       res.clearCookie(process.env.COOKIE_REFRESH_TOKEN);
 
+      if (req.session) {
+        req.session.destroy(() => {});
+      }
+
       await createAuditLog({
         req,
         actor: user,
@@ -1430,11 +1453,9 @@ class AuthController {
 
       logger.info(`Email changed : ${user.email}`);
 
-      return res.status(httpStatusCode.OK).json({
-        success: true,
-        message:
-          "Email changed successfully. Please verify your new email before logging in again.",
-      });
+      return res.redirect(
+        `/?type=success&message=${encodeURIComponent("Email changed successfully. Please verify your new email before logging in again.")}`,
+      );
     } catch (error) {
       next(error);
     }
@@ -1446,10 +1467,9 @@ class AuthController {
       const user = await User.findById(req.user._id);
 
       if (!user) {
-        return res.status(httpStatusCode.NOT_FOUND).json({
-          success: false,
-          message: "User not found.",
-        });
+        return res.redirect(
+          `/auth/profile?type=success&message=${encodeURIComponent("Profile image removed successfully.")}`,
+        );
       }
 
       if (
@@ -1472,7 +1492,7 @@ class AuthController {
         actor: user,
         module: "Authentication",
         action: "Delete Profile Image",
-        severity: "low",
+        severity: "info",
         target: {
           id: user._id,
           model: "User",
@@ -1482,10 +1502,9 @@ class AuthController {
 
       logger.info(`Profile image deleted : ${user.email}`);
 
-      return res.status(httpStatusCode.OK).json({
-        success: true,
-        message: "Profile image removed successfully.",
-      });
+      return res.redirect(
+        `/auth/profile?type=error&message=${encodeURIComponent("User not found.")}`,
+      );
     } catch (error) {
       next(error);
     }

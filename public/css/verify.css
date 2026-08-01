@@ -3,49 +3,203 @@
 =========================================================== */
 
 .verify-card {
-    max-width: 600px;
-    margin: 80px auto;
-    border-radius: 18px;
-    overflow: hidden;
+  max-width: 600px;
+  margin: 80px auto;
+  border-radius: 18px;
+  overflow: hidden;
 }
 
 .verify-icon {
-    font-size: 5rem;
-    line-height: 1;
+  font-size: 5rem;
+  line-height: 1;
 }
 
 .verify-card h2 {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 .verify-card p {
-    font-size: 1rem;
-    line-height: 1.7;
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
 .verify-actions {
-    margin-top: 2rem;
+  margin-top: 2rem;
 }
 
 .verify-actions .btn {
-    min-height: 48px;
-    font-weight: 600;
+  min-height: 48px;
+  font-weight: 600;
 }
 
 .verify-countdown {
-    font-size: 0.95rem;
-    color: #6c757d;
-    margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #6c757d;
+  margin-top: 1rem;
 }
 
 .verify-email-form {
-    margin-top: 2rem;
+  margin-top: 2rem;
 }
 
 .verify-email-form .form-control {
-    min-height: 48px;
+  min-height: 48px;
 }
 
 .toast-container {
-    z-index: 1080;
+  z-index: 1080;
+}
+
+/* ========================================
+   Verification Pages
+======================================== */
+
+body {
+  background-color: #f8f9fa;
+}
+
+.verification-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 60px 0;
+}
+
+.verification-card {
+  border: none;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.verification-card .card-body {
+  padding: 3rem;
+}
+
+.verification-icon {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.verification-icon i {
+  font-size: 60px;
+}
+
+.verification-icon.success {
+  background: #e8f5e9;
+  color: #198754;
+}
+
+.verification-icon.info {
+  background: #e7f1ff;
+  color: #0d6efd;
+}
+
+.verification-icon.error {
+  background: #fdeaea;
+  color: #dc3545;
+}
+
+.verification-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.verification-description {
+  color: #6c757d;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.verification-alert {
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.verification-form label {
+  font-weight: 600;
+}
+
+.verification-form .form-control {
+  height: 55px;
+  border-radius: 10px;
+}
+
+.verification-form .form-control:focus {
+  box-shadow: none;
+  border-color: #198754;
+}
+
+.verification-btn {
+  border-radius: 10px;
+  height: 52px;
+  font-weight: 600;
+}
+
+.verification-divider {
+  margin: 2rem 0;
+}
+
+.countdown-number {
+  font-weight: 700;
+  color: #198754;
+}
+
+.verification-footer {
+  margin-top: 2rem;
+}
+
+.verification-footer .btn {
+  border-radius: 10px;
+}
+
+@keyframes iconBounce {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  60% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.verification-icon {
+  animation: iconBounce 0.6s ease;
+}
+
+@media (max-width: 768px) {
+  .verification-section {
+    padding: 30px 0;
+  }
+
+  .verification-card .card-body {
+    padding: 2rem;
+  }
+
+  .verification-title {
+    font-size: 1.6rem;
+  }
+
+  .verification-icon {
+    width: 90px;
+    height: 90px;
+  }
+
+  .verification-icon i {
+    font-size: 48px;
+  }
 }

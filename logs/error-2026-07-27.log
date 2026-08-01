@@ -712,3 +712,30 @@ Could not find the include file "../partials/main/layout"
 2026-07-27 06:50:05 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Forgot Password` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
 2026-07-27 06:55:10 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Forgot Password` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
 2026-07-27 06:59:56 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Forgot Password` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-27 07:06:05 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Login` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-27 07:06:15 [ERROR]: Error: Failed to lookup view "cart/index" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showCartPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:103:44)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-07-27 07:06:18 [ERROR]: Error: Failed to lookup view "wishlist/index" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showWishlistPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\WishlistController.js:99:44)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-07-27 07:06:23 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Logout` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-27 07:06:34 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Forgot Password` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-27 07:07:11 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Reset Password` is not a valid enum value for path `action`., severity: `medium` is not a valid enum value for path `severity`.
+2026-07-27 07:07:13 [ERROR]: Error: Failed to lookup view "auth/login" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showLoginPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\authController.js:65:18)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:117:3)
+    at handle (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:295:15
+    at processParams (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:582:12)
+2026-07-27 07:07:45 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Login` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-27 07:07:50 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Logout` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.

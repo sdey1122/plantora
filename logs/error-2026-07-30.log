@@ -1,0 +1,220 @@
+2026-07-30 03:08:20 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Login` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 03:08:26 [ERROR]: Error: Failed to lookup view "auth/profile" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showProfilePage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\authController.js:99:18)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at authMiddleware (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authMiddleware.js:71:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-07-30 03:10:59 [ERROR]: Error: Failed to lookup view "auth/profile" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showProfilePage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\authController.js:99:18)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at authMiddleware (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authMiddleware.js:71:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-07-30 03:11:00 [ERROR]: Error: Failed to lookup view "auth/profile" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showProfilePage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\authController.js:99:18)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at authMiddleware (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authMiddleware.js:71:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-07-30 03:13:41 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\profile\index.ejs:63
+    61|                         <p class="text-muted">
+    62| 
+ >> 63|                             <%= profile?.bio || "No bio added yet." %>
+    64| 
+    65|                         </p>
+    66| 
+
+profile is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:49:26)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showProfilePage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\authController.js:99:18)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+2026-07-30 03:19:47 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\profile\index.ejs:63
+    61|                         <p class="text-muted">
+    62| 
+ >> 63|                             <%= profile?.bio || "No bio added yet." %>
+    64| 
+    65|                         </p>
+    66| 
+
+profile is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:49:26)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showProfilePage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\authController.js:99:18)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+2026-07-30 03:20:01 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\profile\index.ejs:63
+    61|                         <p class="text-muted">
+    62| 
+ >> 63|                             <%= profile?.bio || "No bio added yet." %>
+    64| 
+    65|                         </p>
+    66| 
+
+profile is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:49:26)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showProfilePage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\authController.js:99:18)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+2026-07-30 03:26:31 [ERROR]: ReferenceError: user is not defined
+    at showProfilePage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\authController.js:111:9)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at authMiddleware (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authMiddleware.js:71:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-07-30 03:26:37 [ERROR]: ReferenceError: user is not defined
+    at showProfilePage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\authController.js:111:9)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at authMiddleware (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authMiddleware.js:71:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-07-30 03:29:07 [ERROR]: ReferenceError: next is not defined
+    at showProfilePage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\authController.js:118:7)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at authMiddleware (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authMiddleware.js:71:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-07-30 03:29:37 [ERROR]: ReferenceError: user is not defined
+    at showProfilePage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\authController.js:111:9)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at authMiddleware (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authMiddleware.js:71:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-07-30 03:37:33 [ERROR]: Update profile failed: Cannot read properties of undefined (reading 'name')
+2026-07-30 03:37:33 [ERROR]: TypeError: req.flash is not a function
+    at updateProfile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ProfileController.js:190:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-07-30 03:42:17 [ERROR]: Update profile failed: Cannot read properties of undefined (reading 'name')
+2026-07-30 03:42:31 [ERROR]: Update profile failed: Cannot read properties of undefined (reading 'name')
+2026-07-30 03:42:42 [ERROR]: Update profile failed: Cannot read properties of undefined (reading 'name')
+2026-07-30 03:42:48 [ERROR]: Error: Failed to lookup view "profile/change-email" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showChangeEmailPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ProfileController.js:363:44)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:117:3)
+    at handle (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:295:15
+    at processParams (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:582:12)
+2026-07-30 03:42:56 [ERROR]: Error: Failed to lookup view "profile/change-password" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showChangePasswordPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ProfileController.js:265:44)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:117:3)
+    at handle (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:295:15
+    at processParams (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:582:12)
+2026-07-30 04:56:34 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Login` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 04:56:57 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Logout` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 04:57:08 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Login` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 04:57:30 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Update Profile` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 04:58:34 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Change Password` is not a valid enum value for path `action`., severity: `medium` is not a valid enum value for path `severity`.
+2026-07-30 18:54:08 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Login` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 18:55:38 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Logout` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 19:27:27 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Login` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 19:28:02 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Update Profile` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 19:28:45 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Update Profile` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 19:30:51 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Change Password` is not a valid enum value for path `action`., severity: `medium` is not a valid enum value for path `severity`.
+2026-07-30 19:32:28 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Login` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 19:33:33 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Change Email` is not a valid enum value for path `action`., severity: `medium` is not a valid enum value for path `severity`.
+2026-07-30 19:35:28 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Verify Email` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 19:35:41 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Login` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 21:48:40 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Login` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 21:56:06 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Logout` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 22:09:03 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Login` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 22:09:07 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Logout` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 22:09:23 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Login` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 22:10:23 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Update Profile` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 22:10:23 [ERROR]: TypeError: req.flash is not a function
+    at updateProfile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\authController.js:1200:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-07-30 22:13:22 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Update Profile` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 22:19:35 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Change Password` is not a valid enum value for path `action`., severity: `medium` is not a valid enum value for path `severity`.
+2026-07-30 22:19:35 [ERROR]: Error: req.flash() requires sessions
+    at IncomingMessage._flash [as flash] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\connect-flash\lib\flash.js:60:41)
+    at changePassword (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\authController.js:1096:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-07-30 22:41:19 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Login` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 22:41:35 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Update Profile` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 22:44:05 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Update Profile` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 22:44:21 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Update Profile` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 22:44:37 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Update Profile` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 22:45:13 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Update Profile` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 22:47:12 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Change Password` is not a valid enum value for path `action`., severity: `medium` is not a valid enum value for path `severity`.
+2026-07-30 22:47:42 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Login` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 22:48:10 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Change Email` is not a valid enum value for path `action`., severity: `medium` is not a valid enum value for path `severity`.
+2026-07-30 22:50:10 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Verify Email` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 22:50:10 [ERROR]: Error: Failed to lookup view "auth/login" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showLoginPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\authController.js:65:18)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:117:3)
+    at handle (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:295:15
+    at processParams (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:582:12)
+2026-07-30 22:50:29 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Login` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 22:51:17 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Become Seller` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 22:54:07 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Update Profile` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 22:57:41 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Update Profile` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 22:57:47 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Logout` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 22:58:22 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Register` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 23:00:57 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Resend Verification Email` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 23:00:57 [ERROR]: Error: Failed to lookup view "auth/login" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showLoginPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\authController.js:65:18)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:117:3)
+    at handle (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:295:15
+    at processParams (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:582:12)
+2026-07-30 23:01:58 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Login` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 23:02:02 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Logout` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 23:02:37 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Login` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 23:03:11 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Change Email` is not a valid enum value for path `action`., severity: `medium` is not a valid enum value for path `severity`.
+2026-07-30 23:03:52 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Verify Email` is not a valid enum value for path `action`., severity: `low` is not a valid enum value for path `severity`.
+2026-07-30 23:03:52 [ERROR]: Error: Failed to lookup view "auth/login" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showLoginPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\authController.js:65:18)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:117:3)
+    at handle (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:295:15
+    at processParams (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:582:12)
