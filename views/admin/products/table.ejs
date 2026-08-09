@@ -1,0 +1,469 @@
+<div class="pm-table-wrapper">
+
+    <table class="pm-product-table">
+
+        <thead>
+    <tr>
+
+        <th class="pm-col-id">
+            Product ID
+        </th>
+
+        <th class="pm-col-images">
+            Images
+        </th>
+
+        <th class="pm-col-product">
+            Product
+        </th>
+
+        <th class="pm-col-category">
+            Category
+        </th>
+
+        <th class="pm-col-brand">
+            Brand
+        </th>
+
+        <th class="pm-col-sku">
+            SKU
+        </th>
+
+        <th class="pm-col-selling">
+            Selling Price
+        </th>
+
+        <th class="pm-col-discount">
+            Discount Price
+        </th>
+
+        <th class="pm-col-stock">
+            Stock
+        </th>
+
+        <th class="pm-col-status">
+            Status
+        </th>
+
+        <th class="pm-col-featured">
+            Featured
+        </th>
+
+        <th class="pm-col-actions">
+            Actions
+        </th>
+
+    </tr>
+</thead>
+
+        <tbody>
+
+            <% if (!products || products.length === 0) { %>
+
+                <tr>
+
+                    <td colspan="10">
+
+                        <div class="pm-empty">
+
+                            <i class="bi bi-box-seam"></i>
+
+                            <h4>
+                                No Products Found
+                            </h4>
+
+                            <p>
+                                There are no products matching your search.
+                            </p>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+            <% } %>
+
+
+            <% if (products && products.length > 0) { %>
+
+                <% products.forEach(product => { %>
+
+                    <tr class="pm-product-row">
+
+
+                        <!-- ==================================================
+                             PRODUCT ID
+                        =================================================== -->
+
+                        <td class="pm-id-cell">
+
+                            <div class="pm-id-wrapper">
+
+                                <code class="pm-product-id">
+                                    <%= product._id %>
+                                </code>
+
+                                <button
+                                    type="button"
+                                    class="pm-copy-id"
+                                    data-copy-product-id="<%= product._id %>"
+                                    title="Copy Product ID"
+                                >
+
+                                    <i class="bi bi-copy"></i>
+
+                                </button>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- ==================================================
+                             IMAGES
+                        =================================================== -->
+
+                        <td class="pm-images-cell">
+
+                            <div class="pm-image-stack">
+
+                                <% if (product.images && product.images.length > 0) { %>
+
+                                    <% product.images.slice(0, 5).forEach((image, index) => { %>
+
+                                        <% if (image && image.url) { %>
+
+                                            <a
+                                                href="<%= image.url %>"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="pm-image-link"
+                                                title="Open image <%= index + 1 %>"
+                                            >
+
+                                                <img
+                                                    src="<%= image.url %>"
+                                                    alt="<%= product.name %> - Image <%= index + 1 %>"
+                                                    class="pm-product-image"
+                                                >
+
+                                            </a>
+
+                                        <% } %>
+
+                                    <% }) %>
+
+                                <% } else { %>
+
+                                    <div class="pm-no-image">
+
+                                        <i class="bi bi-image"></i>
+
+                                    </div>
+
+                                <% } %>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- ==================================================
+                             PRODUCT
+                        =================================================== -->
+
+                        <td class="pm-product-cell">
+
+                            <div class="pm-product-info">
+
+                                <div class="pm-product-name">
+
+                                    <%= product.name || "Unnamed Product" %>
+
+                                </div>
+
+                                <% if (product.slug) { %>
+
+                                    <div class="pm-product-slug">
+
+                                        <%= product.slug %>
+
+                                    </div>
+
+                                <% } %>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- CATEGORY -->
+
+<td class="pm-category-cell">
+
+    <span class="pm-category">
+
+        <%= product.category?.name || "-" %>
+
+    </span>
+
+</td>
+
+
+<!-- BRAND -->
+
+<td class="pm-brand-cell">
+
+    <span class="pm-brand">
+
+        <%= product.brand?.name || "-" %>
+
+    </span>
+
+</td>
+
+
+<!-- SKU -->
+
+<td class="pm-sku-cell">
+
+    <span class="pm-sku">
+
+        <%= product.sku || "-" %>
+
+    </span>
+
+</td>
+
+                        
+
+
+                        <!-- ==================================================
+                             SELLING PRICE
+                        =================================================== -->
+
+                        <td class="pm-price-cell">
+
+                            <span class="pm-selling-price">
+
+                                ₹<%= Number(product.price || 0).toLocaleString("en-IN") %>
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- ==================================================
+                             DISCOUNT PRICE
+                        =================================================== -->
+
+                        <td class="pm-price-cell">
+
+                            <% if (
+                                product.discountPrice !== null &&
+                                product.discountPrice !== undefined &&
+                                product.discountPrice !== ""
+                            ) { %>
+
+                                <span class="pm-discount-price">
+
+                                    ₹<%= Number(product.discountPrice).toLocaleString("en-IN") %>
+
+                                </span>
+
+                            <% } else { %>
+
+                                <span class="pm-no-discount">
+
+                                    No Discount
+
+                                </span>
+
+                            <% } %>
+
+                        </td>
+
+
+                        <!-- ==================================================
+                             STOCK
+                        =================================================== -->
+
+                        <td class="pm-stock-cell">
+
+                            <% if (
+                                Number(product.stock) >
+                                Number(product.lowStockThreshold || 0)
+                            ) { %>
+
+                                <span class="pm-stock-badge pm-stock-good">
+
+                                    <%= product.stock %>
+
+                                </span>
+
+                            <% } else if (Number(product.stock) > 0) { %>
+
+                                <span class="pm-stock-badge pm-stock-low">
+
+                                    <%= product.stock %>
+
+                                </span>
+
+                            <% } else { %>
+
+                                <span class="pm-stock-badge pm-stock-out">
+
+                                    0
+
+                                </span>
+
+                            <% } %>
+
+                        </td>
+
+
+                        <!-- ==================================================
+                             STATUS
+                        =================================================== -->
+
+                        <td class="pm-status-cell">
+
+                            <% if (product.status === "active") { %>
+
+                                <span class="pm-status pm-status-active">
+
+                                    <span class="pm-status-dot"></span>
+
+                                    Active
+
+                                </span>
+
+                            <% } else if (product.status === "inactive") { %>
+
+                                <span class="pm-status pm-status-inactive">
+
+                                    <span class="pm-status-dot"></span>
+
+                                    Inactive
+
+                                </span>
+
+                            <% } else if (product.status === "out-of-stock") { %>
+
+                                <span class="pm-status pm-status-out">
+
+                                    <span class="pm-status-dot"></span>
+
+                                    Out of Stock
+
+                                </span>
+
+                            <% } else { %>
+
+                                <span class="pm-status pm-status-inactive">
+
+                                    <span class="pm-status-dot"></span>
+
+                                    Unknown
+
+                                </span>
+
+                            <% } %>
+
+                        </td>
+
+
+                        <!-- ==================================================
+                             FEATURED
+                        =================================================== -->
+
+                        <td class="pm-featured-cell">
+
+                            <% if (product.isFeatured === true) { %>
+
+                                <span class="pm-featured pm-featured-yes">
+
+                                    <i class="bi bi-star-fill"></i>
+
+                                    Yes
+
+                                </span>
+
+                            <% } else { %>
+
+                                <span class="pm-featured pm-featured-no">
+
+                                    <i class="bi bi-star"></i>
+
+                                    No
+
+                                </span>
+
+                            <% } %>
+
+                        </td>
+
+
+                        <!-- ==================================================
+                             ACTIONS
+                        =================================================== -->
+
+                        <td class="pm-actions-cell">
+
+                            <div class="pm-action-group">
+
+
+                                <!-- EDIT -->
+
+                                <a
+                                    href="/admin/products/<%= product._id %>/edit"
+                                    class="pm-action-btn pm-edit-btn"
+                                    title="Edit Product"
+                                >
+
+                                    <i class="bi bi-pencil-square"></i>
+
+                                    <span>
+                                        Edit
+                                    </span>
+
+                                </a>
+
+
+                                <!-- DELETE / MOVE TO TRASH -->
+
+                                <form
+    action="/admin/products/<%= product._id %>?_method=DELETE"
+    method="POST"
+    class="pm-delete-form"
+>
+    <button
+        type="submit"
+        class="pm-action-btn pm-delete-btn"
+        title="Move to Trash"
+    >
+        <i class="bi bi-trash"></i>
+
+        <span>
+            Delete
+        </span>
+    </button>
+</form>
+
+                            </div>
+
+                        </td>
+
+
+                    </tr>
+
+                <% }) %>
+
+            <% } %>
+
+        </tbody>
+
+    </table>
+
+</div>

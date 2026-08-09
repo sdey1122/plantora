@@ -31,6 +31,13 @@ router.get(
 );
 
 router.get(
+  "/admin/options",
+  authMiddleware,
+  authorizeRoles("admin"),
+  CouponController.getCouponOptions,
+);
+
+router.get(
   "/admin/create",
   authMiddleware,
   authorizeRoles("admin"),

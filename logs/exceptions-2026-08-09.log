@@ -1,0 +1,26 @@
+2026-08-09 02:35:32 [ERROR]: TypeError: argument handler must be a function
+    at Route.<computed> [as put] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:228:15)
+    at Router.<computed> [as put] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:448:19)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\productRoute.js:46:8)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+2026-08-09 06:30:23 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ProductController.js:31
+return res.redirect("/");
+       ^^^
+
+SyntaxError: Unexpected identifier 'res'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\productRoute.js:2:27)

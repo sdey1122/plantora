@@ -1,0 +1,28 @@
+2026-08-06 18:09:52 [ERROR]: Failed to create audit log: AuditLog validation failed: severity: `warning` is not a valid enum value for path `severity`.
+2026-08-06 19:27:54 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\users\index.ejs:173
+    171|             =========================================================== -->
+    172| 
+ >> 173|             <%- include("./table") %>
+    174| 
+    175|             <!-- ==========================================================
+    176|                  PAGINATION
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\users\table.ejs:18
+    16|     data-name="<%= user.name.toLowerCase() %>"
+    17|     data-email="<%= user.email.toLowerCase() %>"
+ >> 18|     data-role="<%= displayRole.toLowerCase() %>"
+    19|     data-created="<%= new Date(user.createdAt).getTime() %>"
+    20| >
+    21| 
+
+displayRole is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:21:26)
+    at table (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:29:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)

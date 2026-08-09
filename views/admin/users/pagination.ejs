@@ -1,0 +1,104 @@
+<!-- ==========================================================
+     USERS PAGINATION
+========================================================== -->
+
+<% if (pagination && pagination.totalPages > 1) { %>
+
+<section class="admin-pagination">
+
+    <div class="pagination-info">
+
+        Showing
+
+        <strong>
+
+            <%= pagination.startItem %>
+
+        </strong>
+
+        -
+
+        <strong>
+
+            <%= pagination.endItem %>
+
+        </strong>
+
+        of
+
+        <strong>
+
+            <%= pagination.totalItems %>
+
+        </strong>
+
+        Users
+
+    </div>
+
+    <nav aria-label="Users Pagination">
+
+        <ul class="pagination justify-content-end mb-0">
+
+            <!-- ==========================================
+                 Previous
+            =========================================== -->
+
+            <li class="page-item <%= !pagination.hasPrevPage ? 'disabled' : '' %>">
+
+                <a
+                    class="page-link"
+                    href="?page=<%= pagination.currentPage - 1 %>&search=<%= filters.search || '' %>&role=<%= filters.role || '' %>&status=<%= filters.status || '' %>&isEmailVerified=<%= filters.isEmailVerified ?? '' %>&sortBy=<%= filters.sortBy || 'createdAt' %>&sortOrder=<%= filters.sortOrder || 'desc' %>&limit=<%= limit %>"
+                >
+
+                    <i class="bi bi-chevron-left"></i>
+
+                </a>
+
+            </li>
+
+            <!-- ==========================================
+                 Page Numbers
+            =========================================== -->
+
+            <% for(let i = 1; i <= pagination.totalPages; i++){ %>
+
+                <li class="page-item <%= i === pagination.currentPage ? 'active' : '' %>">
+
+                    <a
+                        class="page-link"
+                        href="?page=<%= i %>&search=<%= filters.search || '' %>&role=<%= filters.role || '' %>&status=<%= filters.status || '' %>&isEmailVerified=<%= filters.isEmailVerified ?? '' %>&sortBy=<%= filters.sortBy || 'createdAt' %>&sortOrder=<%= filters.sortOrder || 'desc' %>&limit=<%= limit %>"
+                    >
+
+                        <%= i %>
+
+                    </a>
+
+                </li>
+
+            <% } %>
+
+            <!-- ==========================================
+                 Next
+            =========================================== -->
+
+            <li class="page-item <%= !pagination.hasNextPage ? 'disabled' : '' %>">
+
+                <a
+                    class="page-link"
+                    href="?page=<%= pagination.currentPage + 1 %>&search=<%= filters.search || '' %>&role=<%= filters.role || '' %>&status=<%= filters.status || '' %>&isEmailVerified=<%= filters.isEmailVerified ?? '' %>&sortBy=<%= filters.sortBy || 'createdAt' %>&sortOrder=<%= filters.sortOrder || 'desc' %>&limit=<%= limit %>"
+                >
+
+                    <i class="bi bi-chevron-right"></i>
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </nav>
+
+</section>
+
+<% } %>

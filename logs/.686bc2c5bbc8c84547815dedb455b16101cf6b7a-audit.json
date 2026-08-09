@@ -44,6 +44,36 @@
             "date": 1785609223838,
             "name": "logs\\exceptions-2026-08-02.log",
             "hash": "c922321e9a31254a1d2f8cbfdf33b289fb81419dde0b6465ee720ecc6621fdfc"
+        },
+        {
+            "date": 1785703133186,
+            "name": "logs\\exceptions-2026-08-03.log",
+            "hash": "2bc1246ad8275f669c756214d06324c8ff6e82de7588df1146c07f47d1254abe"
+        },
+        {
+            "date": 1785893660269,
+            "name": "logs\\exceptions-2026-08-05.log",
+            "hash": "878223569b80e49ce6266871728683f7d02de5918d8cc827ae456dd6e88d0f9b"
+        },
+        {
+            "date": 1786017103725,
+            "name": "logs\\exceptions-2026-08-06.log",
+            "hash": "0dd88d78637708338de1862dab5a41f38c4d0a8f148215c77925f44ae92e5f3b"
+        },
+        {
+            "date": 1786049026761,
+            "name": "logs\\exceptions-2026-08-07.log",
+            "hash": "7a20a19f92d27622e13415054959d3333d62c7045e5695de99ea7ea2f71e0dc3"
+        },
+        {
+            "date": 1786130176065,
+            "name": "logs\\exceptions-2026-08-08.log",
+            "hash": "2279988c167f37f376eff0050ea7a66c59a31438ca9834b5c799ecc07f8e5a63"
+        },
+        {
+            "date": 1786213805599,
+            "name": "logs\\exceptions-2026-08-09.log",
+            "hash": "a5b01e078e8da6997c1bd6db44100ade0159a7ec5b29eb7a0c2af59b2b5a30c5"
         }
     ],
     "hashType": "sha256"

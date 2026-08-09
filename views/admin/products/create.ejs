@@ -1,0 +1,705 @@
+<%- include("../layout/adminHeader", {
+    pageTitle: "Create Product",
+    pageStyle: "products"
+}) %>
+
+<div class="admin-wrapper">
+
+    <%- include("../layout/adminSidebar") %>
+
+    <div class="admin-main">
+
+        <%- include("../layout/adminTopbar") %>
+
+        <main class="admin-content product-create-page">
+
+            <!-- ==========================================================
+                 PAGE HEADER
+            =========================================================== -->
+
+            <section class="product-create-header">
+
+                <div>
+
+                    <h1>
+
+                        Create Product
+
+                    </h1>
+
+                    <p>
+
+                        Add a new product to your Plantora catalog.
+
+                    </p>
+
+                </div>
+
+                <a
+                    href="/admin/products"
+                    class="btn btn-outline-secondary"
+                >
+
+                    <i class="bi bi-arrow-left me-2"></i>
+
+                    Back to Products
+
+                </a>
+
+            </section>
+
+            <!-- ==========================================================
+                 PRODUCT FORM
+            =========================================================== -->
+
+            <form
+    action="/admin/products"
+    method="POST"
+    enctype="multipart/form-data"
+    id="productCreateForm"
+>
+                <div class="product-create-layout">
+
+                    <!-- ==========================================
+                         LEFT COLUMN
+                    =========================================== -->
+
+                    <div class="product-create-left">
+
+                        <!-- ======================================
+                             PRODUCT INFORMATION
+                        ======================================= -->
+
+                        <section class="product-section">
+
+                            <div class="product-section-header">
+
+                                <i class="bi bi-box-seam-fill"></i>
+
+                                <h3>
+
+                                    Product Information
+
+                                </h3>
+
+                            </div>
+
+                            <div class="product-section-body">
+
+                                <!-- Product Name -->
+
+                                <div class="product-form-group">
+
+                                    <label
+                                        class="product-form-label"
+                                        for="name"
+                                    >
+
+                                        Product Name
+
+                                    </label>
+
+                                    <input
+                                        id="name"
+                                        name="name"
+                                        type="text"
+                                        class="product-form-input form-control"
+                                        placeholder="Enter product name"
+                                        required
+                                    >
+
+                                </div>
+
+                                <!-- Short Description -->
+
+                                <div class="product-form-group">
+
+                                    <label
+                                        class="product-form-label"
+                                        for="shortDescription"
+                                    >
+
+                                        Short Description
+
+                                    </label>
+
+                                    <textarea
+                                        id="shortDescription"
+                                        name="shortDescription"
+                                        rows="3"
+                                        class="product-form-textarea form-control"
+                                        placeholder="Write a short description..."
+                                    ></textarea>
+
+                                </div>
+
+                                <!-- Description -->
+
+                                <div class="product-form-group">
+
+                                    <label
+                                        class="product-form-label"
+                                        for="description"
+                                    >
+
+                                        Product Description
+
+                                    </label>
+
+                                    <textarea
+                                        id="description"
+                                        name="description"
+                                        rows="8"
+                                        class="product-form-textarea form-control"
+                                        placeholder="Write complete product description..."
+                                    ></textarea>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+                                                <!-- ======================================
+                             PRICING
+                        ======================================= -->
+
+                        <section class="product-section">
+
+                            <div class="product-section-header">
+
+                                <i class="bi bi-cash-stack"></i>
+
+                                <h3>
+
+                                    Pricing
+
+                                </h3>
+
+                            </div>
+
+                            <div class="product-section-body">
+
+                                <div class="product-form-grid">
+
+                                    <!-- Price -->
+
+                                    <div class="product-form-group">
+
+                                        <label
+                                            class="product-form-label"
+                                            for="price"
+                                        >
+
+                                            Selling Price
+
+                                        </label>
+
+                                        <div class="product-input-group">
+
+                                            <span>
+
+                                                ₹
+
+                                            </span>
+
+                                            <input
+                                                type="number"
+                                                id="price"
+                                                name="price"
+                                                class="product-form-input form-control"
+                                                placeholder="0.00"
+                                                min="0"
+                                                required
+                                            >
+
+                                        </div>
+
+                                    </div>
+
+                                    <!-- Discount Price -->
+
+                                    <div class="product-form-group">
+
+                                        <label
+                                            class="product-form-label"
+                                            for="discountPrice"
+                                        >
+
+                                            Discount Price
+
+                                        </label>
+
+                                        <div class="product-input-group">
+
+                                            <span>
+
+                                                ₹
+
+                                            </span>
+
+                                            <input
+                                                type="number"
+                                                id="discountPrice"
+                                                name="discountPrice"
+                                                class="product-form-input form-control"
+                                                placeholder="Optional"
+                                                min="0"
+                                            >
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+                        <!-- ======================================
+                             INVENTORY
+                        ======================================= -->
+
+                        <section class="product-section">
+
+                            <div class="product-section-header">
+
+                                <i class="bi bi-boxes"></i>
+
+                                <h3>
+
+                                    Inventory
+
+                                </h3>
+
+                            </div>
+
+                            <div class="product-section-body">
+
+                                <div class="product-form-grid">
+
+                                    <!-- Stock -->
+
+                                    <div class="product-form-group">
+
+                                        <label
+                                            class="product-form-label"
+                                            for="stock"
+                                        >
+
+                                            Available Stock
+
+                                        </label>
+
+                                        <input
+                                            type="number"
+                                            id="stock"
+                                            name="stock"
+                                            class="product-form-input form-control"
+                                            placeholder="Enter stock quantity"
+                                            min="0"
+                                            required
+                                        >
+
+                                    </div>
+
+                                    <!-- Low Stock -->
+
+                                    <div class="product-form-group">
+
+                                        <label
+                                            class="product-form-label"
+                                            for="lowStockThreshold"
+                                        >
+
+                                            Low Stock Alert
+
+                                        </label>
+
+                                        <input
+                                            type="number"
+                                            id="lowStockThreshold"
+                                            name="lowStockThreshold"
+                                            class="product-form-input form-control"
+                                            placeholder="Example: 5"
+                                            min="0"
+                                        >
+
+                                        <small class="product-form-helper">
+
+                                            Product will be marked as low stock when quantity reaches this value.
+
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+                    </div>
+
+                    <!-- ==========================================
+                         RIGHT COLUMN
+                    =========================================== -->
+
+                    <aside class="product-create-right">
+
+                                                <!-- ======================================
+                             CATEGORY
+                        ======================================= -->
+
+                        <section class="product-section">
+
+                            <div class="product-section-header">
+
+                                <i class="bi bi-grid-fill"></i>
+
+                                <h3>
+
+                                    Category
+
+                                </h3>
+
+                            </div>
+
+                            <div class="product-section-body">
+
+                                <div class="product-form-group">
+
+                                    <label
+                                        for="category"
+                                        class="product-form-label"
+                                    >
+
+                                        Select Category
+
+                                    </label>
+
+                                    <select
+                                        id="category"
+                                        name="category"
+                                        class="product-form-select form-select"
+                                        required
+                                    >
+
+                                        <option value="">
+
+                                            Choose Category
+
+                                        </option>
+
+                                        <% categories.forEach(category => { %>
+
+                                            <option value="<%= category._id %>">
+
+                                                <%= category.name %>
+
+                                            </option>
+
+                                        <% }) %>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+                        <!-- ======================================
+                             BRAND
+                        ======================================= -->
+
+                        <section class="product-section">
+
+                            <div class="product-section-header">
+
+                                <i class="bi bi-award-fill"></i>
+
+                                <h3>
+
+                                    Brand
+
+                                </h3>
+
+                            </div>
+
+                            <div class="product-section-body">
+
+                                <div class="product-form-group">
+
+                                    <label
+                                        for="brand"
+                                        class="product-form-label"
+                                    >
+
+                                        Select Brand
+
+                                    </label>
+
+                                    <select
+                                        id="brand"
+                                        name="brand"
+                                        class="product-form-select form-select"
+                                        required
+                                    >
+
+                                        <option value="">
+
+                                            Choose Brand
+
+                                        </option>
+
+                                        <% brands.forEach(brand => { %>
+
+                                            <option value="<%= brand._id %>">
+
+                                                <%= brand.name %>
+
+                                            </option>
+
+                                        <% }) %>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+                        <!-- ======================================
+                             PRODUCT IMAGES
+                        ======================================= -->
+
+                        <section class="product-section">
+
+                            <div class="product-section-header">
+
+                                <i class="bi bi-images"></i>
+
+                                <h3>
+
+                                    Product Images
+
+                                </h3>
+
+                            </div>
+
+                            <div class="product-section-body">
+
+                                <div class="product-upload-box">
+
+                                    <input
+                                        type="file"
+                                        id="productImages"
+                                        name="images"
+                                        class="product-upload-input"
+                                        accept="image/*"
+                                        multiple
+                                        required
+                                    >
+
+                                    <label
+                                        for="productImages"
+                                        class="product-upload-label"
+                                    >
+
+                                        <i class="bi bi-cloud-arrow-up-fill"></i>
+
+                                        <h5>
+
+                                            Upload Product Images
+
+                                        </h5>
+
+                                        <p>
+
+                                            Click here or drag & drop images
+
+                                        </p>
+
+                                        <small>
+
+                                            JPG • PNG • WEBP
+
+                                        </small>
+
+                                    </label>
+
+                                </div>
+
+                                <div
+                                    id="imagePreview"
+                                    class="product-gallery-grid"
+                                ></div>
+
+                            </div>
+
+                        </section>
+
+                        <!-- ======================================
+                             SEO
+                        ======================================= -->
+
+                        <section class="product-section">
+
+                            <div class="product-section-header">
+
+                                <i class="bi bi-search"></i>
+
+                                <h3>
+
+                                    SEO Settings
+
+                                </h3>
+
+                            </div>
+
+                            <div class="product-section-body">
+
+                                <div class="product-form-group">
+
+                                    <label
+                                        for="metaTitle"
+                                        class="product-form-label"
+                                    >
+
+                                        Meta Title
+
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="metaTitle"
+                                        name="metaTitle"
+                                        class="product-form-input form-control"
+                                    >
+
+                                </div>
+
+                                <div class="product-form-group">
+
+                                    <label
+                                        for="metaDescription"
+                                        class="product-form-label"
+                                    >
+
+                                        Meta Description
+
+                                    </label>
+
+                                    <textarea
+                                        id="metaDescription"
+                                        name="metaDescription"
+                                        rows="4"
+                                        class="product-form-textarea form-control"
+                                    ></textarea>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+                        <!-- ======================================
+                             PRODUCT STATUS
+                        ======================================= -->
+
+                        <section class="product-section">
+
+                            <div class="product-section-header">
+
+                                <i class="bi bi-stars"></i>
+
+                                <h3>
+
+                                    Product Status
+
+                                </h3>
+
+                            </div>
+
+                            <div class="product-section-body">
+
+                                <div class="product-switch-box">
+
+                                    <div>
+
+                                        <h6>
+
+                                            Featured Product
+
+                                        </h6>
+
+                                        <small>
+
+                                            Display this product in featured sections.
+
+                                        </small>
+
+                                    </div>
+
+                                    <div class="form-check form-switch">
+
+                                        <input
+                                            class="form-check-input"
+                                            type="checkbox"
+                                            id="featured"
+                                            name="isFeatured"
+                                            value="true"
+                                        >
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+                        <!-- ======================================
+                             ACTIONS
+                        ======================================= -->
+
+                        <div class="product-submit-wrapper">
+
+                            <button
+                                type="submit"
+                                class="btn btn-success product-submit-btn"
+                            >
+
+                                <i class="bi bi-check-circle-fill me-2"></i>
+
+                                Create Product
+
+                            </button>
+
+                            <a
+                                href="/admin/products"
+                                class="btn btn-outline-secondary product-cancel-btn"
+                            >
+
+                                Cancel
+
+                            </a>
+
+                        </div>
+
+                    </aside>
+
+                </div>
+
+            </form>
+
+        </main>
+
+    </div>
+
+</div>
+
+<%- include("../layout/adminFooter") %>

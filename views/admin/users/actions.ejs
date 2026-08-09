@@ -1,0 +1,80 @@
+<%
+const isCurrentAdmin =
+    String(user._id) === String(currentUser._id);
+%>
+
+<% if (isCurrentAdmin) { %>
+
+<div class="text-center">
+
+    <span class="badge bg-secondary px-3 py-2">
+
+        <i class="bi bi-shield-lock-fill me-1"></i>
+
+        Protected
+
+    </span>
+
+</div>
+
+<% } else { %>
+
+<div class="premium-action-group">
+
+    <!-- EDIT -->
+
+    <button
+        type="button"
+        class="premium-action-btn edit-btn"
+
+        data-bs-toggle="modal"
+
+        data-bs-target="#editUserModal"
+
+        data-user-id="<%= user._id %>"
+
+        data-user-name="<%= user.name %>"
+
+        data-user-email="<%= user.email %>"
+
+        data-user-role="<%= user.role === 'admin'
+            ? 'admin'
+            : (user.seller?.status === 'approved'
+                ? 'seller'
+                : 'customer') %>"
+
+        data-user-avatar="<%= user.profileImage?.url || process.env.DEFAULT_PROFILE_IMAGE_URL %>"
+
+        data-user-created="<%= new Date(user.createdAt).toLocaleDateString('en-GB') %>"
+
+        title="Edit User"
+    >
+
+        <i class="bi bi-pencil-square"></i>
+
+    </button>
+
+    <!-- DELETE -->
+
+    <button
+        type="button"
+        class="premium-action-btn delete-btn"
+
+        data-bs-toggle="modal"
+
+        data-bs-target="#deleteUserModal"
+
+        data-user-id="<%= user._id %>"
+
+        data-user-name="<%= user.name %>"
+
+        title="Move To Trash"
+    >
+
+        <i class="bi bi-trash3-fill"></i>
+
+    </button>
+
+</div>
+
+<% } %>

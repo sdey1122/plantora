@@ -1,0 +1,255 @@
+2026-08-07 02:48:54 [ERROR]: Error: Failed to lookup view "product/index" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showProductsPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ProductController.js:232:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-07 02:49:31 [ERROR]: Error: Failed to lookup view "product/trash" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showTrashProductsPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ProductController.js:2240:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-07 03:05:23 [ERROR]: Error: Failed to lookup view "/admin/products/index" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showProductsPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ProductController.js:232:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-07 03:15:50 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\products\index.ejs:85
+    83|             =========================================== -->
+    84| 
+ >> 85|             <%- include("./statistics") %>
+    86| 
+    87|             <!-- ==========================================
+    88|                     SEARCH / SORT
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\products\statistics.ejs:27
+    25|             <h3>
+    26| 
+ >> 27|                 <%= statistics.totalProducts || 0 %>
+    28| 
+    29|             </h3>
+    30| 
+
+statistics is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:12:26)
+    at statistics (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:29:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-07 03:16:16 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\products\index.ejs:85
+    83|             =========================================== -->
+    84| 
+ >> 85|             <%- include("./statistics") %>
+    86| 
+    87|             <!-- ==========================================
+    88|                     SEARCH / SORT
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\products\statistics.ejs:27
+    25|             <h3>
+    26| 
+ >> 27|                 <%= statistics.totalProducts || 0 %>
+    28| 
+    29|             </h3>
+    30| 
+
+statistics is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:12:26)
+    at statistics (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:29:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-07 03:16:19 [ERROR]: Error: Failed to lookup view "admin/products/trash" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showTrashProductsPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ProductController.js:2240:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-07 03:17:29 [ERROR]: Error: Failed to lookup view "admin/products-trash/index" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showTrashProductsPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ProductController.js:2240:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-07 03:20:22 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\product-trash\index.ejs:55
+    53|             =========================================================== -->
+    54| 
+ >> 55|             <%- include("./statistics") %>
+    56| 
+    57|             <!-- ==========================================================
+    58|                  SEARCH / SORT / SHOW
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\product-trash\statistics.ejs:29
+    27|             <h3>
+    28| 
+ >> 29|                 <%= statistics.deletedProducts || 0 %>
+    30| 
+    31|             </h3>
+    32| 
+
+statistics is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:12:26)
+    at statistics (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:23:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-07 03:25:25 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\product-trash\index.ejs:55
+    53|             =========================================================== -->
+    54| 
+ >> 55|             <%- include("./statistics") %>
+    56| 
+    57|             <!-- ==========================================================
+    58|                  SEARCH / SORT / SHOW
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\product-trash\statistics.ejs:29
+    27|             <h3>
+    28| 
+ >> 29|                 <%= statistics.deletedProducts || 0 %>
+    30| 
+    31|             </h3>
+    32| 
+
+statistics is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:12:26)
+    at statistics (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:23:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-07 03:47:25 [ERROR]: Error: Failed to lookup view "/admin/products/index" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showProductsPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ProductController.js:243:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-07 06:45:45 [ERROR]: Error: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\products\index.ejs:321
+    319|             =========================================================== -->
+    320| 
+ >> 321|             <%- include("./partials/table") %>
+    322| 
+    323|             <!-- ==========================================================
+    324|                  PAGINATION
+
+Could not find the include file "./partials/table"
+    at getIncludePath (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:170:19)
+    at includeFile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:284:21)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:24)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:68:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-07 06:45:58 [ERROR]: Error: Failed to lookup view "admin/product-trash/index" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showTrashProductsPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ProductController.js:2240:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-07 06:46:05 [ERROR]: Error: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\products\index.ejs:321
+    319|             =========================================================== -->
+    320| 
+ >> 321|             <%- include("./partials/table") %>
+    322| 
+    323|             <!-- ==========================================================
+    324|                  PAGINATION
+
+Could not find the include file "./partials/table"
+    at getIncludePath (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:170:19)
+    at includeFile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:284:21)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:24)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:68:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-07 06:46:43 [ERROR]: Error: Failed to lookup view "admin/product-trash/index" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showTrashProductsPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ProductController.js:2240:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-07 07:07:18 [ERROR]: Error: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\products\index.ejs:321
+    319|             =========================================================== -->
+    320| 
+ >> 321|             <%- include("./partials/table") %>
+    322| 
+    323|             <!-- ==========================================================
+    324|                  PAGINATION
+
+Could not find the include file "./partials/table"
+    at getIncludePath (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:170:19)
+    at includeFile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:284:21)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:24)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:68:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-07 07:07:55 [ERROR]: Show products page failed: req.flash is not a function
+2026-08-07 07:07:55 [ERROR]: TypeError: req.flash is not a function
+    at showProductsPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ProductController.js:253:11)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authorizeRoles.js:23:12
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at authMiddleware (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authMiddleware.js:71:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-07 07:08:02 [ERROR]: Error: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\products\trash.ejs:286
+    284|             </div>
+    285| 
+ >> 286|             <%- include("./pagination") %>
+    287| 
+    288|         </main>
+    289| 
+
+Could not find the include file "./pagination"
+    at getIncludePath (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:170:19)
+    at includeFile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:284:21)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:24)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:71:17)
+    at trash (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-07 07:09:19 [ERROR]: Show products page failed: req.flash is not a function
+2026-08-07 07:09:19 [ERROR]: TypeError: req.flash is not a function
+    at showProductsPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ProductController.js:253:11)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authorizeRoles.js:23:12
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at authMiddleware (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authMiddleware.js:71:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-07 07:32:02 [ERROR]: Show products page failed: req.flash is not a function
+2026-08-07 07:32:02 [ERROR]: TypeError: req.flash is not a function
+    at showProductsPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ProductController.js:253:11)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authorizeRoles.js:23:12
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at authMiddleware (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authMiddleware.js:71:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-07 11:19:20 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `approve_seller` is not a valid enum value for path `action`., severity: `warning` is not a valid enum value for path `severity`.

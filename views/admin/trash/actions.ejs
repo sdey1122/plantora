@@ -1,0 +1,65 @@
+<div class="action-group">
+
+    <!-- Restore -->
+
+    <button
+        type="button"
+        class="action-btn btn-restore"
+
+        title="Restore User"
+
+        data-bs-toggle="modal"
+
+        data-bs-target="#restoreUserModal"
+
+        data-user-id="<%= user._id %>"
+
+        data-user-name="<%= user.name %>"
+    >
+
+        <i class="bi bi-arrow-counterclockwise"></i>
+
+    </button>
+
+    <!-- Permanent Delete -->
+
+    <% const isCurrentAdmin = String(user._id) === String(currentUser._id); %>
+
+    <% if(isCurrentAdmin){ %>
+
+        <button
+            class="action-btn btn-disabled"
+
+            disabled
+
+            title="You cannot delete your own account"
+        >
+
+            <i class="bi bi-shield-lock-fill"></i>
+
+        </button>
+
+    <% }else{ %>
+
+        <button
+            type="button"
+            class="action-btn btn-permanent"
+
+            title="Delete Permanently"
+
+            data-bs-toggle="modal"
+
+            data-bs-target="#permanentDeleteModal"
+
+            data-user-id="<%= user._id %>"
+
+            data-user-name="<%= user.name %>"
+        >
+
+            <i class="bi bi-trash3-fill"></i>
+
+        </button>
+
+    <% } %>
+
+</div>

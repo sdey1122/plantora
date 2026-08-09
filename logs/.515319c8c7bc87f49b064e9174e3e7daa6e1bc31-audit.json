@@ -44,6 +44,36 @@
             "date": 1785609223839,
             "name": "logs\\rejections-2026-08-02.log",
             "hash": "11c0e2e7bd267036825b987cf2d7bb42151b46f10c6f6e1844fbc7ebc2ee13cc"
+        },
+        {
+            "date": 1785703133188,
+            "name": "logs\\rejections-2026-08-03.log",
+            "hash": "6d7d844379a32ffb727233933f03828cd1012808619518a7d3679e1f17887a92"
+        },
+        {
+            "date": 1785893660271,
+            "name": "logs\\rejections-2026-08-05.log",
+            "hash": "3a36f252e5a3875afab3e7c580c067731596df9067bb5ab73171132aca7d0730"
+        },
+        {
+            "date": 1786017103727,
+            "name": "logs\\rejections-2026-08-06.log",
+            "hash": "7a59bb9364d14c84f7a705fa881b9bf829f5ad10056b396d5c4260fb7d89d3d4"
+        },
+        {
+            "date": 1786049026762,
+            "name": "logs\\rejections-2026-08-07.log",
+            "hash": "52f6df0fb3792ba2da1a29c9e1132e52761c8240745080b34d1280b483ad8b49"
+        },
+        {
+            "date": 1786130176066,
+            "name": "logs\\rejections-2026-08-08.log",
+            "hash": "613d4239795aa65dbc6027d48eb12a494c9ced1efbc3475fd44ad6b20fc63792"
+        },
+        {
+            "date": 1786213805600,
+            "name": "logs\\rejections-2026-08-09.log",
+            "hash": "5148725ba1b20e6f8a95498a4f363ec8786cb2516f947c7a05fa44ad3b4dd88f"
         }
     ],
     "hashType": "sha256"

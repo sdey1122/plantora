@@ -1,0 +1,15 @@
+2026-08-05 07:52:04 [ERROR]: Error: Failed to lookup view "seller/dashboard/index" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showDashboard (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\SellerDashboardController.js:14:18)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at sellerMiddleware (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\sellerMiddleware.js:22:10)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authorizeRoles.js:23:12
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+2026-08-05 07:53:09 [ERROR]: Soft delete user failed: req.flash is not a function
+2026-08-05 07:53:09 [ERROR]: TypeError: req.flash is not a function
+    at softDeleteUser (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\UserController.js:1128:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)

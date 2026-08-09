@@ -1,0 +1,79 @@
+<!-- ==========================================================
+     USER STATISTICS
+========================================================== -->
+
+<section class="user-statistics">
+  <div class="row g-4">
+    <!-- ==========================================
+             Total Users
+        =========================================== -->
+
+    <div class="col-xl-3 col-md-6">
+      <div class="statistics-card total-users">
+        <div class="statistics-icon">
+          <i class="bi bi-people-fill"></i>
+        </div>
+
+        <div class="statistics-content">
+          <span> Total Users </span>
+
+          <h3><%= statistics.totalUsers || 0 %></h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+             Customers
+        =========================================== -->
+
+    <div class="col-xl-3 col-md-6">
+      <div class="statistics-card customers">
+        <div class="statistics-icon">
+          <i class="bi bi-person-fill"></i>
+        </div>
+
+        <div class="statistics-content">
+          <span> Customers </span>
+
+          <h3><%= statistics.customers || 0 %></h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+             Sellers
+        =========================================== -->
+
+    <div class="col-xl-3 col-md-6">
+      <div class="statistics-card sellers">
+        <div class="statistics-icon">
+          <i class="bi bi-shop"></i>
+        </div>
+
+        <div class="statistics-content">
+          <span> Sellers </span>
+
+          <h3><%= statistics.sellers || 0 %></h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+             Verified
+        =========================================== -->
+
+    <div class="col-xl-3 col-md-6">
+      <div class="statistics-card verified">
+        <div class="statistics-icon">
+          <i class="bi bi-patch-check-fill"></i>
+        </div>
+
+        <div class="statistics-content">
+          <span> Verified </span>
+
+          <h3><%= statistics.verified || 0 %></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

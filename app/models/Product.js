@@ -284,7 +284,7 @@ const productSchema = new mongoose.Schema(
 );
 
 // Generate slug from product name
-productSchema.pre("save", function (next) {
+productSchema.pre("save", function () {
   if (this.isModified("name")) {
     this.slug = slugify(this.name, {
       lower: true,
@@ -298,8 +298,6 @@ productSchema.pre("save", function (next) {
   } else if (this.status === "out-of-stock") {
     this.status = "active";
   }
-
-  next();
 });
 
 // Check whether the product is running low on stock

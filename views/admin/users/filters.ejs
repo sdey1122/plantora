@@ -1,0 +1,349 @@
+<!-- ==========================================================
+     USER FILTERS
+========================================================== -->
+
+<section class="admin-card user-filter-card">
+
+    <form
+        action="/admin/users"
+        method="GET"
+    >
+
+        <div class="row g-3 align-items-end">
+
+            <!-- ==========================================
+                 Search
+            =========================================== -->
+
+            <div class="col-xl-3 col-lg-6">
+
+                <label class="form-label">
+
+                    Search
+
+                </label>
+
+                <div class="input-group">
+
+                    <span class="input-group-text">
+
+                        <i class="bi bi-search"></i>
+
+                    </span>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="search"
+                        placeholder="Name / Email..."
+                        value="<%= filters.search || '' %>"
+                    >
+
+                </div>
+
+            </div>
+
+            <!-- ==========================================
+                 Role
+            =========================================== -->
+
+            <div class="col-xl-2 col-lg-6">
+
+                <label class="form-label">
+
+                    Role
+
+                </label>
+
+                <select
+                    name="role"
+                    class="form-select"
+                >
+
+                    <option value="">
+
+                        All Roles
+
+                    </option>
+
+                    <option
+                        value="customer"
+                        <%= filters.role === "customer" ? "selected" : "" %>
+                    >
+
+                        Customer
+
+                    </option>
+
+                    <option
+                        value="seller"
+                        <%= filters.role === "seller" ? "selected" : "" %>
+                    >
+
+                        Seller
+
+                    </option>
+
+                    <option
+                        value="admin"
+                        <%= filters.role === "admin" ? "selected" : "" %>
+                    >
+
+                        Admin
+
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- ==========================================
+                 Status
+            =========================================== -->
+
+            <div class="col-xl-2 col-lg-6">
+
+                <label class="form-label">
+
+                    Status
+
+                </label>
+
+                <select
+                    name="status"
+                    class="form-select"
+                >
+
+                    <option value="">
+
+                        All
+
+                    </option>
+
+                    <option
+                        value="active"
+                        <%= filters.status === "active" ? "selected" : "" %>
+                    >
+
+                        Active
+
+                    </option>
+
+                    <option
+                        value="blocked"
+                        <%= filters.status === "blocked" ? "selected" : "" %>
+                    >
+
+                        Blocked
+
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- ==========================================
+                 Verification
+            =========================================== -->
+
+            <div class="col-xl-2 col-lg-6">
+
+                <label class="form-label">
+
+                    Verification
+
+                </label>
+
+                <select
+                    name="isEmailVerified"
+                    class="form-select"
+                >
+
+                    <option value="">
+
+                        All
+
+                    </option>
+
+                    <option
+                        value="true"
+                        <%= filters.isEmailVerified === true ? "selected" : "" %>
+                    >
+
+                        Verified
+
+                    </option>
+
+                    <option
+                        value="false"
+                        <%= filters.isEmailVerified === false ? "selected" : "" %>
+                    >
+
+                        Unverified
+
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- ==========================================
+                 Sort By
+            =========================================== -->
+
+            <div class="col-xl-2 col-lg-6">
+
+                <label class="form-label">
+
+                    Sort By
+
+                </label>
+
+                <select
+                    name="sortBy"
+                    class="form-select"
+                >
+
+                    <option
+                        value="createdAt"
+                        <%= filters.sortBy === "createdAt" ? "selected" : "" %>
+                    >
+
+                        Created Date
+
+                    </option>
+
+                    <option
+                        value="name"
+                        <%= filters.sortBy === "name" ? "selected" : "" %>
+                    >
+
+                        Name
+
+                    </option>
+
+                    <option
+                        value="email"
+                        <%= filters.sortBy === "email" ? "selected" : "" %>
+                    >
+
+                        Email
+
+                    </option>
+
+                    <option
+                        value="lastLogin"
+                        <%= filters.sortBy === "lastLogin" ? "selected" : "" %>
+                    >
+
+                        Last Login
+
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- ==========================================
+                 Bottom Actions
+            =========================================== -->
+
+            <div class="col-12">
+
+                <div class="filter-action-bar">
+
+                    <div class="d-flex gap-2">
+
+                        <button
+                            type="submit"
+                            class="btn btn-success"
+                        >
+
+                            <i class="bi bi-funnel-fill me-2"></i>
+
+                            Apply Filters
+
+                        </button>
+
+                        <a
+                            href="/admin/users"
+                            class="btn btn-outline-secondary"
+                        >
+
+                            <i class="bi bi-arrow-clockwise me-2"></i>
+
+                            Reset
+
+                        </a>
+
+                    </div>
+
+                    <div class="filter-right-actions">
+
+                        <label class="me-2">
+
+                            Show
+
+                        </label>
+
+                        <select
+                            name="limit"
+                            class="form-select form-select-sm"
+                            onchange="this.form.submit()"
+                        >
+
+                            <option
+                                value="10"
+                                <%= limit == 10 ? "selected" : "" %>
+                            >
+
+                                10
+
+                            </option>
+
+                            <option
+                                value="25"
+                                <%= limit == 25 ? "selected" : "" %>
+                            >
+
+                                25
+
+                            </option>
+
+                            <option
+                                value="50"
+                                <%= limit == 50 ? "selected" : "" %>
+                            >
+
+                                50
+
+                            </option>
+
+                            <option
+                                value="100"
+                                <%= limit == 100 ? "selected" : "" %>
+                            >
+
+                                100
+
+                            </option>
+
+                        </select>
+
+                        <span class="ms-2">
+
+                            entries
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </form>
+
+</section>

@@ -17,7 +17,6 @@ const {
 
 class NotificationController {
   // Show Notifications Page
-  // Show Notifications Page
   async showNotificationsPage(req, res, next) {
     try {
       const notifications = await Notification.find({

@@ -1,0 +1,349 @@
+2026-08-03 04:13:54 [ERROR]: TypeError: argument handler must be a function
+    at Route.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:228:15)
+    at Router.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:448:19)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\userRoute.js:60:8)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+2026-08-03 04:40:58 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\UserController.js:1220
+const updateUserName = async (req, res, next) => {
+      ^^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier 'updateUserName'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\userRoute.js:5:24)
+2026-08-03 04:41:49 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\UserController.js:1220
+const updateUserName = async (req, res, next) => {
+      ^^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier 'updateUserName'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\userRoute.js:5:24)
+2026-08-03 04:42:14 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\UserController.js:1220
+const updateUserName = async (req, res, next) => {
+      ^^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier 'updateUserName'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\userRoute.js:5:24)
+2026-08-03 04:42:33 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\UserController.js:1220
+const updateUserName = async (req, res, next) => {
+      ^^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier 'updateUserName'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\userRoute.js:5:24)
+2026-08-03 04:42:35 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\UserController.js:1220
+const updateUserName = async (req, res, next) => {
+      ^^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier 'updateUserName'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\userRoute.js:5:24)
+2026-08-03 04:42:46 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\UserController.js:1220
+const updateUserName = async (req, res, next) => {
+      ^^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier 'updateUserName'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\userRoute.js:5:24)
+2026-08-03 04:42:59 [ERROR]: TypeError: argument handler must be a function
+    at Route.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:228:15)
+    at Router.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:448:19)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\userRoute.js:60:8)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+2026-08-03 04:43:13 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\UserController.js:1219
+const updateUserName = async (req, res, next) => {
+      ^^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier 'updateUserName'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\userRoute.js:5:24)
+2026-08-03 04:43:16 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\UserController.js:1219
+const updateUserName = async (req, res, next) => {
+      ^^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier 'updateUserName'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\userRoute.js:5:24)
+2026-08-03 04:43:17 [ERROR]: TypeError: argument handler must be a function
+    at Route.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:228:15)
+    at Router.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:448:19)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\userRoute.js:60:8)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+2026-08-03 04:43:18 [ERROR]: TypeError: argument handler must be a function
+    at Route.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:228:15)
+    at Router.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:448:19)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\userRoute.js:60:8)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+2026-08-03 04:43:33 [ERROR]: TypeError: argument handler must be a function
+    at Route.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:228:15)
+    at Router.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:448:19)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\userRoute.js:60:8)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+2026-08-03 04:43:34 [ERROR]: TypeError: argument handler must be a function
+    at Route.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:228:15)
+    at Router.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:448:19)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\userRoute.js:60:8)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+2026-08-03 04:43:56 [ERROR]: TypeError: argument handler must be a function
+    at Route.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:228:15)
+    at Router.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:448:19)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\userRoute.js:60:8)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+2026-08-03 04:52:31 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\UserController.js:1218
+async updateUserName(req, res, next) {
+      ^^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier 'updateUserName'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\userRoute.js:5:24)
+2026-08-03 04:52:34 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\UserController.js:1218
+async updateUserName(req, res, next) {
+      ^^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier 'updateUserName'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\userRoute.js:5:24)
+2026-08-03 04:52:36 [ERROR]: TypeError: argument handler must be a function
+    at Route.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:228:15)
+    at Router.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:448:19)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\userRoute.js:60:8)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+2026-08-03 04:52:46 [ERROR]: TypeError: argument handler must be a function
+    at Route.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:228:15)
+    at Router.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:448:19)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\userRoute.js:60:8)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+2026-08-03 05:28:47 [ERROR]: TypeError: argument handler must be a function
+    at Route.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:228:15)
+    at Router.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:448:19)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\userRoute.js:60:8)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+2026-08-03 08:35:32 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\UserController.js:243
+    }
+    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\userRoute.js:5:24)
+2026-08-03 08:35:34 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\UserController.js:273
+    }
+    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\userRoute.js:5:24)
+2026-08-03 08:35:42 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\UserController.js:245
+    }
+    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\userRoute.js:5:24)
+2026-08-03 13:18:56 [ERROR]: TypeError: upload.single is not a function
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\userRoute.js:61:10)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app.js:24:20)
+2026-08-03 13:20:09 [ERROR]: TypeError: upload.single is not a function
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\userRoute.js:61:10)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app.js:24:20)
+2026-08-03 13:20:12 [ERROR]: TypeError: upload.single is not a function
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\userRoute.js:61:10)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app.js:24:20)
+2026-08-03 13:26:40 [ERROR]: TypeError: upload.single is not a function
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\userRoute.js:61:10)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app.js:24:20)

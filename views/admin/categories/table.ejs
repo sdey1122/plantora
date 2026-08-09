@@ -1,0 +1,209 @@
+<% if (categories.length > 0) { %>
+
+<div class="table-responsive">
+
+    <table class="table category-table align-middle">
+
+        <thead>
+
+            <tr>
+
+                <th width="170">
+
+                    ID
+
+                </th>
+
+                <th>
+
+                    Category Name
+
+                </th>
+
+                <th class="text-center" width="140">
+
+                    Products
+
+                </th>
+
+                <th width="170">
+
+                    Created
+
+                </th>
+
+                <th class="text-center" width="150">
+
+                    Actions
+
+                </th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <% categories.forEach(category => { %>
+
+                <tr>
+
+                    <!-- ========================================= -->
+                    <!-- ID -->
+                    <!-- ========================================= -->
+
+                    <td>
+
+                        <small
+    class="copy-mongo-id"
+    data-id="<%= category._id %>"
+    title="Click to copy Mongo ID"
+>
+
+    <%= category._id.toString().slice(0,4).toUpperCase() %>...
+    <%= category._id.toString().slice(-4).toUpperCase() %>
+
+</small>
+
+                    </td>
+
+                    <!-- ========================================= -->
+                    <!-- CATEGORY -->
+                    <!-- ========================================= -->
+
+                    <td>
+
+                        <div class="category-info">
+
+                            <h6>
+
+                                <%= category.name %>
+
+                            </h6>
+
+                        </div>
+
+                    </td>
+
+                    <!-- ========================================= -->
+                    <!-- PRODUCT COUNT -->
+                    <!-- ========================================= -->
+
+                    <td class="text-center">
+
+                        <span class="badge category-product-badge">
+
+                            <%= category.totalProducts || 0 %>
+
+                        </span>
+
+                    </td>
+
+                    <!-- ========================================= -->
+                    <!-- CREATED -->
+                    <!-- ========================================= -->
+
+                    <td>
+
+                        <span class="category-date">
+
+                            <%= new Date(category.createdAt).toLocaleDateString(
+                                "en-IN",
+                                {
+                                    day: "2-digit",
+                                    month: "short",
+                                    year: "numeric"
+                                }
+                            ) %>
+
+                        </span>
+
+                    </td>
+
+                    <!-- ========================================= -->
+                    <!-- ACTIONS -->
+                    <!-- ========================================= -->
+
+                    <td>
+
+                        <div class="category-actions">
+
+                            <a
+                                href="/admin/categories/<%= category._id %>/edit"
+                                class="btn btn-outline-primary btn-sm"
+                                title="Edit"
+                            >
+
+                                <i class="bi bi-pencil-square"></i>
+
+                            </a>
+
+                            <form
+                                action="/admin/categories/<%= category._id %>?_method=DELETE"
+                                method="POST"
+                                class="d-inline category-delete-form"
+                            >
+
+                                <button
+                                    type="submit"
+                                    class="btn btn-outline-danger btn-sm category-delete-btn"
+                                    data-name="<%= category.name %>"
+                                    title="Delete"
+                                >
+
+                                    <i class="bi bi-trash3"></i>
+
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+            <% }) %>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<% } else { %>
+
+<div class="empty-state">
+
+    <div class="empty-icon">
+
+        <i class="bi bi-grid"></i>
+
+    </div>
+
+    <h3>
+
+        No Categories Found
+
+    </h3>
+
+    <p>
+
+        There are no categories available yet.
+
+    </p>
+
+    <a
+        href="/admin/categories/create"
+        class="btn btn-success"
+    >
+
+        <i class="bi bi-plus-circle me-2"></i>
+
+        Create First Category
+
+    </a>
+
+</div>
+
+<% } %>

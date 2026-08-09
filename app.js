@@ -42,8 +42,6 @@ const errorMiddleware = require("./app/middlewares/errorMiddleware");
 // Create Express application
 const app = express();
 
-app.use(methodOverride("_method"));
-
 // Trust proxy
 app.set("trust proxy", 1);
 
@@ -71,6 +69,8 @@ app.use(
     extended: true,
   }),
 );
+
+app.use(methodOverride("_method"));
 
 // Parse cookies
 app.use(cookieParser());
@@ -117,13 +117,13 @@ app.use("/auth", authRoutes);
 app.use("/admin/users", userRoutes);
 
 // Category
-app.use("/categories", categoryRoutes);
+app.use("/admin/categories", categoryRoutes);
 
 // Brand
-app.use("/brands", brandRoutes);
+app.use("/admin/brands", brandRoutes);
 
-// Product
-app.use("/products", productRoutes);
+// Admin Product Management
+app.use("/admin/products", productRoutes);
 
 // Review
 app.use("/reviews", reviewRoutes);

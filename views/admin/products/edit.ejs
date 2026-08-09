@@ -1,0 +1,898 @@
+<%- include("../layout/adminHeader", {
+    pageTitle: "Edit Product",
+    pageStyle: "products"
+}) %>
+
+<div class="admin-wrapper">
+
+    <%- include("../layout/adminSidebar") %>
+
+    <div class="admin-main">
+
+        <%- include("../layout/adminTopbar") %>
+
+        <main class="admin-content product-create-page">
+
+            <!-- ==========================================================
+                 PAGE HEADER
+            =========================================================== -->
+
+            <section class="product-create-header">
+
+                <div>
+
+                    <h1>
+                        Edit Product
+                    </h1>
+
+                    <p>
+                        Update your product information.
+                    </p>
+
+                </div>
+
+                <a
+                    href="/admin/products"
+                    class="btn btn-outline-secondary"
+                >
+                    <i class="bi bi-arrow-left me-2"></i>
+                    Back to Products
+                </a>
+
+            </section>
+
+
+            <!-- ==========================================================
+                 PRODUCT FORM
+            =========================================================== -->
+
+            <form
+    action="/admin/products/<%= product._id %>?_method=PUT"
+    method="POST"
+    enctype="multipart/form-data"
+    id="productEditForm"
+>
+
+                <!-- IMPORTANT:
+                     Express method-override converts this POST
+                     into PUT /admin/products/:productId
+                -->
+
+                <!-- <input
+                    type="hidden"
+                    name="_method"
+                    value="PUT"
+                > -->
+
+
+                <div class="product-create-layout">
+
+
+                    <!-- ==================================================
+                         LEFT COLUMN
+                    =================================================== -->
+
+                    <div class="product-create-left">
+
+
+                        <!-- ==================================================
+                             PRODUCT INFORMATION
+                        =================================================== -->
+
+                        <section class="product-section">
+
+                            <div class="product-section-header">
+
+                                <i class="bi bi-box-seam-fill"></i>
+
+                                <h3>
+                                    Product Information
+                                </h3>
+
+                            </div>
+
+
+                            <div class="product-section-body">
+
+
+                                <!-- Product Name -->
+
+                                <div class="product-form-group">
+
+                                    <label
+                                        for="name"
+                                        class="product-form-label"
+                                    >
+                                        Product Name
+                                    </label>
+
+                                    <input
+                                        id="name"
+                                        name="name"
+                                        type="text"
+                                        class="product-form-input form-control"
+                                        value="<%= product.name || "" %>"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <!-- SKU -->
+
+                                <div class="product-form-group">
+
+                                    <label
+                                        for="sku"
+                                        class="product-form-label"
+                                    >
+                                        SKU
+                                    </label>
+
+                                    <input
+                                        id="sku"
+                                        type="text"
+                                        class="product-form-input form-control"
+                                        value="<%= product.sku || "" %>"
+                                        readonly
+                                    >
+
+                                    <small class="text-muted">
+                                        SKU cannot be changed.
+                                    </small>
+
+                                </div>
+
+
+                                <!-- Short Description -->
+
+                                <div class="product-form-group">
+
+                                    <label
+                                        for="shortDescription"
+                                        class="product-form-label"
+                                    >
+                                        Short Description
+                                    </label>
+
+                                    <textarea
+                                        id="shortDescription"
+                                        name="shortDescription"
+                                        rows="3"
+                                        class="product-form-textarea form-control"
+                                    ><%= product.shortDescription || "" %></textarea>
+
+                                </div>
+
+
+                                <!-- Description -->
+
+                                <div class="product-form-group">
+
+                                    <label
+                                        for="description"
+                                        class="product-form-label"
+                                    >
+                                        Product Description
+                                    </label>
+
+                                    <textarea
+                                        id="description"
+                                        name="description"
+                                        rows="8"
+                                        class="product-form-textarea form-control"
+                                        required
+                                    ><%= product.description || "" %></textarea>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+
+
+                        <!-- ==================================================
+                             PRICING
+                        =================================================== -->
+
+                        <section class="product-section">
+
+                            <div class="product-section-header">
+
+                                <i class="bi bi-cash-stack"></i>
+
+                                <h3>
+                                    Pricing
+                                </h3>
+
+                            </div>
+
+
+                            <div class="product-section-body">
+
+                                <div class="product-form-grid">
+
+
+                                    <!-- Selling Price -->
+
+                                    <div class="product-form-group">
+
+                                        <label
+                                            for="price"
+                                            class="product-form-label"
+                                        >
+                                            Selling Price
+                                        </label>
+
+                                        <div class="product-input-group">
+
+                                            <span>
+                                                ₹
+                                            </span>
+
+                                            <input
+                                                type="number"
+                                                id="price"
+                                                name="price"
+                                                class="product-form-input form-control"
+                                                value="<%= product.price ?? 0 %>"
+                                                min="0"
+                                                step="0.01"
+                                                required
+                                            >
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- Discount Price -->
+
+                                    <div class="product-form-group">
+
+                                        <label
+                                            for="discountPrice"
+                                            class="product-form-label"
+                                        >
+                                            Discount Price
+                                        </label>
+
+                                        <div class="product-input-group">
+
+                                            <span>
+                                                ₹
+                                            </span>
+
+                                            <input
+                                                type="number"
+                                                id="discountPrice"
+                                                name="discountPrice"
+                                                class="product-form-input form-control"
+                                                value="<%= product.discountPrice ?? "" %>"
+                                                min="0"
+                                                step="0.01"
+                                            >
+
+                                        </div>
+
+                                        <small class="text-muted">
+                                            Leave empty if there is no discount.
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+
+
+                        <!-- ==================================================
+                             INVENTORY
+                        =================================================== -->
+
+                        <section class="product-section">
+
+                            <div class="product-section-header">
+
+                                <i class="bi bi-boxes"></i>
+
+                                <h3>
+                                    Inventory
+                                </h3>
+
+                            </div>
+
+
+                            <div class="product-section-body">
+
+                                <div class="product-form-grid">
+
+
+                                    <!-- Stock -->
+
+                                    <div class="product-form-group">
+
+                                        <label
+                                            for="stock"
+                                            class="product-form-label"
+                                        >
+                                            Available Stock
+                                        </label>
+
+                                        <input
+                                            type="number"
+                                            id="stock"
+                                            name="stock"
+                                            class="product-form-input form-control"
+                                            value="<%= product.stock ?? 0 %>"
+                                            min="0"
+                                            required
+                                        >
+
+                                    </div>
+
+
+                                    <!-- Low Stock Threshold -->
+
+                                    <div class="product-form-group">
+
+                                        <label
+                                            for="lowStockThreshold"
+                                            class="product-form-label"
+                                        >
+                                            Low Stock Alert
+                                        </label>
+
+                                        <input
+                                            type="number"
+                                            id="lowStockThreshold"
+                                            name="lowStockThreshold"
+                                            class="product-form-input form-control"
+                                            value="<%= product.lowStockThreshold ?? 5 %>"
+                                            min="0"
+                                        >
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+                    </div>
+
+
+
+                    <!-- ==================================================
+                         RIGHT COLUMN
+                    =================================================== -->
+
+                    <aside class="product-create-right">
+
+
+                        <!-- ==================================================
+                             CATEGORY
+                        =================================================== -->
+
+                        <section class="product-section">
+
+                            <div class="product-section-header">
+
+                                <i class="bi bi-grid-fill"></i>
+
+                                <h3>
+                                    Category
+                                </h3>
+
+                            </div>
+
+
+                            <div class="product-section-body">
+
+                                <div class="product-form-group">
+
+                                    <label
+                                        for="category"
+                                        class="product-form-label"
+                                    >
+                                        Select Category
+                                    </label>
+
+                                    <select
+                                        id="category"
+                                        name="category"
+                                        class="product-form-select form-select"
+                                        required
+                                    >
+
+                                        <option value="">
+                                            Choose Category
+                                        </option>
+
+                                        <% categories.forEach(category => { %>
+
+                                            <option
+                                                value="<%= category._id %>"
+                                                <%= product.category &&
+                                                    String(category._id) === String(product.category._id)
+                                                    ? "selected"
+                                                    : "" %>
+                                            >
+                                                <%= category.name %>
+                                            </option>
+
+                                        <% }) %>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+
+
+                        <!-- ==================================================
+                             BRAND
+                        =================================================== -->
+
+                        <section class="product-section">
+
+                            <div class="product-section-header">
+
+                                <i class="bi bi-award-fill"></i>
+
+                                <h3>
+                                    Brand
+                                </h3>
+
+                            </div>
+
+
+                            <div class="product-section-body">
+
+                                <div class="product-form-group">
+
+                                    <label
+                                        for="brand"
+                                        class="product-form-label"
+                                    >
+                                        Select Brand
+                                    </label>
+
+                                    <select
+                                        id="brand"
+                                        name="brand"
+                                        class="product-form-select form-select"
+                                        required
+                                    >
+
+                                        <option value="">
+                                            Choose Brand
+                                        </option>
+
+                                        <% brands.forEach(brand => { %>
+
+                                            <option
+                                                value="<%= brand._id %>"
+                                                <%= product.brand &&
+                                                    String(brand._id) === String(product.brand._id)
+                                                    ? "selected"
+                                                    : "" %>
+                                            >
+                                                <%= brand.name %>
+                                            </option>
+
+                                        <% }) %>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+
+
+                        <!-- ==================================================
+     EXISTING IMAGES
+=================================================== -->
+
+<section class="product-section">
+
+    <div class="product-section-header">
+
+        <i class="bi bi-images"></i>
+
+        <h3>
+            Existing Images
+        </h3>
+
+        <span class="product-image-count">
+            <%= product.images?.length || 0 %>/5
+        </span>
+
+    </div>
+
+    <div class="product-section-body">
+
+        <% if (product.images && product.images.length > 0) { %>
+
+            <div class="product-gallery-grid">
+
+                <% product.images.forEach((image, index) => { %>
+
+                    <div
+                        class="product-gallery-item product-existing-image"
+                        data-image-item
+                    >
+
+                        <div class="product-image-preview-wrapper">
+
+                            <img
+                                src="<%= image.url %>"
+                                alt="<%= image.alt || product.name + ' Image ' + (index + 1) %>"
+                                class="product-existing-image-preview"
+                            >
+
+                            <% if (image.isPrimary) { %>
+
+                                <span class="badge bg-success product-primary-badge">
+                                    Primary
+                                </span>
+
+                            <% } %>
+
+                        </div>
+
+
+                        <!-- Delete old image -->
+
+                        <button
+                            type="button"
+                            class="btn btn-sm btn-danger product-remove-image"
+                            data-remove-image
+                            data-public-id="<%= image.publicId %>"
+                            title="Remove this image"
+                        >
+
+                            <i class="bi bi-trash3"></i>
+
+                            Remove
+
+                        </button>
+
+
+                        <!-- Send image ID to backend -->
+
+                        <input
+                            type="hidden"
+                            name="existingImages[]"
+                            value="<%= image.publicId %>"
+                            data-existing-image
+                        >
+
+                    </div>
+
+                <% }) %>
+
+            </div>
+
+        <% } else { %>
+
+            <div class="text-muted text-center py-4">
+
+                <i class="bi bi-image fs-2"></i>
+
+                <p class="mb-0">
+                    No images available.
+                </p>
+
+            </div>
+
+        <% } %>
+
+
+        <small class="text-muted d-block mt-3">
+
+            You can keep, remove or replace images.
+            Maximum <strong>5 images</strong> per product.
+
+        </small>
+
+    </div>
+
+</section>
+
+
+
+                        <!-- ==================================================
+                             UPLOAD NEW IMAGES
+                        =================================================== -->
+
+                        <section class="product-section">
+
+                            <div class="product-section-header">
+
+                                <i class="bi bi-cloud-arrow-up-fill"></i>
+
+                                <h3>
+                                    Upload New Images
+                                </h3>
+
+                            </div>
+
+
+                            <div class="product-section-body">
+
+                                <div class="product-upload-box">
+
+                                    <input
+                                        type="file"
+                                        id="productImages"
+                                        name="images"
+                                        class="product-upload-input"
+                                        multiple
+                                        accept="image/*"
+                                    >
+
+                                    <label
+                                        for="productImages"
+                                        class="product-upload-label"
+                                    >
+
+                                        <i class="bi bi-cloud-upload-fill"></i>
+
+                                        <h5>
+                                            Select Images
+                                        </h5>
+
+                                        <p>
+                                            Existing images remain unchanged if no new images are selected.
+                                        </p>
+
+                                    </label>
+
+                                </div>
+
+
+                                <!-- JavaScript preview -->
+
+                                <div
+                                    id="imagePreview"
+                                    class="product-gallery-grid"
+                                ></div>
+
+                            </div>
+
+                        </section>
+
+
+
+                        <!-- ==================================================
+                             SEO SETTINGS
+                        =================================================== -->
+
+                        <section class="product-section">
+
+                            <div class="product-section-header">
+
+                                <i class="bi bi-search"></i>
+
+                                <h3>
+                                    SEO Settings
+                                </h3>
+
+                            </div>
+
+
+                            <div class="product-section-body">
+
+
+                                <!-- Meta Title -->
+
+                                <div class="product-form-group">
+
+                                    <label
+                                        for="metaTitle"
+                                        class="product-form-label"
+                                    >
+                                        Meta Title
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="metaTitle"
+                                        name="metaTitle"
+                                        class="product-form-input form-control"
+                                        value="<%= product.metaTitle || "" %>"
+                                        maxlength="70"
+                                    >
+
+                                </div>
+
+
+                                <!-- Meta Description -->
+
+                                <div class="product-form-group">
+
+                                    <label
+                                        for="metaDescription"
+                                        class="product-form-label"
+                                    >
+                                        Meta Description
+                                    </label>
+
+                                    <textarea
+                                        id="metaDescription"
+                                        name="metaDescription"
+                                        rows="4"
+                                        class="product-form-textarea form-control"
+                                        maxlength="160"
+                                    ><%= product.metaDescription || "" %></textarea>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+
+
+                        <!-- ==================================================
+                             PRODUCT STATUS
+                        =================================================== -->
+
+                        <section class="product-section">
+
+                            <div class="product-section-header">
+
+                                <i class="bi bi-stars"></i>
+
+                                <h3>
+                                    Product Status
+                                </h3>
+
+                            </div>
+
+
+                            <div class="product-section-body">
+
+
+                                <!-- Featured -->
+
+                                <div class="product-switch-box">
+
+                                    <div>
+
+                                        <h6>
+                                            Featured Product
+                                        </h6>
+
+                                        <small>
+                                            Show this product in featured sections.
+                                        </small>
+
+                                    </div>
+
+
+                                    <div class="form-check form-switch">
+
+                                        <input
+                                            class="form-check-input"
+                                            type="checkbox"
+                                            id="featured"
+                                            name="isFeatured"
+                                            value="true"
+                                            <%= product.isFeatured ? "checked" : "" %>
+                                        >
+
+                                    </div>
+
+                                </div>
+
+
+
+                                <!-- Status -->
+
+                                <div class="product-form-group mt-4">
+
+                                    <label
+                                        for="status"
+                                        class="product-form-label"
+                                    >
+                                        Status
+                                    </label>
+
+                                    <select
+                                        id="status"
+                                        name="status"
+                                        class="product-form-select form-select"
+                                    >
+
+                                        <option
+                                            value="active"
+                                            <%= product.status === "active"
+                                                ? "selected"
+                                                : "" %>
+                                        >
+                                            Active
+                                        </option>
+
+                                        <option
+                                            value="inactive"
+                                            <%= product.status === "inactive"
+                                                ? "selected"
+                                                : "" %>
+                                        >
+                                            Inactive
+                                        </option>
+
+                                        <% if (product.status === "out-of-stock") { %>
+
+                                            <option
+                                                value="out-of-stock"
+                                                selected
+                                            >
+                                                Out of Stock
+                                            </option>
+
+                                        <% } %>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+
+
+                        <!-- ==================================================
+                             ACTION BUTTONS
+                        =================================================== -->
+
+                        <div class="product-submit-wrapper">
+
+                            <button
+                                type="submit"
+                                class="btn btn-success product-submit-btn"
+                            >
+
+                                <i class="bi bi-check-circle-fill me-2"></i>
+
+                                Update Product
+
+                            </button>
+
+
+                            <a
+                                href="/admin/products"
+                                class="btn btn-outline-secondary product-cancel-btn"
+                            >
+                                Cancel
+                            </a>
+
+                        </div>
+
+                    </aside>
+
+                </div>
+
+            </form>
+
+        </main>
+
+    </div>
+
+</div>
+
+<%- include("../layout/adminFooter") %>

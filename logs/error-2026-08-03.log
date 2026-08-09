@@ -1,0 +1,503 @@
+2026-08-03 04:04:57 [ERROR]: MongoDB connection failed: querySrv ESERVFAIL _mongodb._tcp.cluster0.rbt1qcd.mongodb.net
+2026-08-03 04:53:40 [ERROR]: Error: Failed to lookup view "admin/dashboard/index" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showDashboard (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\AdminDashboardController.js:18:18)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authorizeRoles.js:23:12
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at authMiddleware (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authMiddleware.js:71:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-03 04:55:57 [ERROR]: Error: Failed to lookup view "admin/dashboard" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showDashboard (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\AdminDashboardController.js:18:18)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authorizeRoles.js:23:12
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at authMiddleware (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authMiddleware.js:71:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-03 05:08:28 [ERROR]: Error: Failed to lookup view "admin/dashboard/index" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showDashboard (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\AdminDashboardController.js:18:18)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authorizeRoles.js:23:12
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at authMiddleware (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authMiddleware.js:71:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-03 06:00:06 [ERROR]: Error: Failed to lookup view "admin/dashboard/index" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showDashboard (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\AdminDashboardController.js:18:18)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authorizeRoles.js:23:12
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at authMiddleware (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authMiddleware.js:71:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-03 06:01:59 [ERROR]: Error: Failed to lookup view "admin/dashboard/index" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showDashboard (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\AdminDashboardController.js:18:18)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authorizeRoles.js:23:12
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at authMiddleware (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authMiddleware.js:71:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-03 06:11:57 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\dashboard\index.ejs:11
+    9|     <div class="admin-main">
+    10| 
+ >> 11|         <%- include("../layout/adminTopbar") %>
+    12| 
+    13|         <main class="admin-content">
+    14| 
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\layout\adminTopbar.ejs:13
+    11|             <h4>
+    12| 
+ >> 13|                 <%= pageTitle %>
+    14| 
+    15|             </h4>
+    16| 
+
+pageTitle is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:12:26)
+    at adminTopbar (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:19:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-03 06:12:15 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\dashboard\index.ejs:11
+    9|     <div class="admin-main">
+    10| 
+ >> 11|         <%- include("../layout/adminTopbar") %>
+    12| 
+    13|         <main class="admin-content">
+    14| 
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\layout\adminTopbar.ejs:13
+    11|             <h4>
+    12| 
+ >> 13|                 <%= pageTitle %>
+    14| 
+    15|             </h4>
+    16| 
+
+pageTitle is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:12:26)
+    at adminTopbar (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:19:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-03 06:12:16 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\dashboard\index.ejs:11
+    9|     <div class="admin-main">
+    10| 
+ >> 11|         <%- include("../layout/adminTopbar") %>
+    12| 
+    13|         <main class="admin-content">
+    14| 
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\layout\adminTopbar.ejs:13
+    11|             <h4>
+    12| 
+ >> 13|                 <%= pageTitle %>
+    14| 
+    15|             </h4>
+    16| 
+
+pageTitle is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:12:26)
+    at adminTopbar (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:19:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-03 06:12:57 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\dashboard\index.ejs:11
+    9|     <div class="admin-main">
+    10| 
+ >> 11|         <%- include("../layout/adminTopbar") %>
+    12| 
+    13|         <main class="admin-content">
+    14| 
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\layout\adminTopbar.ejs:13
+    11|             <h4>
+    12| 
+ >> 13|                 <%= pageTitle %>
+    14| 
+    15|             </h4>
+    16| 
+
+pageTitle is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:12:26)
+    at adminTopbar (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:19:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-03 06:12:58 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\dashboard\index.ejs:11
+    9|     <div class="admin-main">
+    10| 
+ >> 11|         <%- include("../layout/adminTopbar") %>
+    12| 
+    13|         <main class="admin-content">
+    14| 
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\layout\adminTopbar.ejs:13
+    11|             <h4>
+    12| 
+ >> 13|                 <%= pageTitle %>
+    14| 
+    15|             </h4>
+    16| 
+
+pageTitle is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:12:26)
+    at adminTopbar (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:19:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-03 06:16:27 [ERROR]: SyntaxError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\dashboard\index.ejs:1
+ >> 1| <%- include("../layout/adminHeader", {
+    2|     pageTitle: "Admin Dashboard"
+    3| }) %>
+    4| 
+
+Unexpected identifier 'Dashboard' in E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\layout\adminHeader.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+    at new Function (<anonymous>)
+    at Template.compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18)
+    at Object.compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:359:18)
+    at handleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:216:16)
+    at includeFile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:296:12)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:24)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:10:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+2026-08-03 06:16:28 [ERROR]: SyntaxError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\dashboard\index.ejs:1
+ >> 1| <%- include("../layout/adminHeader", {
+    2|     pageTitle: "Admin Dashboard"
+    3| }) %>
+    4| 
+
+Unexpected identifier 'Dashboard' in E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\layout\adminHeader.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+    at new Function (<anonymous>)
+    at Template.compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18)
+    at Object.compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:359:18)
+    at handleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:216:16)
+    at includeFile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:296:12)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:24)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:10:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+2026-08-03 06:20:47 [ERROR]: Error: Failed to lookup view "admin/users/trash" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showDeletedUsersPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\UserController.js:350:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-03 06:36:15 [ERROR]: SyntaxError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\dashboard\index.ejs:11
+    9|     <div class="admin-main">
+    10| 
+ >> 11|         <%- include("../layout/adminTopbar") %>
+    12| 
+    13|         <main class="admin-content">
+    14| 
+
+Missing catch or finally after try in E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\layout\adminTopbar.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+    at new Function (<anonymous>)
+    at Template.compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18)
+    at Object.compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:359:18)
+    at handleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:216:16)
+    at includeFile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:296:12)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:24)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:19:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+2026-08-03 08:13:25 [ERROR]: Error: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\dashboard\index.ejs:17
+    15|             <!-- Dashboard content goes here -->
+    16| 
+ >> 17|             <%- include("./statistics") %>
+    18| 
+    19|             <%- include("./filters") %>
+    20| 
+
+Could not find the include file "./statistics"
+    at getIncludePath (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:170:19)
+    at includeFile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:284:21)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:24)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:22:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-03 08:15:32 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\dashboard\index.ejs:17
+    15|             <!-- Dashboard content goes here -->
+    16| 
+ >> 17|             <%- include("../users/statistics") %>
+    18| 
+    19|             <%- include("../users/filters") %>
+    20| 
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\users\statistics.ejs:32
+    30| 
+    31|                     <h3
+ >> 32|                         data-counter="<%= statistics?.totalUsers || 0 %>"
+    33|                     >
+    34| 
+    35|                         <%= statistics?.totalUsers || 0 %>
+
+statistics is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:12:26)
+    at statistics (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:22:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-03 08:16:04 [ERROR]: Error: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\dashboard\index.ejs:17
+    15|             <!-- Dashboard content goes here -->
+    16| 
+ >> 17|             <%- include("/users/statistics") %>
+    18| 
+    19|             <%- include("/users/filters") %>
+    20| 
+
+ENOENT: no such file or directory, open 'E:\users\statistics.ejs'
+    at Object.openSync (node:fs:560:18)
+    at Object.readFileSync [as fileLoader] (node:fs:444:35)
+    at fileLoader (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:269:16)
+    at handleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:214:20)
+    at includeFile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:296:12)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:24)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:22:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+2026-08-03 08:16:37 [ERROR]: Error: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\dashboard\index.ejs:17
+    15|             <!-- Dashboard content goes here -->
+    16| 
+ >> 17|             <%- include("./users/statistics") %>
+    18| 
+    19|             <%- include("./users/filters") %>
+    20| 
+
+Could not find the include file "./users/statistics"
+    at getIncludePath (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:170:19)
+    at includeFile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:284:21)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:24)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:22:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-03 08:16:40 [ERROR]: Error: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\dashboard\index.ejs:17
+    15|             <!-- Dashboard content goes here -->
+    16| 
+ >> 17|             <%- include("./users/statistics") %>
+    18| 
+    19|             <%- include("./users/filters") %>
+    20| 
+
+Could not find the include file "./users/statistics"
+    at getIncludePath (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:170:19)
+    at includeFile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:284:21)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:24)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:22:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-03 08:17:50 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\dashboard\index.ejs:17
+    15|             <!-- Dashboard content goes here -->
+    16| 
+ >> 17|             <%- include("../users/statistics.ejs") %>
+    18| 
+    19|             <%- include("../users/filters.ejs") %>
+    20| 
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\users\statistics.ejs:32
+    30| 
+    31|                     <h3
+ >> 32|                         data-counter="<%= statistics?.totalUsers || 0 %>"
+    33|                     >
+    34| 
+    35|                         <%= statistics?.totalUsers || 0 %>
+
+statistics is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:12:26)
+    at statistics (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:22:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-03 08:17:53 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\dashboard\index.ejs:17
+    15|             <!-- Dashboard content goes here -->
+    16| 
+ >> 17|             <%- include("../users/statistics.ejs") %>
+    18| 
+    19|             <%- include("../users/filters.ejs") %>
+    20| 
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\users\statistics.ejs:32
+    30| 
+    31|                     <h3
+ >> 32|                         data-counter="<%= statistics?.totalUsers || 0 %>"
+    33|                     >
+    34| 
+    35|                         <%= statistics?.totalUsers || 0 %>
+
+statistics is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:12:26)
+    at statistics (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:22:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-03 08:29:00 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\users\index.ejs:35
+    33| ========================================================== -->
+    34| 
+ >> 35| <%- include("./pagination") %>
+    36| 
+    37| <!-- ==========================================================
+    38|      EDIT USER MODAL
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\users\pagination.ejs:5
+    3| ========================================================== -->
+    4| 
+ >> 5| <% if (pagination && pagination.totalPages > 1) { %>
+    6| 
+    7| <section class="admin-pagination">
+    8| 
+
+pagination is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:12:8)
+    at pagination (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:21:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-03 09:20:32 [ERROR]: Show users page failed: req.flash is not a function
+2026-08-03 09:20:32 [ERROR]: Error: Failed to lookup view "errors/500" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showUsersPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\UserController.js:290:30)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:117:3)
+    at handle (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:295:15
+    at processParams (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:582:12)
+2026-08-03 09:20:43 [ERROR]: Show users page failed: req.flash is not a function
+2026-08-03 09:20:43 [ERROR]: Error: Failed to lookup view "errors/500" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showUsersPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\UserController.js:290:30)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:117:3)
+    at handle (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:295:15
+    at processParams (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:582:12)
+2026-08-03 09:35:00 [ERROR]: Error: Failed to lookup view "admin/users/trash" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showDeletedUsersPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\UserController.js:400:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-03 10:54:57 [ERROR]: Show users page failed: req.flash is not a function
+2026-08-03 10:54:57 [ERROR]: Error: Failed to lookup view "errors/500" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showUsersPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\UserController.js:290:30)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:117:3)
+    at handle (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:295:15
+    at processParams (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:582:12)
+2026-08-03 10:54:59 [ERROR]: Show users page failed: req.flash is not a function
+2026-08-03 10:54:59 [ERROR]: Error: Failed to lookup view "errors/500" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showUsersPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\UserController.js:290:30)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:117:3)
+    at handle (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:295:15
+    at processParams (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:582:12)
+2026-08-03 13:12:10 [ERROR]: Error: Failed to lookup view "admin/users/trash" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showDeletedUsersPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\UserController.js:400:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)

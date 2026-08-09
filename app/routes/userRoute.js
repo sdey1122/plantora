@@ -8,8 +8,6 @@ const authMiddleware = require("../middlewares/authMiddleware");
 
 const authorizeRoles = require("../middlewares/authorizeRoles");
 
-const upload = require("../middlewares/uploadMiddleware");
-
 // Update User
 const {
   uploadProfileImage,
@@ -61,6 +59,14 @@ router.post("/:userId/status", UserController.toggleUserStatus);
 
 // Seller Approval
 router.post("/:userId/seller-approval", UserController.toggleSellerApproval);
+
+// Update User
+router.post(
+  "/:userId/update",
+  uploadProfileImage,
+  handleUploadError,
+  UserController.updateUser,
+);
 
 // Soft Delete
 router.post("/:userId/delete", UserController.softDeleteUser);

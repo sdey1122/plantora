@@ -1,0 +1,78 @@
+<% if (pagination && pagination.totalPages > 1) { %>
+
+<nav class="mt-4">
+
+    <ul class="pagination justify-content-center">
+
+        <!-- Previous -->
+
+        <li class="page-item <%= !pagination.hasPrevPage ? 'disabled' : '' %>">
+
+            <a
+                class="page-link"
+                href="?page=<%= pagination.currentPage - 1 %>"
+            >
+
+                <i class="bi bi-chevron-left"></i>
+
+            </a>
+
+        </li>
+
+        <!-- Pages -->
+
+        <% for(let i = 1; i <= pagination.totalPages; i++) { %>
+
+            <li class="page-item <%= i === pagination.currentPage ? 'active' : '' %>">
+
+                <a
+                    class="page-link"
+                    href="?page=<%= i %>"
+                >
+
+                    <%= i %>
+
+                </a>
+
+            </li>
+
+        <% } %>
+
+        <!-- Next -->
+
+        <li class="page-item <%= !pagination.hasNextPage ? 'disabled' : '' %>">
+
+            <a
+                class="page-link"
+                href="?page=<%= pagination.currentPage + 1 %>"
+            >
+
+                <i class="bi bi-chevron-right"></i>
+
+            </a>
+
+        </li>
+
+    </ul>
+
+    <div class="text-center text-muted mt-2 small">
+
+        Showing
+
+        <strong><%= pagination.startItem %></strong>
+
+        -
+
+        <strong><%= pagination.endItem %></strong>
+
+        of
+
+        <strong><%= pagination.totalItems %></strong>
+
+        deleted users
+
+    </div>
+
+</nav>
+
+<% } %>

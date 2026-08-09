@@ -1,0 +1,188 @@
+<%- include("../layout/adminHeader", {
+    pageTitle: "Brand Management",
+    pageStyle: "brands"
+}) %>
+
+<div class="admin-wrapper">
+
+    <%- include("../layout/adminSidebar") %>
+
+    <div class="admin-main">
+
+        <%- include("../layout/adminTopbar") %>
+
+        <main class="admin-content">
+
+            <!-- ========================================= -->
+            <!-- PAGE HEADER -->
+            <!-- ========================================= -->
+
+            <section class="page-header-card">
+
+                <div>
+
+                    <h1>
+
+                        <i class="bi bi-tags-fill"></i>
+
+                        Brand Management
+
+                    </h1>
+
+                    <p>
+
+                        Create, update and manage all product brands.
+
+                    </p>
+
+                </div>
+
+                <a
+                    href="/admin/brands/create"
+                    class="btn btn-success btn-lg"
+                >
+
+                    <i class="bi bi-plus-circle me-2"></i>
+
+                    Add Brand
+
+                </a>
+
+            </section>
+
+            <!-- ========================================= -->
+            <!-- SEARCH & SORT -->
+            <!-- ========================================= -->
+
+            <section class="filter-card">
+
+                <form
+                    action="/admin/brands"
+                    method="GET"
+                    class="row g-3 align-items-end"
+                >
+
+                    <div class="col-lg-6">
+
+                        <label class="form-label">
+
+                            Search
+
+                        </label>
+
+                        <div class="input-group">
+
+                            <span class="input-group-text">
+
+                                <i class="bi bi-search"></i>
+
+                            </span>
+
+                            <input
+                                type="text"
+                                name="search"
+                                class="form-control"
+                                placeholder="Search by Brand Name or MongoDB ID..."
+                                value="<%= search || '' %>"
+                            >
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-3">
+
+                        <label class="form-label">
+
+                            Sort By
+
+                        </label>
+
+                        <select
+                            name="sort"
+                            class="form-select"
+                        >
+
+                            <option value="newest" <%= sort==="newest" ? "selected" : "" %>>
+
+                                Newest First
+
+                            </option>
+
+                            <option value="oldest" <%= sort==="oldest" ? "selected" : "" %>>
+
+                                Oldest First
+
+                            </option>
+
+                            <option value="a-z" <%= sort==="a-z" ? "selected" : "" %>>
+
+                                A → Z
+
+                            </option>
+
+                            <option value="z-a" <%= sort==="z-a" ? "selected" : "" %>>
+
+                                Z → A
+
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-lg-3">
+
+                        <div class="filter-actions">
+
+                            <button
+                                type="submit"
+                                class="btn btn-success"
+                            >
+
+                                <i class="bi bi-funnel me-2"></i>
+
+                                Apply
+
+                            </button>
+
+                            <a
+                                href="/admin/brands"
+                                class="btn btn-outline-secondary"
+                            >
+
+                                <span class="brand-reset-btn">Reset</span>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+            <!-- ========================================= -->
+            <!-- TABLE -->
+            <!-- ========================================= -->
+
+            <section class="table-card">
+
+                <%- include("./table") %>
+
+            </section>
+
+            <!-- ========================================= -->
+            <!-- PAGINATION -->
+            <!-- ========================================= -->
+
+            <%- include("./partials/pagination") %>
+
+        </main>
+
+    </div>
+
+</div>
+
+<%- include("../layout/adminFooter") %>

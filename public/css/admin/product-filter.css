@@ -1,0 +1,314 @@
+/* ==========================================================
+   PRODUCT MANAGEMENT TOOLBAR
+========================================================== */
+
+.pm-toolbar {
+  width: 100%;
+  margin-bottom: 22px;
+
+  padding: 18px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 4px 16px rgba(15, 23, 42, 0.04),
+    0 1px 3px rgba(15, 23, 42, 0.03);
+}
+
+.pm-toolbar-form {
+  width: 100%;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  gap: 12px;
+
+  flex-wrap: wrap;
+}
+
+/* ==========================================================
+   SEARCH
+========================================================== */
+
+.pm-search-box {
+  position: relative;
+
+  flex: 1 1 360px;
+
+  min-width: 260px;
+}
+
+.pm-search-box > i {
+  position: absolute;
+
+  left: 14px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: #94a3b8;
+
+  font-size: 15px;
+
+  pointer-events: none;
+
+  transition: color 0.18s ease;
+}
+
+.pm-search-box input {
+  width: 100%;
+
+  height: 44px;
+
+  padding: 0 15px 0 42px;
+
+  border: 1px solid #dfe5eb;
+
+  border-radius: 10px;
+
+  outline: none;
+
+  background: #f8fafc;
+
+  color: #1e293b;
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  transition:
+    border-color 0.18s ease,
+    background 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.pm-search-box input::placeholder {
+  color: #94a3b8;
+}
+
+.pm-search-box input:hover {
+  background: #ffffff;
+
+  border-color: #cbd5e1;
+}
+
+.pm-search-box input:focus {
+  background: #ffffff;
+
+  border-color: #86efac;
+
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+}
+
+.pm-search-box:focus-within > i {
+  color: #16a34a;
+}
+
+/* ==========================================================
+   SELECT CONTROLS
+========================================================== */
+
+.pm-control {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+
+  min-width: 145px;
+}
+
+.pm-control label {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.07em;
+
+  text-transform: uppercase;
+}
+
+.pm-control select {
+  height: 44px;
+
+  min-width: 145px;
+
+  padding: 0 36px 0 12px;
+
+  border: 1px solid #dfe5eb;
+
+  border-radius: 10px;
+
+  outline: none;
+
+  background-color: #f8fafc;
+
+  color: #334155;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.18s ease,
+    background 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.pm-control select:hover {
+  background: #ffffff;
+
+  border-color: #cbd5e1;
+}
+
+.pm-control select:focus {
+  background: #ffffff;
+
+  border-color: #86efac;
+
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+}
+
+/* ==========================================================
+   TOOLBAR BUTTONS
+========================================================== */
+
+.pm-toolbar-btn {
+  height: 44px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 0 17px;
+
+  border-radius: 10px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.pm-toolbar-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* Search */
+
+.pm-toolbar-search {
+  border: 1px solid #16a34a;
+
+  background: #16a34a;
+
+  color: #ffffff;
+}
+
+.pm-toolbar-search:hover {
+  background: #15803d;
+
+  border-color: #15803d;
+
+  color: #ffffff;
+
+  box-shadow: 0 5px 14px rgba(22, 163, 74, 0.18);
+}
+
+/* Reset */
+
+.pm-toolbar-reset {
+  border: 1px solid #e2e8f0;
+
+  background: #ffffff;
+
+  color: #64748b;
+}
+
+.pm-toolbar-reset:hover {
+  border-color: #cbd5e1;
+
+  background: #f8fafc;
+
+  color: #334155;
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width: 900px) {
+  .pm-toolbar-form {
+    align-items: stretch;
+  }
+
+  .pm-search-box {
+    flex: 1 1 100%;
+  }
+
+  .pm-control {
+    flex: 1 1 0;
+  }
+
+  .pm-control select {
+    width: 100%;
+  }
+
+  .pm-toolbar-btn {
+    flex: 1 1 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .pm-toolbar {
+    padding: 14px;
+  }
+
+  .pm-toolbar-form {
+    gap: 10px;
+  }
+
+  .pm-search-box {
+    min-width: 100%;
+  }
+
+  .pm-control {
+    min-width: 100%;
+  }
+
+  .pm-toolbar-btn {
+    width: 100%;
+    flex: 1 1 100%;
+  }
+}
+
+.brand-reset-btn {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

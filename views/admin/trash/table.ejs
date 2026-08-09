@@ -1,0 +1,326 @@
+<div class="premium-card">
+
+    <!-- ==========================================
+                    Statistics
+    =========================================== -->
+
+    <div class="statistics-grid">
+
+        <div class="statistics-card">
+
+            <div class="statistics-icon danger">
+
+                <i class="bi bi-trash3-fill"></i>
+
+            </div>
+
+            <div class="statistics-content">
+
+                <small>Total Deleted</small>
+
+                <h3><%= statistics.deleted || 0 %></h3>
+
+            </div>
+
+        </div>
+
+        <div class="statistics-card">
+
+            <div class="statistics-icon primary">
+
+                <i class="bi bi-people-fill"></i>
+
+            </div>
+
+            <div class="statistics-content">
+
+                <small>Customers</small>
+
+                <h3><%= statistics.customers || 0 %></h3>
+
+            </div>
+
+        </div>
+
+        <div class="statistics-card">
+
+            <div class="statistics-icon warning">
+
+                <i class="bi bi-shop"></i>
+
+            </div>
+
+            <div class="statistics-content">
+
+                <small>Sellers</small>
+
+                <h3><%= statistics.sellers || 0 %></h3>
+
+            </div>
+
+        </div>
+
+        <div class="statistics-card">
+
+            <div class="statistics-icon success">
+
+                <i class="bi bi-patch-check-fill"></i>
+
+            </div>
+
+            <div class="statistics-content">
+
+                <small>Verified</small>
+
+                <h3><%= statistics.verified || 0 %></h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ==========================================
+                    Toolbar
+    =========================================== -->
+
+    <div class="table-toolbar">
+
+        <div class="search-box">
+
+            <i class="bi bi-search"></i>
+
+            <input
+                type="text"
+                id="userSearch"
+                class="form-control userSearch-trash"
+                placeholder="Search deleted users..."
+            >
+
+        </div>
+
+        <select
+            id="userSort"
+            class="form-select sort-select"
+        >
+
+            <option value="newest">
+                Newest Deleted
+            </option>
+
+            <option value="oldest">
+                Oldest Deleted
+            </option>
+
+            <option value="az">
+                Name (A-Z)
+            </option>
+
+            <option value="za">
+                Name (Z-A)
+            </option>
+
+        </select>
+
+    </div>
+
+    <!-- ==========================================
+                    Table
+    =========================================== -->
+
+    <div class="table-responsive">
+
+        <table class="table admin-table align-middle">
+
+            <thead>
+
+               <tr
+    class="user-row"
+    data-id="<%= user._id.toString().toLowerCase() %>"
+    data-name="<%= user.name.toLowerCase() %>"
+    data-email="<%= user.email.toLowerCase() %>"
+    data-created="<%= new Date(user.deletedAt).getTime() %>"
+>
+
+                    <th>User</th>
+
+                    <th>Email</th>
+
+                    <th>Role</th>
+
+                    <th>Status</th>
+
+                    <th>Deleted On</th>
+
+                    <th class="text-center">
+                        Actions
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <% if(users.length){ %>
+
+                    <% users.forEach(user=>{ %>
+
+                       <tr
+    class="user-row"
+    data-id="<%= user._id.toString().toLowerCase() %>"
+    data-name="<%= user.name.toLowerCase() %>"
+    data-email="<%= user.email.toLowerCase() %>"
+    data-created="<%= new Date(user.deletedAt).getTime() %>"
+>
+
+                            <!-- User -->
+
+                            <td>
+
+                                <div class="user-cell">
+
+                                    <img
+                                        src="<%= user.profileImage?.url || process.env.DEFAULT_PROFILE_IMAGE_URL %>"
+                                        class="table-avatar"
+                                    >
+
+                                    <div>
+
+                                        <h6>
+
+                                            <%= user.name %>
+
+                                        </h6>
+
+                                        <small
+        class="user-id"
+        data-id="<%= user._id.toString() %>"
+        title="Click to copy full User ID"
+    >
+
+        <%= user._id.toString().slice(0,4).toUpperCase() %>...<%= user._id.toString().slice(-4).toUpperCase() %>
+
+    </small>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <!-- Email -->
+
+                            <td class="text-nowrap">
+
+                                <%= user.email %>
+
+                            </td>
+
+                            <!-- Role -->
+
+                            <td>
+
+                                <% if(user.role==="admin"){ %>
+
+                                    <span class="badge bg-danger">
+
+                                        Admin
+
+                                    </span>
+
+                                <% }else if(user.seller?.status==="approved"){ %>
+
+                                    <span class="badge bg-warning text-dark">
+
+                                        Seller
+
+                                    </span>
+
+                                <% }else{ %>
+
+                                    <span class="badge bg-success">
+
+                                        Customer
+
+                                    </span>
+
+                                <% } %>
+
+                            </td>
+
+                            <!-- Status -->
+
+                            <td>
+
+                                <span class="badge bg-danger">
+
+                                    Deleted
+
+                                </span>
+
+                            </td>
+
+                            <!-- Deleted Date -->
+
+                            <td class="text-nowrap">
+
+                                <%= new Date(user.deletedAt).toLocaleDateString("en-GB") %>
+
+                            </td>
+
+                            <!-- Actions -->
+
+                            <td>
+
+                                <%- include("./actions",{user}) %>
+
+                            </td>
+
+                        </tr>
+
+                    <% }) %>
+
+                <% }else{ %>
+
+                   <tr
+    class="user-row"
+    data-id="<%= user._id.toString().toLowerCase() %>"
+    data-name="<%= user.name.toLowerCase() %>"
+    data-email="<%= user.email.toLowerCase() %>"
+    data-created="<%= new Date(user.deletedAt).getTime() %>"
+>
+
+                        <td colspan="6">
+
+                            <div class="empty-state">
+
+                                <i class="bi bi-trash3 display-3"></i>
+
+                                <h4>
+
+                                    Trash is Empty
+
+                                </h4>
+
+                                <p>
+
+                                    No deleted users found.
+
+                                </p>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                <% } %>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>

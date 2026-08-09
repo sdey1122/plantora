@@ -122,7 +122,7 @@ const brandSchema = new mongoose.Schema(
 );
 
 // Generate slug from brand name
-brandSchema.pre("save", function (next) {
+brandSchema.pre("save", async function () {
   if (this.isModified("name")) {
     this.slug = slugify(this.name, {
       lower: true,
@@ -130,8 +130,6 @@ brandSchema.pre("save", function (next) {
       trim: true,
     });
   }
-
-  next();
 });
 
 // Database indexes

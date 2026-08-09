@@ -1,0 +1,389 @@
+<%- include("../layout/adminHeader", {
+    pageTitle: "Product Trash",
+    pageStyle: "products"
+}) %>
+
+<div class="admin-wrapper">
+
+    <%- include("../layout/adminSidebar") %>
+
+    <div class="admin-main">
+
+        <%- include("../layout/adminTopbar") %>
+
+        <main class="admin-content">
+
+            <!-- =========================================
+                 PAGE HEADER
+            ========================================== -->
+
+            <section class="users-page-header">
+
+                <div>
+
+                    <h1>
+
+                        Product Trash
+
+                    </h1>
+
+                    <p>
+
+                        Restore deleted products or permanently remove them.
+
+                    </p>
+
+                </div>
+
+                <a
+                    href="/admin/products"
+                    class="btn btn-success"
+                >
+
+                    <i class="bi bi-arrow-left-circle me-2"></i>
+
+                    Back to Products
+
+                </a>
+
+            </section>
+
+
+
+            <!-- =========================================
+     TRASH SEARCH / SORT CONTROLS
+========================================== -->
+
+<section class="pm-toolbar">
+
+    <form
+        action="/admin/products/trash"
+        method="GET"
+        class="pm-toolbar-form"
+    >
+
+        <!-- Search -->
+
+        <div class="pm-search-box">
+
+            <i class="bi bi-search"></i>
+
+            <input
+                type="search"
+                name="search"
+                value="<%= filters?.search || '' %>"
+                placeholder="Search by ID, product name or category..."
+                autocomplete="off"
+            >
+
+        </div>
+
+
+        <!-- Sort -->
+
+        <div class="pm-control">
+
+            <label for="pm-trash-sort">
+                Sort by
+            </label>
+
+            <select
+                id="pm-trash-sort"
+                name="sort"
+            >
+
+                <option
+                    value="newest"
+                    <%= filters?.sortBy === "createdAt" && filters?.sortOrder === "desc" ? "selected" : "" %>
+                >
+                    Newest
+                </option>
+
+                <option
+                    value="oldest"
+                    <%= filters?.sortBy === "createdAt" && filters?.sortOrder === "asc" ? "selected" : "" %>
+                >
+                    Oldest
+                </option>
+
+                <option
+                    value="az"
+                    <%= filters?.sortBy === "name" && filters?.sortOrder === "asc" ? "selected" : "" %>
+                >
+                    A → Z
+                </option>
+
+                <option
+                    value="za"
+                    <%= filters?.sortBy === "name" && filters?.sortOrder === "desc" ? "selected" : "" %>
+                >
+                    Z → A
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- Show -->
+
+        <div class="pm-control">
+
+            <label for="pm-trash-limit">
+                Show
+            </label>
+
+            <select
+                id="pm-trash-limit"
+                name="limit"
+            >
+
+                <% [10, 30, 50, 100].forEach(number => { %>
+
+                    <option
+                        value="<%= number %>"
+                        <%= Number(filters?.limit || 10) === number ? "selected" : "" %>
+                    >
+                        <%= number %>
+                    </option>
+
+                <% }) %>
+
+            </select>
+
+        </div>
+
+
+        <!-- Hidden page -->
+
+        <input
+            type="hidden"
+            name="page"
+            value="1"
+        >
+
+    </form>
+
+</section>
+
+
+
+
+            <!-- =========================================
+                 TABLE
+            ========================================== -->
+
+            <section class="admin-card">
+
+                <div class="table-responsive product-table-wrapper">
+
+                    <table class="table admin-table align-middle">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Image</th>
+
+                                <th>ID</th>
+
+                                <th>Product</th>
+
+                                <th>Category</th>
+
+                                <th>Brand</th>
+
+                                <th>Price</th>
+
+                                <th>Stock</th>
+
+                                <th>Deleted On</th>
+
+                                <th class="text-center">
+
+                                    Action
+
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <% if(products.length){ %>
+
+                                <% products.forEach(product=>{ %>
+
+                                    <tr>
+
+                                        <td class="pm-id-cell">
+
+                            <div class="pm-id-wrapper">
+
+                                <code class="pm-product-id">
+                                    <%= product._id %>
+                                </code>
+
+                                <button
+                                    type="button"
+                                    class="pm-copy-id"
+                                    data-copy-product-id="<%= product._id %>"
+                                    title="Copy Product ID"
+                                >
+
+                                    <i class="bi bi-copy"></i>
+
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                                        <td>
+
+                                            <img
+                                                src="<%= product.images?.[0]?.url || '/images/no-image.png' %>"
+                                                class="table-product-image"
+                                            >
+
+                                        </td>
+
+                                        <td>
+
+                                            <strong>
+
+                                                <%= product.name %>
+
+                                            </strong>
+
+                                        </td>
+
+                                        <td>
+
+                                            <%= product.category?.name || "-" %>
+
+                                        </td>
+
+                                        <td>
+
+                                            <%= product.brand?.name || "-" %>
+
+                                        </td>
+
+                                        <td>
+
+                                            ₹<%= product.price %>
+
+                                        </td>
+
+                                        <td>
+
+                                            <%= product.stock %>
+
+                                        </td>
+
+                                        <td>
+
+                                            <%= product.deletedAt ? new Date(product.deletedAt).toLocaleDateString() : "-" %>
+
+                                        </td>
+
+                                        <td>
+
+                                            <div class="product-action-buttons">
+
+                                                <!-- Restore -->
+
+                                                <form
+                                                    action="/admin/products/<%= product._id %>/restore?_method=PATCH"
+                                                    method="POST"
+                                                >
+
+                                                    <button
+                                                        class="btn btn-outline-success btn-sm"
+                                                        title="Restore Product"
+                                                    >
+
+                                                        <i class="bi bi-arrow-counterclockwise"></i>
+
+                                                    </button>
+
+                                                </form>
+
+                                                <!-- Delete Forever -->
+
+                                                <form
+                                                    action="/admin/products/<%= product._id %>/permanent?_method=DELETE"
+                                                    method="POST"
+                                                >
+
+                                                    <button
+                                                        class="btn btn-outline-danger btn-sm"
+                                                        title="Delete Permanently"
+                                                    >
+
+                                                        <i class="bi bi-trash3-fill"></i>
+
+                                                    </button>
+
+                                                </form>
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+
+                                <% }) %>
+
+                            <% } else { %>
+
+                                <tr>
+
+                                    <td
+                                        colspan="9"
+                                        class="text-center py-5"
+                                    >
+
+                                        <i class="bi bi-trash display-2 text-secondary"></i>
+
+                                        <h4 class="mt-3">
+
+                                            Product Trash is Empty
+
+                                        </h4>
+
+                                        <p class="text-muted mb-0">
+
+                                            No deleted products found.
+
+                                        </p>
+
+                                    </td>
+
+                                </tr>
+
+                            <% } %>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+            <!-- =========================================
+                 PAGINATION
+            ========================================== -->
+
+            <%- include("./partials/pagination") %>
+
+        </main>
+
+    </div>
+
+</div>
+
+<%- include("../layout/adminFooter") %>

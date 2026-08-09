@@ -5,75 +5,51 @@ const BrandController = require("../controllers/BrandController");
 const authMiddleware = require("../middlewares/authMiddleware");
 const authorizeRoles = require("../middlewares/authorizeRoles");
 
-const {
-  uploadBrandLogo,
-  handleUploadError,
-} = require("../middlewares/uploadMiddleware");
-
 const router = express.Router();
 
-// Customer routes
-router.get("/brands/:slug", BrandController.showBrandProductsPage);
+/*
+==========================================================
+PUBLIC
+==========================================================
+*/
 
-// Admin routes
-router.get(
-  "/admin/brands",
-  authMiddleware,
-  authorizeRoles("admin"),
-  BrandController.showBrandsPage,
-);
+router.get("/shop/:slug", BrandController.showBrandProductsPage);
 
-router.get(
-  "/admin/brands/create",
-  authMiddleware,
-  authorizeRoles("admin"),
-  BrandController.showCreateBrandPage,
-);
+/*
+==========================================================
+ADMIN
+==========================================================
+*/
 
-router.post(
-  "/admin/brands/create",
-  authMiddleware,
-  authorizeRoles("admin"),
-  uploadBrandLogo,
-  handleUploadError,
-  BrandController.createBrand,
-);
+router.use(authMiddleware);
 
-router.get(
-  "/admin/brands/:brandId/edit",
-  authMiddleware,
-  authorizeRoles("admin"),
-  BrandController.showEditBrandPage,
-);
+router.use(authorizeRoles("admin"));
 
-router.post(
-  "/admin/brands/:brandId/edit",
-  authMiddleware,
-  authorizeRoles("admin"),
-  uploadBrandLogo,
-  handleUploadError,
-  BrandController.updateBrand,
-);
+/*
+==========================================================
+BRANDS
+==========================================================
+*/
 
-router.patch(
-  "/admin/brands/:brandId/soft-delete",
-  authMiddleware,
-  authorizeRoles("admin"),
-  BrandController.softDeleteBrand,
-);
+// Brand List
+router.get("/", BrandController.showBrandsPage);
 
-router.patch(
-  "/admin/brands/:brandId/restore",
-  authMiddleware,
-  authorizeRoles("admin"),
-  BrandController.restoreBrand,
-);
+// Brand Options (For Product Create/Edit Dropdown)
+router.get("/options", BrandController.getBrandOptions);
 
-router.delete(
-  "/admin/brands/:brandId/delete",
-  authMiddleware,
-  authorizeRoles("admin"),
-  BrandController.deleteBrand,
-);
+// Create Brand Page
+router.get("/create", BrandController.showCreateBrandPage);
+
+// Create Brand
+router.post("/create", BrandController.createBrand);
+
+// Edit Brand Page
+router.get("/:brandId/edit", BrandController.showEditBrandPage);
+
+// Update Brand
+router.post("/:brandId/edit", BrandController.updateBrand);
+
+// Delete Brand
+router.delete("/:brandId", BrandController.deleteBrand);
 
 module.exports = router;

@@ -1,0 +1,209 @@
+<%- include("../layout/adminHeader", {
+    pageTitle: "Product Management",
+    pageStyle: "products"
+}) %>
+
+<div class="admin-wrapper">
+
+    <%- include("../layout/adminSidebar") %>
+
+    <div class="admin-main">
+
+        <%- include("../layout/adminTopbar") %>
+
+        <main class="admin-content">
+
+            <!-- ========================================= -->
+            <!-- PAGE HEADER -->
+            <!-- ========================================= -->
+
+            <section class="users-page-header">
+
+                <div>
+
+                    <h1>Product Management</h1>
+
+                    <p>
+                        Manage all products available in Plantora.
+                    </p>
+
+                </div>
+
+                <div class="header-actions">
+
+                    <a
+                        href="/admin/products/trash"
+                        class="btn btn-outline-danger"
+                    >
+
+                        <i class="bi bi-trash3"></i>
+
+                        Product Trash
+
+                    </a>
+
+                    <a
+                        href="/admin/products/create"
+                        class="btn btn-success"
+                    >
+
+                        <i class="bi bi-plus-circle"></i>
+
+                        Add Product
+
+                    </a>
+
+                </div>
+
+            </section>
+
+                </form>
+
+            </section>
+
+
+            <!-- =========================================
+     PRODUCT SEARCH / SORT CONTROLS
+========================================== -->
+
+<section class="pm-toolbar">
+
+<!-- =========================================
+ PRODUCT SEARCH / SORT CONTROLS
+========================================== -->
+
+<form
+    action="/admin/products"
+    method="GET"
+    class="pm-toolbar-form"
+>
+
+    <!-- Search -->
+
+    <div class="pm-search-box">
+
+        <i class="bi bi-search"></i>
+
+        <input
+            type="search"
+            name="search"
+            value="<%= filters?.search || '' %>"
+            placeholder="Search by ID, product name or category..."
+            autocomplete="off"
+        >
+
+    </div>
+
+
+    <!-- Sort -->
+
+    <div class="pm-control">
+
+        <label for="pm-sort">
+            Sort by
+        </label>
+
+        <select
+            id="pm-sort"
+            name="sort"
+        >
+
+            <option
+                value="newest"
+                <%= filters?.sortBy === "createdAt" && filters?.sortOrder === "desc" ? "selected" : "" %>
+            >
+                Newest
+            </option>
+
+            <option
+                value="oldest"
+                <%= filters?.sortBy === "createdAt" && filters?.sortOrder === "asc" ? "selected" : "" %>
+            >
+                Oldest
+            </option>
+
+            <option
+                value="az"
+                <%= filters?.sortBy === "name" && filters?.sortOrder === "asc" ? "selected" : "" %>
+            >
+                A → Z
+            </option>
+
+            <option
+                value="za"
+                <%= filters?.sortBy === "name" && filters?.sortOrder === "desc" ? "selected" : "" %>
+            >
+                Z → A
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <!-- Show -->
+
+    <div class="pm-control">
+
+        <label for="pm-limit">
+            Show
+        </label>
+
+        <select
+            id="pm-limit"
+            name="limit"
+        >
+
+            <% [10, 30, 50, 100].forEach(number => { %>
+
+                <option
+                    value="<%= number %>"
+                    <%= Number(filters?.limit || 10) === number ? "selected" : "" %>
+                >
+                    <%= number %>
+                </option>
+
+            <% }) %>
+
+        </select>
+
+    </div>
+
+
+    <!-- Hidden fields -->
+
+    <input
+        type="hidden"
+        name="page"
+        value="1"
+    >
+
+</form>
+
+</section>
+
+
+
+            <!-- ========================================= -->
+            <!-- TABLE -->
+            <!-- ========================================= -->
+
+            <section class="admin-card">
+
+                <%- include("./table") %>
+
+            </section>
+
+            <!-- ========================================= -->
+            <!-- PAGINATION -->
+            <!-- ========================================= -->
+
+            <%- include("./partials/pagination") %>
+
+        </main>
+
+    </div>
+
+</div>
+
+<%- include("../layout/adminFooter") %>

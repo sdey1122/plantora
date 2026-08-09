@@ -1,0 +1,102 @@
+<!-- ==========================================================
+     EDIT USER MODAL
+========================================================== -->
+
+<div class="modal fade" id="editUserModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content premium-user-modal">
+      <!-- ==========================================
+                 Header
+            =========================================== -->
+
+      <div class="premium-modal-header">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+
+        <div class="modal-user-avatar">
+          <img
+            id="editUserAvatar"
+            src="<%= process.env.DEFAULT_PROFILE_IMAGE_URL %>"
+            alt="User"
+          />
+        </div>
+
+        <h3 id="editUserHeading">User Name</h3>
+
+        <p id="editUserEmailHeading">user@email.com</p>
+
+        <span class="modal-role-badge" id="editUserRoleBadge"> CUSTOMER </span>
+      </div>
+
+      <!-- ==========================================
+                 Form
+            =========================================== -->
+
+      <form id="editUserForm" method="POST" enctype="multipart/form-data">
+        <div class="modal-body">
+          <!-- Name -->
+
+          <div class="mb-4">
+            <label class="form-label"> Full Name </label>
+
+            <input
+              type="text"
+              class="form-control premium-input"
+              id="editUserName"
+              name="name"
+              required
+            />
+          </div>
+
+          <!-- Email -->
+
+          <div class="mb-4">
+            <label class="form-label"> Email </label>
+
+            <input
+              type="text"
+              class="form-control premium-input"
+              id="editUserEmail"
+              readonly
+            />
+          </div>
+
+          <!-- Details -->
+
+          <div class="user-info-grid">
+            <div class="info-box">
+              <small> Role </small>
+
+              <h6 id="editUserRole">Customer</h6>
+            </div>
+
+            <div class="info-box">
+              <small> Joined </small>
+
+              <h6 id="editUserCreatedAt">02 Aug 2026</h6>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==========================================
+                     Footer
+                =========================================== -->
+
+        <div class="premium-modal-footer">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+            Cancel
+          </button>
+
+          <button type="submit" class="btn btn-success">
+            <i class="bi bi-check-circle-fill me-2"></i>
+
+            Save Changes
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

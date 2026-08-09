@@ -10,129 +10,81 @@ const {
   lowStockThreshold,
 } = require("./commonValidation");
 
-// Available product statuses
+// Product Status
 const PRODUCT_STATUS = ["active", "inactive", "out-of-stock"];
 
-// Available approval statuses
+// Approval Status
 const APPROVAL_STATUS = ["pending", "approved", "rejected"];
 
-// Product image
-const productImage = Joi.object({
-  publicId: Joi.string().required().messages({
-    "any.required": "Image public ID is required.",
-    "string.empty": "Image public ID is required.",
-  }),
+// ==========================
+// CREATE PRODUCT
+// ==========================
 
-  url: Joi.string().uri().required().messages({
-    "any.required": "Image URL is required.",
-    "string.uri": "Image URL must be valid.",
-  }),
+const createProductValidation = Joi.object({
+  name: Joi.string().trim().min(2).max(150).required(),
 
-  isPrimary: Joi.boolean().default(false),
+  shortDescription: Joi.string().trim().max(300).allow("", null),
+
+  description: Joi.string().trim().allow("", null),
+
+  category: objectId.required(),
+
+  brand: objectId.required(),
+
+  price: Joi.number().min(0).required(),
+
+  discountPrice: Joi.number().min(0).allow("", null),
+
+  stock: Joi.number().integer().min(0).required(),
+
+  lowStockThreshold: Joi.number().integer().min(0).default(0),
+
+  isFeatured: Joi.boolean().truthy("true").falsy("false").default(false),
+
+  metaTitle: Joi.string().allow("", null),
+
+  metaDescription: Joi.string().allow("", null),
+}).options({
+  abortEarly: false,
 });
 
-const productImages = Joi.array()
-  .items(productImage)
-  .min(1)
-  .max(5)
-  .custom((images, helpers) => {
-    const primaryImages = images.filter((image) => image.isPrimary);
-
-    if (primaryImages.length !== 1) {
-      return helpers.error("any.invalid");
-    }
-
-    return images;
-  })
-  .messages({
-    "array.min": "At least one product image is required.",
-    "array.max": "Maximum 5 product images are allowed.",
-    "any.invalid": "Exactly one product image must be marked as primary.",
-  });
-
-// Create product
-const createProductValidation = Joi.object({
-  name: title.required().messages({
-    "any.required": "Product name is required.",
-  }),
-
-  shortDescription: Joi.string().trim().max(300).required().messages({
-    "any.required": "Short description is required.",
-    "string.max": "Short description cannot exceed 300 characters.",
-  }),
-
-  description: description.required().messages({
-    "any.required": "Description is required.",
-  }),
-
-  category: objectId.required().messages({
-    "any.required": "Category is required.",
-  }),
-
-  brand: objectId.required().messages({
-    "any.required": "Brand is required.",
-  }),
-
-  images: productImages.required(),
-
-  price: price.required().messages({
-    "any.required": "Price is required.",
-  }),
-
-  discountPrice: Joi.number()
-    .min(0)
-    .precision(2)
-    .less(Joi.ref("price"))
-    .allow(null)
-    .messages({
-      "number.less": "Discount price must be less than the original price.",
-    }),
-
-  stock: stock.required().messages({
-    "any.required": "Stock is required.",
-  }),
-
-  lowStockThreshold,
-
-  isFeatured: Joi.boolean().default(false),
-
-  metaTitle: Joi.string().trim().max(70),
-
-  metaDescription: Joi.string().trim().max(160),
-})
-  .strict()
-  .options(validationOptions);
+// ==========================
+// UPDATE PRODUCT
+// ==========================
 
 const updateProductValidation = Joi.object({
-  name: title,
+  name: Joi.string().trim().min(2).max(150),
 
-  shortDescription: Joi.string().trim().max(300),
+  shortDescription: Joi.string().trim().max(300).allow("", null),
 
-  description,
+  description: Joi.string().trim().allow("", null),
 
   category: objectId,
 
   brand: objectId,
 
-  images: productImages,
+  price: Joi.number().min(0),
 
-  price,
+  discountPrice: Joi.number().min(0).allow("", null),
 
-  discountPrice: Joi.number().min(0).precision(2).allow(null),
+  stock: Joi.number().integer().min(0),
 
-  stock,
+  lowStockThreshold: Joi.number().integer().min(0),
 
-  lowStockThreshold,
+  isFeatured: Joi.boolean().truthy("true").falsy("false"),
 
-  isFeatured: Joi.boolean(),
+  metaTitle: Joi.string().allow("", null),
 
-  metaTitle: Joi.string().trim().max(70),
-
-  metaDescription: Joi.string().trim().max(160),
+  metaDescription: Joi.string().allow("", null),
 })
   .min(1)
-  .strict()
-  .options(validationOptions);
+  .options({
+    abortEarly: false,
+  });
+
+// ==========================
+// PRODUCT ID
+// ==========================
 
 const productIdValidation = Joi.object({
   productId: objectId.required().messages({
@@ -142,6 +94,10 @@ const productIdValidation = Joi.object({
   .strict()
   .options(validationOptions);
 
+// ==========================
+// PRODUCT FILTERS
+// ==========================
+
 const productQueryValidation = Joi.object({
   page: Joi.number().integer().min(1).default(1),
 
@@ -149,13 +105,17 @@ const productQueryValidation = Joi.object({
 
   search: Joi.string().trim().allow(""),
 
-  category: objectId,
+  category: objectId.allow(""),
 
-  brand: objectId,
+  brand: objectId.allow(""),
 
-  status: Joi.string().valid(...PRODUCT_STATUS),
+  status: Joi.string()
+    .valid(...PRODUCT_STATUS)
+    .allow(""),
 
-  approvalStatus: Joi.string().valid(...APPROVAL_STATUS),
+  approvalStatus: Joi.string()
+    .valid(...APPROVAL_STATUS)
+    .allow(""),
 
   isFeatured: Joi.boolean(),
 
@@ -180,11 +140,19 @@ const productQueryValidation = Joi.object({
   .strict()
   .options(validationOptions);
 
+// ==========================
+// APPROVE
+// ==========================
+
 const approveProductValidation = Joi.object({
   adminRemark: Joi.string().trim().max(500).allow(""),
 })
   .strict()
   .options(validationOptions);
+
+// ==========================
+// REJECT
+// ==========================
 
 const rejectProductValidation = Joi.object({
   adminRemark: Joi.string().trim().max(500).required().messages({
@@ -194,6 +162,10 @@ const rejectProductValidation = Joi.object({
 })
   .strict()
   .options(validationOptions);
+
+// ==========================
+// STATUS
+// ==========================
 
 const productStatusValidation = Joi.object({
   status: Joi.string()

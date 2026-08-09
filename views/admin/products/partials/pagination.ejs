@@ -1,0 +1,157 @@
+<% if (pagination.totalPages > 1) { %>
+
+    <%
+        const currentQuery = new URLSearchParams();
+
+        if (filters?.search) {
+            currentQuery.set("search", filters.search);
+        }
+
+        if (filters?.category) {
+            currentQuery.set("category", filters.category);
+        }
+
+        if (filters?.brand) {
+            currentQuery.set("brand", filters.brand);
+        }
+
+        if (filters?.status) {
+            currentQuery.set("status", filters.status);
+        }
+
+        if (filters?.approvalStatus) {
+            currentQuery.set("approvalStatus", filters.approvalStatus);
+        }
+
+        if (filters?.isFeatured !== undefined && filters?.isFeatured !== "") {
+            currentQuery.set("isFeatured", filters.isFeatured);
+        }
+
+        if (filters?.minPrice !== undefined && filters?.minPrice !== "") {
+            currentQuery.set("minPrice", filters.minPrice);
+        }
+
+        if (filters?.maxPrice !== undefined && filters?.maxPrice !== "") {
+            currentQuery.set("maxPrice", filters.maxPrice);
+        }
+
+        if (filters?.sortBy) {
+            currentQuery.set("sortBy", filters.sortBy);
+        }
+
+        if (filters?.sortOrder) {
+            currentQuery.set("sortOrder", filters.sortOrder);
+        }
+
+        currentQuery.set("limit", pagination.limit);
+    %>
+
+
+    <ul class="pagination justify-content-end">
+
+        <!-- Previous -->
+
+        <li class="page-item <%= pagination.page === 1 ? 'disabled' : '' %>">
+
+            <% if (pagination.page > 1) { %>
+
+                <%
+                    const previousQuery = new URLSearchParams(
+                        currentQuery.toString()
+                    );
+
+                    previousQuery.set(
+                        "page",
+                        pagination.page - 1
+                    );
+                %>
+
+                <a
+                    class="page-link"
+                    href="?<%= previousQuery.toString() %>"
+                >
+                    Previous
+                </a>
+
+            <% } else { %>
+
+                <span class="page-link">
+                    Previous
+                </span>
+
+            <% } %>
+
+        </li>
+
+
+        <!-- Page Numbers -->
+
+        <% for (
+            let page = 1;
+            page <= pagination.totalPages;
+            page++
+        ) { %>
+
+            <%
+                const pageQuery = new URLSearchParams(
+                    currentQuery.toString()
+                );
+
+                pageQuery.set("page", page);
+            %>
+
+            <li
+                class="page-item <%= page === pagination.page ? 'active' : '' %>"
+            >
+
+                <a
+                    class="page-link"
+                    href="?<%= pageQuery.toString() %>"
+                >
+                    <%= page %>
+                </a>
+
+            </li>
+
+        <% } %>
+
+
+        <!-- Next -->
+
+        <li
+            class="page-item <%= pagination.page === pagination.totalPages ? 'disabled' : '' %>"
+        >
+
+            <% if (pagination.page < pagination.totalPages) { %>
+
+                <%
+                    const nextQuery = new URLSearchParams(
+                        currentQuery.toString()
+                    );
+
+                    nextQuery.set(
+                        "page",
+                        pagination.page + 1
+                    );
+                %>
+
+                <a
+                    class="page-link"
+                    href="?<%= nextQuery.toString() %>"
+                >
+                    Next
+                </a>
+
+            <% } else { %>
+
+                <span class="page-link">
+                    Next
+                </span>
+
+            <% } %>
+
+        </li>
+
+    </ul>
+
+<% } %>

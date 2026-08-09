@@ -1,14 +1,15 @@
 const mongoose = require("mongoose");
 
 // Supported user roles
-const USER_ROLES = ["admin", "customer"];
+// const USER_ROLES = ["admin", "customer"];
+const USER_ROLES = ["admin", "seller", "customer"];
 
 // Application modules
 const MODULES = [
   "Authentication",
   "User Management",
   "Seller",
-  "Products",
+  "Product",
   "Categories",
   "Brands",
   "Cart",

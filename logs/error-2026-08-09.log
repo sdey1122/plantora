@@ -1,0 +1,108 @@
+2026-08-09 00:05:37 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\products\index.ejs:370
+    368|             <section class="admin-card">
+    369| 
+ >> 370|                 <%- include("./table") %>
+    371| 
+    372|             </section>
+    373| 
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\products\table.ejs:233
+    231|     <span class="pm-sku">
+    232| 
+ >> 233|         <%= sku || "-" %>
+    234| 
+    235|     </span>
+    236| 
+
+sku is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:83:26)
+    at Array.forEach (<anonymous>)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:21:17)
+    at table (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:68:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+2026-08-09 00:05:43 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\products\index.ejs:370
+    368|             <section class="admin-card">
+    369| 
+ >> 370|                 <%- include("./table") %>
+    371| 
+    372|             </section>
+    373| 
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\products\table.ejs:233
+    231|     <span class="pm-sku">
+    232| 
+ >> 233|         <%= sku || "-" %>
+    234| 
+    235|     </span>
+    236| 
+
+sku is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:83:26)
+    at Array.forEach (<anonymous>)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:21:17)
+    at table (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:68:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+2026-08-09 00:58:20 [ERROR]: Show products page failed: Cannot read properties of undefined (reading 'validate')
+2026-08-09 00:58:26 [ERROR]: Show products page failed: Cannot read properties of undefined (reading 'validate')
+2026-08-09 00:58:31 [ERROR]: Show products page failed: Cannot read properties of undefined (reading 'validate')
+2026-08-09 01:42:45 [ERROR]: Show edit product page failed: mongoose is not defined
+2026-08-09 01:42:48 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Soft Delete Product` is not a valid enum value for path `action`.
+2026-08-09 01:43:08 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Restore Product` is not a valid enum value for path `action`.
+2026-08-09 01:43:13 [ERROR]: Show edit product page failed: mongoose is not defined
+2026-08-09 01:52:36 [ERROR]: Show edit product page failed: ReferenceError: mongoose is not defined
+    at showEditProductPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ProductController.js:506:7)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authorizeRoles.js:23:12
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at authMiddleware (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authMiddleware.js:71:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 01:52:39 [ERROR]: Show edit product page failed: ReferenceError: mongoose is not defined
+    at showEditProductPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ProductController.js:506:7)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authorizeRoles.js:23:12
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at authMiddleware (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authMiddleware.js:71:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 02:20:11 [ERROR]: Update product failed: ReferenceError: uploadedImages is not defined
+    at updateProduct (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ProductController.js:706:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 02:20:21 [ERROR]: Update product failed: ReferenceError: uploadedImages is not defined
+    at updateProduct (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ProductController.js:706:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 02:36:33 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Products` is not a valid enum value for path `module`.
+2026-08-09 02:36:42 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Products` is not a valid enum value for path `module`.
+2026-08-09 02:38:16 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Soft Delete Product` is not a valid enum value for path `action`.
+2026-08-09 02:38:23 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Restore Product` is not a valid enum value for path `action`.
+2026-08-09 02:53:53 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Soft Delete Product` is not a valid enum value for path `action`.
+2026-08-09 02:53:59 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Soft Delete Product` is not a valid enum value for path `action`.
+2026-08-09 02:54:05 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Restore Product` is not a valid enum value for path `action`.
+2026-08-09 02:54:06 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Restore Product` is not a valid enum value for path `action`.
+2026-08-09 02:55:04 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Soft Delete Product` is not a valid enum value for path `action`.
+2026-08-09 02:55:10 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Soft Delete Product` is not a valid enum value for path `action`.
+2026-08-09 03:47:00 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Products` is not a valid enum value for path `module`.
+2026-08-09 05:52:50 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Products` is not a valid enum value for path `module`.
+2026-08-09 05:55:18 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Soft Delete Product` is not a valid enum value for path `action`.
+2026-08-09 05:56:20 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Restore Product` is not a valid enum value for path `action`.
+2026-08-09 05:56:31 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Soft Delete Product` is not a valid enum value for path `action`.
+2026-08-09 06:00:35 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Products` is not a valid enum value for path `module`.
+2026-08-09 06:07:06 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Soft Delete Product` is not a valid enum value for path `action`.
+2026-08-09 06:37:09 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Products` is not a valid enum value for path `module`.
+2026-08-09 07:02:05 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Soft Delete Product` is not a valid enum value for path `action`.
+2026-08-09 07:02:09 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Soft Delete Product` is not a valid enum value for path `action`.
+2026-08-09 07:03:57 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Category` is not a valid enum value for path `module`.
+2026-08-09 07:04:29 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Brand` is not a valid enum value for path `module`.
+2026-08-09 07:09:43 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Restore Product` is not a valid enum value for path `action`.

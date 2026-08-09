@@ -1,0 +1,266 @@
+<%- include("../layout/adminHeader", {
+    pageTitle: "User Management",
+    pageStyle: "users"
+}) %>
+
+<div class="admin-wrapper">
+
+    <%- include("../layout/adminSidebar") %>
+
+    <div class="admin-main">
+
+        <%- include("../layout/adminTopbar") %>
+
+        <main class="admin-content">
+
+            <!-- ==========================================================
+                 PAGE HEADER
+            =========================================================== -->
+
+            <section class="users-page-header">
+
+                <div>
+
+                    <h1>
+
+                        User Management
+
+                    </h1>
+
+                    <p>
+
+                        Manage Plantora customers and sellers from a single dashboard.
+
+                    </p>
+
+                </div>
+
+            </section>
+
+            <!-- ==========================================================
+                 STATISTICS
+            =========================================================== -->
+
+            <%- include("./statistics") %>
+
+            <!-- ==========================================================
+                 SEARCH + SORT
+            =========================================================== -->
+
+            <section class="user-toolbar admin-card">
+
+                <div class="row g-4 align-items-end">
+
+                    <div class="col-lg-6">
+
+                        <label class="form-label">
+
+                            Search
+
+                        </label>
+
+                        <div class="input-group">
+
+                            <span class="input-group-text">
+
+                                <i class="bi bi-search"></i>
+
+                            </span>
+
+                            <input
+                                id="userSearch"
+                                type="text"
+                                class="form-control"
+                                name="search"
+                                placeholder="Search by name or email..."
+                                value="<%= filters.search || '' %>"
+                            >
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-3">
+
+                        <label class="form-label">
+
+                            Sort
+
+                        </label>
+
+                        <select
+    class="form-select"
+    id="userSort"
+>
+
+    <option value="newest">
+
+        Newest First
+
+    </option>
+
+    <option value="oldest">
+
+        Oldest First
+
+    </option>
+
+    <option value="az">
+
+        Name (A - Z)
+
+    </option>
+
+    <option value="za">
+
+        Name (Z - A)
+
+    </option>
+
+</select>
+
+                    </div>
+
+                    <div class="col-lg-3">
+
+                        <label class="form-label">
+
+                            Show
+
+                        </label>
+
+                        <select
+                            class="form-select"
+                            name="limit"
+                        >
+
+                            <option value="10">
+
+                                10
+
+                            </option>
+
+                            <option value="20">
+
+                                20
+
+                            </option>
+
+                            <option value="40">
+
+                                40
+
+                            </option>
+
+                            <option value="50">
+
+                                50
+
+                            </option>
+
+                        </select>
+
+                    </div>
+
+               </div>
+
+            </section>
+
+            <!-- ==========================================================
+                 USERS TABLE
+            =========================================================== -->
+
+            <%- include("./table") %>
+
+            <!-- ==========================================================
+                 PAGINATION
+            =========================================================== -->
+
+            <%- include("./pagination") %>
+
+            <!-- ==========================================================
+                 EDIT MODAL
+            =========================================================== -->
+
+            <%- include("./edit-user-modal") %>
+
+        </main>
+
+    </div>
+
+</div>
+
+<!-- ==========================================================
+     DELETE CONFIRMATION MODAL
+========================================================== -->
+
+<div
+    class="modal fade"
+    id="deleteUserModal"
+    tabindex="-1"
+>
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content premium-delete-modal">
+
+            <div class="modal-body text-center py-5">
+
+                <div class="delete-icon">
+
+                    <i class="bi bi-trash3-fill"></i>
+
+                </div>
+
+                <h3 class="mt-4">
+
+                    Move User To Trash?
+
+                </h3>
+
+                <p
+                    class="text-muted"
+                    id="deleteUserText"
+                >
+
+                </p>
+
+                <form
+                    id="deleteUserForm"
+                    method="POST"
+                >
+
+                    <div class="d-flex justify-content-center gap-3 mt-4">
+
+                        <button
+                            type="button"
+                            class="btn btn-light px-4"
+                            data-bs-dismiss="modal"
+                        >
+
+                            Cancel
+
+                        </button>
+
+                        <button
+                            class="btn btn-danger px-4"
+                            type="submit"
+                        >
+
+                            Move To Trash
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<%- include("../layout/adminFooter") %>

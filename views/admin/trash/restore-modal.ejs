@@ -1,0 +1,49 @@
+<!-- ==========================================================
+     RESTORE USER MODAL
+========================================================== -->
+
+<div class="modal fade" id="restoreUserModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content premium-confirm-modal">
+      <!-- Header -->
+
+      <div class="premium-modal-header success">
+        <div class="modal-icon success">
+          <i class="bi bi-arrow-counterclockwise"></i>
+        </div>
+
+        <h3>Restore User</h3>
+
+        <p>This user will become active again.</p>
+      </div>
+
+      <!-- Body -->
+
+      <div class="modal-body text-center">
+        <p id="restoreUserText" class="confirm-message">Restore this user?</p>
+      </div>
+
+      <!-- Footer -->
+
+      <div class="premium-modal-footer">
+        <button
+          type="button"
+          class="btn btn-light premium-cancel-btn"
+          data-bs-dismiss="modal"
+        >
+          <i class="bi bi-x-circle me-2"></i>
+
+          Cancel
+        </button>
+
+        <form id="restoreUserForm" method="POST">
+          <button type="submit" class="btn premium-success-btn">
+            <i class="bi bi-arrow-counterclockwise me-2"></i>
+
+            Restore User
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,136 @@
+<%- include("../layout/adminHeader", {
+    pageTitle: "Edit Brand",
+    pageStyle: "brands"
+}) %>
+
+<div class="admin-wrapper">
+
+    <%- include("../layout/adminSidebar") %>
+
+    <div class="admin-main">
+
+        <%- include("../layout/adminTopbar") %>
+
+        <main class="admin-content">
+
+            <!-- ========================================= -->
+            <!-- PAGE HEADER -->
+            <!-- ========================================= -->
+
+            <section class="page-header-card">
+
+                <div>
+
+                    <h1>
+
+                        <i class="bi bi-pencil-square"></i>
+
+                        Edit Brand
+
+                    </h1>
+
+                    <p>
+
+                        Update the brand name. Products linked to this brand will automatically use the updated name.
+
+                    </p>
+
+                </div>
+
+                <a
+                    href="/admin/brands"
+                    class="btn btn-outline-secondary btn-lg"
+                >
+
+                    <i class="bi bi-arrow-left me-2"></i>
+
+                    Back
+
+                </a>
+
+            </section>
+
+            <!-- ========================================= -->
+            <!-- FORM -->
+            <!-- ========================================= -->
+
+            <section class="form-card">
+
+                <form
+                    action="/admin/brands/<%= brand._id %>/edit"
+                    method="POST"
+                    id="brandEditForm"
+                    autocomplete="off"
+                    novalidate
+                >
+
+                    <div class="mb-4">
+
+                        <label
+                            for="brandName"
+                            class="form-label fw-semibold"
+                        >
+
+                            Brand Name
+
+                            <span class="text-danger">*</span>
+
+                        </label>
+
+                        <input
+                            type="text"
+                            id="brandName"
+                            name="name"
+                            class="form-control form-control-lg"
+                            value="<%= brand.name %>"
+                            placeholder="Enter brand name"
+                            maxlength="50"
+                            required
+                            autofocus
+                        >
+
+                        <div class="form-text">
+
+                            Updating the brand name will not affect products already linked to this brand.
+
+                        </div>
+
+                    </div>
+
+                    <hr class="my-4">
+
+                    <div class="form-buttons">
+
+                        <button
+                            type="submit"
+                            class="btn btn-success btn-lg"
+                        >
+
+                            <i class="bi bi-check-circle me-2"></i>
+
+                            Update Brand
+
+                        </button>
+
+                        <a
+                            href="/admin/brands"
+                            class="btn btn-outline-secondary btn-lg"
+                        >
+
+                            Cancel
+
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</div>
+
+<%- include("../layout/adminFooter") %>

@@ -1,0 +1,303 @@
+2026-08-08 02:46:21 [ERROR]: Create category failed : next is not a function
+2026-08-08 02:46:21 [ERROR]: TypeError: next is not a function
+    at model.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\models\Category.js:126:3)
+    at Kareem.execPre (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\kareem\index.js:59:39)
+    at model._execDocumentPreHooks (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:3226:29)
+    at model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:403:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async createCategory (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CategoryController.js:315:24)
+2026-08-08 04:21:07 [ERROR]: Create category failed : next is not a function
+2026-08-08 04:21:07 [ERROR]: TypeError: next is not a function
+    at model.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\models\Category.js:126:3)
+    at Kareem.execPre (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\kareem\index.js:59:39)
+    at model._execDocumentPreHooks (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:3226:29)
+    at model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:403:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async createCategory (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CategoryController.js:219:24)
+2026-08-08 04:27:31 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Category` is not a valid enum value for path `module`.
+2026-08-08 04:27:31 [ERROR]: Create category failed : req.flash is not a function
+2026-08-08 04:27:31 [ERROR]: TypeError: req.flash is not a function
+    at createCategory (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CategoryController.js:248:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-08 04:28:15 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\brands\index.ejs:85
+    83|                                     name="search"
+    84|                                     placeholder="Search brand..."
+ >> 85|                                     value="<%= filters?.search || '' %>"
+    86|                                 >
+    87| 
+    88|                             </div>
+
+filters is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:23:26)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showBrandsPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\BrandController.js:151:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-08 04:47:52 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\brands\index.ejs:85
+    83|                                     name="search"
+    84|                                     placeholder="Search brand..."
+ >> 85|                                     value="<%= filters?.search || '' %>"
+    86|                                 >
+    87| 
+    88|                             </div>
+
+filters is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:23:26)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showBrandsPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\BrandController.js:151:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-08 04:57:35 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\brands\index.ejs:105
+    103|                         </div>
+    104| 
+ >> 105|                         <% if(filters?.search){ %>
+    106| 
+    107|                             <div class="col-lg-2">
+    108| 
+
+filters is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:26:8)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showBrandsPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\BrandController.js:151:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-08 04:58:10 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\brands\index.ejs:105
+    103|                         </div>
+    104| 
+ >> 105|                         <% if(filters?.search){ %>
+    106| 
+    107|                             <div class="col-lg-2">
+    108| 
+
+filters is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:26:8)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showBrandsPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\BrandController.js:151:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-08 04:59:27 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\brands\index.ejs:142
+    140|             =========================================================== -->
+    141| 
+ >> 142|             <%- include("./partials/pagination") %>
+    143| 
+    144|         </main>
+    145| 
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\brands\partials\pagination.ejs:1
+ >> 1| <% if(pagination.totalPages > 1){ %>
+    2| 
+    3|     <div class="brand-pagination">
+    4| 
+
+pagination is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:10:8)
+    at pagination (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:35:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-08 04:59:37 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\brands\index.ejs:142
+    140|             =========================================================== -->
+    141| 
+ >> 142|             <%- include("./partials/pagination") %>
+    143| 
+    144|         </main>
+    145| 
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\brands\partials\pagination.ejs:1
+ >> 1| <% if(pagination.totalPages > 1){ %>
+    2| 
+    3|     <div class="brand-pagination">
+    4| 
+
+pagination is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:10:8)
+    at pagination (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:35:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-08 06:05:23 [ERROR]: Create brand failed : next is not a function
+2026-08-08 06:05:23 [ERROR]: TypeError: next is not a function
+    at model.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\models\Brand.js:134:3)
+    at Kareem.execPre (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\kareem\index.js:59:39)
+    at model._execDocumentPreHooks (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:3226:29)
+    at model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:403:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async createBrand (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\BrandController.js:219:21)
+2026-08-08 06:06:25 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Category` is not a valid enum value for path `module`.
+2026-08-08 06:06:33 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Category` is not a valid enum value for path `module`.
+2026-08-08 06:48:23 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Brand` is not a valid enum value for path `module`.
+2026-08-08 06:48:42 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Brand` is not a valid enum value for path `module`.
+2026-08-08 07:29:08 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Category` is not a valid enum value for path `module`.
+2026-08-08 07:29:58 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Category` is not a valid enum value for path `module`.
+2026-08-08 07:30:21 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Category` is not a valid enum value for path `module`.
+2026-08-08 08:30:33 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Category` is not a valid enum value for path `module`.
+2026-08-08 08:30:38 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Category` is not a valid enum value for path `module`.
+2026-08-08 09:23:11 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Brand` is not a valid enum value for path `module`.
+2026-08-08 09:23:13 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Brand` is not a valid enum value for path `module`.
+2026-08-08 09:23:16 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Category` is not a valid enum value for path `module`.
+2026-08-08 09:23:18 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Category` is not a valid enum value for path `module`.
+2026-08-08 09:23:43 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Category` is not a valid enum value for path `module`.
+2026-08-08 09:23:56 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Brand` is not a valid enum value for path `module`.
+2026-08-08 09:44:58 [ERROR]: Failed to create audit log: AuditLog validation failed: severity: `warning` is not a valid enum value for path `severity`.
+2026-08-08 09:45:06 [ERROR]: Failed to create audit log: AuditLog validation failed: severity: `warning` is not a valid enum value for path `severity`.
+2026-08-08 09:46:12 [ERROR]: Failed to create audit log: AuditLog validation failed: severity: `warning` is not a valid enum value for path `severity`.
+2026-08-08 10:11:09 [ERROR]: Failed to create audit log: AuditLog validation failed: severity: `warning` is not a valid enum value for path `severity`.
+2026-08-08 10:19:45 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Category` is not a valid enum value for path `module`.
+2026-08-08 10:19:49 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Brand` is not a valid enum value for path `module`.
+2026-08-08 10:24:19 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Category` is not a valid enum value for path `module`.
+2026-08-08 10:24:38 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Brand` is not a valid enum value for path `module`.
+2026-08-08 11:39:57 [ERROR]: Create product failed: req.flash is not a function
+2026-08-08 11:39:57 [ERROR]: TypeError: req.flash is not a function
+    at createProduct (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ProductController.js:447:11)
+2026-08-08 12:13:48 [ERROR]: Price must be a valid number. "discountPrice" must be a number "stock" must be a number "lowStockThreshold" must be a number "isFeatured" must be a boolean
+2026-08-08 13:04:27 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\products\create.ejs:6
+    4| }) %>
+    5| 
+ >> 6| <%
+    7| const data = formData || {};
+    8| const errors = errors || {};
+    9| %>
+
+formData is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:18:14)
+    at create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showCreateProductPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ProductController.js:246:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-08 13:18:58 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\products\create.ejs:6
+    4| }) %>
+    5| 
+ >> 6| <%
+    7| const data = formData || {};
+    8| const errors = errors || {};
+    9| %>
+
+formData is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:18:14)
+    at create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showCreateProductPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ProductController.js:246:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-08 13:20:54 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\products\create.ejs:6
+    4| }) %>
+    5| 
+ >> 6| <%
+    7| const data = formData || {};
+    8| const errors = errors || {};
+    9| %>
+
+formData is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:18:14)
+    at create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showCreateProductPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ProductController.js:246:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-08 21:51:35 [ERROR]: Create product failed: next is not a function
+2026-08-08 22:02:06 [ERROR]: Create product failed: next is not a function
+2026-08-08 22:18:02 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Product` is not a valid enum value for path `module`.
+2026-08-08 23:33:25 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Product` is not a valid enum value for path `module`.
+2026-08-08 23:52:46 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\products\index.ejs:370
+    368|             <section class="admin-card">
+    369| 
+ >> 370|                 <%- include("./table") %>
+    371| 
+    372|             </section>
+    373| 
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\products\table.ejs:12
+    10| 
+    11|         <code class="pm-product-id">
+ >> 12|             <%= product._id %>
+    13|         </code>
+    14| 
+    15|         <button
+
+product is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:12:26)
+    at table (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:68:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-08 23:52:52 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\products\index.ejs:370
+    368|             <section class="admin-card">
+    369| 
+ >> 370|                 <%- include("./table") %>
+    371| 
+    372|             </section>
+    373| 
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\admin\products\table.ejs:12
+    10| 
+    11|         <code class="pm-product-id">
+ >> 12|             <%= product._id %>
+    13|         </code>
+    14| 
+    15|         <button
+
+product is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:12:26)
+    at table (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:68:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)

@@ -1,0 +1,140 @@
+<%- include("../layout/adminHeader", {
+    pageTitle: "Create Category",
+    pageStyle: "categories"
+}) %>
+
+<div class="admin-wrapper">
+
+    <%- include("../layout/adminSidebar") %>
+
+    <div class="admin-main">
+
+        <%- include("../layout/adminTopbar") %>
+
+        <main class="admin-content">
+
+            <!-- ========================================= -->
+            <!-- PAGE HEADER -->
+            <!-- ========================================= -->
+
+            <section class="page-header-card">
+
+                <div>
+
+                    <h1>
+
+                        <i class="bi bi-folder-plus"></i>
+
+                        Create Category
+
+                    </h1>
+
+                    <p>
+
+                        Add a new product category that can be assigned while creating products.
+
+                    </p>
+
+                </div>
+
+                <a
+                    href="/admin/categories"
+                    class="btn btn-outline-secondary btn-lg"
+                >
+
+                    <i class="bi bi-arrow-left me-2"></i>
+
+                    Back
+
+                </a>
+
+            </section>
+
+            <!-- ========================================= -->
+            <!-- FORM -->
+            <!-- ========================================= -->
+
+            <section class="form-card">
+
+                <form
+                    action="/admin/categories/create"
+                    method="POST"
+                    id="categoryCreateForm"
+                    autocomplete="off"
+                    novalidate
+                >
+
+                    <div class="mb-4">
+
+                        <label
+                            for="categoryName"
+                            class="form-label fw-semibold"
+                        >
+
+                            Category Name
+
+                            <span class="text-danger">*</span>
+
+                        </label>
+
+                        <input
+                            type="text"
+                            id="categoryName"
+                            name="name"
+                            class="form-control form-control-lg"
+                            placeholder="Enter category name"
+                            maxlength="50"
+                            required
+                            autofocus
+                        >
+
+                        <div class="form-text">
+
+                            Examples:
+                            Indoor Plants,
+                            Pots,
+                            Seeds,
+                            Fertilizers,
+                            Gardening Tools
+
+                        </div>
+
+                    </div>
+
+                    <hr class="my-4">
+
+                    <div class="form-buttons">
+
+                        <button
+                            type="submit"
+                            class="btn btn-success btn-lg"
+                        >
+
+                            <i class="bi bi-check-circle me-2"></i>
+
+                            Create Category
+
+                        </button>
+
+                        <a
+                            href="/admin/categories"
+                            class="btn btn-outline-secondary btn-lg"
+                        >
+
+                            Cancel
+
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</div>
+
+<%- include("../layout/adminFooter") %>

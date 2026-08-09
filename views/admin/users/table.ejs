@@ -1,0 +1,401 @@
+<!-- ==========================================================
+     USERS TABLE
+========================================================== -->
+
+<section class="admin-card user-table-card">
+
+    <div class="table-responsive">
+
+        <table class="table align-middle admin-table">
+
+            <thead>
+
+                <tr
+    class="user-row"
+    data-id="<%= user._id.toString().toLowerCase() %>"
+    data-name="<%= user.name.toLowerCase() %>"
+    data-email="<%= user.email.toLowerCase() %>"
+    data-created="<%= new Date(user.createdAt).getTime() %>"
+>
+
+                    <th width="140">
+
+                        User ID
+
+                    </th>
+
+                    <th>
+
+                        User
+
+                    </th>
+
+                    <th>
+
+                        Role
+
+                    </th>
+
+                    <th>
+
+                        Verification
+
+                    </th>
+
+                    <th>
+
+                        Account Status
+
+                    </th>
+
+                    <th>
+
+                        Joined
+
+                    </th>
+
+                    <th class="text-center">
+
+                        Purchases
+
+                    </th>
+
+                    <th class="text-center">
+
+                        Added Products
+
+                    </th>
+
+                    <th class="text-center">
+
+                        Sold Products
+
+                    </th>
+
+                    <th class="text-center">
+
+                        Actions
+
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <% if (users && users.length > 0) { %>
+
+                    <% users.forEach((user) => { %>
+
+                        <%
+    const displayRole =
+        user.role === "admin"
+            ? "admin"
+            : user.seller?.status === "approved"
+                ? "seller"
+                : "customer";
+%>
+
+                        <tr
+    class="user-row"
+    data-id="<%= user._id.toString().toLowerCase() %>"
+    data-name="<%= user.name.toLowerCase() %>"
+    data-email="<%= user.email.toLowerCase() %>"
+    data-created="<%= new Date(user.createdAt).getTime() %>"
+>
+
+                            <!-- ==========================================================
+                                 USER ID
+                            =========================================================== -->
+
+                            <td>
+
+    <span
+        class="user-id"
+        data-id="<%= user._id.toString() %>"
+        title="Click to copy full User ID"
+    >
+
+        <%= user._id.toString().slice(0,4).toUpperCase() %>...<%= user._id.toString().slice(-4).toUpperCase() %>
+
+    </span>
+
+</td>
+
+                            <!-- ==========================================================
+                                 USER
+                            =========================================================== -->
+
+                            <td>
+
+                                <div class="table-user">
+
+                                    <img
+                                        src="<%= user.profileImage?.url || process.env.DEFAULT_PROFILE_IMAGE_URL %>"
+                                        alt="<%= user.name %>"
+                                        class="table-user-avatar"
+                                    >
+
+                                    <div>
+
+                                        <h6>
+
+                                            <%= user.name %>
+
+                                        </h6>
+
+                                        <p>
+
+                                            <%= user.email %>
+
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <!-- ==========================================================
+                                 ROLE
+                            =========================================================== -->
+
+                           <td>
+
+    <% if (displayRole === "admin") { %>
+
+        <span class="badge role-admin">
+
+            <i class="bi bi-shield-lock-fill me-1"></i>
+
+            Admin
+
+        </span>
+
+    <% } else if (displayRole === "seller") { %>
+
+        <span class="badge role-seller">
+
+            <i class="bi bi-shop me-1"></i>
+
+            Seller
+
+        </span>
+
+    <% } else { %>
+
+        <span class="badge role-customer">
+
+            <i class="bi bi-person-fill me-1"></i>
+
+            Customer
+
+        </span>
+
+    <% } %>
+
+</td>
+
+                            <!-- ==========================================================
+                                 EMAIL VERIFICATION
+                            =========================================================== -->
+
+                            <td>
+
+                                <% if (user.isEmailVerified) { %>
+
+                                    <span class="badge badge-success">
+
+                                        <i class="bi bi-patch-check-fill"></i>
+
+                                        Verified
+
+                                    </span>
+
+                                <% } else { %>
+
+                                    <span class="badge badge-danger">
+
+                                        <i class="bi bi-patch-exclamation-fill"></i>
+
+                                        Unverified
+
+                                    </span>
+
+                                <% } %>
+
+                            </td>
+
+                            <!-- ==========================================================
+                                 ACCOUNT STATUS
+                            =========================================================== -->
+
+                            <td>
+
+                                <% if (user.status === "active") { %>
+
+                                    <span class="badge badge-active">
+
+                                        <i class="bi bi-check-circle-fill"></i>
+
+                                        Active
+
+                                    </span>
+
+                                <% } else { %>
+
+                                    <span class="badge badge-blocked">
+
+                                        <i class="bi bi-slash-circle-fill"></i>
+
+                                        Blocked
+
+                                    </span>
+
+                                <% } %>
+
+                            </td>
+
+                            <!-- ==========================================================
+                                 JOINED
+                            =========================================================== -->
+
+                            <td>
+
+                                <%= new Date(user.createdAt).toLocaleDateString("en-GB", {
+
+                                    day: "2-digit",
+
+                                    month: "short",
+
+                                    year: "numeric"
+
+                                }) %>
+
+                            </td>
+
+                            <!-- ==========================================================
+                                 PURCHASES
+                            =========================================================== -->
+
+                            <td class="text-center">
+
+                                <strong>
+
+                                    <%= user.totalPurchases || 0 %>
+
+                                </strong>
+
+                            </td>
+
+                            <!-- ==========================================================
+                                 ADDED PRODUCTS
+                            =========================================================== -->
+
+                            <td class="text-center">
+
+                                <% if (user.role === "seller") { %>
+
+                                    <strong>
+
+                                        <%= user.totalProducts || 0 %>
+
+                                    </strong>
+
+                                <% } else { %>
+
+                                    <span class="not-applicable">
+
+                                        N/A
+
+                                    </span>
+
+                                <% } %>
+
+                            </td>
+
+                            <!-- ==========================================================
+                                 SOLD PRODUCTS
+                            =========================================================== -->
+
+                            <td class="text-center">
+
+                                <% if (user.role === "seller") { %>
+
+                                    <strong>
+
+                                        <%= user.totalSoldProducts || 0 %>
+
+                                    </strong>
+
+                                <% } else { %>
+
+                                    <span class="not-applicable">
+
+                                        N/A
+
+                                    </span>
+
+                                <% } %>
+
+                            </td>
+
+                            <!-- ==========================================================
+                                 ACTIONS
+                            =========================================================== -->
+
+                            <td class="text-center">
+
+                                <%- include("./actions", {
+                                    user
+                                }) %>
+
+                            </td>
+
+                        </tr>
+
+                    <% }) %>
+
+                <% } else { %>
+
+                   <tr
+    class="user-row"
+    data-id="<%= user._id.toString().toLowerCase() %>"
+    data-name="<%= user.name.toLowerCase() %>"
+    data-email="<%= user.email.toLowerCase() %>"
+    data-created="<%= new Date(user.createdAt).getTime() %>"
+>
+
+                        <td
+                            colspan="10"
+                            class="text-center py-5"
+                        >
+
+                            <i class="bi bi-people display-1 text-muted"></i>
+
+                            <h4 class="mt-4 fw-bold">
+
+                                No Users Found
+
+                            </h4>
+
+                            <p class="text-muted">
+
+                                No users match the selected filters.
+
+                            </p>
+
+                        </td>
+
+                    </tr>
+
+                <% } %>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>

@@ -813,6 +813,45 @@ class CouponController {
       });
     }
   }
+
+  // Coupon options
+  async getCouponOptions(req, res) {
+    try {
+      const coupons = await Coupon.aggregate([
+        {
+          $match: {
+            status: "active",
+            isDeleted: false,
+          },
+        },
+        {
+          $sort: {
+            code: 1,
+          },
+        },
+        {
+          $project: {
+            _id: 1,
+            code: 1,
+            discountType: 1,
+            discountValue: 1,
+          },
+        },
+      ]);
+
+      return res.status(httpStatusCode.OK).json({
+        success: true,
+        data: coupons,
+      });
+    } catch (error) {
+      logger.error(`Get coupon options failed: ${error.message}`);
+
+      return res.status(httpStatusCode.INTERNAL_SERVER_ERROR).json({
+        success: false,
+        message: "Failed to load coupons.",
+      });
+    }
+  }
 }
 
 module.exports = new CouponController();

@@ -3,71 +3,56 @@ const express = require("express");
 const CategoryController = require("../controllers/CategoryController");
 
 const authMiddleware = require("../middlewares/authMiddleware");
-
 const authorizeRoles = require("../middlewares/authorizeRoles");
-
-const {
-  uploadCategoryImage,
-  handleUploadError,
-} = require("../middlewares/uploadMiddleware");
 
 const router = express.Router();
 
-// Admin authentication
 router.use(authMiddleware);
 
 router.use(authorizeRoles("admin"));
 
-// Categories page
+/*
+==========================================================
+CATEGORY LIST
+==========================================================
+*/
+
 router.get("/", CategoryController.showCategoriesPage);
 
-// Deleted categories page
-router.get("/deleted", CategoryController.showDeletedCategoriesPage);
+/*
+==========================================================
+CREATE
+==========================================================
+*/
 
-// Category analytics
-router.get("/analytics", CategoryController.getCategoryAnalytics);
-
-// Category options
-router.get("/options", CategoryController.getCategoryOptions);
-
-// Create category page
 router.get("/create", CategoryController.showCreateCategoryPage);
 
-// Create category
-router.post(
-  "/create",
-  uploadCategoryImage,
-  handleUploadError,
-  CategoryController.createCategory,
-);
+router.post("/create", CategoryController.createCategory);
 
-// Edit category page
+/*
+==========================================================
+EDIT
+==========================================================
+*/
+
 router.get("/:categoryId/edit", CategoryController.showEditCategoryPage);
 
-// Update category
-router.post(
-  "/:categoryId/edit",
-  uploadCategoryImage,
-  handleUploadError,
-  CategoryController.updateCategory,
-);
+router.post("/:categoryId/edit", CategoryController.updateCategory);
 
-// Toggle category status
-router.patch("/:categoryId/status", CategoryController.toggleCategoryStatus);
+/*
+==========================================================
+DELETE
+==========================================================
+*/
 
-// Toggle featured category
-router.patch(
-  "/:categoryId/featured",
-  CategoryController.toggleFeaturedCategory,
-);
+router.delete("/:categoryId", CategoryController.deleteCategory);
 
-// Soft delete category
-router.delete("/:categoryId", CategoryController.softDeleteCategory);
+/*
+==========================================================
+OPTIONS
+==========================================================
+*/
 
-// Restore category
-router.patch("/:categoryId/restore", CategoryController.restoreCategory);
-
-// Permanently delete category
-router.delete("/:categoryId/permanent", CategoryController.deleteCategory);
+router.get("/options/list", CategoryController.getCategoryOptions);
 
 module.exports = router;

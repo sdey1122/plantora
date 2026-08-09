@@ -1,0 +1,209 @@
+<% if (brands.length > 0) { %>
+
+<div class="table-responsive">
+
+    <table class="table brand-table align-middle">
+
+        <thead>
+
+            <tr>
+
+                <th width="170">
+
+                    ID
+
+                </th>
+
+                <th>
+
+                    Brand Name
+
+                </th>
+
+                <th class="text-center" width="140">
+
+                    Products
+
+                </th>
+
+                <th width="170">
+
+                    Created
+
+                </th>
+
+                <th class="text-center" width="150">
+
+                    Actions
+
+                </th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <% brands.forEach(brand => { %>
+
+                <tr>
+
+                    <!-- ========================================= -->
+                    <!-- ID -->
+                    <!-- ========================================= -->
+
+                    <td>
+
+                        <small
+    class="copy-mongo-id"
+    data-id="<%= brand._id %>"
+    title="Click to copy Mongo ID"
+>
+
+    <%= brand._id.toString().slice(0,4).toUpperCase() %>...
+    <%= brand._id.toString().slice(-4).toUpperCase() %>
+
+</small>
+
+                    </td>
+
+                    <!-- ========================================= -->
+                    <!-- BRAND NAME -->
+                    <!-- ========================================= -->
+
+                    <td>
+
+                        <div class="brand-info">
+
+                            <h6>
+
+                                <%= brand.name %>
+
+                            </h6>
+
+                        </div>
+
+                    </td>
+
+                    <!-- ========================================= -->
+                    <!-- PRODUCTS -->
+                    <!-- ========================================= -->
+
+                    <td class="text-center">
+
+                        <span class="badge brand-product-badge">
+
+                            <%= brand.totalProducts || 0 %>
+
+                        </span>
+
+                    </td>
+
+                    <!-- ========================================= -->
+                    <!-- CREATED -->
+                    <!-- ========================================= -->
+
+                    <td>
+
+                        <span class="brand-date">
+
+                            <%= new Date(brand.createdAt).toLocaleDateString(
+                                "en-IN",
+                                {
+                                    day:"2-digit",
+                                    month:"short",
+                                    year:"numeric"
+                                }
+                            ) %>
+
+                        </span>
+
+                    </td>
+
+                    <!-- ========================================= -->
+                    <!-- ACTIONS -->
+                    <!-- ========================================= -->
+
+                    <td>
+
+                        <div class="brand-actions">
+
+                            <a
+                                href="/admin/brands/<%= brand._id %>/edit"
+                                class="btn btn-outline-primary btn-sm"
+                                title="Edit Brand"
+                            >
+
+                                <i class="bi bi-pencil-square"></i>
+
+                            </a>
+
+                            <form
+                                action="/admin/brands/<%= brand._id %>?_method=DELETE"
+                                method="POST"
+                                class="d-inline brand-delete-form"
+                            >
+
+                                <button
+                                    type="submit"
+                                    class="btn btn-outline-danger btn-sm brand-delete-btn"
+                                    data-name="<%= brand.name %>"
+                                    title="Delete Brand"
+                                >
+
+                                    <i class="bi bi-trash3"></i>
+
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+            <% }) %>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<% } else { %>
+
+<div class="empty-state">
+
+    <div class="empty-icon">
+
+        <i class="bi bi-tags"></i>
+
+    </div>
+
+    <h3>
+
+        No Brands Found
+
+    </h3>
+
+    <p>
+
+        There are no brands available yet.
+
+    </p>
+
+    <a
+        href="/admin/brands/create"
+        class="btn btn-success"
+    >
+
+        <i class="bi bi-plus-circle me-2"></i>
+
+        Create First Brand
+
+    </a>
+
+</div>
+
+<% } %>

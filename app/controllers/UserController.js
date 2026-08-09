@@ -30,7 +30,9 @@ class UserController {
       const { error, value } = userQueryValidation.validate(req.query);
 
       if (error) {
-        req.flash("error", error.details[0].message);
+        logger.warn(
+          `Invalid query parameters received while opening User Management. Reason: ${error.details[0].message}`,
+        );
 
         return res.redirect("/admin/users");
       }
@@ -110,6 +112,18 @@ class UserController {
                   profileImage: 1,
                   lastLogin: 1,
                   createdAt: 1,
+
+                  totalPurchases: {
+                    $literal: 0,
+                  },
+
+                  totalProducts: {
+                    $literal: 0,
+                  },
+
+                  totalSoldProducts: {
+                    $literal: 0,
+                  },
                 },
               },
               {
@@ -224,18 +238,59 @@ class UserController {
 
       const statistics = result.statistics[0] || {};
 
+      statistics.sellers = statistics.approvedSellers || 0;
+
+      statistics.verified = statistics.activeUsers || 0;
+
+      statistics.unverified = statistics.blockedUsers || 0;
+
+      statistics.deleted = 0;
+
+      //   return res.render("admin/users/index", {
+      //     title: "Users",
+      //     users,
+      //     currentPage: page,
+      //     totalPages,
+      //     totalUsers,
+      //     limit,
+      //     filters: value,
+      //     statistics,
+      //   });
+
       return res.render("admin/users/index", {
-        title: "Users",
+        title: "User Management",
+
+        pageTitle: "User Management",
+
         users,
-        currentPage: page,
-        totalPages,
-        totalUsers,
-        limit,
-        filters: value,
+
         statistics,
+
+        filters: value,
+
+        currentPage: page,
+
+        totalPages,
+
+        totalUsers,
+
+        limit,
+
+        pagination: {
+          currentPage: page,
+          totalPages,
+          totalItems: totalUsers,
+          startItem: totalUsers === 0 ? 0 : (page - 1) * limit + 1,
+          endItem: Math.min(page * limit, totalUsers),
+          hasPrevPage: page > 1,
+          hasNextPage: page < totalPages,
+        },
+        currentUser: req.user,
       });
     } catch (error) {
-      logger.error(`Show users page failed: ${error.message}`);
+      logger.error(
+        `Failed to load User Management page. Error: ${error.message}`,
+      );
 
       return res.status(500).render("errors/500", {
         title: "Server Error",
@@ -249,7 +304,9 @@ class UserController {
       const { error, value } = userQueryValidation.validate(req.query);
 
       if (error) {
-        req.flash("error", error.details[0].message);
+        logger.warn(
+          `Invalid query parameters received while opening Trash page.: ${error.details[0].message}`,
+        );
 
         return res.redirect("/admin/users/trash");
       }
@@ -347,14 +404,52 @@ class UserController {
 
       const totalPages = Math.ceil(totalUsers / limit);
 
-      return res.render("admin/users/trash", {
-        title: "Deleted Users",
-        users,
-        currentPage: page,
-        totalPages,
+      const statistics = {
         totalUsers,
-        limit,
-        filters: value,
+
+        customers: users.filter((user) => user.seller?.status !== "approved")
+          .length,
+
+        sellers: users.filter((user) => user.seller?.status === "approved")
+          .length,
+
+        verified: users.filter((user) => user.isEmailVerified).length,
+
+        deleted: totalUsers,
+      };
+
+      const filters = value;
+
+      const pagination = {
+        currentPage: page,
+
+        totalPages,
+
+        totalItems: totalUsers,
+
+        startItem: totalUsers === 0 ? 0 : (page - 1) * limit + 1,
+
+        endItem: Math.min(page * limit, totalUsers),
+
+        hasPrevPage: page > 1,
+
+        hasNextPage: page < totalPages,
+      };
+
+      return res.render("admin/trash/index", {
+        title: "Trash",
+
+        pageTitle: "Trash",
+
+        users,
+
+        statistics,
+
+        filters,
+
+        pagination,
+
+        currentUser: req.user,
       });
     } catch (error) {
       logger.error(`Show deleted users page failed: ${error.message}`);
@@ -371,7 +466,7 @@ class UserController {
       const { error, value } = userIdValidation.validate(req.params);
 
       if (error) {
-        req.flash("error", error.details[0].message);
+        logger.warn(`Invalid customer ID. Reason: ${error.details[0].message}`);
 
         return res.redirect("/admin/users");
       }
@@ -412,7 +507,7 @@ class UserController {
       ]);
 
       if (!users.length) {
-        req.flash("error", "Customer not found.");
+        logger.warn(`Customer not found. Requested User ID: ${userId}`);
 
         return res.redirect("/admin/users");
       }
@@ -436,7 +531,7 @@ class UserController {
       const { error, value } = userIdValidation.validate(req.params);
 
       if (error) {
-        req.flash("error", error.details[0].message);
+        logger.warn(`Invalid seller ID. Reason: ${error.details[0].message}`);
 
         return res.redirect("/admin/users");
       }
@@ -478,7 +573,7 @@ class UserController {
       ]);
 
       if (!users.length) {
-        req.flash("error", "Seller not found.");
+        logger.warn(`Seller not found. Requested User ID: ${userId}`);
 
         return res.redirect("/admin/users");
       }
@@ -507,6 +602,7 @@ class UserController {
       });
 
       if (!user) {
+        logger.warn(`User not found. Requested User ID: ${userId}`);
         return res.status(404).render("errors/404", {
           title: "User Not Found",
         });
@@ -594,7 +690,7 @@ class UserController {
         user,
       });
     } catch (error) {
-      logger.error(error.message);
+      logger.error(`Failed to approve seller request. Error: ${error.message}`);
 
       return res.status(500).render("errors/500", {
         title: "Server Error",
@@ -662,7 +758,7 @@ class UserController {
         remark,
       });
     } catch (error) {
-      logger.error(error.message);
+      logger.error(`Failed to reject seller request. Error: ${error.message}`);
 
       return res.status(500).render("errors/500", {
         title: "Server Error",
@@ -679,7 +775,9 @@ class UserController {
       );
 
       if (idError) {
-        req.flash("error", idError.details[0].message);
+        logger.warn(
+          `Invalid User ID received from admin ${req.user.email}. Reason: ${idError.details[0].message}`,
+        );
 
         return res.redirect("/admin/users");
       }
@@ -688,7 +786,9 @@ class UserController {
       const { error, value } = updateUserValidation.validate(req.body);
 
       if (error) {
-        req.flash("error", error.details[0].message);
+        logger.warn(
+          `Invalid update request. Reason: ${error.details[0].message}`,
+        );
 
         return res.redirect(`/admin/users/${idValue.userId}`);
       }
@@ -703,7 +803,7 @@ class UserController {
       });
 
       if (!user) {
-        req.flash("error", "User not found.");
+        logger.warn(`User not found. Requested User ID: ${userId}`);
 
         return res.redirect("/admin/users");
       }
@@ -755,16 +855,12 @@ class UserController {
       });
 
       logger.info(
-        `User updated successfully. User ID: ${user._id}, Updated By: ${req.user._id}`,
+        `User "${user.name}" (${user.email}) updated successfully by ${req.user.email}.`,
       );
 
-      req.flash("success", "User updated successfully.");
-
-      return res.redirect(`/admin/users/${user._id}`);
+      return res.redirect("/admin/users");
     } catch (error) {
       logger.error(`Update user failed: ${error.message}`);
-
-      req.flash("error", "Failed to update user.");
 
       return res.redirect("/admin/users");
     }
@@ -778,16 +874,19 @@ class UserController {
       );
 
       if (idError) {
-        req.flash("error", idError.details[0].message);
+        logger.warn(
+          `Invalid User ID supplied by ${req.user.email}. Reason: ${idError.details[0].message}`,
+        );
 
         return res.redirect("/admin/users");
       }
-
       // Validate request body
       const { error, value } = toggleUserStatusValidation.validate(req.body);
 
       if (error) {
-        req.flash("error", error.details[0].message);
+        logger.warn(
+          `Invalid status update request. Reason: ${error.details[0].message}`,
+        );
 
         return res.redirect("/admin/users");
       }
@@ -802,21 +901,25 @@ class UserController {
       });
 
       if (!user) {
-        req.flash("error", "User not found.");
+        logger.warn(`User not found. Requested User ID: ${userId}`);
 
         return res.redirect("/admin/users");
       }
 
       // Prevent changing own status
       if (user._id.toString() === req.user._id.toString()) {
-        req.flash("error", "You cannot change your own account status.");
+        logger.warn(
+          `Admin ${req.user.email} attempted to change their own account status.`,
+        );
 
         return res.redirect("/admin/users");
       }
 
       // Prevent unnecessary update
       if (user.status === status) {
-        req.flash("error", `User is already ${status}.`);
+        logger.info(
+          `Status update skipped because "${user.name}" is already "${status}".`,
+        );
 
         return res.redirect("/admin/users");
       }
@@ -850,13 +953,11 @@ class UserController {
         `User status changed to ${status}. User ID: ${user._id}, Updated By: ${req.user._id}`,
       );
 
-      req.flash("success", "User status updated successfully.");
+      logger.info(`User status updated successfully.`);
 
       return res.redirect("/admin/users");
     } catch (error) {
       logger.error(`Toggle user status failed: ${error.message}`);
-
-      req.flash("error", "Failed to update user status.");
 
       return res.redirect("/admin/users");
     }
@@ -870,7 +971,9 @@ class UserController {
       );
 
       if (idError) {
-        req.flash("error", idError.details[0].message);
+        logger.warn(
+          `Invalid User ID supplied by ${req.user.email}. Reason: ${idError.details[0].message}`,
+        );
 
         return res.redirect("/admin/users");
       }
@@ -879,7 +982,9 @@ class UserController {
       const { error, value } = sellerApprovalValidation.validate(req.body);
 
       if (error) {
-        req.flash("error", error.details[0].message);
+        logger.warn(
+          `Invalid seller approval request. Reason: ${error.details[0].message}`,
+        );
 
         return res.redirect("/admin/users");
       }
@@ -894,19 +999,21 @@ class UserController {
       });
 
       if (!user) {
-        req.flash("error", "User not found.");
+        logger.warn(`User not found. Requested User ID: ${userId}`);
 
         return res.redirect("/admin/users");
       }
 
       if (user.seller.status === "none") {
-        req.flash("error", "This user has not requested a seller account.");
+        logger.warn(
+          `Seller approval skipped because user has not applied for seller access.`,
+        );
 
         return res.redirect("/admin/users");
       }
 
       if (user.seller.status === sellerStatus) {
-        req.flash("error", `Seller request is already ${sellerStatus}.`);
+        logger.info(`Seller request already marked as "${sellerStatus}".`);
 
         return res.redirect("/admin/users");
       }
@@ -1003,13 +1110,9 @@ class UserController {
         `Seller approval updated. User ID: ${user._id}, Status: ${sellerStatus}, Updated By: ${req.user._id}`,
       );
 
-      req.flash("success", `Seller request ${sellerStatus} successfully.`);
-
       return res.redirect("/admin/users");
     } catch (error) {
       logger.error(`Toggle seller approval failed: ${error.message}`);
-
-      req.flash("error", "Failed to update seller approval.");
 
       return res.redirect("/admin/users");
     }
@@ -1021,7 +1124,9 @@ class UserController {
       const { error, value } = userIdValidation.validate(req.params);
 
       if (error) {
-        req.flash("error", error.details[0].message);
+        logger.warn(
+          `Invalid user ID supplied. Reason: ${error.details[0].message}`,
+        );
 
         return res.redirect("/admin/users");
       }
@@ -1034,14 +1139,16 @@ class UserController {
       });
 
       if (!user) {
-        req.flash("error", "User not found.");
+        logger.warn(`User not found. Requested User ID: ${userId}`);
 
         return res.redirect("/admin/users");
       }
 
       // Prevent deleting own account
       if (user._id.toString() === req.user._id.toString()) {
-        req.flash("error", "You cannot delete your own account.");
+        logger.warn(
+          `Admin ${req.user.email} attempted to delete their own account.`,
+        );
 
         return res.redirect("/admin/users");
       }
@@ -1065,21 +1172,16 @@ class UserController {
         description: `Soft deleted user "${user.name}".`,
       });
 
-      logger.info(
-        `User soft deleted. User ID: ${user._id}, Deleted By: ${req.user._id}`,
-      );
-
-      req.flash("success", "User moved to trash successfully.");
+      logger.info(`User "${user.name}" moved to Trash by ${req.user.email}.`);
 
       return res.redirect("/admin/users");
     } catch (error) {
       logger.error(`Soft delete user failed: ${error.message}`);
 
-      req.flash("error", "Failed to delete user.");
-
       return res.redirect("/admin/users");
     }
   }
+
   // Restore User
   async restoreUser(req, res) {
     try {
@@ -1087,7 +1189,9 @@ class UserController {
       const { error, value } = userIdValidation.validate(req.params);
 
       if (error) {
-        req.flash("error", error.details[0].message);
+        logger.warn(
+          `Invalid user ID supplied. Reason: ${error.details[0].message}`,
+        );
 
         return res.redirect("/admin/users/trash");
       }
@@ -1100,7 +1204,7 @@ class UserController {
       });
 
       if (!user) {
-        req.flash("error", "User not found.");
+        logger.warn(`User not found. Requested User ID: ${userId}`);
 
         return res.redirect("/admin/users/trash");
       }
@@ -1125,20 +1229,17 @@ class UserController {
       });
 
       logger.info(
-        `User restored successfully. User ID: ${user._id}, Restored By: ${req.user._id}`,
+        `User "${user.name}" restored successfully by ${req.user.email}.`,
       );
-
-      req.flash("success", "User restored successfully.");
 
       return res.redirect("/admin/users/trash");
     } catch (error) {
       logger.error(`Restore user failed: ${error.message}`);
 
-      req.flash("error", "Failed to restore user.");
-
       return res.redirect("/admin/users/trash");
     }
   }
+
   // Permanent Delete User
   async deleteUser(req, res) {
     try {
@@ -1146,7 +1247,9 @@ class UserController {
       const { error, value } = userIdValidation.validate(req.params);
 
       if (error) {
-        req.flash("error", error.details[0].message);
+        logger.warn(
+          `Invalid user ID supplied. Reason: ${error.details[0].message}`,
+        );
 
         return res.redirect("/admin/users/trash");
       }
@@ -1159,14 +1262,16 @@ class UserController {
       });
 
       if (!user) {
-        req.flash("error", "User not found.");
+        logger.warn(`User not found. Requested User ID: ${userId}`);
 
         return res.redirect("/admin/users/trash");
       }
 
       // Prevent deleting own account
       if (user._id.toString() === req.user._id.toString()) {
-        req.flash("error", "You cannot permanently delete your own account.");
+        logger.warn(
+          `Admin ${req.user.email} attempted to permanently delete their own account.`,
+        );
 
         return res.redirect("/admin/users/trash");
       }
@@ -1198,16 +1303,14 @@ class UserController {
       });
 
       logger.info(
-        `User permanently deleted. User ID: ${user._id}, Deleted By: ${req.user._id}`,
+        `User "${user.name}" permanently deleted by ${req.user.email}.`,
       );
-
-      req.flash("success", "User deleted permanently.");
 
       return res.redirect("/admin/users/trash");
     } catch (error) {
-      logger.error(`Permanent delete user failed: ${error.message}`);
-
-      req.flash("error", "Failed to permanently delete user.");
+      logger.error(
+        `Failed to permanently delete user. Error: ${error.message}`,
+      );
 
       return res.redirect("/admin/users/trash");
     }

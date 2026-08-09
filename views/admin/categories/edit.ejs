@@ -1,0 +1,136 @@
+<%- include("../layout/adminHeader", {
+    pageTitle: "Edit Category",
+    pageStyle: "categories"
+}) %>
+
+<div class="admin-wrapper">
+
+    <%- include("../layout/adminSidebar") %>
+
+    <div class="admin-main">
+
+        <%- include("../layout/adminTopbar") %>
+
+        <main class="admin-content">
+
+            <!-- ========================================= -->
+            <!-- PAGE HEADER -->
+            <!-- ========================================= -->
+
+            <section class="page-header-card">
+
+                <div>
+
+                    <h1>
+
+                        <i class="bi bi-pencil-square"></i>
+
+                        Edit Category
+
+                    </h1>
+
+                    <p>
+
+                        Update the category name. Products using this category will automatically reflect the updated name.
+
+                    </p>
+
+                </div>
+
+                <a
+                    href="/admin/categories"
+                    class="btn btn-outline-secondary btn-lg"
+                >
+
+                    <i class="bi bi-arrow-left me-2"></i>
+
+                    Back
+
+                </a>
+
+            </section>
+
+            <!-- ========================================= -->
+            <!-- FORM -->
+            <!-- ========================================= -->
+
+            <section class="form-card">
+
+                <form
+                    action="/admin/categories/<%= category._id %>/edit"
+                    method="POST"
+                    id="categoryEditForm"
+                    autocomplete="off"
+                    novalidate
+                >
+
+                    <div class="mb-4">
+
+                        <label
+                            for="categoryName"
+                            class="form-label fw-semibold"
+                        >
+
+                            Category Name
+
+                            <span class="text-danger">*</span>
+
+                        </label>
+
+                        <input
+                            type="text"
+                            id="categoryName"
+                            name="name"
+                            class="form-control form-control-lg"
+                            value="<%= category.name %>"
+                            placeholder="Enter category name"
+                            maxlength="50"
+                            required
+                            autofocus
+                        >
+
+                        <div class="form-text">
+
+                            Updating the category name will not affect products already linked to this category.
+
+                        </div>
+
+                    </div>
+
+                    <hr class="my-4">
+
+                    <div class="form-buttons">
+
+                        <button
+                            type="submit"
+                            class="btn btn-success btn-lg"
+                        >
+
+                            <i class="bi bi-check-circle me-2"></i>
+
+                            Update Category
+
+                        </button>
+
+                        <a
+                            href="/admin/categories"
+                            class="btn btn-outline-secondary btn-lg"
+                        >
+
+                            Cancel
+
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</div>
+
+<%- include("../layout/adminFooter") %>
