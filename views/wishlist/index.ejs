@@ -1,0 +1,462 @@
+<%- include("../partials/main/head") %>
+
+<%- include("../partials/main/announcementBar") %>
+
+<%- include("../partials/main/header") %>
+
+<link rel="stylesheet" href="/css/wishlist.css">
+
+
+<main class="wishlist-page">
+
+  <!-- ======================================================
+       WISHLIST HERO
+  ======================================================= -->
+
+  <section class="wishlist-hero">
+
+    <div class="container">
+
+      <div class="wishlist-hero-content">
+
+        <span class="wishlist-eyebrow">
+          <i class="bi bi-heart-fill"></i>
+          YOUR COLLECTION
+        </span>
+
+        <h1 class="wishlist-title">
+          My Wishlist
+        </h1>
+
+        <p class="wishlist-description">
+          Keep the plants you love close and come back to them
+          whenever you're ready.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       WISHLIST CONTENT
+  ======================================================= -->
+
+  <section class="wishlist-section">
+
+    <div class="container">
+
+      <!-- ==================================================
+           WISHLIST HEADER
+      =================================================== -->
+
+      <div class="wishlist-toolbar">
+
+        <div class="wishlist-toolbar-left">
+
+          <span class="wishlist-count-label">
+            Your Wishlist
+          </span>
+
+          <strong class="wishlist-count">
+            <%= totalWishlistItems %>
+            <%= totalWishlistItems === 1 ? "item" : "items" %>
+          </strong>
+
+        </div>
+
+
+        <% if (wishlist && wishlist.length > 0) { %>
+
+          <a
+            href="/shop"
+            class="wishlist-continue-shopping"
+          >
+            Continue Shopping
+            <i class="bi bi-arrow-right"></i>
+          </a>
+
+        <% } %>
+
+      </div>
+
+
+      <!-- ==================================================
+           WISHLIST PRODUCTS
+      =================================================== -->
+
+      <% if (wishlist && wishlist.length > 0) { %>
+
+        <div class="wishlist-grid">
+
+          <% wishlist.forEach((item) => { %>
+
+            <article class="wishlist-card">
+
+
+              <!-- ==========================================
+                   PRODUCT IMAGE
+              =========================================== -->
+
+              <div class="wishlist-card-image-wrapper">
+
+                <a
+                  href="/shop/product/<%= item.slug %>"
+                  class="wishlist-card-image-link"
+                  aria-label="View <%= item.name %>"
+                >
+
+                  <% if (
+                    item.images &&
+                    item.images.length > 0 &&
+                    item.images[0].url
+                  ) { %>
+
+                    <img
+                      src="<%= item.images[0].url %>"
+                      alt="<%= item.images[0].alt || item.name %>"
+                      class="wishlist-card-image"
+                      loading="lazy"
+                    >
+
+                  <% } else { %>
+
+                    <img
+                      src="/images/placeholder-product.jpg"
+                      alt="<%= item.name %>"
+                      class="wishlist-card-image"
+                      loading="lazy"
+                    >
+
+                  <% } %>
+
+                </a>
+
+
+                <!-- ==========================================
+     REMOVE FROM WISHLIST
+=========================================== -->
+
+<form
+  action="/wishlist/remove"
+  method="POST"
+  class="wishlist-remove-form"
+>
+  <input
+    type="hidden"
+    name="productId"
+    value="<%= item.productId %>"
+  >
+
+  <button
+    type="submit"
+    class="wishlist-remove-btn"
+    title="Remove from wishlist"
+    aria-label="Remove <%= item.name %> from wishlist"
+  >
+    <i class="bi bi-trash3"></i>
+  </button>
+</form>
+
+
+                <!-- STOCK BADGE -->
+
+                <% if (Number(item.stock || 0) <= 0) { %>
+
+                  <span class="wishlist-stock-badge out-of-stock">
+                    Out of Stock
+                  </span>
+
+                <% } else if (Number(item.stock) <= 5) { %>
+
+                  <span class="wishlist-stock-badge low-stock">
+                    Only <%= item.stock %> left
+                  </span>
+
+                <% } else { %>
+
+                  <span class="wishlist-stock-badge in-stock">
+                    In Stock
+                  </span>
+
+                <% } %>
+
+              </div>
+
+
+              <!-- ==========================================
+                   PRODUCT INFORMATION
+              =========================================== -->
+
+              <div class="wishlist-card-content">
+
+
+                <!-- PRODUCT NAME -->
+
+                <a
+                  href="/shop/product/<%= item.slug %>"
+                  class="wishlist-product-name"
+                >
+
+                  <%= item.name %>
+
+                </a>
+
+
+                <!-- PRICE -->
+
+                <div class="wishlist-price">
+
+                  <% const hasDiscount =
+                    item.discountPrice !== null &&
+                    item.discountPrice !== undefined &&
+                    Number(item.discountPrice) < Number(item.price);
+                  %>
+
+
+                  <% if (hasDiscount) { %>
+
+                    <span class="wishlist-old-price">
+
+                      ₹<%= Number(item.price).toLocaleString("en-IN") %>
+
+                    </span>
+
+
+                    <span class="wishlist-current-price">
+
+                      ₹<%= Number(
+                        item.discountPrice
+                      ).toLocaleString("en-IN") %>
+
+                    </span>
+
+
+                    <span class="wishlist-discount">
+
+                      <%= Math.round(
+                        (
+                          (
+                            Number(item.price) -
+                            Number(item.discountPrice)
+                          ) /
+                          Number(item.price)
+                        ) * 100
+                      ) %>% OFF
+
+                    </span>
+
+                  <% } else { %>
+
+                    <span class="wishlist-current-price">
+
+                      ₹<%= Number(
+                        item.price || 0
+                      ).toLocaleString("en-IN") %>
+
+                    </span>
+
+                  <% } %>
+
+                </div>
+
+
+                <!-- ========================================
+                     ACTIONS
+                ========================================= -->
+
+                <div class="wishlist-card-actions">
+
+
+                  <!-- VIEW PRODUCT -->
+
+                  <a
+                    href="/shop/product/<%= item.slug %>"
+                    class="wishlist-view-btn"
+                  >
+
+                    View Product
+
+                    <i class="bi bi-arrow-right"></i>
+
+                  </a>
+
+
+                  <!-- MOVE TO CART -->
+
+                  <% if (Number(item.stock || 0) > 0) { %>
+
+                    <form
+                       action="/cart/add"
+                      method="POST"
+                      class="wishlist-cart-form"
+                    >
+
+                      <input
+                        type="hidden"
+                        name="productId"
+                        value="<%= item.productId %>"
+                      >
+
+                      <button
+                        type="submit"
+                        class="wishlist-cart-btn"
+                      >
+
+                        <i class="bi bi-bag-plus"></i>
+
+                        Move to Cart
+
+                      </button>
+
+                    </form>
+
+                  <% } else { %>
+
+                    <button
+                      type="button"
+                      class="wishlist-cart-btn disabled"
+                      disabled
+                    >
+
+                      <i class="bi bi-x-circle"></i>
+
+                      Out of Stock
+
+                    </button>
+
+                  <% } %>
+
+                </div>
+
+
+              </div>
+
+            </article>
+
+          <% }) %>
+
+        </div>
+
+
+        <!-- ==================================================
+             PAGINATION
+        =================================================== -->
+
+        <% if (totalPages > 1) { %>
+
+          <nav
+            class="wishlist-pagination"
+            aria-label="Wishlist pagination"
+          >
+
+            <% if (currentPage > 1) { %>
+
+              <a
+                href="/wishlist?page=<%= currentPage - 1 %>&limit=<%= limit %>"
+                class="wishlist-page-btn"
+              >
+
+                <i class="bi bi-chevron-left"></i>
+
+              </a>
+
+            <% } %>
+
+
+            <% for (
+              let page = 1;
+              page <= totalPages;
+              page++
+            ) { %>
+
+              <a
+                href="/wishlist?page=<%= page %>&limit=<%= limit %>"
+                class="wishlist-page-btn <%= page === currentPage ? 'active' : '' %>"
+              >
+
+                <%= page %>
+
+              </a>
+
+            <% } %>
+
+
+            <% if (currentPage < totalPages) { %>
+
+              <a
+                href="/wishlist?page=<%= currentPage + 1 %>&limit=<%= limit %>"
+                class="wishlist-page-btn"
+              >
+
+                <i class="bi bi-chevron-right"></i>
+
+              </a>
+
+            <% } %>
+
+          </nav>
+
+        <% } %>
+
+
+      <% } else { %>
+
+
+        <!-- ==================================================
+             EMPTY WISHLIST
+        =================================================== -->
+
+        <section class="wishlist-empty">
+
+          <div class="wishlist-empty-icon">
+
+            <i class="bi bi-heart"></i>
+
+          </div>
+
+
+          <span class="wishlist-empty-eyebrow">
+            YOUR COLLECTION IS WAITING
+          </span>
+
+
+          <h2>
+            Your wishlist is empty
+          </h2>
+
+
+          <p>
+            Save the plants you love and they'll appear here.
+            Start exploring our collection and build your
+            personal garden wishlist.
+          </p>
+
+
+          <a
+            href="/shop"
+            class="wishlist-shop-btn"
+          >
+
+            <i class="bi bi-flower1"></i>
+
+            Explore Plants
+
+            <i class="bi bi-arrow-right"></i>
+
+          </a>
+
+        </section>
+
+      <% } %>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<%- include("../partials/main/footer") %>

@@ -416,9 +416,15 @@ class ShopController {
           ? [
               {
                 $match: {
-                  stock: {
-                    $gt: 0,
-                    $lte: 5,
+                  $expr: {
+                    $and: [
+                      {
+                        $gt: ["$stock", 0],
+                      },
+                      {
+                        $lte: ["$stock", "$lowStockThreshold"],
+                      },
+                    ],
                   },
                 },
               },

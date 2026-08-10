@@ -964,3 +964,77 @@ dashboardData is not defined
     at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
     at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
     at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:435:7)
+2026-08-10 12:18:35 [ERROR]: Add to wishlist failed: req.flash is not a function
+2026-08-10 12:18:35 [ERROR]: TypeError: req.flash is not a function
+    at addToWishlist (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\WishlistController.js:184:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-10 12:18:46 [ERROR]: Add to wishlist failed: req.flash is not a function
+2026-08-10 12:18:46 [ERROR]: TypeError: req.flash is not a function
+    at addToWishlist (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\WishlistController.js:184:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-10 12:36:33 [ERROR]: Add to wishlist failed. User ID: 6a6e5ddb78646239551d1a66, Product ID: 6a782bbb10a3bcc9985aa739, Error: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_WISHLIST` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToWishlist (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\WishlistController.js:208:7)
+2026-08-10 12:37:00 [ERROR]: Remove wishlist item failed. User ID: 6a6e5ddb78646239551d1a66, Product ID: 6a782bbb10a3bcc9985aa739, Error: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `REMOVE_FROM_WISHLIST` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async removeFromWishlist (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\WishlistController.js:271:7)
+2026-08-10 12:40:39 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:435:7)
+2026-08-10 12:40:44 [ERROR]: Clear cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `CLEAR_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async clearCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:835:7)
+2026-08-10 12:40:50 [ERROR]: Add to wishlist failed. User ID: 6a6e638d68eaf947f1f6ba8a, Product ID: 6a782a4610a3bcc9985aa732, Error: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_WISHLIST` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToWishlist (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\WishlistController.js:208:7)
+2026-08-10 12:40:55 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:435:7)
+2026-08-10 12:41:05 [ERROR]: Remove from cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `REMOVE_FROM_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async removeFromCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:791:7)
+2026-08-10 12:41:16 [ERROR]: Remove wishlist item failed. User ID: 6a6e638d68eaf947f1f6ba8a, Product ID: 6a782a4610a3bcc9985aa732, Error: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `REMOVE_FROM_WISHLIST` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async removeFromWishlist (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\WishlistController.js:271:7)
+2026-08-10 13:03:23 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Category` is not a valid enum value for path `module`.
+2026-08-10 13:03:40 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Brand` is not a valid enum value for path `module`.
+2026-08-10 13:06:43 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Products` is not a valid enum value for path `module`.
+2026-08-10 13:12:15 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:435:7)

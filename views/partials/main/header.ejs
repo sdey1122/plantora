@@ -124,14 +124,27 @@
                 =================================== -->
 
                 <a
-                    href="/wishlist"
-                    class="header-icon wishlist-icon"
-                    aria-label="Wishlist"
-                >
+    href="/wishlist"
+    class="header-icon wishlist-icon"
+    aria-label="Wishlist"
+>
 
-                    <i class="bi bi-heart"></i>
+    <i class="bi bi-heart"></i>
 
-                </a>
+    <% if (wishlistCount > 0) { %>
+
+        <span
+            class="header-badge wishlist-badge"
+            id="wishlistBadge"
+        >
+
+            <%= wishlistCount %>
+
+        </span>
+
+    <% } %>
+
+</a>
 
 
                 <!-- ==================================

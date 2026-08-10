@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const Notification = require("../models/Notification");
 const Cart = require("../models/Cart");
+const Wishlist = require("../models/Wishlist");
 
 const globalMiddleware = async (req, res, next) => {
   try {
@@ -17,6 +18,8 @@ const globalMiddleware = async (req, res, next) => {
     res.locals.notificationCount = 0;
 
     res.locals.cartCount = 0;
+
+    res.locals.wishlistCount = 0;
 
     // ==========================================================
     // ACCESS TOKEN
@@ -82,6 +85,16 @@ const globalMiddleware = async (req, res, next) => {
     }
 
     // ==========================================================
+    // WISHLIST COUNT
+    // ==========================================================
+
+    const wishlistCount = await Wishlist.countDocuments({
+      user: user._id,
+    });
+
+    res.locals.wishlistCount = wishlistCount;
+
+    // ==========================================================
     // NEXT
     // ==========================================================
 
@@ -92,6 +105,8 @@ const globalMiddleware = async (req, res, next) => {
     res.locals.notificationCount = 0;
 
     res.locals.cartCount = 0;
+
+    res.locals.wishlistCount = 0;
 
     return next();
   }
