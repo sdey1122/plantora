@@ -1,28 +1,1054 @@
 <%- include("../layout/adminHeader", {
-    pageTitle: "Admin Dashboard"
+  pageTitle: "Admin Dashboard"
 }) %>
 
 <div class="admin-wrapper">
 
-    <%- include("../layout/adminSidebar") %>
+  <%- include("../layout/adminSidebar") %>
 
-    <div class="admin-main">
+  <div class="admin-main">
 
-        <%- include("../layout/adminTopbar") %>
+    <%- include("../layout/adminTopbar") %>
 
-        <main class="admin-content">
+    <main class="admin-content dashboard-page">
 
-            <!-- Dashboard content goes here -->
+      <!-- =====================================================
+           DASHBOARD HEADER
+      ====================================================== -->
 
-             <!-- Dashboard Cards -->
-            <!-- Revenue -->
-            <!-- Charts -->
-            <!-- Recent Orders -->
+      <section class="dashboard-header">
 
-        </main>
+        <div class="dashboard-header-content">
 
-        <%- include("../layout/adminFooter") %>
+          <span class="dashboard-eyebrow">
+            <i class="bi bi-grid-1x2-fill"></i>
+            BUSINESS OVERVIEW
+          </span>
 
-    </div>
+          <h1 class="dashboard-title">
+            Dashboard
+          </h1>
+
+          <p class="dashboard-description">
+            Monitor revenue, orders, customers, products and overall
+            business performance from one place.
+          </p>
+
+        </div>
+
+
+        <div class="dashboard-actions">
+
+          <div class="dashboard-date-wrapper">
+
+            <!-- DATE FILTER -->
+
+            <div
+              class="dashboard-date-filter"
+              id="dashboardDateFilter"
+              hidden
+            >
+
+              <div class="dashboard-date-presets">
+
+                <button
+                  type="button"
+                  class="date-filter-option active"
+                  data-range="all"
+                >
+                  All Time
+                </button>
+
+                <button
+                  type="button"
+                  class="date-filter-option"
+                  data-range="today"
+                >
+                  Today
+                </button>
+
+                <button
+                  type="button"
+                  class="date-filter-option"
+                  data-range="7days"
+                >
+                  Last 7 Days
+                </button>
+
+                <button
+                  type="button"
+                  class="date-filter-option"
+                  data-range="30days"
+                >
+                  Last 30 Days
+                </button>
+
+                <button
+                  type="button"
+                  class="date-filter-option"
+                  data-range="month"
+                >
+                  This Month
+                </button>
+
+                <button
+                  type="button"
+                  class="date-filter-option"
+                  data-range="year"
+                >
+                  This Year
+                </button>
+
+                <button
+                  type="button"
+                  class="date-filter-option"
+                  data-range="custom"
+                >
+                  Custom Range
+                </button>
+
+              </div>
+
+
+              <div
+                class="dashboard-custom-range"
+                id="dashboardCustomRange"
+                hidden
+              >
+
+                <label>
+                  <span>Start Date</span>
+
+                  <input
+                    type="date"
+                    id="dashboardStartDate"
+                  >
+                </label>
+
+
+                <label>
+                  <span>End Date</span>
+
+                  <input
+                    type="date"
+                    id="dashboardEndDate"
+                  >
+                </label>
+
+
+                <button
+                  type="button"
+                  id="applyCustomRange"
+                  class="dashboard-apply-btn"
+                >
+                  Apply
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="dashboard-refresh-btn"
+            id="dashboardRefresh"
+            title="Refresh Dashboard"
+            aria-label="Refresh Dashboard"
+          >
+            <i class="bi bi-arrow-clockwise"></i>
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           KPI CARDS
+           3 PER ROW
+      ====================================================== -->
+
+      <section class="dashboard-stat-grid">
+
+
+        <!-- TOTAL REVENUE -->
+
+        <article class="dashboard-stat-card revenue-card">
+
+          <div class="stat-card-top">
+
+            <div>
+
+              <span class="stat-card-label">
+                Total Revenue
+              </span>
+
+              <h2 id="totalRevenue">
+                ₹0
+              </h2>
+
+            </div>
+
+            <div class="stat-card-icon revenue-icon">
+              <i class="bi bi-currency-rupee"></i>
+            </div>
+
+          </div>
+
+
+          <div class="stat-card-bottom">
+
+            <span
+              class="stat-growth"
+              id="revenueGrowth"
+            >
+              <i class="bi bi-dash"></i>
+              0%
+            </span>
+
+            <span>
+              vs previous period
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- TOTAL ORDERS -->
+
+        <article class="dashboard-stat-card">
+
+          <div class="stat-card-top">
+
+            <div>
+
+              <span class="stat-card-label">
+                Total Orders
+              </span>
+
+              <h2 id="totalOrders">
+                0
+              </h2>
+
+            </div>
+
+            <div class="stat-card-icon orders-icon">
+              <i class="bi bi-bag-check"></i>
+            </div>
+
+          </div>
+
+
+          <div class="stat-card-bottom">
+
+            <span
+              class="stat-growth"
+              id="ordersGrowth"
+            >
+              <i class="bi bi-dash"></i>
+              0%
+            </span>
+
+            <span>
+              order volume
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- CUSTOMERS -->
+
+        <article class="dashboard-stat-card">
+
+          <div class="stat-card-top">
+
+            <div>
+
+              <span class="stat-card-label">
+                Customers
+              </span>
+
+              <h2 id="totalCustomers">
+                0
+              </h2>
+
+            </div>
+
+            <div class="stat-card-icon customers-icon">
+              <i class="bi bi-people"></i>
+            </div>
+
+          </div>
+
+
+          <div class="stat-card-bottom">
+
+            <span
+              class="stat-growth"
+              id="customerGrowth"
+            >
+              <i class="bi bi-dash"></i>
+              0%
+            </span>
+
+            <span>
+              customer growth
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- TOTAL PRODUCTS -->
+
+        <article class="dashboard-stat-card">
+
+          <div class="stat-card-top">
+
+            <div>
+
+              <span class="stat-card-label">
+                Total Products
+              </span>
+
+              <h2 id="totalProducts">
+                0
+              </h2>
+
+            </div>
+
+            <div class="stat-card-icon products-icon">
+              <i class="bi bi-box-seam"></i>
+            </div>
+
+          </div>
+
+
+          <div class="stat-card-bottom">
+
+            <span>
+              <strong id="activeProducts">
+                0
+              </strong>
+              active
+            </span>
+
+            <span>
+              products
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCTS SOLD -->
+
+        <article class="dashboard-stat-card">
+
+          <div class="stat-card-top">
+
+            <div>
+
+              <span class="stat-card-label">
+                Products Sold
+              </span>
+
+              <h2 id="productsSold">
+                0
+              </h2>
+
+            </div>
+
+            <div class="stat-card-icon sales-icon">
+              <i class="bi bi-cart-check"></i>
+            </div>
+
+          </div>
+
+
+          <div class="stat-card-bottom">
+
+            <span>
+              units sold
+            </span>
+
+            <span>
+              successful sales
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- AOV -->
+
+        <article class="dashboard-stat-card">
+
+          <div class="stat-card-top">
+
+            <div>
+
+              <span class="stat-card-label">
+                Average Order Value
+              </span>
+
+              <h2 id="averageOrderValue">
+                ₹0
+              </h2>
+
+            </div>
+
+            <div class="stat-card-icon aov-icon">
+              <i class="bi bi-receipt"></i>
+            </div>
+
+          </div>
+
+
+          <div class="stat-card-bottom">
+
+            <span>
+              per successful order
+            </span>
+
+          </div>
+
+        </article>
+
+      </section>
+
+
+      <!-- =====================================================
+           REVENUE + ORDERS
+      ====================================================== -->
+
+      <section class="dashboard-grid dashboard-grid-revenue">
+
+
+        <!-- REVENUE -->
+
+        <article class="dashboard-panel revenue-panel">
+
+          <div class="dashboard-panel-header">
+
+            <div>
+
+              <span class="panel-eyebrow">
+                REVENUE ANALYTICS
+              </span>
+
+              <h3>
+                Revenue Overview
+              </h3>
+
+              <p>
+                Actual paid-order revenue across the selected period.
+              </p>
+
+            </div>
+
+
+            <div class="chart-period-selector">
+
+              <button
+                type="button"
+                class="chart-period active"
+                data-period="daily"
+              >
+                Daily
+              </button>
+
+              <button
+                type="button"
+                class="chart-period"
+                data-period="monthly"
+              >
+                Monthly
+              </button>
+
+              <button
+                type="button"
+                class="chart-period"
+                data-period="yearly"
+              >
+                Yearly
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div class="revenue-summary">
+
+            <div>
+
+              <span>
+                Selected Revenue
+              </span>
+
+              <strong id="chartRevenue">
+                ₹0
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                Growth
+              </span>
+
+              <strong
+                class="chart-growth"
+                id="chartRevenueGrowth"
+              >
+                0%
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                Orders
+              </span>
+
+              <strong id="chartOrders">
+                0
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="chart-container revenue-chart-container">
+
+            <canvas id="revenueChart"></canvas>
+
+          </div>
+
+        </article>
+
+
+        <!-- ORDERS VS REVENUE -->
+
+        <article class="dashboard-panel">
+
+          <div class="dashboard-panel-header">
+
+            <div>
+
+              <span class="panel-eyebrow">
+                PERFORMANCE
+              </span>
+
+              <h3>
+                Orders vs Revenue
+              </h3>
+
+              <p>
+                Compare order volume with paid revenue.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="chart-container">
+
+            <canvas id="ordersRevenueChart"></canvas>
+
+          </div>
+
+        </article>
+
+      </section>
+
+
+      <!-- =====================================================
+           YEARLY REVENUE + ORDER STATUS
+      ====================================================== -->
+
+      <section class="dashboard-grid dashboard-grid-two">
+
+
+        <!-- YEARLY REVENUE -->
+
+        <article class="dashboard-panel">
+
+          <div class="dashboard-panel-header">
+
+            <div>
+
+              <span class="panel-eyebrow">
+                LONG-TERM PERFORMANCE
+              </span>
+
+              <h3>
+                Yearly Revenue
+              </h3>
+
+              <p>
+                Historical revenue performance by year.
+              </p>
+
+            </div>
+
+
+            <div class="yearly-performance-summary">
+
+              <span>
+                Current Year
+              </span>
+
+              <strong id="currentYearRevenue">
+                ₹0
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="chart-container yearly-chart-container">
+
+            <canvas id="yearlyRevenueChart"></canvas>
+
+          </div>
+
+        </article>
+
+
+        <!-- ORDER STATUS -->
+
+        <article class="dashboard-panel">
+
+          <div class="dashboard-panel-header">
+
+            <div>
+
+              <span class="panel-eyebrow">
+                ORDERS
+              </span>
+
+              <h3>
+                Order Status
+              </h3>
+
+              <p>
+                Current order distribution.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="chart-container doughnut-container">
+
+            <canvas id="orderStatusChart"></canvas>
+
+          </div>
+
+
+          <div
+            class="chart-legend"
+            id="orderStatusLegend"
+          ></div>
+
+        </article>
+
+      </section>
+
+
+      <!-- =====================================================
+           CATEGORY + BRAND
+           2 MEDIUM CARDS
+      ====================================================== -->
+
+      <section class="dashboard-grid dashboard-grid-two">
+
+
+        <!-- CATEGORY -->
+
+        <article class="dashboard-panel">
+
+          <div class="dashboard-panel-header">
+
+            <div>
+
+              <span class="panel-eyebrow">
+                CATEGORIES
+              </span>
+
+              <h3>
+                Revenue by Category
+              </h3>
+
+              <p>
+                Top categories ranked by paid revenue.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="chart-container horizontal-chart-container">
+
+            <canvas id="categoryRevenueChart"></canvas>
+
+          </div>
+
+        </article>
+
+
+        <!-- BRAND -->
+
+        <article class="dashboard-panel">
+
+          <div class="dashboard-panel-header">
+
+            <div>
+
+              <span class="panel-eyebrow">
+                BRANDS
+              </span>
+
+              <h3>
+                Revenue by Brand
+              </h3>
+
+              <p>
+                Top brands ranked by paid revenue.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="chart-container horizontal-chart-container">
+
+            <canvas id="brandRevenueChart"></canvas>
+
+          </div>
+
+        </article>
+
+      </section>
+
+
+      <!-- =====================================================
+           TOP SELLING PRODUCTS
+           FULL WIDTH
+      ====================================================== -->
+
+      <section class="dashboard-panel dashboard-full-panel">
+
+        <div class="dashboard-panel-header">
+
+          <div>
+
+            <span class="panel-eyebrow">
+              PRODUCTS
+            </span>
+
+            <h3>
+              Top Selling Products
+            </h3>
+
+            <p>
+              Best performing products based on paid sales.
+            </p>
+
+          </div>
+
+
+          <a
+            href="/orders"
+            class="panel-link"
+          >
+            View All
+            <i class="bi bi-arrow-right"></i>
+          </a>
+
+        </div>
+
+
+        <div
+  class="top-products-list"
+  id="topProductsList"
+>
+  <div class="dashboard-empty-state">
+    <i class="bi bi-box-seam"></i>
+    <p>Loading products...</p>
+  </div>
+</div>
+
+      </section>
+
+
+      <!-- =====================================================
+           RECENT ORDERS
+           FULL WIDTH
+      ====================================================== -->
+
+      <section class="dashboard-panel dashboard-full-panel">
+
+        <div class="dashboard-panel-header">
+
+          <div>
+
+            <span class="panel-eyebrow">
+              ORDERS
+            </span>
+
+            <h3>
+              Recent Orders
+            </h3>
+
+            <p>
+              Latest orders placed on the platform.
+            </p>
+
+          </div>
+
+
+          <a
+            href="/orders"
+            class="panel-link"
+          >
+            View All
+            <i class="bi bi-arrow-right"></i>
+          </a>
+
+        </div>
+
+
+        <div class="recent-orders-wrapper">
+
+          <table class="dashboard-table">
+
+            <thead>
+
+              <tr>
+
+                <th>
+                  Order
+                </th>
+
+                <th>
+                  Customer
+                </th>
+
+                <th>
+                  Date
+                </th>
+
+                <th>
+                  Amount
+                </th>
+
+                <th>
+                  Payment
+                </th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody id="recentOrdersTable">
+
+              <tr>
+
+                <td
+                  colspan="6"
+                  class="table-loading"
+                >
+                  Loading orders...
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           COMPACT INVENTORY SNAPSHOT
+      ====================================================== -->
+
+      <section class="dashboard-inventory-strip">
+
+
+        <div class="inventory-strip-title">
+
+          <span class="panel-eyebrow">
+            INVENTORY
+          </span>
+
+          <h3>
+            Stock Snapshot
+          </h3>
+
+        </div>
+
+
+        <div class="inventory-metric">
+
+          <span class="inventory-dot in-stock"></span>
+
+          <div>
+
+            <strong id="inventoryInStock">
+              0
+            </strong>
+
+            <span>
+              Healthy Stock
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="inventory-metric">
+
+          <span class="inventory-dot low-stock"></span>
+
+          <div>
+
+            <strong id="inventoryLowStock">
+              0
+            </strong>
+
+            <span>
+              Low Stock
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="inventory-metric">
+
+          <span class="inventory-dot out-stock"></span>
+
+          <div>
+
+            <strong id="inventoryOutOfStock">
+              0
+            </strong>
+
+            <span>
+              Out of Stock
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="inventory-total">
+
+          <span>
+            Total Products
+          </span>
+
+          <strong id="inventoryTotal">
+            0
+          </strong>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           LAST UPDATED
+      ====================================================== -->
+
+      <section class="dashboard-last-updated">
+
+        <span>
+
+          <i class="bi bi-clock-history"></i>
+
+          Last updated:
+
+          <strong id="dashboardLastUpdated">
+            Just now
+          </strong>
+
+        </span>
+
+
+        <span>
+
+          <i class="bi bi-shield-check"></i>
+
+          Revenue is calculated from successful paid orders
+
+        </span>
+
+      </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         INITIAL DASHBOARD DATA
+    ====================================================== -->
+
+    <script
+      type="application/json"
+      id="dashboardInitialData"
+    ><%- JSON.stringify(
+      typeof dashboardData !== "undefined"
+        ? dashboardData
+        : {}
+    ).replace(/</g, "\\u003c") %></script>
+
+
+    <!-- =====================================================
+         CHART.JS
+    ====================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <!-- =====================================================
+         DASHBOARD JAVASCRIPT
+    ====================================================== -->
+
+    <script src="/js/admin/dashboard.js"></script>
+
+  </div>
 
 </div>
+
+
+<%- include("../layout/adminFooter") %>

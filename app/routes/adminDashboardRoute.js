@@ -7,7 +7,10 @@ const authorizeRoles = require("../middlewares/authorizeRoles");
 
 const router = express.Router();
 
-// Dashboard
+// ==========================================================
+// DASHBOARD
+// ==========================================================
+
 router.get(
   "/",
   authMiddleware,
@@ -15,7 +18,10 @@ router.get(
   AdminDashboardController.showDashboard,
 );
 
-// Statistics
+// ==========================================================
+// STATISTICS
+// ==========================================================
+
 router.get(
   "/statistics",
   authMiddleware,
@@ -23,7 +29,10 @@ router.get(
   AdminDashboardController.getDashboardStatistics,
 );
 
-// Recent orders
+// ==========================================================
+// RECENT ORDERS
+// ==========================================================
+
 router.get(
   "/recent-orders",
   authMiddleware,
@@ -31,7 +40,10 @@ router.get(
   AdminDashboardController.getRecentOrders,
 );
 
-// Revenue chart
+// ==========================================================
+// REVENUE CHART
+// ==========================================================
+
 router.get(
   "/revenue-chart",
   authMiddleware,
@@ -39,7 +51,10 @@ router.get(
   AdminDashboardController.getRevenueChart,
 );
 
-// Orders chart
+// ==========================================================
+// ORDERS CHART
+// ==========================================================
+
 router.get(
   "/orders-chart",
   authMiddleware,
@@ -47,7 +62,10 @@ router.get(
   AdminDashboardController.getOrdersChart,
 );
 
-// Users chart
+// ==========================================================
+// USERS / CUSTOMERS CHART
+// ==========================================================
+
 router.get(
   "/users-chart",
   authMiddleware,
@@ -55,7 +73,10 @@ router.get(
   AdminDashboardController.getUsersChart,
 );
 
-// Inventory chart
+// ==========================================================
+// INVENTORY CHART
+// ==========================================================
+
 router.get(
   "/inventory-chart",
   authMiddleware,
@@ -63,7 +84,10 @@ router.get(
   AdminDashboardController.getInventoryChart,
 );
 
-// Top selling products
+// ==========================================================
+// TOP SELLING PRODUCTS
+// ==========================================================
+
 router.get(
   "/top-products",
   authMiddleware,
@@ -71,7 +95,10 @@ router.get(
   AdminDashboardController.getTopSellingProducts,
 );
 
-// Top categories
+// ==========================================================
+// TOP CATEGORIES
+// ==========================================================
+
 router.get(
   "/top-categories",
   authMiddleware,
@@ -79,7 +106,10 @@ router.get(
   AdminDashboardController.getTopCategories,
 );
 
-// Top brands
+// ==========================================================
+// TOP BRANDS
+// ==========================================================
+
 router.get(
   "/top-brands",
   authMiddleware,
@@ -87,7 +117,10 @@ router.get(
   AdminDashboardController.getTopBrands,
 );
 
-// Top sellers
+// ==========================================================
+// TOP SELLERS
+// ==========================================================
+
 router.get(
   "/top-sellers",
   authMiddleware,
@@ -95,12 +128,19 @@ router.get(
   AdminDashboardController.getTopSellers,
 );
 
-// Latest customers
+// ==========================================================
+// LATEST CUSTOMERS
+// ==========================================================
+
 router.get(
   "/latest-customers",
   authMiddleware,
   authorizeRoles("admin"),
   AdminDashboardController.getLatestCustomers,
 );
+
+// ==========================================================
+// EXPORT
+// ==========================================================
 
 module.exports = router;
