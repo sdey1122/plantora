@@ -1,0 +1,893 @@
+2026-08-10 00:14:49 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:489:7)
+2026-08-10 00:15:04 [ERROR]: Remove from cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `REMOVE_FROM_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async removeFromCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:799:7)
+2026-08-10 00:15:13 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:489:7)
+2026-08-10 00:15:37 [ERROR]: Clear cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `CLEAR_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async clearCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:875:7)
+2026-08-10 00:16:53 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:489:7)
+2026-08-10 00:17:56 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:489:7)
+2026-08-10 01:03:50 [ERROR]: Show public product details failed: ReferenceError: productStock is not defined
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1106:31)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-10 01:03:53 [ERROR]: Show public product details failed: ReferenceError: productStock is not defined
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1106:31)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-10 01:03:56 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:473:7)
+2026-08-10 01:04:17 [ERROR]: Show public product details failed: ReferenceError: productStock is not defined
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1106:31)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-10 01:04:19 [ERROR]: Show public product details failed: ReferenceError: productStock is not defined
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1106:31)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-10 01:04:30 [ERROR]: Remove from cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `REMOVE_FROM_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async removeFromCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:783:7)
+2026-08-10 01:04:35 [ERROR]: Show public product details failed: ReferenceError: productStock is not defined
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1106:31)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-10 01:04:55 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:473:7)
+2026-08-10 01:32:54 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\shop\index.ejs:5
+    3| <%- include("../partials/main/announcementBar") %>
+    4| 
+ >> 5| <%- include("../partials/main/header") %>
+    6| 
+    7| 
+    8| <main>
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\partials\main\header.ejs:137
+    135|     <i class="bi bi-bag"></i>
+    136| 
+ >> 137|     <% if (cartCount > 0) { %>
+    138|         <span
+    139|             class="header-badge cart-badge"
+    140|             id="cartBadge"
+
+cartCount is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:30:8)
+    at header (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:16:17)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-10 01:33:01 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\home\index.ejs:3
+    1| <%- include("../partials/main/head") %>
+    2| <%-include("../partials/main/announcementBar") %>
+ >> 3| <%-include("../partials/main/header") %>
+    4| 
+    5| <main>
+    6|   <!-- Home page -->
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\partials\main\header.ejs:137
+    135|     <i class="bi bi-bag"></i>
+    136| 
+ >> 137|     <% if (cartCount > 0) { %>
+    138|         <span
+    139|             class="header-badge cart-badge"
+    140|             id="cartBadge"
+
+cartCount is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:30:8)
+    at header (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:16:16)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-10 01:46:10 [ERROR]: Update cart quantity failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `UPDATE_CART_QUANTITY` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async updateCartQuantity (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:564:7)
+2026-08-10 01:46:17 [ERROR]: Remove from cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `REMOVE_FROM_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async removeFromCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:713:7)
+2026-08-10 01:46:21 [ERROR]: Remove from cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `REMOVE_FROM_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async removeFromCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:713:7)
+2026-08-10 01:46:30 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:435:7)
+2026-08-10 01:46:49 [ERROR]: Update cart quantity failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `UPDATE_CART_QUANTITY` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async updateCartQuantity (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:564:7)
+2026-08-10 02:29:35 [ERROR]: Remove from cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `REMOVE_FROM_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async removeFromCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:713:7)
+2026-08-10 02:29:42 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:435:7)
+2026-08-10 02:29:47 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:435:7)
+2026-08-10 02:29:53 [ERROR]: Show public product details failed: ReferenceError: productStock is not defined
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1106:31)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-10 02:29:58 [ERROR]: Show public product details failed: ReferenceError: productStock is not defined
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1106:31)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-10 02:30:52 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:435:7)
+2026-08-10 02:31:01 [ERROR]: Remove from cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `REMOVE_FROM_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async removeFromCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:713:7)
+2026-08-10 02:31:06 [ERROR]: Remove from cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `REMOVE_FROM_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async removeFromCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:713:7)
+2026-08-10 02:31:11 [ERROR]: Toggle cart item failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `TOGGLE_CART_ITEM` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async toggleCartItem (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:645:7)
+2026-08-10 02:31:16 [ERROR]: Toggle cart item failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `TOGGLE_CART_ITEM` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async toggleCartItem (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:645:7)
+2026-08-10 02:31:26 [ERROR]: Toggle cart item failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `TOGGLE_CART_ITEM` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async toggleCartItem (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:645:7)
+2026-08-10 02:36:29 [ERROR]: Remove from cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `REMOVE_FROM_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async removeFromCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:713:7)
+2026-08-10 02:37:02 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:435:7)
+2026-08-10 02:37:22 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:435:7)
+2026-08-10 02:37:27 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:435:7)
+2026-08-10 02:37:34 [ERROR]: Toggle cart item failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `TOGGLE_CART_ITEM` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async toggleCartItem (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:645:7)
+2026-08-10 02:37:35 [ERROR]: Toggle cart item failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `TOGGLE_CART_ITEM` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async toggleCartItem (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:645:7)
+2026-08-10 02:37:35 [ERROR]: Toggle cart item failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `TOGGLE_CART_ITEM` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async toggleCartItem (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:645:7)
+2026-08-10 02:37:38 [ERROR]: Toggle cart item failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `TOGGLE_CART_ITEM` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async toggleCartItem (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:645:7)
+2026-08-10 02:38:02 [ERROR]: Toggle cart item failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `TOGGLE_CART_ITEM` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async toggleCartItem (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:645:7)
+2026-08-10 02:38:03 [ERROR]: Toggle cart item failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `TOGGLE_CART_ITEM` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async toggleCartItem (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:645:7)
+2026-08-10 02:38:03 [ERROR]: Toggle cart item failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `TOGGLE_CART_ITEM` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async toggleCartItem (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:645:7)
+2026-08-10 02:43:23 [ERROR]: Toggle cart item failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `TOGGLE_CART_ITEM` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async toggleCartItem (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:674:7)
+2026-08-10 02:43:24 [ERROR]: Toggle cart item failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `TOGGLE_CART_ITEM` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async toggleCartItem (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:674:7)
+2026-08-10 02:43:24 [ERROR]: Toggle cart item failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `TOGGLE_CART_ITEM` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async toggleCartItem (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:674:7)
+2026-08-10 02:43:31 [ERROR]: Remove from cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `REMOVE_FROM_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async removeFromCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:754:7)
+2026-08-10 02:43:37 [ERROR]: Toggle cart item failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `TOGGLE_CART_ITEM` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async toggleCartItem (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:674:7)
+2026-08-10 02:43:38 [ERROR]: Toggle cart item failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `TOGGLE_CART_ITEM` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async toggleCartItem (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:674:7)
+2026-08-10 02:43:43 [ERROR]: Toggle cart item failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `TOGGLE_CART_ITEM` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async toggleCartItem (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:674:7)
+2026-08-10 02:45:06 [ERROR]: Toggle cart item failed: ValidationError: AuditLog validation failed: module: `CART` is not a valid enum value for path `module`., action: `UPDATE` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async toggleCartItem (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:674:7)
+2026-08-10 02:45:06 [ERROR]: Toggle cart item failed: ValidationError: AuditLog validation failed: module: `CART` is not a valid enum value for path `module`., action: `UPDATE` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async toggleCartItem (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:674:7)
+2026-08-10 02:45:09 [ERROR]: Toggle cart item failed: ValidationError: AuditLog validation failed: module: `CART` is not a valid enum value for path `module`., action: `UPDATE` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async toggleCartItem (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:674:7)
+2026-08-10 02:45:12 [ERROR]: Toggle cart item failed: ValidationError: AuditLog validation failed: module: `CART` is not a valid enum value for path `module`., action: `UPDATE` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async toggleCartItem (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:674:7)
+2026-08-10 02:46:24 [ERROR]: Clear cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `CLEAR_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async clearCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:823:7)
+2026-08-10 03:57:44 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:435:7)
+2026-08-10 04:14:06 [ERROR]: Show checkout page failed: TypeError: req.flash is not a function
+    at showCheckoutPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CheckoutController.js:383:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-10 04:14:06 [ERROR]: TypeError: req.flash is not a function
+    at showCheckoutPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CheckoutController.js:545:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-10 04:16:09 [ERROR]: Checkout failed: No delivery address found. User ID: 6a6e638d68eaf947f1f6ba8a
+2026-08-10 04:30:04 [ERROR]: Show checkout page failed: TypeError: Cannot read properties of undefined (reading 'calculateCheckout')
+    at showCheckoutPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CheckoutController.js:344:38)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:117:3)
+    at handle (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:295:15
+    at processParams (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:582:12)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:291:5)
+    at authMiddleware (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authMiddleware.js:71:12)
+2026-08-10 04:30:29 [ERROR]: Show checkout page failed: TypeError: Cannot read properties of undefined (reading 'calculateCheckout')
+    at showCheckoutPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CheckoutController.js:344:38)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:117:3)
+    at handle (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:295:15
+    at processParams (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:582:12)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:291:5)
+    at authMiddleware (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authMiddleware.js:71:12)
+2026-08-10 04:38:56 [ERROR]: Create address failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `CREATE_ADDRESS` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async createAddress (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\AddressController.js:232:7)
+2026-08-10 04:46:20 [ERROR]: Update address failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `UPDATE_ADDRESS` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async updateAddress (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\AddressController.js:388:7)
+2026-08-10 04:46:29 [ERROR]: Remove from cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `REMOVE_FROM_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async removeFromCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:779:7)
+2026-08-10 04:46:34 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:435:7)
+2026-08-10 04:46:42 [ERROR]: Update cart quantity failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `UPDATE_CART_QUANTITY` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async updateCartQuantity (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:564:7)
+2026-08-10 04:46:47 [ERROR]: Update cart quantity failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `UPDATE_CART_QUANTITY` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async updateCartQuantity (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:564:7)
+2026-08-10 04:46:53 [ERROR]: Update cart quantity failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `UPDATE_CART_QUANTITY` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async updateCartQuantity (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:564:7)
+2026-08-10 04:46:56 [ERROR]: Update cart quantity failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `UPDATE_CART_QUANTITY` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async updateCartQuantity (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:564:7)
+2026-08-10 04:46:59 [ERROR]: Update cart quantity failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `UPDATE_CART_QUANTITY` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async updateCartQuantity (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:564:7)
+2026-08-10 04:46:59 [ERROR]: Update cart quantity failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `UPDATE_CART_QUANTITY` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async updateCartQuantity (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:564:7)
+2026-08-10 04:47:02 [ERROR]: Update cart quantity failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `UPDATE_CART_QUANTITY` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async updateCartQuantity (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:564:7)
+2026-08-10 04:47:04 [ERROR]: Update cart quantity failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `UPDATE_CART_QUANTITY` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async updateCartQuantity (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:564:7)
+2026-08-10 04:47:06 [ERROR]: Update cart quantity failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `UPDATE_CART_QUANTITY` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async updateCartQuantity (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:564:7)
+2026-08-10 04:50:18 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:435:7)
+2026-08-10 04:50:43 [ERROR]: Show checkout page failed: TypeError: Cannot read properties of undefined (reading 'calculateCheckout')
+    at showCheckoutPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CheckoutController.js:344:38)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:117:3)
+    at handle (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:295:15
+    at processParams (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:582:12)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:291:5)
+    at authMiddleware (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authMiddleware.js:71:12)
+2026-08-10 04:52:49 [ERROR]: Show checkout page failed: TypeError: Cannot read properties of undefined (reading 'calculateCheckout')
+    at showCheckoutPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CheckoutController.js:344:38)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:117:3)
+    at handle (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:295:15
+    at processParams (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:582:12)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:291:5)
+    at authMiddleware (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authMiddleware.js:71:12)
+2026-08-10 04:54:00 [ERROR]: Error: Failed to lookup view "checkout/index" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at CheckoutController.showCheckoutPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CheckoutController.js:506:44)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-10 05:00:17 [ERROR]: Place order validation failed: Payment method is required.
+2026-08-10 05:13:18 [ERROR]: Place order failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `CREATE_PENDING_ORDER` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async CheckoutController.placeOrder (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CheckoutController.js:1080:7)
+2026-08-10 05:58:39 [ERROR]: SyntaxError: Unexpected token 'catch' in E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\shop\product-details.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+    at new Function (<anonymous>)
+    at Template.compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18)
+    at Object.compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:359:18)
+    at handleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:216:16)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:22)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+2026-08-10 06:02:30 [ERROR]: SyntaxError: Identifier 'averageRating' has already been declared in E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\shop\product-details.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+    at new Function (<anonymous>)
+    at Template.compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18)
+    at Object.compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:359:18)
+    at handleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:216:16)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:22)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+2026-08-10 06:02:44 [ERROR]: SyntaxError: Identifier 'averageRating' has already been declared in E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\shop\product-details.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+    at new Function (<anonymous>)
+    at Template.compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18)
+    at Object.compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:359:18)
+    at handleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:216:16)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:22)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+2026-08-10 06:22:30 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:435:7)
+2026-08-10 06:22:35 [ERROR]: Remove from cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `REMOVE_FROM_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async removeFromCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:791:7)
+2026-08-10 07:01:56 [ERROR]: Error: Could not find matching close tag for "<%".
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:693:31
+    at Array.forEach (<anonymous>)
+    at Template.generateSource (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:683:21)
+    at Template.compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:531:18)
+    at Object.compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:359:18)
+    at handleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:216:16)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:22)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+2026-08-10 07:05:14 [ERROR]: Error: Could not find matching close tag for "<%".
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:693:31
+    at Array.forEach (<anonymous>)
+    at Template.generateSource (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:683:21)
+    at Template.compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:531:18)
+    at Object.compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:359:18)
+    at handleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:216:16)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:22)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+2026-08-10 07:23:18 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\home\index.ejs:8
+    6|   <!-- Home page -->
+    7|   <%-include("../home/hero.ejs") %> 
+ >> 8|   <%-include("../home/featured.ejs") %>
+    9|   <%-include("../home/why-choose.ejs") %>
+    10| </main>
+    11| 
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\home\featured.ejs:9
+    7|           <div class="swiper-wrapper">
+    8| 
+ >> 9|             <% featuredProducts.forEach((product) => { %>
+    10| 
+    11|               <div class="swiper-slide">
+    12| 
+
+featuredProducts is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:12:8)
+    at featured (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:22:16)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-10 07:24:19 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\home\index.ejs:8
+    6|   <!-- Home page -->
+    7|   <%-include("../home/hero.ejs") %> 
+ >> 8|   <%-include("../home/featured.ejs") %>
+    9|   <%-include("../home/why-choose.ejs") %>
+    10| </main>
+    11| 
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\home\featured.ejs:9
+    7|           <div class="swiper-wrapper">
+    8| 
+ >> 9|             <% featuredProducts.forEach((product) => { %>
+    10| 
+    11|               <div class="swiper-slide">
+    12| 
+
+featuredProducts is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:12:8)
+    at featured (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:22:16)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-10 07:26:42 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\home\index.ejs:8
+    6|   <!-- Home page -->
+    7|   <%-include("../home/hero.ejs") %> 
+ >> 8|   <%-include("../home/featured.ejs") %>
+    9|   <%-include("../home/why-choose.ejs") %>
+    10| </main>
+    11| 
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\home\featured.ejs:5
+    3| ========================================================== -->
+    4| 
+ >> 5| <% if (
+    6|   featuredProducts &&
+    7|   featuredProducts.length > 0
+    8| ) { %>
+
+featuredProducts is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:12:8)
+    at featured (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:22:16)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-10 07:26:43 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\home\index.ejs:8
+    6|   <!-- Home page -->
+    7|   <%-include("../home/hero.ejs") %> 
+ >> 8|   <%-include("../home/featured.ejs") %>
+    9|   <%-include("../home/why-choose.ejs") %>
+    10| </main>
+    11| 
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\home\featured.ejs:5
+    3| ========================================================== -->
+    4| 
+ >> 5| <% if (
+    6|   featuredProducts &&
+    7|   featuredProducts.length > 0
+    8| ) { %>
+
+featuredProducts is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:12:8)
+    at featured (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:22:16)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-10 07:26:44 [ERROR]: ReferenceError: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\home\index.ejs:8
+    6|   <!-- Home page -->
+    7|   <%-include("../home/hero.ejs") %> 
+ >> 8|   <%-include("../home/featured.ejs") %>
+    9|   <%-include("../home/why-choose.ejs") %>
+    10| </main>
+    11| 
+
+E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views\home\featured.ejs:5
+    3| ========================================================== -->
+    4| 
+ >> 5| <% if (
+    6|   featuredProducts &&
+    7|   featuredProducts.length > 0
+    8| ) { %>
+
+featuredProducts is not defined
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:12:8)
+    at featured (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at include (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:634:47)
+    at eval (eval at compile (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:607:18), <anonymous>:22:16)
+    at index (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:643:23)
+    at tryHandleCache (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:253:42)
+    at ejs.renderFile [as engine] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\ejs\lib\cjs\ejs.js:444:12)
+    at View.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\view.js:139:8)
+    at tryRender (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:627:10)
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:574:3)
+2026-08-10 07:30:42 [ERROR]: MongooseError: Aggregate has empty pipeline
+    at maybeTracedAggregateExec (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\aggregate.js:1122:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-10 07:35:20 [ERROR]: Error: Failed to lookup view "home/about" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showAboutPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\HomeController.js:84:44)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:117:3)
+    at handle (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:295:15
+    at processParams (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:582:12)
+2026-08-10 07:35:22 [ERROR]: Error: Failed to lookup view "home/contact" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showContactPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\HomeController.js:98:44)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:117:3)
+    at handle (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:295:15
+    at processParams (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:582:12)
+2026-08-10 08:08:49 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:435:7)
+2026-08-10 08:08:54 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:435:7)
+2026-08-10 08:08:58 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:435:7)
+2026-08-10 08:09:06 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:435:7)
+2026-08-10 08:09:34 [ERROR]: Clear cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `CLEAR_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async clearCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:835:7)
+2026-08-10 08:10:11 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:435:7)
+2026-08-10 08:10:17 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:435:7)
+2026-08-10 08:10:31 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:435:7)
+2026-08-10 08:10:42 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:435:7)
+2026-08-10 08:10:49 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:435:7)
+2026-08-10 08:15:47 [ERROR]: Error: Failed to lookup view "wishlist/index" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showWishlistPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\WishlistController.js:101:44)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-10 08:15:49 [ERROR]: Error: Failed to lookup view "home/about" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showAboutPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\HomeController.js:80:44)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:117:3)
+    at handle (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:295:15
+    at processParams (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:582:12)

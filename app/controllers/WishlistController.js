@@ -52,7 +52,9 @@ class WishlistController {
         {
           $match: {
             "product.isDeleted": false,
-            "product.isActive": true,
+            "product.status": {
+              $in: ["active", "out-of-stock"],
+            },
             "product.approvalStatus": "approved",
           },
         },

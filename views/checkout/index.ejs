@@ -1,0 +1,653 @@
+<%- include("../partials/main/head") %>
+
+<%- include("../partials/main/announcementBar") %>
+
+<%- include("../partials/main/header") %>
+
+
+<main class="checkout-page">
+
+  <!-- ==========================================================
+       CHECKOUT HERO
+  =========================================================== -->
+
+  <section class="checkout-hero">
+
+    <div class="checkout-hero-content">
+
+      <span class="checkout-eyebrow">
+        <i class="bi bi-shield-lock"></i>
+        Secure Checkout
+      </span>
+
+      <h1>
+        Complete Your Order
+      </h1>
+
+      <p>
+        Review your delivery details and order summary before proceeding
+        to secure payment.
+      </p>
+
+    </div>
+
+    <div class="checkout-step-indicator">
+
+      <div class="checkout-step active">
+        <span>1</span>
+        <small>Checkout</small>
+      </div>
+
+      <div class="checkout-step-line"></div>
+
+      <div class="checkout-step">
+        <span>2</span>
+        <small>Payment</small>
+      </div>
+
+      <div class="checkout-step-line"></div>
+
+      <div class="checkout-step">
+        <span>3</span>
+        <small>Complete</small>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==========================================================
+       MAIN CHECKOUT
+  =========================================================== -->
+
+  <section class="checkout-container">
+
+    <form
+  action="/checkout/place-order"
+  method="POST"
+  id="checkoutForm"
+  class="checkout-form"
+>
+  <input
+    type="hidden"
+    name="paymentMethod"
+    value="razorpay"
+  >
+
+  <div class="checkout-main">
+
+
+        <!-- ======================================================
+             DELIVERY ADDRESS
+        ======================================================= -->
+
+        <section class="checkout-card">
+
+          <div class="checkout-card-header">
+
+            <div class="checkout-card-heading">
+
+              <div class="checkout-card-icon">
+                <i class="bi bi-geo-alt"></i>
+              </div>
+
+              <div>
+
+                <span>
+                  Delivery
+                </span>
+
+                <h2>
+                  Delivery Address
+                </h2>
+
+              </div>
+
+            </div>
+
+            <a
+              href="/addresses/create"
+              class="checkout-add-address"
+            >
+              <i class="bi bi-plus-circle"></i>
+              Add New
+            </a>
+
+          </div>
+
+
+          <div class="checkout-address-grid">
+
+            <% addresses.forEach((address) => { %>
+
+              <label
+                class="checkout-address-option <%= selectedAddressId && selectedAddressId.toString() === address._id.toString() ? 'selected' : '' %>"
+              >
+
+                <input
+                  type="radio"
+                  name="addressId"
+                  value="<%= address._id %>"
+                  <%= selectedAddressId && selectedAddressId.toString() === address._id.toString() ? 'checked' : '' %>
+                  required
+                >
+
+                <span class="checkout-address-radio"></span>
+
+
+                <div class="checkout-address-content">
+
+                  <div class="checkout-address-top">
+
+                    <strong>
+                      <%= address.fullName %>
+                    </strong>
+
+                    <span class="checkout-address-type">
+                      <i class="bi bi-house"></i>
+                      <%= address.addressType %>
+                    </span>
+
+                  </div>
+
+
+                  <p>
+                    <%= address.addressLine1 %>
+                  </p>
+
+                  <% if (address.addressLine2) { %>
+
+                    <p>
+                      <%= address.addressLine2 %>
+                    </p>
+
+                  <% } %>
+
+
+                  <% if (address.area) { %>
+
+                    <p>
+                      <%= address.area %>
+                    </p>
+
+                  <% } %>
+
+
+                  <p>
+                    <%= address.city %>,
+                    <%= address.state %>
+                    -
+                    <%= address.postalCode %>
+                  </p>
+
+
+                  <div class="checkout-address-contact">
+
+                    <span>
+                      <i class="bi bi-telephone"></i>
+                      <%= address.countryCode %>
+                      <%= address.phone %>
+                    </span>
+
+                  </div>
+
+
+                  <% if (address.isDefault) { %>
+
+                    <span class="checkout-default-badge">
+                      Default Address
+                    </span>
+
+                  <% } %>
+
+                </div>
+
+              </label>
+
+            <% }) %>
+
+          </div>
+
+        </section>
+
+
+        <!-- ======================================================
+             PRODUCTS
+        ======================================================= -->
+
+        <section class="checkout-card">
+
+          <div class="checkout-card-header">
+
+            <div class="checkout-card-heading">
+
+              <div class="checkout-card-icon">
+                <i class="bi bi-bag-check"></i>
+              </div>
+
+              <div>
+
+                <span>
+                  Your Selection
+                </span>
+
+                <h2>
+                  Order Items
+                </h2>
+
+              </div>
+
+            </div>
+
+            <span class="checkout-item-count">
+              <%= cart.length %>
+              <%= cart.length === 1 ? "Item" : "Items" %>
+            </span>
+
+          </div>
+
+
+          <div class="checkout-products">
+
+            <% cart.forEach((item) => { %>
+
+              <div class="checkout-product">
+
+                <div class="checkout-product-image">
+
+                  <img
+                    src="<%= item.images?.[0]?.url || '/images/placeholder-product.jpg' %>"
+                    alt="<%= item.name %>"
+                  >
+
+                </div>
+
+
+                <div class="checkout-product-info">
+
+                  <h3>
+                    <%= item.name %>
+                  </h3>
+
+                  <span class="checkout-product-sku">
+                    SKU: <%= item.sku || "N/A" %>
+                  </span>
+
+                  <div class="checkout-product-meta">
+
+                    <span>
+                      Qty:
+                      <strong>
+                        <%= item.quantity %>
+                      </strong>
+                    </span>
+
+                    <% if (
+                      item.discountPrice &&
+                      Number(item.discountPrice) < Number(item.price)
+                    ) { %>
+
+                      <span class="checkout-product-discount">
+                        Discount Applied
+                      </span>
+
+                    <% } %>
+
+                  </div>
+
+                </div>
+
+
+                <div class="checkout-product-price">
+
+                  <span>
+                    ₹<%= Number(
+                      item.sellingPrice || 0
+                    ).toLocaleString("en-IN", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2
+                    }) %>
+                  </span>
+
+                  <small>
+                    × <%= item.quantity %>
+                  </small>
+
+                  <strong>
+                    ₹<%= Number(
+                      item.itemSubtotal || 0
+                    ).toLocaleString("en-IN", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2
+                    }) %>
+                  </strong>
+
+                </div>
+
+              </div>
+
+            <% }) %>
+
+          </div>
+
+        </section>
+
+
+        <!-- ======================================================
+             ORDER NOTES
+        ======================================================= -->
+
+        <section class="checkout-card">
+
+          <div class="checkout-card-header">
+
+            <div class="checkout-card-heading">
+
+              <div class="checkout-card-icon">
+                <i class="bi bi-chat-left-text"></i>
+              </div>
+
+              <div>
+
+                <span>
+                  Optional
+                </span>
+
+                <h2>
+                  Order Notes
+                </h2>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="checkout-notes">
+
+            <label for="notes">
+              Anything we should know?
+            </label>
+
+            <textarea
+              id="notes"
+              name="notes"
+              rows="4"
+              maxlength="500"
+              placeholder="Add delivery instructions or other notes..."
+            ></textarea>
+
+            <small>
+              Maximum 500 characters.
+            </small>
+
+          </div>
+
+        </section>
+
+      </div>
+
+
+      <!-- ========================================================
+           ORDER SUMMARY
+      ========================================================= -->
+
+      <aside class="checkout-sidebar">
+
+        <section class="checkout-summary-card">
+
+          <div class="checkout-summary-header">
+
+            <span>
+              <i class="bi bi-receipt"></i>
+              Order Summary
+            </span>
+
+            <h2>
+              Price Details
+            </h2>
+
+          </div>
+
+          <!-- PRICE -->
+
+          <div class="checkout-summary-row">
+
+            <span>
+              Products
+            </span>
+
+            <strong>
+              ₹<%= Number(
+                subtotal || 0
+              ).toLocaleString("en-IN", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+              }) %>
+            </strong>
+
+          </div>
+
+
+          <% if (Number(discount || 0) > 0) { %>
+
+            <div class="checkout-summary-row discount">
+
+              <span>
+                Discount
+              </span>
+
+              <strong>
+                -₹<%= Number(
+                  discount
+                ).toLocaleString("en-IN", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2
+                }) %>
+              </strong>
+
+            </div>
+
+          <% } %>
+
+
+          <div class="checkout-summary-row">
+
+            <span>
+              Shipping
+            </span>
+
+            <strong>
+
+              <% if (Number(shippingCharge || 0) === 0) { %>
+
+                <span class="checkout-free">
+                  FREE
+                </span>
+
+              <% } else { %>
+
+                ₹<%= Number(
+                  shippingCharge
+                ).toLocaleString("en-IN", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2
+                }) %>
+
+              <% } %>
+
+            </strong>
+
+          </div>
+
+
+          <div class="checkout-summary-row">
+
+            <span>
+              GST
+            </span>
+
+            <strong>
+              ₹<%= Number(
+                tax || 0
+              ).toLocaleString("en-IN", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+              }) %>
+            </strong>
+
+          </div>
+
+
+          <div class="checkout-summary-row">
+
+            <span>
+              Platform Fee
+            </span>
+
+            <strong>
+              ₹<%= Number(
+                platformFee || 0
+              ).toLocaleString("en-IN", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+              }) %>
+            </strong>
+
+          </div>
+
+
+          <div class="checkout-summary-divider"></div>
+
+
+          <!-- TOTAL -->
+
+          <div class="checkout-total">
+
+            <div>
+
+              <span>
+                Total Amount
+              </span>
+
+              <small>
+                Inclusive of applicable taxes
+              </small>
+
+            </div>
+
+            <strong>
+              ₹<%= Number(
+                totalAmount || 0
+              ).toLocaleString("en-IN", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+              }) %>
+            </strong>
+
+          </div>
+
+
+          <!-- PAYMENT -->
+
+          <div class="checkout-payment-method">
+
+            <div class="checkout-payment-icon">
+              <i class="bi bi-credit-card-2-front"></i>
+            </div>
+
+            <div>
+
+              <strong>
+                Secure Online Payment
+              </strong>
+
+              <span>
+                Powered by Razorpay
+              </span>
+
+            </div>
+
+            <i class="bi bi-shield-check"></i>
+
+          </div>
+
+
+          <!-- SUBMIT -->
+
+          <button
+            type="submit"
+            class="checkout-payment-button"
+            id="placeOrderButton"
+          >
+
+            <span>
+              Proceed to Payment
+            </span>
+
+            <i class="bi bi-arrow-right"></i>
+
+          </button>
+
+
+          <div class="checkout-security">
+
+            <i class="bi bi-lock-fill"></i>
+
+            <span>
+              Your payment is processed securely through Razorpay.
+            </span>
+
+          </div>
+
+        </section>
+
+
+        <!-- TRUST -->
+
+        <div class="checkout-trust">
+
+          <div>
+
+            <i class="bi bi-shield-check"></i>
+
+            <span>
+              Secure Checkout
+            </span>
+
+          </div>
+
+          <div>
+
+            <i class="bi bi-arrow-repeat"></i>
+
+            <span>
+              Safe Payment
+            </span>
+
+          </div>
+
+          <div>
+
+            <i class="bi bi-headset"></i>
+
+            <span>
+              Customer Support
+            </span>
+
+          </div>
+
+        </div>
+
+      </aside>
+
+    </form>
+
+  </section>
+
+</main>
+
+
+<%- include("../partials/main/footer") %>

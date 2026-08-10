@@ -1,0 +1,175 @@
+<%- include("../partials/main/head") %>
+
+<%- include("../partials/main/announcementBar") %>
+
+<%- include("../partials/main/header") %>
+
+<main class="orders-page">
+
+  <div class="container">
+
+    <div class="orders-header">
+
+      <h1>
+  <%= userRole === "admin"
+    ? "All Orders"
+    : userRole === "seller"
+      ? "My Sales"
+      : "My Orders" %>
+</h1>
+
+<p>
+  <%= userRole === "admin"
+    ? "View and manage all customer orders and sales."
+    : userRole === "seller"
+      ? "View products sold through your store."
+      : "View your purchased products and order history." %>
+</p>
+    </div>
+
+    <% if (!orders || orders.length === 0) { %>
+
+      <div class="empty-orders">
+
+        <i class="bi bi-bag-x"></i>
+
+        <h2>No orders yet</h2>
+
+        <p>
+          You haven't purchased anything yet.
+        </p>
+
+        <a href="/shop" class="btn btn-success">
+          Start Shopping
+        </a>
+
+      </div>
+
+    <% } else { %>
+
+      <div class="orders-list">
+
+        <% orders.forEach((order) => { %>
+
+          <div class="order-card">
+
+            <div class="order-card-header">
+
+              <div>
+
+                <small>Order</small>
+
+                <strong>
+                  <%= order.orderNumber %>
+                </strong>
+
+              </div>
+
+              <div>
+
+                <small>Date</small>
+
+                <strong>
+                  <%= new Date(order.createdAt).toLocaleDateString("en-IN") %>
+                </strong>
+
+              </div>
+
+              <div>
+
+                <small>Total</small>
+
+                <strong>
+  ₹<%= Number(
+    userRole === "seller"
+      ? order.sellerTotal
+      : order.totalAmount
+  || 0).toLocaleString("en-IN") %>
+</strong>
+
+              </div>
+
+              <div>
+
+                <span class="order-status order-status-<%= order.orderStatus %>">
+                  <%= order.orderStatus %>
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="order-items">
+
+              <% order.items.forEach((item) => { %>
+
+                <div class="order-item">
+
+                  <img
+                    src="<%= item.image?.url || '/images/placeholder-product.jpg' %>"
+                    alt="<%= item.productName %>"
+                  />
+
+                  <div class="order-item-info">
+
+                    <h3>
+                      <%= item.productName %>
+                    </h3>
+
+                    <p>
+                      Quantity:
+                      <strong>
+                        <%= item.quantity %>
+                      </strong>
+                    </p>
+
+                    <p>
+                      ₹<%= Number(item.finalPrice || 0).toLocaleString("en-IN") %>
+                      ×
+                      <%= item.quantity %>
+                    </p>
+
+                  </div>
+
+                </div>
+
+              <% }) %>
+
+            </div>
+
+
+            <div class="order-card-footer">
+
+              <div>
+
+                Payment:
+
+                <strong>
+                  <%= order.paymentStatus %>
+                </strong>
+
+              </div>
+
+              <a
+                href="/orders/<%= order._id %>"
+                class="btn btn-outline-success"
+              >
+                View Details
+              </a>
+
+            </div>
+
+          </div>
+
+        <% }) %>
+
+      </div>
+
+    <% } %>
+
+  </div>
+
+</main>
+
+<%- include("../partials/main/footer") %>

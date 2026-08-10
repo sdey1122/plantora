@@ -1,0 +1,436 @@
+<%- include("../partials/main/head") %>
+
+<%- include("../partials/main/announcementBar") %>
+
+<%- include("../partials/main/header") %>
+
+
+<main class="address-page">
+
+  <div class="address-form-container">
+
+    <div class="address-form-header">
+
+      <a
+        href="/addresses"
+        class="address-back-link"
+      >
+        <i class="bi bi-arrow-left"></i>
+        Back to Addresses
+      </a>
+
+      <span class="address-eyebrow">
+        <i class="bi bi-pencil-square"></i>
+        Address Management
+      </span>
+
+      <h1>
+        Edit Address
+      </h1>
+
+      <p>
+        Update your saved delivery information.
+      </p>
+
+    </div>
+
+
+    <form
+      action="/addresses/<%= address._id %>/edit"
+      method="POST"
+      class="address-form"
+      id="addressForm"
+    >
+
+      <!-- RECIPIENT -->
+
+      <section class="address-form-section">
+
+        <div class="address-form-section-title">
+
+          <i class="bi bi-person"></i>
+
+          <div>
+            <h2>Recipient Information</h2>
+            <p>Update the person receiving the order.</p>
+          </div>
+
+        </div>
+
+
+        <div class="address-form-grid">
+
+          <div class="address-field full">
+
+            <label for="fullName">
+              Full Name
+            </label>
+
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              value="<%= address.fullName %>"
+              required
+            >
+
+          </div>
+
+
+          <div class="address-field">
+
+            <label for="countryCode">
+              Country Code
+            </label>
+
+            <select
+              id="countryCode"
+              name="countryCode"
+            >
+
+              <option
+                value="+91"
+                <%= address.countryCode === "+91" ? "selected" : "" %>
+              >
+                +91 India
+              </option>
+
+              <option
+                value="+1"
+                <%= address.countryCode === "+1" ? "selected" : "" %>
+              >
+                +1 USA / Canada
+              </option>
+
+              <option
+                value="+44"
+                <%= address.countryCode === "+44" ? "selected" : "" %>
+              >
+                +44 UK
+              </option>
+
+              <option
+                value="+61"
+                <%= address.countryCode === "+61" ? "selected" : "" %>
+              >
+                +61 Australia
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="address-field">
+
+            <label for="phone">
+              Phone Number
+            </label>
+
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              value="<%= address.phone %>"
+              required
+            >
+
+          </div>
+
+
+          <div class="address-field full">
+
+            <label for="alternatePhone">
+              Alternate Phone
+              <span>Optional</span>
+            </label>
+
+            <input
+              type="tel"
+              id="alternatePhone"
+              name="alternatePhone"
+              value="<%= address.alternatePhone || '' %>"
+            >
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ADDRESS -->
+
+      <section class="address-form-section">
+
+        <div class="address-form-section-title">
+
+          <i class="bi bi-house"></i>
+
+          <div>
+            <h2>Address</h2>
+            <p>Update your delivery location.</p>
+          </div>
+
+        </div>
+
+
+        <div class="address-form-grid">
+
+          <div class="address-field full">
+
+            <label for="addressLine1">
+              Address Line 1
+            </label>
+
+            <input
+              type="text"
+              id="addressLine1"
+              name="addressLine1"
+              value="<%= address.addressLine1 %>"
+              required
+            >
+
+          </div>
+
+
+          <div class="address-field full">
+
+            <label for="addressLine2">
+              Address Line 2
+              <span>Optional</span>
+            </label>
+
+            <input
+              type="text"
+              id="addressLine2"
+              name="addressLine2"
+              value="<%= address.addressLine2 || '' %>"
+            >
+
+          </div>
+
+
+          <div class="address-field">
+
+            <label for="area">
+              Area / Locality
+            </label>
+
+            <input
+              type="text"
+              id="area"
+              name="area"
+              value="<%= address.area || '' %>"
+            >
+
+          </div>
+
+
+          <div class="address-field">
+
+            <label for="landmark">
+              Landmark
+              <span>Optional</span>
+            </label>
+
+            <input
+              type="text"
+              id="landmark"
+              name="landmark"
+              value="<%= address.landmark || '' %>"
+            >
+
+          </div>
+
+
+          <div class="address-field">
+
+            <label for="city">
+              City
+            </label>
+
+            <input
+              type="text"
+              id="city"
+              name="city"
+              value="<%= address.city %>"
+              required
+            >
+
+          </div>
+
+
+          <div class="address-field">
+
+            <label for="state">
+              State
+            </label>
+
+            <input
+              type="text"
+              id="state"
+              name="state"
+              value="<%= address.state %>"
+              required
+            >
+
+          </div>
+
+
+          <div class="address-field">
+
+            <label for="postalCode">
+              Postal Code
+            </label>
+
+            <input
+              type="text"
+              id="postalCode"
+              name="postalCode"
+              value="<%= address.postalCode %>"
+              required
+            >
+
+          </div>
+
+
+          <div class="address-field">
+
+            <label for="country">
+              Country
+            </label>
+
+            <input
+              type="text"
+              id="country"
+              name="country"
+              value="<%= address.country || 'India' %>"
+              required
+            >
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- PREFERENCES -->
+
+      <section class="address-form-section">
+
+        <div class="address-form-section-title">
+
+          <i class="bi bi-sliders"></i>
+
+          <div>
+            <h2>Address Preferences</h2>
+            <p>Choose your preferred address settings.</p>
+          </div>
+
+        </div>
+
+
+        <div class="address-form-grid">
+
+          <div class="address-field">
+
+            <label for="addressType">
+              Address Type
+            </label>
+
+            <select
+              id="addressType"
+              name="addressType"
+            >
+
+              <option
+                value="home"
+                <%= address.addressType === "home" ? "selected" : "" %>
+              >
+                Home
+              </option>
+
+              <option
+                value="office"
+                <%= address.addressType === "office" ? "selected" : "" %>
+              >
+                Office
+              </option>
+
+              <option
+                value="other"
+                <%= address.addressType === "other" ? "selected" : "" %>
+              >
+                Other
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="address-default-option">
+
+            <label>
+
+              <input
+                type="checkbox"
+                name="isDefault"
+                value="true"
+                <%= address.isDefault ? "checked" : "" %>
+              >
+
+              <span class="custom-checkbox">
+                <i class="bi bi-check"></i>
+              </span>
+
+              <span>
+
+                <strong>
+                  Make this my default address
+                </strong>
+
+                <small>
+                  Automatically select this address during checkout.
+                </small>
+
+              </span>
+
+            </label>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <div class="address-form-actions">
+
+        <a
+          href="/addresses"
+          class="address-secondary-button"
+        >
+          Cancel
+        </a>
+
+        <button
+          type="submit"
+          class="address-primary-button"
+        >
+          <i class="bi bi-check2-circle"></i>
+          Save Changes
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</main>
+
+
+<%- include("../partials/main/footer") %>

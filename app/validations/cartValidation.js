@@ -2,7 +2,10 @@ const Joi = require("joi");
 
 const { validationOptions, objectId, quantity } = require("./commonValidation");
 
-// Add item to cart
+// ==========================================================
+// ADD TO CART
+// ==========================================================
+
 const addToCartValidation = Joi.object({
   productId: objectId.required().messages({
     "any.required": "Product ID is required.",
@@ -13,7 +16,10 @@ const addToCartValidation = Joi.object({
   .strict()
   .options(validationOptions);
 
-// Update cart quantity
+// ==========================================================
+// UPDATE CART QUANTITY
+// ==========================================================
+
 const updateCartQuantityValidation = Joi.object({
   productId: objectId.required().messages({
     "any.required": "Product ID is required.",
@@ -26,7 +32,10 @@ const updateCartQuantityValidation = Joi.object({
   .strict()
   .options(validationOptions);
 
-// Remove item from cart
+// ==========================================================
+// REMOVE FROM CART
+// ==========================================================
+
 const removeFromCartValidation = Joi.object({
   productId: objectId.required().messages({
     "any.required": "Product ID is required.",
@@ -35,7 +44,10 @@ const removeFromCartValidation = Joi.object({
   .strict()
   .options(validationOptions);
 
-// Toggle item selection
+// ==========================================================
+// TOGGLE CART ITEM
+// ==========================================================
+
 const toggleCartItemValidation = Joi.object({
   productId: objectId.required().messages({
     "any.required": "Product ID is required.",
@@ -48,10 +60,16 @@ const toggleCartItemValidation = Joi.object({
   .strict()
   .options(validationOptions);
 
-// Clear cart
+// ==========================================================
+// CLEAR CART
+// ==========================================================
+
 const clearCartValidation = Joi.object({}).strict().options(validationOptions);
 
-// Cart query
+// ==========================================================
+// CART QUERY
+// ==========================================================
+
 const cartQueryValidation = Joi.object({
   page: Joi.number().integer().min(1).default(1),
 

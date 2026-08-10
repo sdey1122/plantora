@@ -70,6 +70,12 @@ const checkoutSchema = new mongoose.Schema(
       min: 0,
     },
 
+    platformFee: {
+      type: Number,
+      default: 49,
+      min: 0,
+    },
+
     totalAmount: {
       type: Number,
       required: true,

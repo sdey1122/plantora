@@ -1,0 +1,428 @@
+<%
+  const productId = product._id;
+
+  const productSlug = product.slug;
+
+  const primaryImage =
+    product.images?.find(
+      (image) => image.isPrimary,
+    )?.url ||
+    product.images?.[0]?.url ||
+    "/images/placeholder-product.jpg";
+
+  const primaryImageAlt =
+    product.images?.find(
+      (image) => image.isPrimary,
+    )?.alt ||
+    product.name;
+
+  const hasDiscount =
+    product.discountPrice !== null &&
+    product.discountPrice !== undefined &&
+    Number(product.discountPrice) <
+      Number(product.price);
+
+  const sellingPrice = hasDiscount
+    ? product.discountPrice
+    : product.price;
+
+  const discountPercentage =
+    hasDiscount
+      ? Math.round(
+          (
+            (
+              Number(product.price) -
+              Number(product.discountPrice)
+            ) /
+            Number(product.price)
+          ) *
+            100,
+        )
+      : 0;
+
+  const stock = Number(
+    product.stock || 0,
+  );
+
+  /*
+   * Requested rule:
+   *
+   * maximum cart quantity = stock - 1
+   *
+   * Stock = 1 is handled as a special case
+   * so the product remains purchasable.
+   */
+  const maxCartQuantity =
+    stock === 1
+      ? 1
+      : Math.max(stock - 1, 0);
+
+  const rating = Number(
+    product.averageRating || 0,
+  );
+
+  const roundedRating =
+    Math.round(rating);
+
+  const totalRatings = Number(
+    product.totalRatings || 0,
+  );
+%>
+
+
+<!-- ======================================================
+     PRODUCT CARD
+======================================================= -->
+
+<div
+  class="product-card"
+  data-product-id="<%= productId %>"
+  data-product-slug="<%= productSlug %>"
+  data-stock="<%= stock %>"
+  data-max-cart-quantity="<%= maxCartQuantity %>"
+>
+
+
+  <!-- ====================================================
+       PRODUCT IMAGE
+  ===================================================== -->
+
+  <div class="product-image">
+
+    <a
+      href="/shop/product/<%= productSlug %>"
+      class="product-card-image-link"
+      aria-label="View <%= product.name %>"
+    >
+
+      <img
+        src="<%= primaryImage %>"
+        alt="<%= primaryImageAlt %>"
+        loading="lazy"
+      >
+
+    </a>
+
+
+    <!-- ==================================================
+         DISCOUNT BADGE
+    =================================================== -->
+
+    <% if (hasDiscount) { %>
+
+      <span class="product-discount-badge">
+
+        <%= discountPercentage %>% OFF
+
+      </span>
+
+    <% } %>
+
+
+    <!-- ==================================================
+         WISHLIST
+    =================================================== -->
+
+    <% if (
+      user &&
+      user.role === "customer"
+    ) { %>
+
+      <% if (product.isWishlisted) { %>
+
+        <a
+          href="/wishlist"
+          class="product-wishlist-btn active"
+          aria-label="View wishlist"
+          title="Already in Wishlist"
+        >
+
+          <i class="bi bi-heart-fill"></i>
+
+        </a>
+
+      <% } else { %>
+
+        <form
+          action="/wishlist/add"
+          method="POST"
+          class="product-wishlist-form"
+        >
+
+          <input
+            type="hidden"
+            name="productId"
+            value="<%= productId %>"
+          >
+
+          <button
+            type="submit"
+            class="product-wishlist-btn"
+            aria-label="Add to wishlist"
+            title="Add to Wishlist"
+          >
+
+            <i class="bi bi-heart"></i>
+
+          </button>
+
+        </form>
+
+      <% } %>
+
+    <% } else { %>
+
+      <button
+        type="button"
+        class="product-wishlist-btn"
+        data-bs-toggle="modal"
+        data-bs-target="#loginModal"
+        aria-label="Login to use wishlist"
+        title="Login to Wishlist"
+      >
+
+        <i class="bi bi-heart"></i>
+
+      </button>
+
+    <% } %>
+
+  </div>
+
+
+  <!-- ====================================================
+       PRODUCT CONTENT
+  ===================================================== -->
+
+  <div class="product-content">
+
+
+    <!-- ==================================================
+         PRODUCT INFORMATION
+    =================================================== -->
+
+    <a
+      href="/shop/product/<%= productSlug %>"
+      class="product-card-info-link"
+    >
+
+
+      <!-- Product name -->
+
+      <h3 class="product-title">
+
+        <%= product.name %>
+
+      </h3>
+
+
+      <!-- Category -->
+
+      <% if (product.category?.name) { %>
+
+        <p class="product-category">
+
+          <%= product.category.name %>
+
+        </p>
+
+      <% } %>
+
+
+      <!-- Brand -->
+
+      <% if (product.brand?.name) { %>
+
+        <p class="product-brand">
+
+          <%= product.brand.name %>
+
+        </p>
+
+      <% } %>
+
+
+      <!-- ==================================================
+           RATING
+      =================================================== -->
+
+      <div class="product-rating">
+
+        <span class="product-stars">
+
+          <% for (
+            let i = 1;
+            i <= 5;
+            i++
+          ) { %>
+
+            <i
+              class="bi <%= i <= roundedRating
+                ? 'bi-star-fill'
+                : 'bi-star' %>"
+            ></i>
+
+          <% } %>
+
+        </span>
+
+        <span>
+          <%= rating.toFixed(1) %>
+        </span>
+
+        <span class="product-review-count">
+          (<%= totalRatings %>)
+        </span>
+
+      </div>
+
+
+      <!-- ==================================================
+           PRICE
+      =================================================== -->
+
+      <div class="product-price">
+
+        <% if (hasDiscount) { %>
+
+          <span class="old-price">
+
+            ₹<%= Number(
+              product.price
+            ).toLocaleString("en-IN") %>
+
+          </span>
+
+        <% } %>
+
+
+        <span class="new-price">
+
+          ₹<%= Number(
+            sellingPrice
+          ).toLocaleString("en-IN") %>
+
+        </span>
+
+      </div>
+
+
+    </a>
+
+
+    <!-- ==================================================
+         STOCK
+    =================================================== -->
+
+    <div class="product-stock">
+
+      <% if (stock <= 0) { %>
+
+        <span class="stock-out">
+
+          OUT OF STOCK
+
+        </span>
+
+      <% } else if (stock <= 5) { %>
+
+        <span class="stock-low">
+
+          LOW STOCK: <%= stock %>
+
+        </span>
+
+      <% } else { %>
+
+        <span class="stock-normal">
+
+          Stock: <%= stock %>
+
+        </span>
+
+      <% } %>
+
+    </div>
+
+
+    <!-- ==================================================
+         CART
+    =================================================== -->
+
+    <% if (stock <= 0) { %>
+
+      <button
+        type="button"
+        class="product-cart-btn disabled"
+        disabled
+      >
+
+        Out of Stock
+
+      </button>
+
+
+    <% } else if (
+      user &&
+      user.role === "customer"
+    ) { %>
+
+      <div
+        class="product-cart-controls"
+        data-cart-product="<%= productId %>"
+        data-max-cart-quantity="<%= maxCartQuantity %>"
+      >
+
+        <!-- Initially visible -->
+
+        <form
+          action="/cart/add"
+          method="POST"
+          class="product-add-cart-form"
+        >
+
+          <input
+            type="hidden"
+            name="productId"
+            value="<%= productId %>"
+          >
+
+          <input
+            type="hidden"
+            name="quantity"
+            value="1"
+          >
+
+          <button
+            type="submit"
+            class="product-cart-btn"
+          >
+
+            Add to Cart
+
+          </button>
+
+        </form>
+
+      </div>
+
+
+    <% } else { %>
+
+      <button
+        type="button"
+        class="product-cart-btn"
+        data-bs-toggle="modal"
+        data-bs-target="#loginModal"
+      >
+
+        Add to Cart
+
+      </button>
+
+    <% } %>
+
+
+  </div>
+
+</div>

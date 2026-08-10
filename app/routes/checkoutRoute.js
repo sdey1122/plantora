@@ -6,12 +6,8 @@ const CheckoutController = require("../controllers/CheckoutController");
 
 const authMiddleware = require("../middlewares/authMiddleware");
 
-const authorizeRoles = require("../middlewares/authorizeRoles");
-
 // Protect all routes
 router.use(authMiddleware);
-
-router.use(authorizeRoles("customer"));
 
 // Checkout Page
 router.get("/", CheckoutController.showCheckoutPage);

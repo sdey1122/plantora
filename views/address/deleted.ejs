@@ -1,0 +1,190 @@
+<%- include("../partials/main/head") %>
+
+<%- include("../partials/main/announcementBar") %>
+
+<%- include("../partials/main/header") %>
+
+
+<main class="address-page">
+
+  <div class="address-container">
+
+    <div class="address-page-header">
+
+      <div>
+
+        <a
+          href="/addresses"
+          class="address-back-link"
+        >
+          <i class="bi bi-arrow-left"></i>
+          Back to Addresses
+        </a>
+
+        <span class="address-eyebrow">
+          <i class="bi bi-trash3"></i>
+          Recycle Bin
+        </span>
+
+        <h1>
+          Deleted Addresses
+        </h1>
+
+        <p>
+          Restore a previously deleted address or permanently remove it.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <% if (!addresses || addresses.length === 0) { %>
+
+      <div class="address-empty">
+
+        <div class="address-empty-icon">
+          <i class="bi bi-trash"></i>
+        </div>
+
+        <h2>
+          Trash is empty
+        </h2>
+
+        <p>
+          You don't have any deleted addresses.
+        </p>
+
+        <a
+          href="/addresses"
+          class="address-primary-button"
+        >
+          View Addresses
+        </a>
+
+      </div>
+
+    <% } else { %>
+
+      <div class="address-grid">
+
+        <% addresses.forEach((address) => { %>
+
+          <article class="address-card deleted-card">
+
+            <div class="address-card-top">
+
+              <div class="address-type">
+
+                <span class="address-type-icon">
+                  <i class="bi bi-trash"></i>
+                </span>
+
+                <span>
+                  <%= address.addressType %>
+                </span>
+
+              </div>
+
+              <span class="deleted-badge">
+                Deleted
+              </span>
+
+            </div>
+
+
+            <div class="address-recipient">
+
+              <h2>
+                <%= address.fullName %>
+              </h2>
+
+              <p>
+                <i class="bi bi-telephone"></i>
+                <%= address.countryCode %>
+                <%= address.phone %>
+              </p>
+
+            </div>
+
+
+            <div class="address-card-content">
+
+              <p>
+                <%= address.addressLine1 %>
+              </p>
+
+              <% if (address.addressLine2) { %>
+
+                <p>
+                  <%= address.addressLine2 %>
+                </p>
+
+              <% } %>
+
+              <p>
+                <%= address.city %>,
+                <%= address.state %>
+                -
+                <strong>
+                  <%= address.postalCode %>
+                </strong>
+              </p>
+
+              <p>
+                <%= address.country %>
+              </p>
+
+            </div>
+
+
+            <div class="address-card-actions">
+
+              <form
+                action="/addresses/<%= address._id %>/restore"
+                method="POST"
+              >
+
+                <button
+                  type="submit"
+                  class="address-action restore"
+                >
+                  <i class="bi bi-arrow-counterclockwise"></i>
+                  Restore
+                </button>
+
+              </form>
+
+
+              <form
+                action="/addresses/<%= address._id %>/permanent-delete"
+                method="POST"
+                class="permanent-delete-form"
+              >
+
+                <button
+                  type="submit"
+                  class="address-action delete"
+                >
+                  <i class="bi bi-trash3"></i>
+                  Delete Permanently
+                </button>
+
+              </form>
+
+            </div>
+
+          </article>
+
+        <% }) %>
+
+      </div>
+
+    <% } %>
+
+  </div>
+
+</main>
+
+
+<%- include("../partials/main/footer") %>

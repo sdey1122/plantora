@@ -24,3 +24,1333 @@ SyntaxError: Unexpected identifier 'res'
     at Module.require (node:internal/modules/cjs/loader:1504:12)
     at require (node:internal/modules/helpers:152:16)
     at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\productRoute.js:2:27)
+2026-08-09 09:05:09 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:571
+        productResult,
+        ^
+
+SyntaxError: Identifier 'productResult' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:3:24)
+2026-08-09 09:05:21 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:571
+        productResult,
+        ^
+
+SyntaxError: Identifier 'productResult' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:3:24)
+2026-08-09 09:05:26 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:571
+        productResult,
+        ^
+
+SyntaxError: Identifier 'productResult' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:3:24)
+2026-08-09 09:05:37 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:571
+        productResult,
+        ^
+
+SyntaxError: Identifier 'productResult' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:3:24)
+2026-08-09 09:06:07 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:571
+        productResult,
+        ^
+
+SyntaxError: Identifier 'productResult' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:3:24)
+2026-08-09 09:06:44 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:571
+        productResult,
+        ^
+
+SyntaxError: Identifier 'productResult' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:3:24)
+2026-08-09 09:07:35 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:571
+        productResult,
+        ^
+
+SyntaxError: Identifier 'productResult' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:3:24)
+2026-08-09 09:07:40 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:571
+        productResult,
+        ^
+
+SyntaxError: Identifier 'productResult' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:3:24)
+2026-08-09 09:07:52 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:571
+        productResult,
+        ^
+
+SyntaxError: Identifier 'productResult' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:3:24)
+2026-08-09 09:59:42 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:48
+      const skip = (currentPage - 1) * limit;
+      ^^^^^
+
+SyntaxError: Unexpected token 'const'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:3:24)
+2026-08-09 10:21:52 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:5
+async showProductDetails(req, res) {
+      ^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier 'showProductDetails'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:3:24)
+2026-08-09 13:27:36 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:821
+      const currentUser = req.user || res.locals.user || null;.
+                                                              ^
+
+SyntaxError: Unexpected token '.'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 13:27:39 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:821
+      const currentUser = req.user || res.locals.user || null;.
+                                                              ^
+
+SyntaxError: Unexpected token '.'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 13:27:41 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:821
+      const currentUser = req.user || res.locals.user || null;.
+                                                              ^
+
+SyntaxError: Unexpected token '.'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 13:27:55 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:821
+      const currentUser = req.user || res.locals.user || null;.
+                                                              ^
+
+SyntaxError: Unexpected token '.'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 13:28:00 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:821
+      const currentUser = req.user || res.locals.user || null;.
+                                                              ^
+
+SyntaxError: Unexpected token '.'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 13:28:02 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:821
+      const currentUser = req.user || res.locals.user || null;.
+                                                              ^
+
+SyntaxError: Unexpected token '.'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 13:28:02 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:821
+      const currentUser = req.user || res.locals.user || null;.
+                                                              ^
+
+SyntaxError: Unexpected token '.'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 13:28:10 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 13:28:41 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 13:30:14 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 13:31:22 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 13:46:38 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 13:46:53 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 13:47:00 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 13:47:02 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 13:47:10 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 13:47:11 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:30:03 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:30:30 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:30:42 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:31:36 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:31:38 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:31:52 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:32:02 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:32:38 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:32:40 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:32:40 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:32:50 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:32:51 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:33:25 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:35:40 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:36:58 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:37:35 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:38:46 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:40:14 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:40:24 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:40:24 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:41:27 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:41:44 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:41:58 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:42:46 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:42:49 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:42:50 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:42:52 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:42:55 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:42:57 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:42:59 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:43:04 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:43:06 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:43:07 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:43:20 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:43:22 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:43:38 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:46:18 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:46:22 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:46:46 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:47:05 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:53:29 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 14:59:38 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 15:01:10 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 15:01:11 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 15:03:36 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 15:06:12 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 15:06:17 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 15:06:37 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 15:06:39 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 15:07:36 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 15:07:37 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 15:08:21 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 15:08:58 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 15:08:59 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 15:09:25 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 15:10:44 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 15:10:45 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1146
+      let cartQuantity = 0;
+          ^
+
+SyntaxError: Identifier 'cartQuantity' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\shopRoute.js:5:24)
+2026-08-09 15:35:09 [ERROR]: TypeError: argument handler must be a function
+    at Route.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:228:15)
+    at Router.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:448:19)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\cartRoute.js:49:8)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+2026-08-09 15:36:38 [ERROR]: TypeError: argument handler must be a function
+    at Route.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:228:15)
+    at Router.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:448:19)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\cartRoute.js:49:8)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+2026-08-09 15:41:14 [ERROR]: TypeError: argument handler must be a function
+    at Route.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:228:15)
+    at Router.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:448:19)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\cartRoute.js:60:8)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+2026-08-09 15:42:49 [ERROR]: TypeError: argument handler must be a function
+    at Route.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:228:15)
+    at Router.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:448:19)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\cartRoute.js:37:8)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+2026-08-09 15:43:30 [ERROR]: TypeError: argument handler must be a function
+    at Route.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:228:15)
+    at Router.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:448:19)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\cartRoute.js:37:8)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)

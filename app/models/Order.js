@@ -237,6 +237,13 @@ const orderSchema = new mongoose.Schema(
       min: 0,
     },
 
+    // Platform fee
+    platformFee: {
+      type: Number,
+      default: 49,
+      min: 0,
+    },
+
     // Final payable amount
     totalAmount: {
       type: Number,
@@ -273,13 +280,20 @@ const orderSchema = new mongoose.Schema(
       default: "razorpay",
     },
 
-    // Razorpay order ID
-    razorpayOrderId: {
-      type: String,
+    paidAt: {
+      type: Date,
       default: null,
-      trim: true,
     },
 
+    razorpayOrderId: {
+      type: String,
+      default: "",
+    },
+
+    razorpayPaymentId: {
+      type: String,
+      default: "",
+    },
     // Order status
     orderStatus: {
       type: String,

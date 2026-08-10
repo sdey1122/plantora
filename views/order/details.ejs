@@ -1,0 +1,814 @@
+<%- include("../partials/main/head") %>
+
+<%- include("../partials/main/announcementBar") %>
+
+<%- include("../partials/main/header") %>
+
+
+<main class="order-details-page">
+
+  <div class="order-details-container">
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <div class="order-details-header">
+
+      <div>
+
+        <a href="/orders" class="order-back-link">
+          <i class="bi bi-arrow-left"></i>
+          Back to Orders
+        </a>
+
+        <div class="order-title-row">
+
+          <div>
+
+            <span class="order-eyebrow">
+              <%= userRole === "seller" ? "Sale Details" : "Order Details" %>
+            </span>
+
+            <h1>
+              <%= userRole === "seller" ? "Sale" : "Order" %>
+              <%= order.orderNumber %>
+            </h1>
+
+            <p>
+              Placed on
+              <%= new Date(order.createdAt).toLocaleString("en-IN") %>
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <span class="order-status order-status-<%= order.orderStatus %>">
+        <%= order.orderStatus %>
+      </span>
+
+    </div>
+
+
+    <!-- =====================================================
+         SELLER SALES NOTICE
+    ====================================================== -->
+
+    <% if (userRole === "seller") { %>
+
+      <div class="seller-order-notice">
+
+        <div class="seller-order-notice-icon">
+          <i class="bi bi-shop"></i>
+        </div>
+
+        <div>
+
+          <strong>
+            Your Products in This Order
+          </strong>
+
+          <p>
+            Only the products sold by you are shown below.
+          </p>
+
+        </div>
+
+      </div>
+
+    <% } %>
+
+
+    <!-- =====================================================
+         PRODUCTS
+    ====================================================== -->
+
+    <section class="order-section">
+
+      <div class="order-section-header">
+
+        <div>
+
+          <span class="order-section-eyebrow">
+            <i class="bi bi-bag-check"></i>
+            Purchased Items
+          </span>
+
+          <h2>
+            Products
+          </h2>
+
+        </div>
+
+        <span class="order-product-count">
+          <%= order.items.length %>
+          <%= order.items.length === 1 ? "item" : "items" %>
+        </span>
+
+      </div>
+
+
+      <div class="order-products-list">
+
+        <% order.items.forEach((item) => { %>
+
+          <div class="order-product">
+
+            <!-- IMAGE -->
+
+            <div class="order-product-image">
+
+              <img
+                src="<%= item.image?.url || '/images/placeholder-product.jpg' %>"
+                alt="<%= item.productName %>"
+                loading="lazy"
+              >
+
+            </div>
+
+
+            <!-- INFORMATION -->
+
+            <div class="order-product-info">
+
+              <h3>
+                <%= item.productName %>
+              </h3>
+
+              <p class="order-product-sku">
+
+                <span>
+                  SKU
+                </span>
+
+                <strong>
+                  <%= item.sku || "N/A" %>
+                </strong>
+
+              </p>
+
+
+              <div class="order-product-meta">
+
+                <span>
+                  Quantity:
+                  <strong>
+                    <%= item.quantity %>
+                  </strong>
+                </span>
+
+                <% if (item.originalPrice && item.originalPrice > item.finalPrice) { %>
+
+                  <span class="order-product-discount">
+                    Discounted
+                  </span>
+
+                <% } %>
+
+              </div>
+
+            </div>
+
+
+            <!-- PRICE -->
+
+            <div class="order-product-price">
+
+              <span>
+                Unit Price
+              </span>
+
+              <strong>
+                ₹<%= Number(
+                  item.finalPrice || 0
+                ).toLocaleString("en-IN", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2
+                }) %>
+              </strong>
+
+              <small>
+                × <%= item.quantity %>
+              </small>
+
+              <b>
+                ₹<%= (
+                  Number(item.finalPrice || 0) *
+                  Number(item.quantity || 0)
+                ).toLocaleString("en-IN", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2
+                }) %>
+              </b>
+
+            </div>
+
+          </div>
+
+        <% }) %>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         DELIVERY ADDRESS
+         
+         Customer + Seller + Admin can see it.
+         Seller needs it for order fulfilment.
+    ====================================================== -->
+
+    <% if (order.shippingAddress) { %>
+
+      <section class="order-section">
+
+        <div class="order-section-header">
+
+          <div>
+
+            <span class="order-section-eyebrow">
+              <i class="bi bi-geo-alt"></i>
+              Delivery
+            </span>
+
+            <h2>
+              Delivery Address
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="order-address-card">
+
+          <div class="order-address-icon">
+            <i class="bi bi-house-check"></i>
+          </div>
+
+
+          <div class="order-address-content">
+
+            <strong>
+              <%= order.shippingAddress.fullName || "Customer" %>
+            </strong>
+
+            <p>
+              <%= order.shippingAddress.addressLine1 || "" %>
+            </p>
+
+            <% if (order.shippingAddress.addressLine2) { %>
+
+              <p>
+                <%= order.shippingAddress.addressLine2 %>
+              </p>
+
+            <% } %>
+
+            <% if (order.shippingAddress.landmark) { %>
+
+              <p>
+                Landmark:
+                <%= order.shippingAddress.landmark %>
+              </p>
+
+            <% } %>
+
+            <p>
+              <%= order.shippingAddress.city || "" %>,
+              <%= order.shippingAddress.state || "" %>
+              -
+              <%= order.shippingAddress.postalCode || "" %>
+            </p>
+
+            <p>
+              <%= order.shippingAddress.country || "" %>
+            </p>
+
+            <% if (
+              order.shippingAddress.countryCode ||
+              order.shippingAddress.phone
+            ) { %>
+
+              <p class="order-address-phone">
+
+                <i class="bi bi-telephone"></i>
+
+                <%= order.shippingAddress.countryCode || "" %>
+                <%= order.shippingAddress.phone || "" %>
+
+              </p>
+
+            <% } %>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    <% } %>
+
+
+    <!-- =====================================================
+         PAYMENT DETAILS
+
+         Razorpay IDs:
+         - Customer: visible
+         - Admin: visible
+         - Seller: don't expose payment gateway IDs
+    ====================================================== -->
+
+    <section class="order-section">
+
+      <div class="order-section-header">
+
+        <div>
+
+          <span class="order-section-eyebrow">
+            <i class="bi bi-credit-card"></i>
+            Transaction
+          </span>
+
+          <h2>
+            Payment Details
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="order-payment-details">
+
+
+        <!-- PAYMENT METHOD -->
+
+        <div class="order-payment-item">
+
+          <span>
+            Payment Method
+          </span>
+
+          <strong>
+            <%= order.paymentMethod || "N/A" %>
+          </strong>
+
+        </div>
+
+
+        <!-- PAYMENT STATUS -->
+
+        <div class="order-payment-item">
+
+          <span>
+            Payment Status
+          </span>
+
+          <strong class="payment-status-<%= order.paymentStatus %>">
+            <%= order.paymentStatus || "N/A" %>
+          </strong>
+
+        </div>
+
+
+        <!-- PAID DATE -->
+
+        <% if (order.paidAt) { %>
+
+          <div class="order-payment-item">
+
+            <span>
+              Paid On
+            </span>
+
+            <strong>
+              <%= new Date(order.paidAt).toLocaleString("en-IN") %>
+            </strong>
+
+          </div>
+
+        <% } %>
+
+
+        <!-- RAZORPAY DETAILS -->
+
+        <% if (
+          userRole !== "seller" &&
+          order.razorpayOrderId
+        ) { %>
+
+          <div class="order-payment-item">
+
+            <span>
+              Razorpay Order ID
+            </span>
+
+            <strong class="payment-id">
+              <%= order.razorpayOrderId %>
+            </strong>
+
+          </div>
+
+        <% } %>
+
+
+        <% if (
+          userRole !== "seller" &&
+          order.razorpayPaymentId
+        ) { %>
+
+          <div class="order-payment-item">
+
+            <span>
+              Razorpay Payment ID
+            </span>
+
+            <strong class="payment-id">
+              <%= order.razorpayPaymentId %>
+            </strong>
+
+          </div>
+
+        <% } %>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PRICE SUMMARY
+    ====================================================== -->
+
+
+    <% if (userRole === "seller") { %>
+
+      <!-- ===================================================
+           SELLER SUMMARY
+      ==================================================== -->
+
+      <section class="order-section seller-summary-section">
+
+        <div class="order-section-header">
+
+          <div>
+
+            <span class="order-section-eyebrow">
+              <i class="bi bi-graph-up-arrow"></i>
+              Sales
+            </span>
+
+            <h2>
+              Your Sales Summary
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="seller-sales-summary">
+
+          <div class="seller-sales-icon">
+            <i class="bi bi-currency-rupee"></i>
+          </div>
+
+
+          <div>
+
+            <span>
+              Your Product Sales
+            </span>
+
+            <strong>
+              ₹<%= Number(
+                order.sellerTotal || 0
+              ).toLocaleString("en-IN", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+              }) %>
+            </strong>
+
+            <small>
+              Based only on products sold by you in this order.
+            </small>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+    <% } else { %>
+
+
+      <!-- ===================================================
+           CUSTOMER / ADMIN FULL ORDER SUMMARY
+      ==================================================== -->
+
+      <section class="order-section">
+
+        <div class="order-section-header">
+
+          <div>
+
+            <span class="order-section-eyebrow">
+              <i class="bi bi-receipt"></i>
+              Billing
+            </span>
+
+            <h2>
+              Price Details
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="order-summary">
+
+
+          <!-- PRODUCTS -->
+
+          <div>
+
+            <span>
+              Products
+            </span>
+
+            <strong>
+              ₹<%= Number(
+                order.subtotal || 0
+              ).toLocaleString("en-IN", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+              }) %>
+            </strong>
+
+          </div>
+
+
+          <!-- DISCOUNT -->
+
+          <% if (Number(order.discount || 0) > 0) { %>
+
+            <div class="summary-discount">
+
+              <span>
+                Discount
+              </span>
+
+              <strong>
+                -₹<%= Number(
+                  order.discount
+                ).toLocaleString("en-IN", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2
+                }) %>
+              </strong>
+
+            </div>
+
+          <% } %>
+
+
+          <!-- SHIPPING -->
+
+          <div>
+
+            <span>
+              Shipping
+            </span>
+
+            <strong>
+              <% if (Number(order.shippingCharge || 0) === 0) { %>
+
+                <span class="free-shipping">
+                  FREE
+                </span>
+
+              <% } else { %>
+
+                ₹<%= Number(
+                  order.shippingCharge
+                ).toLocaleString("en-IN", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2
+                }) %>
+
+              <% } %>
+            </strong>
+
+          </div>
+
+
+          <!-- GST -->
+
+          <div>
+
+            <span>
+              GST
+            </span>
+
+            <strong>
+              ₹<%= Number(
+                order.tax || 0
+              ).toLocaleString("en-IN", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+              }) %>
+            </strong>
+
+          </div>
+
+
+          <!-- PLATFORM FEE -->
+
+          <div>
+
+            <span>
+              Platform Fee
+            </span>
+
+            <strong>
+              ₹<%= Number(
+                order.platformFee || 0
+              ).toLocaleString("en-IN", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+              }) %>
+            </strong>
+
+          </div>
+
+
+          <hr>
+
+
+          <!-- GRAND TOTAL -->
+
+          <div class="order-grand-total">
+
+            <span>
+              Grand Total
+            </span>
+
+            <strong>
+              ₹<%= Number(
+                order.totalAmount || 0
+              ).toLocaleString("en-IN", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+              }) %>
+            </strong>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    <% } %>
+
+
+    <!-- =====================================================
+         ORDER NOTES
+    ====================================================== -->
+
+    <% if (order.notes) { %>
+
+      <section class="order-section">
+
+        <div class="order-section-header">
+
+          <div>
+
+            <span class="order-section-eyebrow">
+              <i class="bi bi-chat-left-text"></i>
+              Additional Information
+            </span>
+
+            <h2>
+              Order Notes
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="order-notes">
+
+          <i class="bi bi-info-circle"></i>
+
+          <p>
+            <%= order.notes %>
+          </p>
+
+        </div>
+
+      </section>
+
+    <% } %>
+
+
+    <!-- =====================================================
+         ADMIN INFORMATION
+    ====================================================== -->
+
+    <% if (userRole === "admin") { %>
+
+      <section class="order-section admin-order-info">
+
+        <div class="order-section-header">
+
+          <div>
+
+            <span class="order-section-eyebrow">
+              <i class="bi bi-shield-check"></i>
+              Administration
+            </span>
+
+            <h2>
+              Order Information
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="admin-order-grid">
+
+          <div>
+
+            <span>
+              Order ID
+            </span>
+
+            <strong>
+              <%= order._id %>
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Customer ID
+            </span>
+
+            <strong>
+              <%= order.user || "N/A" %>
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Order Status
+            </span>
+
+            <strong>
+              <%= order.orderStatus %>
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Payment Status
+            </span>
+
+            <strong>
+              <%= order.paymentStatus %>
+            </strong>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    <% } %>
+
+
+  </div>
+
+</main>
+
+
+<%- include("../partials/main/footer") %>

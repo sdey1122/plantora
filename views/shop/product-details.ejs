@@ -1,0 +1,1963 @@
+<%- include("../partials/main/head") %>
+
+<%- include("../partials/main/announcementBar") %>
+
+<%- include("../partials/main/header") %>
+
+<link rel="stylesheet" href="/css/product-details.css">
+
+
+<%
+  // ==========================================================
+  // SAFE PRODUCT VALUES
+  // ==========================================================
+
+  const productImages =
+    product.images && product.images.length > 0
+      ? product.images
+      : [];
+
+
+  // ==========================================================
+  // PRODUCT RATING
+  // ==========================================================
+
+  let productAverageRating = 0;
+
+  if (
+    typeof reviewSummary !== "undefined" &&
+    reviewSummary &&
+    reviewSummary.averageRating !== undefined
+  ) {
+    productAverageRating = Number(reviewSummary.averageRating);
+  } else if (product.averageRating !== undefined) {
+    productAverageRating = Number(product.averageRating);
+  }
+
+  const safeProductAverageRating =
+    Number.isFinite(productAverageRating)
+      ? productAverageRating
+      : 0;
+
+  const productRoundedAverageRating =
+    Math.round(safeProductAverageRating);
+
+
+  let productTotalRatings = 0;
+
+  if (
+    typeof reviewSummary !== "undefined" &&
+    reviewSummary &&
+    reviewSummary.totalReviews !== undefined
+  ) {
+    productTotalRatings = Number(reviewSummary.totalReviews);
+  } else if (product.totalRatings !== undefined) {
+    productTotalRatings = Number(product.totalRatings);
+  } else if (
+    typeof reviews !== "undefined" &&
+    reviews
+  ) {
+    productTotalRatings = reviews.length;
+  }
+
+
+  // ==========================================================
+  // REVIEW SUMMARY
+  // ==========================================================
+
+  const reviewRatingBreakdown =
+    typeof reviewSummary !== "undefined" &&
+    reviewSummary &&
+    reviewSummary.ratingBreakdown
+      ? reviewSummary.ratingBreakdown
+      : {};
+
+
+  // ==========================================================
+  // STOCK
+  // ==========================================================
+
+  const productStock =
+    Number(product.stock || 0);
+
+
+  // ==========================================================
+  // PRICE
+  // ==========================================================
+
+  const hasDiscount =
+    product.discountPrice !== null &&
+    product.discountPrice !== undefined &&
+    Number(product.discountPrice) < Number(product.price);
+
+
+  const sellingPrice =
+    hasDiscount
+      ? Number(product.discountPrice)
+      : Number(product.price);
+
+
+  const discountPercentage =
+    hasDiscount &&
+    Number(product.price) > 0
+      ? Math.round(
+          (
+            (
+              Number(product.price) -
+              Number(product.discountPrice)
+            ) /
+            Number(product.price)
+          ) * 100
+        )
+      : 0;
+%>
+
+
+<main>
+
+
+  <!-- ======================================================
+       BREADCRUMB
+  ======================================================= -->
+
+  <section class="product-details-breadcrumb">
+
+    <div class="container">
+
+      <nav aria-label="breadcrumb">
+
+        <ol class="breadcrumb">
+
+          <li class="breadcrumb-item">
+
+            <a href="/">
+              Home
+            </a>
+
+          </li>
+
+
+          <li class="breadcrumb-item">
+
+            <a href="/shop">
+              Shop
+            </a>
+
+          </li>
+
+
+          <% if (product.category && product.category.slug) { %>
+
+            <li class="breadcrumb-item">
+
+              <a
+                href="/shop?category=<%= product.category.slug %>"
+              >
+                <%= product.category.name %>
+              </a>
+
+            </li>
+
+          <% } %>
+
+
+          <li
+            class="breadcrumb-item active"
+            aria-current="page"
+          >
+            <%= product.name %>
+          </li>
+
+        </ol>
+
+      </nav>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ======================================================
+       PRODUCT DETAILS
+  ======================================================= -->
+
+  <section class="product-details-section">
+
+    <div class="container">
+
+      <div class="row g-5">
+
+
+        <!-- ==================================================
+             PRODUCT GALLERY
+        =================================================== -->
+
+        <div class="col-lg-6">
+
+          <div class="product-gallery">
+
+
+            <!-- MAIN IMAGE -->
+
+            <div class="product-main-image-wrapper">
+
+              <% if (productImages.length > 0) { %>
+
+                <img
+                  id="product-main-image"
+                  class="product-main-image"
+                  src="<%= productImages[0].url %>"
+                  alt="<%= productImages[0].alt || product.name %>"
+                >
+
+              <% } else { %>
+
+                <img
+                  id="product-main-image"
+                  class="product-main-image"
+                  src="/images/placeholder-product.jpg"
+                  alt="<%= product.name %>"
+                >
+
+              <% } %>
+
+
+              <span class="product-image-zoom-hint">
+
+                <i class="bi bi-zoom-in"></i>
+
+                View image
+
+              </span>
+
+            </div>
+
+
+
+            <!-- THUMBNAILS -->
+
+            <% if (productImages.length > 0) { %>
+
+              <div class="product-thumbnails">
+
+                <% productImages.forEach((image, index) => { %>
+
+                  <button
+                    type="button"
+                    class="product-thumbnail <%= index === 0 ? 'active' : '' %>"
+                    data-image="<%= image.url %>"
+                    data-image-alt="<%= image.alt || product.name %>"
+                    aria-label="View product image <%= index + 1 %>"
+                    aria-selected="<%= index === 0 ? 'true' : 'false' %>"
+                  >
+
+                    <img
+                      src="<%= image.url %>"
+                      alt="<%= image.alt || product.name %>"
+                      loading="<%= index === 0 ? 'eager' : 'lazy' %>"
+                    >
+
+                  </button>
+
+                <% }) %>
+
+              </div>
+
+            <% } %>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- ==================================================
+             PRODUCT INFORMATION
+        =================================================== -->
+
+        <div class="col-lg-6">
+
+          <div class="product-details-content">
+
+
+            <!-- PRODUCT NAME -->
+
+            <h1 class="product-details-title">
+
+              <%= product.name %>
+
+            </h1>
+
+
+
+            <!-- ==================================================
+                 PRODUCT RATING
+            =================================================== -->
+
+            <div class="product-details-rating">
+
+              <div class="product-rating-stars">
+
+                <% for (let i = 1; i <= 5; i++) { %>
+
+                  <i
+                    class="bi <%= i <= productRoundedAverageRating
+                      ? 'bi-star-fill'
+                      : 'bi-star' %>"
+                  ></i>
+
+                <% } %>
+
+              </div>
+
+
+              <span class="product-rating-value">
+
+                <%= safeProductAverageRating.toFixed(1) %>
+
+              </span>
+
+
+              <a
+                href="#product-reviews"
+                class="product-review-count"
+              >
+
+                (<%= productTotalRatings %>
+                <%= productTotalRatings === 1
+                  ? "review"
+                  : "reviews" %>)
+
+              </a>
+
+            </div>
+
+
+
+            <!-- SHORT DESCRIPTION -->
+
+            <% if (product.shortDescription) { %>
+
+              <p class="product-details-short-description">
+
+                <%= product.shortDescription %>
+
+              </p>
+
+            <% } %>
+
+
+
+            <!-- ==================================================
+                 PRODUCT META
+            =================================================== -->
+
+            <div class="product-details-meta">
+
+
+              <% if (
+                product.category &&
+                product.category.name
+              ) { %>
+
+                <div class="product-meta-row">
+
+                  <span class="product-meta-label">
+                    Category:
+                  </span>
+
+                  <a
+                    href="/shop?category=<%= product.category.slug %>"
+                    class="product-meta-value"
+                  >
+
+                    <%= product.category.name %>
+
+                  </a>
+
+                </div>
+
+              <% } %>
+
+
+
+              <% if (
+                product.brand &&
+                product.brand.name
+              ) { %>
+
+                <div class="product-meta-row">
+
+                  <span class="product-meta-label">
+                    Brand:
+                  </span>
+
+                  <a
+                    href="/shop?brand=<%= product.brand.slug %>"
+                    class="product-meta-value"
+                  >
+
+                    <%= product.brand.name %>
+
+                  </a>
+
+                </div>
+
+              <% } %>
+
+
+
+              <% if (product.sku) { %>
+
+                <div class="product-meta-row">
+
+                  <span class="product-meta-label">
+                    SKU:
+                  </span>
+
+                  <span class="product-meta-value">
+
+                    <%= product.sku %>
+
+                  </span>
+
+                </div>
+
+              <% } %>
+
+
+
+              <% if (
+                product.seller &&
+                product.seller.name
+              ) { %>
+
+                <div class="product-meta-row">
+
+                  <span class="product-meta-label">
+                    Sold by:
+                  </span>
+
+                  <span class="product-meta-value">
+
+                    <%= product.seller.name %>
+
+                  </span>
+
+                </div>
+
+              <% } %>
+
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 STOCK
+            =================================================== -->
+
+            <div class="product-details-stock">
+
+              <% if (productStock <= 0) { %>
+
+                <span class="stock-out">
+                  OUT OF STOCK
+                </span>
+
+              <% } else if (productStock <= 5) { %>
+
+                <span class="stock-low">
+
+                  LOW STOCK:
+                  <%= productStock %>
+
+                </span>
+
+              <% } else { %>
+
+                <span class="stock-normal">
+
+                  Stock:
+                  <%= productStock %>
+
+                </span>
+
+              <% } %>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 PRICE
+            =================================================== -->
+
+            <div class="product-details-price">
+
+              <% if (hasDiscount) { %>
+
+                <span class="product-details-old-price">
+
+                  ₹<%= Number(
+                    product.price
+                  ).toLocaleString("en-IN") %>
+
+                </span>
+
+              <% } %>
+
+
+              <span class="product-details-current-price">
+
+                ₹<%= sellingPrice.toLocaleString("en-IN") %>
+
+              </span>
+
+
+              <% if (hasDiscount) { %>
+
+                <span class="product-details-discount">
+
+                  <%= discountPercentage %>% OFF
+
+                </span>
+
+              <% } %>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 CART
+            =================================================== -->
+
+            <% if (productStock > 0) { %>
+
+
+              <% if (user) { %>
+
+                <div
+                  class="product-details-cart-section"
+                  data-cart-product="<%= product._id %>"
+                  data-stock="<%= productStock %>"
+                >
+
+
+                  <!-- QUANTITY -->
+
+                  <div class="product-details-quantity">
+
+                    <span class="quantity-label">
+                      Quantity
+                    </span>
+
+
+                    <div class="quantity-controls">
+
+                      <button
+                        type="button"
+                        class="quantity-minus"
+                        aria-label="Decrease quantity"
+                      >
+                        −
+                      </button>
+
+
+                      <span
+                        class="quantity-value"
+                        data-quantity="1"
+                      >
+                        1
+                      </span>
+
+
+                      <button
+                        type="button"
+                        class="quantity-plus"
+                        aria-label="Increase quantity"
+                      >
+                        +
+                      </button>
+
+                    </div>
+
+                  </div>
+
+
+
+                  <!-- ADD TO CART -->
+
+                  <form
+                    action="/cart/add"
+                    method="POST"
+                    class="product-details-add-cart-form"
+                  >
+
+                    <input
+                      type="hidden"
+                      name="productId"
+                      value="<%= product._id %>"
+                    >
+
+
+                    <input
+                      type="hidden"
+                      name="quantity"
+                      value="1"
+                      class="product-details-cart-quantity-input"
+                    >
+
+
+                    <button
+                      type="submit"
+                      class="product-details-cart-btn"
+                    >
+
+                      <i class="bi bi-cart-plus"></i>
+
+                      Add to Cart
+
+                    </button>
+
+                  </form>
+
+                </div>
+
+
+              <% } else { %>
+
+
+                <!-- GUEST -->
+
+                <div class="product-details-guest-cart">
+
+                  <button
+                    type="button"
+                    class="product-details-cart-btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#loginModal"
+                  >
+
+                    <i class="bi bi-cart-plus"></i>
+
+                    Add to Cart
+
+                  </button>
+
+                </div>
+
+
+              <% } %>
+
+
+            <% } else { %>
+
+
+              <button
+                type="button"
+                class="product-details-cart-btn disabled"
+                disabled
+              >
+
+                Out of Stock
+
+              </button>
+
+
+            <% } %>
+
+
+
+            <!-- ==================================================
+                 WISHLIST
+            =================================================== -->
+
+            <% if (user) { %>
+
+
+              <% if (isWishlisted) { %>
+
+                <a
+                  href="/wishlist"
+                  class="product-details-wishlist-btn active"
+                >
+
+                  <i class="bi bi-heart-fill"></i>
+
+                  View Wishlist
+
+                </a>
+
+
+              <% } else { %>
+
+                <form
+                  action="/wishlist/add"
+                  method="POST"
+                  class="product-details-wishlist-form"
+                >
+
+                  <input
+                    type="hidden"
+                    name="productId"
+                    value="<%= product._id %>"
+                  >
+
+
+                  <button
+                    type="submit"
+                    class="product-details-wishlist-btn"
+                  >
+
+                    <i class="bi bi-heart"></i>
+
+                    Add to Wishlist
+
+                  </button>
+
+                </form>
+
+              <% } %>
+
+
+            <% } else { %>
+
+
+              <button
+                type="button"
+                class="product-details-wishlist-btn"
+                data-bs-toggle="modal"
+                data-bs-target="#loginModal"
+              >
+
+                <i class="bi bi-heart"></i>
+
+                Add to Wishlist
+
+              </button>
+
+
+            <% } %>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ======================================================
+       PRODUCT INFORMATION
+  ======================================================= -->
+
+  <section class="product-information-section">
+
+    <div class="container">
+
+      <div class="product-information">
+
+
+        <!-- DESCRIPTION -->
+
+        <div class="product-description-block">
+
+          <h2>
+            Product Description
+          </h2>
+
+
+          <div class="product-description">
+
+            <%= product.description %>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- ==================================================
+             PRODUCT DETAILS
+        =================================================== -->
+
+        <div class="product-specifications-block">
+
+          <h2>
+            Product Details
+          </h2>
+
+
+          <div class="product-specifications">
+
+
+            <% if (
+              product.category &&
+              product.category.name
+            ) { %>
+
+              <div class="product-specification-row">
+
+                <span>
+                  Category
+                </span>
+
+                <span>
+                  <%= product.category.name %>
+                </span>
+
+              </div>
+
+            <% } %>
+
+
+
+            <% if (
+              product.brand &&
+              product.brand.name
+            ) { %>
+
+              <div class="product-specification-row">
+
+                <span>
+                  Brand
+                </span>
+
+                <span>
+                  <%= product.brand.name %>
+                </span>
+
+              </div>
+
+            <% } %>
+
+
+
+            <% if (product.sku) { %>
+
+              <div class="product-specification-row">
+
+                <span>
+                  SKU
+                </span>
+
+                <span>
+                  <%= product.sku %>
+                </span>
+
+              </div>
+
+            <% } %>
+
+
+
+            <div class="product-specification-row">
+
+              <span>
+                Stock
+              </span>
+
+              <span>
+                <%= product.stock %>
+              </span>
+
+            </div>
+
+
+
+            <div class="product-specification-row">
+
+              <span>
+                Units Sold
+              </span>
+
+              <span>
+
+                <%= Number(
+                  product.soldCount || 0
+                ).toLocaleString("en-IN") %>
+
+              </span>
+
+            </div>
+
+
+
+            <div class="product-specification-row">
+
+              <span>
+                Product Views
+              </span>
+
+              <span>
+
+                <%= Number(
+                  product.views || 0
+                ).toLocaleString("en-IN") %>
+
+              </span>
+
+            </div>
+
+
+
+            <% if (
+              product.seller &&
+              product.seller.name
+            ) { %>
+
+              <div class="product-specification-row">
+
+                <span>
+                  Seller
+                </span>
+
+                <span>
+                  <%= product.seller.name %>
+                </span>
+
+              </div>
+
+            <% } %>
+
+
+
+            <% if (product.publishedAt) { %>
+
+              <div class="product-specification-row">
+
+                <span>
+                  Published
+                </span>
+
+                <span>
+
+                  <%= new Date(
+                    product.publishedAt
+                  ).toLocaleDateString("en-IN") %>
+
+                </span>
+
+              </div>
+
+            <% } %>
+
+
+          </div>
+
+        </div>
+
+
+
+        <!-- ==================================================
+             SEO
+        =================================================== -->
+
+        <% if (
+          product.metaTitle ||
+          product.metaDescription
+        ) { %>
+
+          <div class="product-seo-information">
+
+
+            <% if (product.metaTitle) { %>
+
+              <div>
+
+                <strong>
+                  Meta Title:
+                </strong>
+
+                <%= product.metaTitle %>
+
+              </div>
+
+            <% } %>
+
+
+
+            <% if (product.metaDescription) { %>
+
+              <div>
+
+                <strong>
+                  Meta Description:
+                </strong>
+
+                <%= product.metaDescription %>
+
+              </div>
+
+            <% } %>
+
+
+          </div>
+
+        <% } %>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ======================================================
+       CUSTOMER REVIEWS
+  ======================================================= -->
+
+  <section
+    class="product-reviews-section"
+    id="product-reviews"
+  >
+
+    <div class="container">
+
+      <div class="product-reviews">
+
+
+        <!-- ==================================================
+             REVIEW HEADER
+        =================================================== -->
+
+        <div class="product-reviews-header">
+
+          <span class="product-reviews-subtitle">
+
+            Customer Feedback
+
+          </span>
+
+
+          <h2>
+
+            Customer Reviews
+
+          </h2>
+
+        </div>
+
+
+
+        <!-- ==================================================
+             REVIEW SUMMARY
+        =================================================== -->
+
+        <div class="review-summary">
+
+
+          <!-- OVERALL RATING -->
+
+          <div class="review-summary-overall">
+
+
+            <strong class="review-summary-rating">
+
+              <%= safeProductAverageRating.toFixed(1) %>
+
+            </strong>
+
+
+            <div class="review-summary-stars">
+
+              <% for (
+                let i = 1;
+                i <= 5;
+                i++
+              ) { %>
+
+                <i
+                  class="bi <%= i <= productRoundedAverageRating
+                    ? 'bi-star-fill'
+                    : 'bi-star' %>"
+                ></i>
+
+              <% } %>
+
+            </div>
+
+
+            <span>
+
+              Based on
+
+              <%= productTotalRatings %>
+
+              <%= productTotalRatings === 1
+                ? "review"
+                : "reviews" %>
+
+            </span>
+
+          </div>
+
+
+
+          <!-- ==================================================
+               RATING BREAKDOWN
+          =================================================== -->
+
+          <div class="review-rating-breakdown">
+
+
+            <% for (
+              let rating = 5;
+              rating >= 1;
+              rating--
+            ) {
+
+              const reviewRatingCount =
+                Number(
+                  reviewRatingBreakdown[rating] || 0
+                );
+
+
+              const reviewRatingPercentage =
+                productTotalRatings > 0
+                  ? (
+                      reviewRatingCount /
+                      productTotalRatings
+                    ) * 100
+                  : 0;
+
+            %>
+
+
+              <div class="review-rating-row">
+
+
+                <span class="review-rating-label">
+
+                  <%= rating %>
+
+                  <i class="bi bi-star-fill"></i>
+
+                </span>
+
+
+                <div class="review-rating-bar">
+
+                  <span
+                    class="review-rating-bar-fill"
+                    data-percentage="<%= reviewRatingPercentage %>"
+                  ></span>
+
+                </div>
+
+
+                <span class="review-rating-count">
+
+                  <%= reviewRatingCount %>
+
+                </span>
+
+
+              </div>
+
+
+            <% } %>
+
+
+          </div>
+
+        </div>
+
+
+
+        <!-- ==================================================
+             CURRENT USER REVIEW
+        =================================================== -->
+
+        <% if (
+          user &&
+          (
+            user.role === "customer" ||
+            user.role === "seller"
+          ) &&
+          existingReview
+        ) { %>
+
+
+          <!-- ==================================================
+               EXISTING REVIEW
+          =================================================== -->
+
+          <div class="existing-review">
+
+
+            <span class="product-reviews-subtitle">
+
+              Your Review
+
+            </span>
+
+
+            <h3>
+
+              You have already reviewed this product
+
+            </h3>
+
+
+
+            <!-- RATING -->
+
+            <div class="existing-review-rating">
+
+              <% for (
+                let i = 1;
+                i <= 5;
+                i++
+              ) { %>
+
+                <i
+                  class="bi <%= i <= Number(existingReview.rating)
+                    ? 'bi-star-fill'
+                    : 'bi-star' %>"
+                ></i>
+
+              <% } %>
+
+            </div>
+
+
+
+            <!-- TITLE -->
+
+            <% if (existingReview.reviewTitle) { %>
+
+              <h4>
+
+                <%= existingReview.reviewTitle %>
+
+              </h4>
+
+            <% } %>
+
+
+
+            <!-- COMMENT -->
+
+            <p>
+
+              <%= existingReview.comment %>
+
+            </p>
+
+
+
+            <!-- DATE -->
+
+            <span class="existing-review-status">
+
+              Updated:
+
+              <%= new Date(
+                existingReview.updatedAt ||
+                existingReview.createdAt
+              ).toLocaleDateString("en-IN") %>
+
+            </span>
+
+
+
+            <!-- EDIT -->
+
+            <div class="existing-review-actions">
+
+              <a
+                href="/reviews/<%= existingReview._id %>/edit"
+                class="review-edit-btn"
+              >
+
+                <i class="bi bi-pencil"></i>
+
+                Edit Review
+
+              </a>
+
+            </div>
+
+
+          </div>
+
+
+
+        <% } else if (
+          user &&
+          (
+            user.role === "customer" ||
+            user.role === "seller"
+          )
+        ) { %>
+
+
+          <!-- ==================================================
+               WRITE REVIEW
+          =================================================== -->
+
+          <div class="write-review-card">
+
+
+            <div class="write-review-header">
+
+
+              <div>
+
+                <span class="product-reviews-subtitle">
+
+                  Share Your Experience
+
+                </span>
+
+
+                <h3>
+
+                  Write a Review
+
+                </h3>
+
+              </div>
+
+
+              <div class="write-review-header-icon">
+
+                <i class="bi bi-chat-heart"></i>
+
+              </div>
+
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 REVIEW FORM
+            =================================================== -->
+
+            <form
+              id="write-review-form"
+              action="/reviews/product/<%= product._id %>"
+              method="POST"
+              class="write-review-form"
+            >
+
+
+              <!-- ==================================================
+                   RATING
+              =================================================== -->
+
+              <div class="review-form-group">
+
+
+                <label>
+                  Rating
+                </label>
+
+
+                <div
+                  class="review-rating-input"
+                  id="review-rating-input"
+                >
+
+
+                  <% for (
+                    let i = 1;
+                    i <= 5;
+                    i++
+                  ) { %>
+
+
+                    <label
+                      class="review-star"
+                      data-rating="<%= i %>"
+                      title="<%= i %> star<%= i > 1 ? 's' : '' %>"
+                    >
+
+
+                      <input
+                        type="radio"
+                        name="rating"
+                        value="<%= i %>"
+                        required
+                      >
+
+
+                      <i class="bi bi-star-fill"></i>
+
+
+                    </label>
+
+
+                  <% } %>
+
+
+                </div>
+
+
+                <span
+                  id="review-rating-text"
+                  class="review-rating-text"
+                >
+
+                  Select a rating
+
+                </span>
+
+
+              </div>
+
+
+
+              <!-- ==================================================
+                   REVIEW TITLE
+              =================================================== -->
+
+              <div class="review-form-group">
+
+
+                <label for="reviewTitle">
+
+                  Review Title
+
+                </label>
+
+
+                <div class="review-input-wrapper">
+
+
+                  <input
+                    type="text"
+                    id="reviewTitle"
+                    name="reviewTitle"
+                    maxlength="120"
+                    placeholder="Give your review a title"
+                  >
+
+
+                </div>
+
+
+                <div class="review-input-meta">
+
+
+                  <span>
+
+                    Characters
+
+                  </span>
+
+
+                  <span id="review-title-count">
+
+                    0 / 120
+
+                  </span>
+
+
+                </div>
+
+
+              </div>
+
+
+
+              <!-- ==================================================
+                   COMMENT
+              =================================================== -->
+
+              <div class="review-form-group">
+
+
+                <label for="comment">
+
+                  Your Review
+
+                </label>
+
+
+                <div class="review-textarea-wrapper">
+
+
+                  <textarea
+                    id="comment"
+                    name="comment"
+                    rows="4"
+                    maxlength="2000"
+                    placeholder="Tell other customers about your experience..."
+                    required
+                  ></textarea>
+
+
+                </div>
+
+
+                <div class="review-input-meta">
+
+
+                  <span>
+
+                    Characters
+
+                  </span>
+
+
+                  <span id="review-comment-count">
+
+                    0 / 2000
+
+                  </span>
+
+
+                </div>
+
+
+              </div>
+
+
+
+              <!-- ==================================================
+                   FORM FOOTER
+              =================================================== -->
+
+              <div class="review-form-footer">
+
+
+                <div class="review-form-note">
+
+                  <i class="bi bi-shield-check"></i>
+
+                  Your feedback helps other customers.
+
+                </div>
+
+
+                <button
+                  type="submit"
+                  class="write-review-submit"
+                >
+
+                  <i class="bi bi-send"></i>
+
+
+                  <span class="submit-text">
+
+                    Submit Review
+
+                  </span>
+
+                </button>
+
+
+              </div>
+
+
+            </form>
+
+
+          </div>
+
+
+        <% } %>
+
+
+
+        <!-- ==================================================
+             ALL CUSTOMER REVIEWS
+        =================================================== -->
+
+        <div class="customer-review-list">
+
+
+          <% if (
+            reviews &&
+            reviews.length > 0
+          ) { %>
+
+
+            <% reviews.forEach((review) => { %>
+
+
+              <article class="customer-review">
+
+
+                <!-- ==================================================
+                     REVIEWER
+                =================================================== -->
+
+                <div class="customer-review-header">
+
+
+                  <div class="customer-review-user">
+
+
+                    <% if (
+                      review.user &&
+                      review.user.profilePicture
+                    ) { %>
+
+
+                      <img
+                        src="<%= review.user.profilePicture %>"
+                        alt="<%= review.user.name || 'Customer' %>"
+                        class="customer-review-avatar"
+                        loading="lazy"
+                      >
+
+
+                    <% } else { %>
+
+
+                      <div class="customer-review-avatar-placeholder">
+
+                        <i class="bi bi-person"></i>
+
+                      </div>
+
+
+                    <% } %>
+
+
+                    <div>
+
+
+                      <strong>
+
+                        <%= review.user &&
+                            review.user.name
+                            ? review.user.name
+                            : "Customer" %>
+
+                      </strong>
+
+
+
+                      <% if (review.isVerifiedPurchase) { %>
+
+
+                        <span class="verified-purchase">
+
+                          <i class="bi bi-patch-check-fill"></i>
+
+                          Verified Purchase
+
+                        </span>
+
+
+                      <% } %>
+
+
+                    </div>
+
+
+                  </div>
+
+
+
+                  <time
+                    datetime="<%= review.updatedAt || review.createdAt %>"
+                  >
+
+                    <%= new Date(
+                      review.updatedAt ||
+                      review.createdAt
+                    ).toLocaleDateString("en-IN") %>
+
+                  </time>
+
+
+                </div>
+
+
+
+                <!-- ==================================================
+                     RATING
+                =================================================== -->
+
+                <div class="customer-review-rating">
+
+
+                  <% for (
+                    let i = 1;
+                    i <= 5;
+                    i++
+                  ) { %>
+
+
+                    <i
+                      class="bi <%= i <= Number(review.rating)
+                        ? 'bi-star-fill'
+                        : 'bi-star' %>"
+                    ></i>
+
+
+                  <% } %>
+
+
+                </div>
+
+
+
+                <!-- ==================================================
+                     TITLE
+                =================================================== -->
+
+                <% if (review.reviewTitle) { %>
+
+
+                  <h3 class="customer-review-title">
+
+                    <%= review.reviewTitle %>
+
+                  </h3>
+
+
+                <% } %>
+
+
+
+                <!-- ==================================================
+                     COMMENT
+                =================================================== -->
+
+                <p class="customer-review-comment">
+
+                  <%= review.comment %>
+
+                </p>
+
+
+
+                <!-- ==================================================
+                     REVIEW IMAGES
+                =================================================== -->
+
+                <% if (
+                  review.images &&
+                  review.images.length > 0
+                ) { %>
+
+
+                  <div class="customer-review-images">
+
+
+                    <% review.images.forEach((image) => { %>
+
+
+                      <img
+                        src="<%= image.url %>"
+                        alt="Customer review image"
+                        loading="lazy"
+                      >
+
+
+                    <% }) %>
+
+
+                  </div>
+
+
+                <% } %>
+
+
+
+                <!-- ==================================================
+                     HELPFUL
+                =================================================== -->
+
+                <div class="customer-review-footer">
+
+
+                  <span>
+
+                    <i class="bi bi-hand-thumbs-up"></i>
+
+                    Helpful
+                    (<%= review.helpfulCount || 0 %>)
+
+                  </span>
+
+
+                </div>
+
+
+              </article>
+
+
+            <% }) %>
+
+
+          <% } else { %>
+
+
+            <!-- ==================================================
+                 NO REVIEWS
+            =================================================== -->
+
+            <div class="no-reviews">
+
+
+              <i class="bi bi-chat-square-heart"></i>
+
+
+              <h3>
+
+                No reviews yet
+
+              </h3>
+
+
+              <p>
+
+                Be the first customer to review this product.
+
+              </p>
+
+
+            </div>
+
+
+          <% } %>
+
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ======================================================
+       FEATURED PRODUCTS
+  ======================================================= -->
+
+  <% if (
+    featuredProducts &&
+    featuredProducts.length > 0
+  ) { %>
+
+
+    <section
+      class="featured-section product-details-featured-section"
+    >
+
+
+      <div class="container">
+
+
+        <div class="featured-header">
+
+
+          <div>
+
+
+            <span class="featured-subtitle">
+
+              Featured Collection
+
+            </span>
+
+
+            <h2 class="featured-title">
+
+              Featured Products
+
+            </h2>
+
+
+          </div>
+
+
+
+          <a
+            href="/shop"
+            class="featured-view-all"
+          >
+
+            View All
+
+            <i class="bi bi-arrow-right"></i>
+
+          </a>
+
+
+        </div>
+
+
+
+        <!-- ==================================================
+             FEATURED SWIPER
+        =================================================== -->
+
+        <div class="swiper featured-swiper">
+
+
+          <div class="swiper-wrapper">
+
+
+            <% featuredProducts.forEach((featuredProduct) => { %>
+
+
+              <div class="swiper-slide">
+
+
+                <%- include(
+                  "../partials/cards/productCard",
+                  {
+                    product: featuredProduct,
+                    user
+                  }
+                ) %>
+
+
+              </div>
+
+
+            <% }) %>
+
+
+          </div>
+
+
+
+          <div class="swiper-button-prev"></div>
+
+          <div class="swiper-button-next"></div>
+
+          <div class="swiper-pagination"></div>
+
+
+        </div>
+
+
+      </div>
+
+
+    </section>
+
+
+  <% } %>
+
+
+</main>
+
+
+<%- include("../partials/main/footer") %>
+
+
+<script src="/js/product-details.js"></script>

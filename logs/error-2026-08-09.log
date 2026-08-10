@@ -106,3 +106,171 @@ sku is not defined
 2026-08-09 07:03:57 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Category` is not a valid enum value for path `module`.
 2026-08-09 07:04:29 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Brand` is not a valid enum value for path `module`.
 2026-08-09 07:09:43 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Restore Product` is not a valid enum value for path `action`.
+2026-08-09 07:14:07 [ERROR]: Failed to create audit log: AuditLog validation failed: severity: `warning` is not a valid enum value for path `severity`.
+2026-08-09 08:29:12 [ERROR]: Error: Failed to lookup view "shop/product-details" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:622:44)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 08:31:50 [ERROR]: Error: Failed to lookup view "shop/product-details" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:874:44)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 10:37:58 [ERROR]: Error: Failed to lookup view "home/about" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showAboutPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\HomeController.js:18:44)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:117:3)
+    at handle (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:295:15
+    at processParams (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:582:12)
+2026-08-09 11:43:00 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Brand` is not a valid enum value for path `module`.
+2026-08-09 11:43:10 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Soft Delete Product` is not a valid enum value for path `action`.
+2026-08-09 11:43:21 [ERROR]: Failed to create audit log: AuditLog validation failed: action: `Soft Delete Product` is not a valid enum value for path `action`.
+2026-08-09 11:43:31 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Brand` is not a valid enum value for path `module`.
+2026-08-09 11:45:34 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Brand` is not a valid enum value for path `module`.
+2026-08-09 11:45:45 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Brand` is not a valid enum value for path `module`.
+2026-08-09 11:46:00 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Brand` is not a valid enum value for path `module`.
+2026-08-09 11:46:14 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Brand` is not a valid enum value for path `module`.
+2026-08-09 11:46:50 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Category` is not a valid enum value for path `module`.
+2026-08-09 11:46:52 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Category` is not a valid enum value for path `module`.
+2026-08-09 11:47:01 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Category` is not a valid enum value for path `module`.
+2026-08-09 11:47:10 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Category` is not a valid enum value for path `module`.
+2026-08-09 11:47:19 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Category` is not a valid enum value for path `module`.
+2026-08-09 11:47:28 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Category` is not a valid enum value for path `module`.
+2026-08-09 11:47:35 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Category` is not a valid enum value for path `module`.
+2026-08-09 11:56:47 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Products` is not a valid enum value for path `module`.
+2026-08-09 12:39:10 [ERROR]: Create product failed: Product validation failed: metaTitle: Path `metaTitle` (`Direct-harvested seeds from hi...`, length 191) is longer than the maximum allowed length (70).
+2026-08-09 12:46:08 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Products` is not a valid enum value for path `module`.
+2026-08-09 12:46:33 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Products` is not a valid enum value for path `module`.
+2026-08-09 12:47:04 [ERROR]: Failed to create audit log: AuditLog validation failed: module: `Products` is not a valid enum value for path `module`.
+2026-08-09 13:06:13 [ERROR]: Add to cart failed: req.flash is not a function
+2026-08-09 13:06:13 [ERROR]: TypeError: req.flash is not a function
+    at addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:380:11)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:117:3)
+    at handle (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:295:15
+    at processParams (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:582:12)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:291:5)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authorizeRoles.js:23:12
+2026-08-09 13:06:22 [ERROR]: Error: Failed to lookup view "cart/index" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showCartPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:183:44)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 13:06:27 [ERROR]: Error: Failed to lookup view "wishlist/index" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showWishlistPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\WishlistController.js:99:44)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 13:06:30 [ERROR]: Show public product details failed: ReferenceError: Cart is not defined
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1120:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 13:06:32 [ERROR]: Show public product details failed: ReferenceError: Cart is not defined
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1120:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 13:06:34 [ERROR]: Show public product details failed: ReferenceError: Cart is not defined
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1120:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 13:06:37 [ERROR]: Show public product details failed: ReferenceError: Cart is not defined
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1120:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 13:06:39 [ERROR]: Show public product details failed: ReferenceError: Cart is not defined
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1120:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 13:06:41 [ERROR]: Show public product details failed: ReferenceError: Cart is not defined
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1120:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 13:14:52 [ERROR]: Show public product details failed: ReferenceError: Cart is not defined
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1120:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 13:14:54 [ERROR]: Show public product details failed: ReferenceError: Cart is not defined
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1120:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 13:15:07 [ERROR]: Show public product details failed: ReferenceError: Cart is not defined
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1120:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 13:15:10 [ERROR]: Show public product details failed: ReferenceError: Cart is not defined
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1120:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 13:15:12 [ERROR]: Show public product details failed: ReferenceError: Cart is not defined
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1120:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 13:15:17 [ERROR]: Show public product details failed: ReferenceError: Cart is not defined
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1120:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 13:16:13 [ERROR]: Show public product details failed: ReferenceError: Cart is not defined
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1120:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 13:16:15 [ERROR]: Show public product details failed: ReferenceError: Cart is not defined
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1120:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 13:16:23 [ERROR]: Show public product details failed: ReferenceError: Cart is not defined
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1120:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 13:17:39 [ERROR]: Show public product details failed: ReferenceError: Cart is not defined
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1120:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 13:17:40 [ERROR]: Show public product details failed: ReferenceError: Cart is not defined
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1120:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 13:19:55 [ERROR]: Show public product details failed: ReferenceError: Cart is not defined
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1120:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 13:19:58 [ERROR]: Show public product details failed: ReferenceError: Cart is not defined
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:1120:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 13:21:18 [ERROR]: Error: Failed to lookup view "cart/index" in views directory "E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\views"
+    at app.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\express\lib\response.js:923:7)
+    at showCartPage (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:183:44)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 13:21:34 [ERROR]: Add to cart failed: req.flash is not a function
+2026-08-09 13:21:34 [ERROR]: TypeError: req.flash is not a function
+    at addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:380:11)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:117:3)
+    at handle (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:295:15
+    at processParams (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:582:12)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:291:5)
+    at authMiddleware (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\middlewares\authMiddleware.js:71:12)
+2026-08-09 15:13:01 [ERROR]: Show public product details failed: ReferenceError: Cannot access 'product' before initialization
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:847:7)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at next (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:117:3)
+    at handle (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\layer.js:152:17)
+    at E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:295:15
+    at param (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:600:14)
+    at param (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:610:14)
+    at processParams (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:664:3)
+2026-08-09 15:13:10 [ERROR]: Show public product details failed: ReferenceError: Cannot access 'product' before initialization
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:847:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 15:13:12 [ERROR]: Show public product details failed: ReferenceError: Cannot access 'product' before initialization
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:847:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 15:19:16 [ERROR]: Show public product details failed: ReferenceError: Cannot access 'product' before initialization
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:847:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 15:19:18 [ERROR]: Show public product details failed: ReferenceError: Cannot access 'product' before initialization
+    at showProductDetails (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ShopController.js:847:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-08-09 15:29:23 [ERROR]: Add to cart failed: ValidationError: AuditLog validation failed: module: Path `module` is required., action: `ADD_TO_CART` is not a valid enum value for path `action`.
+    at model.validate (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\document.js:2880:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:675:7)
+    at async model.create (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\mongoose\lib\model.js:2763:5)
+    at async addToCart (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:449:7)

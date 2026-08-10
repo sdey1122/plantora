@@ -17,9 +17,12 @@ dotenv.config();
 const logger = require("./app/config/logger");
 
 const globalMiddleware = require("./app/middlewares/globalMiddleware");
+const ShopController = require("./app/controllers/ShopController");
 
 // Import routes
 const homeRoutes = require("./app/routes/homeRoutes");
+const shopRoutes = require("./app/routes/shopRoute");
+
 const authRoutes = require("./app/routes/authRoute");
 const userRoutes = require("./app/routes/userRoute");
 const categoryRoutes = require("./app/routes/categoryRoute");
@@ -28,8 +31,13 @@ const productRoutes = require("./app/routes/productRoute");
 const reviewRoutes = require("./app/routes/reviewRoute");
 const wishlistRoutes = require("./app/routes/wishlistRoute");
 const cartRoutes = require("./app/routes/cartRoute");
+const checkoutRoutes = require("./app/routes/checkoutRoute");
+const addressRoutes = require("./app/routes/addressRoute");
+
+const paymentRoutes = require("./app/routes/paymentRoute");
 const couponRoutes = require("./app/routes/couponRoute");
 const orderRoutes = require("./app/routes/orderRoute");
+
 // const adminRoutes = require("./app/routes/adminRoute");
 const adminDashboardRoute = require("./app/routes/adminDashboardRoute");
 const sellerDashboardRoute = require("./app/routes/sellerDashboardRoute");
@@ -110,6 +118,12 @@ app.use(globalMiddleware);
 // Public Website
 app.use("/", homeRoutes);
 
+// Shop page
+app.use("/shop", shopRoutes);
+
+// Product details
+app.get("/products/:slug", ShopController.showProductDetails);
+
 // Authentication
 app.use("/auth", authRoutes);
 
@@ -134,8 +148,18 @@ app.use("/wishlist", wishlistRoutes);
 // Cart
 app.use("/cart", cartRoutes);
 
+// Addresses
+app.use("/addresses", addressRoutes);
+
+// Checkout
+app.use("/checkout", checkoutRoutes);
+
 // Coupon
 app.use("/coupons", couponRoutes);
+
+// Payment
+// Order
+app.use("/payment", paymentRoutes);
 
 // Order
 app.use("/orders", orderRoutes);

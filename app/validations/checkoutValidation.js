@@ -2,37 +2,24 @@ const Joi = require("joi");
 
 const { validationOptions, objectId } = require("./commonValidation");
 
-// Checkout
+// ==========================================================
+// CREATE CHECKOUT / PLACE ORDER
+// ==========================================================
+
 const createCheckoutValidation = Joi.object({
   addressId: objectId.required().messages({
     "any.required": "Address is required.",
+    "string.empty": "Address is required.",
   }),
 
-  couponId: objectId.allow(null, "").optional(),
-
-  paymentMethod: Joi.string().valid("cod", "razorpay").required().messages({
+  paymentMethod: Joi.string().valid("razorpay").required().messages({
     "any.required": "Payment method is required.",
+    "any.only": "Invalid payment method.",
   }),
-})
-  .strict()
-  .options(validationOptions);
 
-// Apply coupon
-const applyCouponValidation = Joi.object({
-  couponCode: Joi.string().trim().required().messages({
-    "any.required": "Coupon code is required.",
-  }),
-})
-  .strict()
-  .options(validationOptions);
-
-// Remove coupon
-const removeCouponValidation = Joi.object({})
-  .strict()
-  .options(validationOptions);
+  notes: Joi.string().trim().max(500).allow("").default(""),
+}).options(validationOptions);
 
 module.exports = {
   createCheckoutValidation,
-  applyCouponValidation,
-  removeCouponValidation,
 };

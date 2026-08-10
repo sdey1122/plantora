@@ -1,365 +1,429 @@
-<!-- ==========================================================
-     MAIN HEADER
-=========================================================== -->
+<div class="container">
 
-<header class="plantora-header">
+    <div class="header-wrapper">
 
-    <div class="container">
+        <!-- ==========================================
+             LOGO
+        =========================================== -->
 
-        <div class="header-wrapper">
+        <a
+            href="/"
+            class="header-logo"
+        >
 
-            <!-- ==========================================
-                 LOGO
-            =========================================== -->
-
-            <a
-                href="/"
-                class="header-logo"
+            <img
+                src="/images/logo/plantora.png"
+                alt="Plantora"
+                class="logo-image"
             >
 
-                <img
-                    src="/images/logo/plantora.png"
-                    alt="Plantora"
-                    class="logo-image"
+        </a>
+
+
+        <!-- ==========================================
+             NAVIGATION
+        =========================================== -->
+
+        <nav class="header-nav">
+
+            <ul>
+
+                <li>
+
+                    <a
+                        href="/"
+                        class="<%= currentRoute === '/' ? 'active' : '' %>"
+                    >
+                        Home
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="/shop"
+                        class="<%= currentRoute.startsWith('/shop') ? 'active' : '' %>"
+                    >
+                        Shop
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="/about"
+                        class="<%= currentRoute === '/about' ? 'active' : '' %>"
+                    >
+                        About
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="/contact"
+                        class="<%= currentRoute === '/contact' ? 'active' : '' %>"
+                    >
+                        Contact
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </nav>
+
+
+        <!-- ==========================================
+             HEADER ACTIONS
+        =========================================== -->
+
+        <div class="header-actions">
+
+            <% if (!user) { %>
+
+                <!-- LOGIN -->
+
+                <button
+                    type="button"
+                    class="btn-login"
+                    data-bs-toggle="modal"
+                    data-bs-target="#loginModal"
                 >
 
-            </a>
+                    Login
 
-            <!-- ==========================================
-                 NAVIGATION
-            =========================================== -->
+                </button>
 
-            <nav class="header-nav">
 
-                <ul>
+                <!-- REGISTER -->
 
-                    <li>
+                <button
+                    type="button"
+                    class="btn-signup"
+                    data-bs-toggle="modal"
+                    data-bs-target="#registerModal"
+                >
 
-                        <a
-                            href="/"
-                            class="<%= currentRoute === '/' ? 'active' : '' %>"
+                    Sign Up
+
+                </button>
+
+
+            <% } else { %>
+
+
+                <!-- ==================================
+                     WISHLIST
+                =================================== -->
+
+                <a
+                    href="/wishlist"
+                    class="header-icon wishlist-icon"
+                    aria-label="Wishlist"
+                >
+
+                    <i class="bi bi-heart"></i>
+
+                </a>
+
+
+                <!-- ==================================
+                     CART
+                =================================== -->
+
+                <a
+                    href="/cart"
+                    class="header-icon cart-icon"
+                    aria-label="Cart"
+                >
+
+                    <i class="bi bi-bag"></i>
+
+
+                    <% if (cartCount > 0) { %>
+
+                        <span
+                            class="header-badge cart-badge"
+                            id="cartBadge"
                         >
-                            Home
-                        </a>
 
-                    </li>
+                            <%= cartCount %>
 
-                    <li>
+                        </span>
 
-                        <a
-                            href="/products"
-                            class="<%= currentRoute.startsWith('/products') ? 'active' : '' %>"
-                        >
-                            Shop
-                        </a>
+                    <% } %>
 
-                    </li>
+                </a>
 
-                    <li>
 
-                        <a
-                            href="/about"
-                            class="<%= currentRoute === '/about' ? 'active' : '' %>"
-                        >
-                            About
-                        </a>
+                <!-- ==================================
+                     NOTIFICATIONS
+                =================================== -->
 
-                    </li>
-
-                    <li>
-
-                        <a
-                            href="/contact"
-                            class="<%= currentRoute === '/contact' ? 'active' : '' %>"
-                        >
-                            Contact
-                        </a>
-
-                    </li>
-
-                </ul>
-
-            </nav>
-
-            <!-- ==========================================
-                 HEADER ACTIONS
-            =========================================== -->
-
-            <div class="header-actions">
-
-                <% if (!user) { %>
+                <div class="dropdown">
 
                     <button
-                        type="button"
-                        class="btn-login"
-                        data-bs-toggle="modal"
-                        data-bs-target="#loginModal"
-                    >
-
-                        Login
-
-                    </button>
-
-                    <button
-                        type="button"
-                        class="btn-signup"
-                        data-bs-toggle="modal"
-                        data-bs-target="#registerModal"
-                    >
-
-                        Sign Up
-
-                    </button>
-
-                <% } else { %>
-
-                    <!-- Wishlist -->
-
-                    <a
-                        href="/wishlist"
-                        class="header-icon wishlist-icon"
-                        aria-label="Wishlist"
-                    >
-
-                        <i class="bi bi-heart"></i>
-
-                    </a>
-
-                    <!-- Cart -->
-
-                    <a
-                        href="/cart"
-                        class="header-icon"
-                        aria-label="Cart"
-                    >
-
-                        <i class="bi bi-bag"></i>
-
-                    </a>
-
-                    <!-- Notifications -->
-
-                    <div class="dropdown">
-
-                        <button
                         id="notificationDropdownButton"
-                            class="header-icon"
-                            type="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
+                        class="header-icon"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                    >
+
+                        <i class="bi bi-bell"></i>
+
+
+                        <% if (notificationCount > 0) { %>
+
+                            <span
+                                class="header-badge"
+                                id="notificationBadge"
+                            >
+
+                                <%= notificationCount %>
+
+                            </span>
+
+                        <% } %>
+
+                    </button>
+
+
+                    <div
+                        class="dropdown-menu dropdown-menu-end notification-dropdown"
+                    >
+
+                        <div class="notification-header">
+
+                            <h6>
+                                Notifications
+                            </h6>
+
+
+                            <a
+                                href="#"
+                                id="markAllNotificationsRead"
+                            >
+                                Mark all read
+                            </a>
+
+                        </div>
+
+
+                        <div
+                            class="notification-list"
+                            id="notificationList"
                         >
 
-                            <i class="bi bi-bell"></i>
+                            <div class="text-center py-3 text-muted">
 
-                            <% if (notificationCount > 0) { %>
+                                Loading...
 
-                                <span class="header-badge" 
-                                id="notificationBadge">
+                            </div>
 
-                                    <%= notificationCount %>
+                        </div>
 
-                                </span>
+                    </div>
 
-                            <% } %>
+                </div>
 
-                        </button>
 
-                        <div class="dropdown-menu dropdown-menu-end notification-dropdown">
+                <!-- ==================================
+                     PROFILE
+                =================================== -->
 
-                            <div class="notification-header">
+                <div class="dropdown">
+
+                    <button
+                        class="profile-button"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                    >
+
+                        <img
+                            src="<%= user.profileImage?.url || process.env.DEFAULT_PROFILE_IMAGE_URL %>"
+                            alt="<%= user.name %>"
+                        >
+
+                    </button>
+
+
+                    <div
+                        class="dropdown-menu dropdown-menu-end profile-dropdown"
+                    >
+
+                        <!-- PROFILE HEADER -->
+
+                        <div class="profile-dropdown-header">
+
+                            <div class="profile-dropdown-avatar">
+
+                                <img
+                                    src="<%= user.profileImage?.url || process.env.DEFAULT_PROFILE_IMAGE_URL %>"
+                                    alt="<%= user.name %>"
+                                >
+
+                            </div>
+
+
+                            <div>
 
                                 <h6>
-
-                                    Notifications
-
+                                    <%= user.name %>
                                 </h6>
 
-                               <a
-    href="#"
-    id="markAllNotificationsRead"
->
-    Mark all read
-</a>
+                                <small>
+                                    <%= user.email %>
+                                </small>
 
                             </div>
 
-                           <div
-    class="notification-list"
-    id="notificationList"
->
-
-    <div class="text-center py-3 text-muted">
-
-        Loading...
-
-    </div>
-
-</div>
-
-                            
-
                         </div>
+
+
+                        <hr>
+
+
+                        <!-- PROFILE -->
+
+                        <a
+                            href="/auth/profile"
+                            class="dropdown-item"
+                        >
+
+                            <i class="bi bi-person"></i>
+
+                            My Profile
+
+                        </a>
+
+
+                        <!-- ORDERS -->
+
+                        <a
+                            href="/orders"
+                            class="dropdown-item order-icon"
+                        >
+
+                            <i class="bi bi-box-seam"></i>
+
+                            My Orders
+
+                        </a>
+
+
+                        <!-- WISHLIST -->
+
+                        <a
+                            href="/wishlist"
+                            class="dropdown-item"
+                        >
+
+                            <i class="bi bi-heart"></i>
+
+                            Wishlist
+
+                        </a>
+
+
+                        <!-- ADDRESSES -->
+
+                        <a
+                            href="/addresses"
+                            class="dropdown-item"
+                        >
+
+                            <i class="bi bi-geo-alt"></i>
+
+                            Saved Addresses
+
+                        </a>
+
+
+                        <!-- SELLER -->
+
+                        <% if (user.isSeller) { %>
+
+                            <a
+                                href="/seller/dashboard"
+                                class="dropdown-item"
+                            >
+
+                                <i class="bi bi-shop"></i>
+
+                                Seller Dashboard
+
+                            </a>
+
+                        <% } %>
+
+
+                        <!-- ADMIN -->
+
+                        <% if (user.role === "admin") { %>
+
+                            <a
+                                href="/admin/dashboard"
+                                class="dropdown-item"
+                            >
+
+                                <i class="bi bi-speedometer2"></i>
+
+                                Admin Dashboard
+
+                            </a>
+
+                        <% } %>
+
+
+                        <hr>
+
+
+                        <!-- LOGOUT -->
+
+                        <form
+                            action="/auth/logout"
+                            method="POST"
+                        >
+
+                            <button
+                                type="submit"
+                                class="dropdown-item logout-button"
+                            >
+
+                                <i class="bi bi-box-arrow-right"></i>
+
+                                Logout
+
+                            </button>
+
+                        </form>
 
                     </div>
 
-                    <!-- Profile -->
+                </div>
 
-                    <div class="dropdown">
 
-                        <button
-    class="profile-button"
-    type="button"
-    data-bs-toggle="dropdown"
-    aria-expanded="false"
->
-
-    <img
-        src="<%= user.profileImage?.url || process.env.DEFAULT_PROFILE_IMAGE_URL %>"
-        alt="<%= user.name %>"
-    >
-
-</button>
-
-                        <div class="dropdown-menu dropdown-menu-end profile-dropdown">
-
-                            <div class="profile-dropdown-header">
-
-                             <div class="profile-dropdown-avatar">
-
-    <img
-        src="<%= user.profileImage?.url || process.env.DEFAULT_PROFILE_IMAGE_URL %>"
-        alt="<%= user.name %>"
-    >
-
-</div>
-
-                                <div>
-
-                                    <h6>
-
-                                        <%= user.name %>
-
-                                    </h6>
-
-                                    <small>
-
-                                        <%= user.email %>
-
-                                    </small>
-
-                                </div>
-
-                            </div>
-
-                            <hr>
-
-                            <a
-                                href="/auth/profile"
-                                class="dropdown-item"
-                            >
-
-                                <i class="bi bi-person"></i>
-
-                                My Profile
-
-                            </a>
-
-                            <a
-                                href="/orders"
-                                class="dropdown-item order-icon"
-                            >
-
-                                <i class="bi bi-box-seam"></i>
-
-                                My Orders
-
-                            </a>
-
-                            <a
-                                href="/wishlist"
-                                class="dropdown-item"
-                            >
-
-                                <i class="bi bi-heart"></i>
-
-                                Wishlist
-
-                            </a>
-
-                            <a
-                                href="/addresses"
-                                class="dropdown-item"
-                            >
-
-                                <i class="bi bi-geo-alt"></i>
-
-                                Saved Addresses
-
-                            </a>
-
-                            <% if (user.isSeller) { %>
-
-                                <a
-                                    href="/seller/dashboard"
-                                    class="dropdown-item"
-                                >
-
-                                    <i class="bi bi-shop"></i>
-
-                                    Seller Dashboard
-
-                                </a>
-
-                            <% } %>
-
-                            <% if (user.role === "admin") { %>
-
-                                <a
-                                    href="/admin/dashboard"
-                                    class="dropdown-item"
-                                >
-
-                                    <i class="bi bi-speedometer2"></i>
-
-                                    Admin Dashboard
-
-                                </a>
-
-                            <% } %>
-
-                            <hr>
-
-                            <form
-                                action="/auth/logout"
-                                method="POST"
-                            >
-
-                                <button
-                                    type="submit"
-                                    class="dropdown-item logout-button"
-                                >
-
-                                    <i class="bi bi-box-arrow-right"></i>
-
-                                    Logout
-
-                                </button>
-
-                            </form>
-
-                        </div>
-
-                    </div>
-
-                <% } %>
-
-            </div>
+            <% } %>
 
         </div>
 
     </div>
 
-</header>
+</div>
+
+
+<!-- ==========================================
+     MODALS
+=========================================== -->
 
 <%- include("../../modals/loginModal.ejs") %>
 

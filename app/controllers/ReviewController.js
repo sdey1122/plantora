@@ -19,17 +19,127 @@ const {
   reviewStatusValidation,
 } = require("../validations/reviewValidation");
 
+// ==========================================================
+// RECALCULATE PRODUCT RATING
+// ==========================================================
+
+const recalculateProductRating = async (productId) => {
+  const result = await Review.aggregate([
+    {
+      $match: {
+        product: new mongoose.Types.ObjectId(productId),
+        status: "approved",
+        isDeleted: {
+          $ne: true,
+        },
+      },
+    },
+
+    {
+      $group: {
+        _id: null,
+
+        averageRating: {
+          $avg: "$rating",
+        },
+
+        totalRatings: {
+          $sum: 1,
+        },
+
+        fiveStar: {
+          $sum: {
+            $cond: [{ $eq: ["$rating", 5] }, 1, 0],
+          },
+        },
+
+        fourStar: {
+          $sum: {
+            $cond: [{ $eq: ["$rating", 4] }, 1, 0],
+          },
+        },
+
+        threeStar: {
+          $sum: {
+            $cond: [{ $eq: ["$rating", 3] }, 1, 0],
+          },
+        },
+
+        twoStar: {
+          $sum: {
+            $cond: [{ $eq: ["$rating", 2] }, 1, 0],
+          },
+        },
+
+        oneStar: {
+          $sum: {
+            $cond: [{ $eq: ["$rating", 1] }, 1, 0],
+          },
+        },
+      },
+    },
+  ]);
+
+  let averageRating = 0;
+  let totalRatings = 0;
+
+  let ratingBreakdown = {
+    5: 0,
+    4: 0,
+    3: 0,
+    2: 0,
+    1: 0,
+  };
+
+  if (result.length > 0) {
+    averageRating = Number(result[0].averageRating.toFixed(1));
+
+    totalRatings = result[0].totalRatings;
+
+    ratingBreakdown = {
+      5: result[0].fiveStar,
+      4: result[0].fourStar,
+      3: result[0].threeStar,
+      2: result[0].twoStar,
+      1: result[0].oneStar,
+    };
+  }
+
+  await Product.findByIdAndUpdate(
+    productId,
+    {
+      averageRating,
+      totalRatings,
+    },
+    {
+      new: false,
+    },
+  );
+
+  return {
+    averageRating,
+    totalRatings,
+    ratingBreakdown,
+  };
+};
+
+// ==========================================================
+// REVIEW CONTROLLER
+// ==========================================================
+
 class ReviewController {
-  // Show product reviews page
+  // ========================================================
+  // SHOW PRODUCT REVIEWS PAGE
+  // ========================================================
+
   async showProductReviewsPage(req, res) {
     try {
-      // Validate query
       const { error, value } = reviewQueryValidation.validate(req.query);
 
       if (error) {
-        req.flash("error", error.details[0].message);
+        logger.warn(`Invalid review query. Error: ${error.details[0].message}`);
 
-        return res.redirect("back");
+        return res.redirect("/shop");
       }
 
       const { page, limit, search, rating, sortBy, sortOrder } = value;
@@ -37,25 +147,22 @@ class ReviewController {
       const productId = req.params.productId;
 
       if (!mongoose.Types.ObjectId.isValid(productId)) {
-        req.flash("error", "Invalid product ID.");
+        logger.warn(
+          `Invalid product ID while viewing reviews. Product: ${productId}`,
+        );
 
-        return res.redirect("back");
+        return res.redirect("/shop");
       }
 
       const matchStage = {
         product: new mongoose.Types.ObjectId(productId),
-
         status: "approved",
-
-        isDeleted: false,
       };
 
-      // Filter by rating
       if (rating) {
         matchStage.rating = rating;
       }
 
-      // Search review title or comment
       if (search) {
         matchStage.$or = [
           {
@@ -94,24 +201,17 @@ class ReviewController {
         {
           $project: {
             rating: 1,
-
             reviewTitle: 1,
-
             comment: 1,
-
             images: 1,
-
             helpfulCount: 1,
-
             isVerifiedPurchase: 1,
-
             createdAt: 1,
+            updatedAt: 1,
 
             user: {
               _id: "$user._id",
-
               name: "$user.name",
-
               profilePicture: "$user.profilePicture",
             },
           },
@@ -129,6 +229,7 @@ class ReviewController {
               {
                 $skip: (page - 1) * limit,
               },
+
               {
                 $limit: limit,
               },
@@ -189,13 +290,25 @@ class ReviewController {
         },
       ]);
 
-      const reviews = result[0].reviews;
+      const reviews = result[0]?.reviews || [];
 
       const totalReviews =
-        result[0].totalReviews.length > 0 ? result[0].totalReviews[0].count : 0;
+        result[0]?.totalReviews?.length > 0
+          ? result[0].totalReviews[0].count
+          : 0;
 
       const ratingSummary =
-        result[0].ratingSummary.length > 0 ? result[0].ratingSummary[0] : null;
+        result[0]?.ratingSummary?.length > 0
+          ? result[0].ratingSummary[0]
+          : {
+              averageRating: 0,
+              totalRatings: 0,
+              fiveStar: 0,
+              fourStar: 0,
+              threeStar: 0,
+              twoStar: 0,
+              oneStar: 0,
+            };
 
       logger.info(`Viewed product reviews. Product: ${productId}`);
 
@@ -212,69 +325,114 @@ class ReviewController {
 
         pagination: {
           currentPage: page,
-
           totalPages: Math.ceil(totalReviews / limit),
-
           totalReviews,
-
           limit,
         },
       });
     } catch (error) {
       logger.error(`Show product reviews failed: ${error.message}`);
 
-      req.flash("error", "Failed to load reviews.");
-
-      return res.redirect("back");
+      return res.redirect("/shop");
     }
   }
 
-  // Create review
-  async createReview(req, res) {
-    try {
-      // Validate product ID
-      if (!mongoose.Types.ObjectId.isValid(req.params.productId)) {
-        req.flash("error", "Invalid product ID.");
+  // ========================================================
+  // CREATE REVIEW
+  // CUSTOMER + SELLER
+  // ========================================================
 
-        return res.redirect("back");
+  async createReview(req, res) {
+    let productId = req.params.productId;
+
+    try {
+      // ------------------------------------------------------
+      // Admin cannot create review
+      // ------------------------------------------------------
+
+      if (req.user.role === "admin") {
+        logger.warn(
+          `Admin attempted to create review. Admin: ${req.user.email}`,
+        );
+
+        return res.redirect("/shop");
       }
 
-      // Validate request body
+      // ------------------------------------------------------
+      // Validate product ID
+      // ------------------------------------------------------
+
+      if (!mongoose.Types.ObjectId.isValid(productId)) {
+        logger.warn(
+          `Invalid product ID while creating review. Product: ${productId}`,
+        );
+
+        return res.redirect("/shop");
+      }
+
+      // ------------------------------------------------------
+      // Validate body
+      // ------------------------------------------------------
+
       const { error, value } = createReviewValidation.validate(req.body);
 
       if (error) {
-        req.flash("error", error.details[0].message);
+        logger.warn(
+          `Review validation failed. User: ${req.user.email}, Error: ${error.details[0].message}`,
+        );
 
-        return res.redirect("back");
+        const product = await Product.findById(productId).select("slug").lean();
+
+        if (product?.slug) {
+          return res.redirect(`/shop/product/${product.slug}#product-reviews`);
+        }
+
+        return res.redirect("/shop");
+      }
+      // ------------------------------------------------------
+      // Product
+      // ------------------------------------------------------
+
+      const product = await Product.findById(productId);
+
+      if (!product) {
+        logger.warn(
+          `Review attempted for unavailable product. Product: ${productId}`,
+        );
+
+        return res.redirect("/shop");
       }
 
-      const product = await Product.findById(req.params.productId);
-
-      if (!product || product.isDeleted) {
-        req.flash("error", "Product not found.");
-
-        return res.redirect("back");
-      }
+      // ------------------------------------------------------
+      // One review per user/product
+      // ------------------------------------------------------
 
       const existingReview = await Review.findOne({
         user: req.user._id,
-
         product: product._id,
       });
 
       if (existingReview) {
-        req.flash("error", "You have already reviewed this product.");
+        logger.warn(
+          `Duplicate review attempt. User: ${req.user.email}, Product: ${product.name}`,
+        );
 
-        return res.redirect("back");
+        return res.redirect(`/shop/product/${product.slug}#product-reviews`);
       }
+
+      // ------------------------------------------------------
+      // Verified purchase
+      // ------------------------------------------------------
 
       const verifiedPurchase = await Order.exists({
         user: req.user._id,
-
         "items.product": product._id,
-
         orderStatus: "delivered",
       });
+
+      // ------------------------------------------------------
+      // Create review
+      // ------------------------------------------------------
 
       const review = await Review.create({
         user: req.user._id,
@@ -283,52 +441,91 @@ class ReviewController {
 
         rating: value.rating,
 
-        reviewTitle: value.reviewTitle,
+        reviewTitle: value.reviewTitle || "",
 
         comment: value.comment,
 
-        images: value.images,
+        images: value.images || [],
 
         isVerifiedPurchase: Boolean(verifiedPurchase),
+
+        status: "approved",
+
+        isDeleted: false,
+
+        adminRemark: "",
       });
 
+      // ------------------------------------------------------
+      // Recalculate rating
+      // ------------------------------------------------------
+
+      await recalculateProductRating(product._id);
+
+      // ------------------------------------------------------
+      // Audit
+      // ------------------------------------------------------
+
       await createAuditLog({
-        user: req.user._id,
+        req,
+        actor: req.user,
 
-        action: "CREATE_REVIEW",
+        module: "Review",
 
-        resource: "Review",
+        action: "Create Review",
 
-        resourceId: review._id,
+        target: {
+          model: "Review",
+          id: review._id,
+          name: product.name,
+        },
 
-        details: `Review submitted for product "${product.productName}".`,
+        description: `${req.user.name} submitted a review for product '${product.name}'.`,
       });
 
       logger.info(
-        `Review created. User: ${req.user.email}, Product: ${product.productName}`,
+        `Review created successfully. User: ${req.user.email}, Product: ${product.name}, Verified Purchase: ${Boolean(
+          verifiedPurchase,
+        )}`,
       );
 
-      req.flash("success", "Review submitted successfully.");
+      // ------------------------------------------------------
+      // IMPORTANT:
+      // Go back to actual product page
+      // ------------------------------------------------------
 
-      return res.redirect("back");
+      return res.redirect(`/shop/product/${product.slug}#product-reviews`);
     } catch (error) {
       logger.error(`Create review failed: ${error.message}`);
 
-      req.flash("error", "Failed to submit review.");
+      // If product ID is valid, return to product page
+      if (mongoose.Types.ObjectId.isValid(productId)) {
+        const product = await Product.findById(productId).select("slug").lean();
 
-      return res.redirect("back");
+        if (product?.slug) {
+          return res.redirect(`/shop/product/${product.slug}#product-reviews`);
+        }
+      }
+
+      return res.redirect("/shop");
     }
   }
-  // Show edit review page
+
+  // ========================================================
+  // SHOW EDIT REVIEW PAGE
+  // CUSTOMER + SELLER
+  // ========================================================
+
   async showEditReviewPage(req, res) {
     try {
-      // Validate review ID
       const { error, value } = reviewIdValidation.validate(req.params);
 
       if (error) {
-        req.flash("error", error.details[0].message);
+        logger.warn(
+          `Invalid review ID while opening edit page. Error: ${error.details[0].message}`,
+        );
 
-        return res.redirect("back");
+        return res.redirect("/shop");
       }
 
       const review = await Review.aggregate([
@@ -337,16 +534,17 @@ class ReviewController {
             _id: new mongoose.Types.ObjectId(value.reviewId),
 
             user: new mongoose.Types.ObjectId(req.user._id),
-
-            isDeleted: false,
           },
         },
 
         {
           $lookup: {
             from: "products",
+
             localField: "product",
+
             foreignField: "_id",
+
             as: "product",
           },
         },
@@ -371,29 +569,33 @@ class ReviewController {
 
             createdAt: 1,
 
+            updatedAt: 1,
+
             product: {
               _id: "$product._id",
 
-              productName: "$product.productName",
+              name: "$product.name",
 
               slug: "$product.slug",
 
               price: "$product.price",
 
-              featuredImage: "$product.featuredImage",
+              images: "$product.images",
             },
           },
         },
       ]);
 
       if (!review.length) {
-        req.flash("error", "Review not found.");
+        logger.warn(
+          `Review not found while opening edit page. Review: ${value.reviewId}, User: ${req.user.email}`,
+        );
 
-        return res.redirect("back");
+        return res.redirect("/shop");
       }
 
       logger.info(
-        `Customer opened review edit page. Review: ${review[0]._id}, User: ${req.user.email}`,
+        `Customer/seller opened review edit page. Review: ${review[0]._id}, User: ${req.user.email}`,
       );
 
       return res.status(httpStatusCode.OK).render("reviews/edit", {
@@ -404,157 +606,119 @@ class ReviewController {
     } catch (error) {
       logger.error(`Show edit review page failed: ${error.message}`);
 
-      req.flash("error", "Failed to load review.");
-
-      return res.redirect("back");
+      return res.redirect("/shop");
     }
   }
 
-  // Update review
+  // ========================================================
+  // UPDATE REVIEW
+  // CUSTOMER + SELLER
+  // ONLY OWN REVIEW
+  // ========================================================
+
   async updateReview(req, res) {
     try {
-      // Validate review ID
       const { error: idError, value: idValue } = reviewIdValidation.validate(
         req.params,
       );
 
       if (idError) {
-        req.flash("error", idError.details[0].message);
+        logger.warn(
+          `Invalid review ID while updating review. Error: ${idError.details[0].message}`,
+        );
 
-        return res.redirect("back");
+        return res.redirect("/shop");
       }
 
-      // Validate request body
       const { error, value } = updateReviewValidation.validate(req.body);
 
       if (error) {
-        req.flash("error", error.details[0].message);
+        logger.warn(
+          `Review update validation failed. User: ${req.user.email}, Error: ${error.details[0].message}`,
+        );
 
-        return res.redirect("back");
+        return res.redirect("/shop");
       }
 
       const review = await Review.findOne({
         _id: idValue.reviewId,
 
         user: req.user._id,
-
-        isDeleted: false,
       });
 
       if (!review) {
-        req.flash("error", "Review not found.");
+        logger.warn(
+          `Review not found while updating. Review: ${idValue.reviewId}, User: ${req.user.email}`,
+        );
 
-        return res.redirect("back");
+        return res.redirect("/shop");
       }
 
-      Object.assign(review, value);
+      const productId = review.product;
 
-      // Re-review after customer edits
-      review.status = "pending";
+      review.rating = value.rating;
+
+      review.reviewTitle = value.reviewTitle || "";
+
+      review.comment = value.comment;
+
+      if (value.images !== undefined) {
+        review.images = value.images;
+      }
+
+      review.status = "approved";
 
       review.adminRemark = "";
 
       await review.save();
 
+      await recalculateProductRating(productId);
+
+      // ------------------------------------------------------
+      // Audit
+      // ------------------------------------------------------
+
       await createAuditLog({
-        user: req.user._id,
+        req,
+        actor: req.user,
 
-        action: "UPDATE_REVIEW",
+        module: "Review",
 
-        resource: "Review",
+        action: "Update Review",
 
-        resourceId: review._id,
+        target: {
+          model: "Review",
+          id: review._id,
+          name: String(review._id),
+        },
 
-        details: `Review updated by customer.`,
+        description: `${req.user.name} updated their review.`,
       });
 
       logger.info(
-        `Review updated. Review: ${review._id}, User: ${req.user.email}`,
+        `Review updated successfully. Review: ${review._id}, User: ${req.user.email}`,
       );
 
-      req.flash(
-        "success",
-        "Review updated successfully and sent for approval.",
-      );
-
-      return res.redirect(`/products/${review.product}`);
+      return res.redirect("/shop");
     } catch (error) {
       logger.error(`Update review failed: ${error.message}`);
 
-      req.flash("error", "Failed to update review.");
-
-      return res.redirect("back");
-    }
-  }
-  // Delete review
-  async deleteReview(req, res) {
-    try {
-      // Validate review ID
-      const { error, value } = reviewIdValidation.validate(req.params);
-
-      if (error) {
-        req.flash("error", error.details[0].message);
-
-        return res.redirect("back");
-      }
-
-      const review = await Review.findOne({
-        _id: value.reviewId,
-
-        user: req.user._id,
-
-        isDeleted: false,
-      });
-
-      if (!review) {
-        req.flash("error", "Review not found.");
-
-        return res.redirect("back");
-      }
-
-      review.isDeleted = true;
-
-      review.deletedAt = new Date();
-
-      await review.save();
-
-      // Create audit log
-      await createAuditLog({
-        user: req.user._id,
-
-        action: "DELETE_REVIEW",
-
-        resource: "Review",
-
-        resourceId: review._id,
-
-        details: `Review deleted by customer.`,
-      });
-
-      logger.info(
-        `Review deleted. Review: ${review._id}, User: ${req.user.email}`,
-      );
-
-      req.flash("success", "Review deleted successfully.");
-
-      return res.redirect(`/products/${review.product}`);
-    } catch (error) {
-      logger.error(`Delete review failed: ${error.message}`);
-
-      req.flash("error", "Failed to delete review.");
-
-      return res.redirect("back");
+      return res.redirect("/shop");
     }
   }
 
-  // Show reviews page
+  // ========================================================
+  // SHOW ADMIN REVIEWS PAGE
+  // ========================================================
+
   async showReviewsPage(req, res) {
     try {
-      // Validate query
       const { error, value } = reviewQueryValidation.validate(req.query);
 
       if (error) {
-        req.flash("error", error.details[0].message);
+        logger.warn(
+          `Admin review query validation failed. Error: ${error.details[0].message}`,
+        );
 
         return res.redirect("/admin");
       }
@@ -570,11 +734,8 @@ class ReviewController {
         sortOrder,
       } = value;
 
-      const matchStage = {
-        isDeleted: false,
-      };
+      const matchStage = {};
 
-      // Search review title or comment
       if (search) {
         matchStage.$or = [
           {
@@ -583,6 +744,7 @@ class ReviewController {
               $options: "i",
             },
           },
+
           {
             comment: {
               $regex: search,
@@ -592,17 +754,14 @@ class ReviewController {
         ];
       }
 
-      // Filter by rating
       if (rating) {
         matchStage.rating = rating;
       }
 
-      // Filter by review status
       if (status) {
         matchStage.status = status;
       }
 
-      // Filter by verified purchase
       if (verifiedPurchase !== undefined) {
         matchStage.isVerifiedPurchase = verifiedPurchase;
       }
@@ -615,8 +774,11 @@ class ReviewController {
         {
           $lookup: {
             from: "users",
+
             localField: "user",
+
             foreignField: "_id",
+
             as: "user",
           },
         },
@@ -628,8 +790,11 @@ class ReviewController {
         {
           $lookup: {
             from: "products",
+
             localField: "product",
+
             foreignField: "_id",
+
             as: "product",
           },
         },
@@ -654,6 +819,8 @@ class ReviewController {
 
             createdAt: 1,
 
+            updatedAt: 1,
+
             user: {
               _id: "$user._id",
 
@@ -665,7 +832,7 @@ class ReviewController {
             product: {
               _id: "$product._id",
 
-              productName: "$product.productName",
+              name: "$product.name",
 
               slug: "$product.slug",
             },
@@ -699,10 +866,12 @@ class ReviewController {
         },
       ]);
 
-      const reviews = result[0].reviews;
+      const reviews = result[0]?.reviews || [];
 
       const totalReviews =
-        result[0].totalReviews.length > 0 ? result[0].totalReviews[0].count : 0;
+        result[0]?.totalReviews?.length > 0
+          ? result[0].totalReviews[0].count
+          : 0;
 
       logger.info(`Admin viewed review list. Admin: ${req.user.email}`);
 
@@ -726,37 +895,41 @@ class ReviewController {
     } catch (error) {
       logger.error(`Show reviews failed: ${error.message}`);
 
-      req.flash("error", "Failed to load reviews.");
-
       return res.redirect("/admin");
     }
   }
-  // Show review details page
+
+  // ========================================================
+  // SHOW ADMIN REVIEW DETAILS
+  // ========================================================
+
   async showReviewDetailsPage(req, res) {
     try {
-      // Validate review ID
       const { error, value } = reviewIdValidation.validate(req.params);
 
       if (error) {
-        req.flash("error", error.details[0].message);
+        logger.warn(
+          `Invalid review ID while viewing details. Error: ${error.details[0].message}`,
+        );
 
-        return res.redirect("/admin/reviews");
+        return res.redirect("/reviews/admin");
       }
 
       const review = await Review.aggregate([
         {
           $match: {
             _id: new mongoose.Types.ObjectId(value.reviewId),
-
-            isDeleted: false,
           },
         },
 
         {
           $lookup: {
             from: "users",
+
             localField: "user",
+
             foreignField: "_id",
+
             as: "user",
           },
         },
@@ -768,8 +941,11 @@ class ReviewController {
         {
           $lookup: {
             from: "products",
+
             localField: "product",
+
             foreignField: "_id",
+
             as: "product",
           },
         },
@@ -811,7 +987,7 @@ class ReviewController {
             product: {
               _id: "$product._id",
 
-              productName: "$product.productName",
+              name: "$product.name",
 
               slug: "$product.slug",
 
@@ -822,9 +998,11 @@ class ReviewController {
       ]);
 
       if (!review.length) {
-        req.flash("error", "Review not found.");
+        logger.warn(
+          `Review not found while viewing admin details. Review: ${value.reviewId}`,
+        );
 
-        return res.redirect("/admin/reviews");
+        return res.redirect("/reviews/admin");
       }
 
       logger.info(
@@ -839,223 +1017,191 @@ class ReviewController {
     } catch (error) {
       logger.error(`Show review details failed: ${error.message}`);
 
-      req.flash("error", "Failed to load review details.");
-
-      return res.redirect("/admin/reviews");
+      return res.redirect("/reviews/admin");
     }
   }
 
-  // Update review status
+  // ========================================================
+  // UPDATE REVIEW STATUS
+  // ADMIN
+  // ========================================================
+
   async updateReviewStatus(req, res) {
     try {
-      // Validate review ID
       const { error: idError, value: idValue } = reviewIdValidation.validate(
         req.params,
       );
 
       if (idError) {
-        req.flash("error", idError.details[0].message);
+        logger.warn(
+          `Invalid review ID while updating status. Error: ${idError.details[0].message}`,
+        );
 
-        return res.redirect("/admin/reviews");
+        return res.redirect("/reviews/admin");
       }
 
-      // Validate request body
       const { error, value } = reviewStatusValidation.validate(req.body);
 
       if (error) {
-        req.flash("error", error.details[0].message);
+        logger.warn(
+          `Review status validation failed. Admin: ${req.user.email}, Error: ${error.details[0].message}`,
+        );
 
-        return res.redirect(`/admin/reviews/${idValue.reviewId}`);
+        return res.redirect(`/reviews/admin/${idValue.reviewId}`);
       }
 
-      const review = await Review.findOne({
-        _id: idValue.reviewId,
-
-        isDeleted: false,
-      });
+      const review = await Review.findById(idValue.reviewId);
 
       if (!review) {
-        req.flash("error", "Review not found.");
+        logger.warn(
+          `Review not found while updating status. Review: ${idValue.reviewId}`,
+        );
 
-        return res.redirect("/admin/reviews");
+        return res.redirect("/reviews/admin");
       }
+
+      const oldStatus = review.status;
 
       review.status = value.status;
 
-      review.adminRemark = value.adminRemark;
+      review.adminRemark = value.adminRemark || "";
 
       await review.save();
 
-      // Create audit log
+      await recalculateProductRating(review.product);
+
+      // ------------------------------------------------------
+      // Audit
+      // ------------------------------------------------------
+
       await createAuditLog({
-        user: req.user._id,
+        req,
+        actor: req.user,
 
-        action: "UPDATE_REVIEW_STATUS",
+        module: "Review",
 
-        resource: "Review",
+        action: "Update Review Status",
 
-        resourceId: review._id,
+        target: {
+          model: "Review",
+          id: review._id,
+          name: String(review._id),
+        },
 
-        details: `Review status updated to "${review.status}".`,
+        description: `${req.user.name} changed review status from '${oldStatus}' to '${review.status}'.`,
       });
 
       logger.info(
         `Review status updated. Review: ${review._id}, Status: ${review.status}, Admin: ${req.user.email}`,
       );
 
-      req.flash("success", "Review status updated successfully.");
-
-      return res.redirect(`/admin/reviews/${review._id}`);
+      return res.redirect(`/reviews/admin/${review._id}`);
     } catch (error) {
       logger.error(`Update review status failed: ${error.message}`);
 
-      req.flash("error", "Failed to update review status.");
-
-      return res.redirect("/admin/reviews");
-    }
-  }
-  // Restore review
-  async restoreReview(req, res) {
-    try {
-      // Validate review ID
-      const { error, value } = reviewIdValidation.validate(req.params);
-
-      if (error) {
-        req.flash("error", error.details[0].message);
-
-        return res.redirect("/admin/reviews");
-      }
-
-      const review = await Review.findOne({
-        _id: value.reviewId,
-
-        isDeleted: true,
-      });
-
-      if (!review) {
-        req.flash("error", "Review not found.");
-
-        return res.redirect("/admin/reviews");
-      }
-
-      review.isDeleted = false;
-
-      review.deletedAt = null;
-
-      await review.save();
-
-      // Create audit log
-      await createAuditLog({
-        user: req.user._id,
-
-        action: "RESTORE_REVIEW",
-
-        resource: "Review",
-
-        resourceId: review._id,
-
-        details: "Review restored.",
-      });
-
-      logger.info(
-        `Review restored. Review: ${review._id}, Admin: ${req.user.email}`,
-      );
-
-      req.flash("success", "Review restored successfully.");
-
-      return res.redirect("/admin/reviews");
-    } catch (error) {
-      logger.error(`Restore review failed: ${error.message}`);
-
-      req.flash("error", "Failed to restore review.");
-
-      return res.redirect("/admin/reviews");
+      return res.redirect("/reviews/admin");
     }
   }
 
-  // Permanently delete review
+  // ========================================================
+  // PERMANENT DELETE REVIEW
+  // ADMIN ONLY
+  // ========================================================
+
   async deleteReviewPermanently(req, res) {
     try {
-      // Validate review ID
       const { error, value } = reviewIdValidation.validate(req.params);
 
       if (error) {
-        req.flash("error", error.details[0].message);
-
-        return res.redirect("/admin/reviews");
-      }
-
-      const review = await Review.findOne({
-        _id: value.reviewId,
-
-        isDeleted: true,
-      });
-
-      if (!review) {
-        req.flash(
-          "error",
-          "Review not found or must be soft deleted before permanent deletion.",
+        logger.warn(
+          `Invalid review ID while permanently deleting review. Error: ${error.details[0].message}`,
         );
 
-        return res.redirect("/admin/reviews");
+        return res.redirect("/reviews/admin");
       }
 
+      const review = await Review.findById(value.reviewId);
+
+      if (!review) {
+        logger.warn(
+          `Review not found while permanently deleting. Review: ${value.reviewId}`,
+        );
+
+        return res.redirect("/reviews/admin");
+      }
+
+      const productId = review.product;
+
+      const reviewId = review._id;
+
       await Review.deleteOne({
-        _id: review._id,
+        _id: reviewId,
       });
 
-      // Create audit log
+      await ReviewHelpful.deleteMany({
+        review: reviewId,
+      });
+
+      await recalculateProductRating(productId);
+
+      // ------------------------------------------------------
+      // Audit
+      // ------------------------------------------------------
+
       await createAuditLog({
-        user: req.user._id,
+        req,
+        actor: req.user,
 
-        action: "DELETE_REVIEW",
+        module: "Review",
 
-        resource: "Review",
+        action: "Delete Review",
 
-        resourceId: review._id,
+        target: {
+          model: "Review",
+          id: reviewId,
+          name: String(reviewId),
+        },
 
-        details: "Review permanently deleted.",
+        description: `${req.user.name} permanently deleted a review.`,
       });
 
       logger.info(
-        `Review permanently deleted. Review: ${review._id}, Admin: ${req.user.email}`,
+        `Review permanently deleted. Review: ${reviewId}, Admin: ${req.user.email}`,
       );
 
-      req.flash("success", "Review permanently deleted successfully.");
-
-      return res.redirect("/admin/reviews");
+      return res.redirect("/reviews/admin");
     } catch (error) {
       logger.error(`Delete review permanently failed: ${error.message}`);
 
-      req.flash("error", "Failed to permanently delete review.");
-
-      return res.redirect("/admin/reviews");
+      return res.redirect("/reviews/admin");
     }
   }
-  // Mark review as helpful
+
+  // ========================================================
+  // MARK REVIEW AS HELPFUL
+  // CUSTOMER + SELLER
+  // ========================================================
+
   async markReviewHelpful(req, res) {
     try {
-      // Validate review ID
       const { error, value } = reviewIdValidation.validate(req.params);
 
       if (error) {
         return res.status(httpStatusCode.BAD_REQUEST).json({
           success: false,
-
           message: error.details[0].message,
         });
       }
 
       const review = await Review.findOne({
         _id: value.reviewId,
+
         status: "approved",
-        isDeleted: false,
       });
 
       if (!review) {
         return res.status(httpStatusCode.NOT_FOUND).json({
           success: false,
-
           message: "Review not found.",
         });
       }
@@ -1069,7 +1215,6 @@ class ReviewController {
       if (existingVote) {
         return res.status(httpStatusCode.CONFLICT).json({
           success: false,
-
           message: "You have already marked this review as helpful.",
         });
       }
@@ -1092,6 +1237,8 @@ class ReviewController {
         success: true,
 
         message: "Review marked as helpful.",
+
+        helpfulCount: review.helpfulCount,
       });
     } catch (error) {
       logger.error(`Mark review helpful failed: ${error.message}`);
@@ -1104,10 +1251,13 @@ class ReviewController {
     }
   }
 
-  // Remove helpful vote
+  // ========================================================
+  // REMOVE HELPFUL VOTE
+  // CUSTOMER + SELLER
+  // ========================================================
+
   async removeHelpfulVote(req, res) {
     try {
-      // Validate review ID
       const { error, value } = reviewIdValidation.validate(req.params);
 
       if (error) {
@@ -1118,11 +1268,7 @@ class ReviewController {
         });
       }
 
-      const review = await Review.findOne({
-        _id: value.reviewId,
-
-        isDeleted: false,
-      });
+      const review = await Review.findById(value.reviewId);
 
       if (!review) {
         return res.status(httpStatusCode.NOT_FOUND).json({
@@ -1162,6 +1308,8 @@ class ReviewController {
         success: true,
 
         message: "Helpful vote removed successfully.",
+
+        helpfulCount: review.helpfulCount,
       });
     } catch (error) {
       logger.error(`Remove helpful vote failed: ${error.message}`);
@@ -1174,5 +1322,9 @@ class ReviewController {
     }
   }
 }
+
+// ==========================================================
+// EXPORT
+// ==========================================================
 
 module.exports = new ReviewController();

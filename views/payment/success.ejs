@@ -1,0 +1,439 @@
+<%- include("../partials/main/head") %>
+<%- include("../partials/main/announcementBar") %>
+<%- include("../partials/main/header") %>
+
+
+<main class="payment-success-page">
+
+  <!-- ==========================================================
+       SUCCESS HERO
+  =========================================================== -->
+
+  <section class="payment-success-container">
+
+    <!-- Decorative leaves -->
+    <div class="success-leaf success-leaf-1">
+      <i class="bi bi-leaf"></i>
+    </div>
+
+    <div class="success-leaf success-leaf-2">
+      <i class="bi bi-leaf"></i>
+    </div>
+
+    <div class="success-leaf success-leaf-3">
+      <i class="bi bi-leaf"></i>
+    </div>
+
+
+    <!-- ========================================================
+         LEFT SIDE
+    ========================================================= -->
+
+    <div class="payment-success-main">
+
+      <!-- Success Icon -->
+
+      <div class="success-check-wrapper">
+
+        <div class="success-check-ring">
+
+          <div class="success-check">
+
+            <i class="bi bi-check-lg"></i>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Heading -->
+
+      <span class="success-eyebrow">
+
+        <i class="bi bi-shield-check"></i>
+
+        Payment Confirmed
+
+      </span>
+
+
+      <h1>
+        Payment Successful!
+      </h1>
+
+
+      <p class="success-message">
+
+        Your order has been placed successfully.
+
+        <br>
+
+        Thank you for shopping with
+        <strong>Plantora</strong>.
+
+      </p>
+
+
+      <!-- Divider -->
+
+      <div class="success-divider">
+
+        <span></span>
+
+        <i class="bi bi-leaf-fill"></i>
+
+        <span></span>
+
+      </div>
+
+
+      <p class="success-preparing">
+
+        <i class="bi bi-box-seam"></i>
+
+        We'll start preparing your order right away.
+
+      </p>
+
+
+      <!-- Buttons -->
+
+      <div class="success-actions">
+
+        <a
+          href="/orders/<%= order._id %>"
+          class="success-primary-button"
+        >
+
+          <i class="bi bi-box-seam"></i>
+
+          View Order Details
+
+          <i class="bi bi-arrow-right"></i>
+
+        </a>
+
+
+        <a
+          href="/shop"
+          class="success-secondary-button"
+        >
+
+          <i class="bi bi-bag"></i>
+
+          Continue Shopping
+
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- ========================================================
+         ORDER SUMMARY CARD
+    ========================================================= -->
+
+    <div class="success-order-card">
+
+      <!-- Card Header -->
+
+      <div class="success-card-header">
+
+        <div class="success-card-icon">
+
+          <i class="bi bi-receipt"></i>
+
+        </div>
+
+
+        <div>
+
+          <span>
+            Order Confirmed
+          </span>
+
+          <h2>
+            Thank you for your order
+          </h2>
+
+        </div>
+
+
+        <div class="success-status-icon">
+
+          <i class="bi bi-check-lg"></i>
+
+        </div>
+
+      </div>
+
+
+      <div class="success-card-divider"></div>
+
+
+      <!-- Order Number -->
+
+      <div class="success-detail-row">
+
+        <div class="success-detail-label">
+
+          <i class="bi bi-hash"></i>
+
+          <span>
+            Order Number
+          </span>
+
+        </div>
+
+
+        <strong class="success-order-number">
+
+          <%= order.orderNumber %>
+
+        </strong>
+
+      </div>
+
+
+      <!-- Date -->
+
+      <div class="success-detail-row">
+
+        <div class="success-detail-label">
+
+          <i class="bi bi-calendar3"></i>
+
+          <span>
+            Date
+          </span>
+
+        </div>
+
+
+        <strong>
+
+          <%= new Date(order.createdAt).toLocaleDateString("en-IN", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+          }) %>
+
+        </strong>
+
+      </div>
+
+
+      <!-- Payment Method -->
+
+      <div class="success-detail-row">
+
+        <div class="success-detail-label">
+
+          <i class="bi bi-credit-card"></i>
+
+          <span>
+            Payment Method
+          </span>
+
+        </div>
+
+
+        <strong>
+
+          <%= order.paymentMethod === "razorpay"
+            ? "Razorpay Online"
+            : "Cash on Delivery"
+          %>
+
+        </strong>
+
+      </div>
+
+
+      <!-- Amount -->
+
+      <div class="success-amount-row">
+
+        <div>
+
+          <div class="success-detail-label">
+
+            <i class="bi bi-currency-rupee"></i>
+
+            <span>
+              Amount Paid
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <strong>
+
+          ₹<%= Number(order.totalAmount).toLocaleString("en-IN", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          }) %>
+
+        </strong>
+
+      </div>
+
+
+      <div class="success-card-divider"></div>
+
+
+      <!-- What's Next -->
+
+      <div class="success-next">
+
+        <div class="success-next-icon">
+
+          <i class="bi bi-box-seam"></i>
+
+        </div>
+
+
+        <div>
+
+          <h3>
+            What's Next?
+          </h3>
+
+          <p>
+            We'll prepare your order and keep you updated
+            about its delivery status.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==========================================================
+       TRUST FEATURES
+  =========================================================== -->
+
+  <section class="success-trust">
+
+    <div class="success-trust-item">
+
+      <div class="success-trust-icon">
+
+        <i class="bi bi-shield-check"></i>
+
+      </div>
+
+      <div>
+
+        <strong>
+          Secure Payments
+        </strong>
+
+        <span>
+          100% protected
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="success-trust-divider"></div>
+
+
+    <div class="success-trust-item">
+
+      <div class="success-trust-icon">
+
+        <i class="bi bi-leaf"></i>
+
+      </div>
+
+      <div>
+
+        <strong>
+          Premium Quality
+        </strong>
+
+        <span>
+          Carefully selected
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="success-trust-divider"></div>
+
+
+    <div class="success-trust-item">
+
+      <div class="success-trust-icon">
+
+        <i class="bi bi-truck"></i>
+
+      </div>
+
+      <div>
+
+        <strong>
+          Fast & Safe Delivery
+        </strong>
+
+        <span>
+          On-time, every time
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="success-trust-divider"></div>
+
+
+    <div class="success-trust-item">
+
+      <div class="success-trust-icon">
+
+        <i class="bi bi-headset"></i>
+
+      </div>
+
+      <div>
+
+        <strong>
+          24/7 Support
+        </strong>
+
+        <span>
+          We're here for you
+        </span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<%- include("../partials/main/footer") %>
+
+
+<!-- ==========================================================
+     PAYMENT SUCCESS JS
+=========================================================== -->
+
+<script src="/js/payment-success.js"></script>

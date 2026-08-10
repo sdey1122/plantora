@@ -6,39 +6,34 @@ const AddressController = require("../controllers/AddressController");
 
 const authMiddleware = require("../middlewares/authMiddleware");
 
-const authorizeRoles = require("../middlewares/authorizeRoles");
-
-// Protect all routes
 router.use(authMiddleware);
 
-router.use(authorizeRoles("customer"));
-
-// Address List
+// Active addresses
 router.get("/", AddressController.showAddressesPage);
 
-// Create Address
+// Create
 router.get("/create", AddressController.showCreateAddressPage);
 
 router.post("/create", AddressController.createAddress);
 
-// Edit Address
+// Edit
 router.get("/:addressId/edit", AddressController.showEditAddressPage);
 
 router.post("/:addressId/edit", AddressController.updateAddress);
 
-// Set Default Address
+// Default
 router.post("/:addressId/default", AddressController.setDefaultAddress);
 
-// Deleted Addresses
+// Trash
 router.get("/trash", AddressController.showDeletedAddressesPage);
 
-// Soft Delete
+// Soft delete
 router.post("/:addressId/delete", AddressController.softDeleteAddress);
 
 // Restore
 router.post("/:addressId/restore", AddressController.restoreAddress);
 
-// Permanent Delete
+// Permanent delete
 router.post("/:addressId/permanent-delete", AddressController.deleteAddress);
 
 module.exports = router;

@@ -1,0 +1,909 @@
+<%- include("../partials/main/head") %>
+
+<%- include("../partials/main/announcementBar") %>
+
+<%- include("../partials/main/header") %>
+
+
+<main>
+
+  <!-- ======================================================
+       SHOP HERO
+  ======================================================= -->
+
+  <section class="shop-hero">
+
+    <div class="container">
+
+      <div class="shop-hero-content">
+
+        <span class="shop-hero-subtitle">
+          Plantora Collection
+        </span>
+
+        <h1>
+          Discover Our Products
+        </h1>
+
+        <p>
+          Bring nature closer to your home with plants,
+          pots, seeds and everything your garden needs.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       SHOP
+  ======================================================= -->
+
+  <section class="shop-section">
+
+    <div class="container">
+
+      <div class="row g-4">
+
+
+        <!-- ==================================================
+             FILTER SIDEBAR
+        =================================================== -->
+
+        <aside class="col-lg-3">
+
+          <div class="shop-filters">
+
+            <div class="shop-filter-header">
+
+              <h2>
+                Filter Products
+              </h2>
+
+              <a href="/shop">
+                Clear All
+              </a>
+
+            </div>
+
+
+            <!-- ==============================================
+                 SEARCH
+            =============================================== -->
+
+            <form
+              action="/shop"
+              method="GET"
+              class="shop-search-form"
+            >
+
+              <!-- Preserve active filters when searching -->
+
+              <input
+                type="hidden"
+                name="category"
+                value="<%= filters.category %>"
+              >
+
+              <input
+                type="hidden"
+                name="brand"
+                value="<%= filters.brand %>"
+              >
+
+              <input
+                type="hidden"
+                name="priceRange"
+                value="<%= filters.priceRange %>"
+              >
+
+              <input
+                type="hidden"
+                name="rating"
+                value="<%= filters.rating %>"
+              >
+
+              <input
+                type="hidden"
+                name="availability"
+                value="<%= filters.availability %>"
+              >
+
+              <input
+                type="hidden"
+                name="sort"
+                value="<%= filters.sort %>"
+              >
+
+
+              <div class="shop-search-box">
+
+                <i class="bi bi-search"></i>
+
+                <input
+                  type="text"
+                  name="search"
+                  value="<%= filters.search %>"
+                  placeholder="Search products..."
+                  autocomplete="off"
+                >
+
+              </div>
+
+            </form>
+
+
+            <!-- ==============================================
+                 CATEGORY
+            =============================================== -->
+
+            <div class="shop-filter-group">
+
+              <h3>
+                Category
+              </h3>
+
+              <!-- All Categories -->
+
+              <label class="shop-filter-option">
+
+                <input
+                  type="radio"
+                  name="category"
+                  value=""
+                  form="shop-filter-form"
+                  <%= !filters.category ? "checked" : "" %>
+                >
+
+                <span>
+                  All Categories
+                </span>
+
+              </label>
+
+
+              <% categories.forEach((category) => { %>
+
+                <label class="shop-filter-option">
+
+                  <input
+                    type="radio"
+                    name="category"
+                    value="<%= category._id %>"
+                    form="shop-filter-form"
+                    <%= filters.category === String(category._id)
+                      ? "checked"
+                      : "" %>
+                  >
+
+                  <span>
+                    <%= category.name %>
+                  </span>
+
+                </label>
+
+              <% }) %>
+
+            </div>
+
+
+            <!-- ==============================================
+                 BRAND
+            =============================================== -->
+
+            <div class="shop-filter-group">
+
+              <h3>
+                Brand
+              </h3>
+
+              <!-- All Brands -->
+
+              <label class="shop-filter-option">
+
+                <input
+                  type="radio"
+                  name="brand"
+                  value=""
+                  form="shop-filter-form"
+                  <%= !filters.brand ? "checked" : "" %>
+                >
+
+                <span>
+                  All Brands
+                </span>
+
+              </label>
+
+
+              <% brands.forEach((brand) => { %>
+
+                <label class="shop-filter-option">
+
+                  <input
+                    type="radio"
+                    name="brand"
+                    value="<%= brand._id %>"
+                    form="shop-filter-form"
+                    <%= filters.brand === String(brand._id)
+                      ? "checked"
+                      : "" %>
+                  >
+
+                  <span>
+                    <%= brand.name %>
+                  </span>
+
+                </label>
+
+              <% }) %>
+
+            </div>
+
+
+            <!-- ==============================================
+                 PRICE
+            =============================================== -->
+
+            <div class="shop-filter-group">
+
+              <h3>
+                Price
+              </h3>
+
+
+              <label class="shop-filter-option">
+
+                <input
+                  type="radio"
+                  name="priceRange"
+                  value=""
+                  form="shop-filter-form"
+                  <%= !filters.priceRange ? "checked" : "" %>
+                >
+
+                <span>
+                  All Prices
+                </span>
+
+              </label>
+
+
+              <label class="shop-filter-option">
+
+                <input
+                  type="radio"
+                  name="priceRange"
+                  value="100-999"
+                  form="shop-filter-form"
+                  <%= filters.priceRange === "100-999"
+                    ? "checked"
+                    : "" %>
+                >
+
+                <span>
+                  ₹100 – ₹999
+                </span>
+
+              </label>
+
+
+              <label class="shop-filter-option">
+
+                <input
+                  type="radio"
+                  name="priceRange"
+                  value="1000-4999"
+                  form="shop-filter-form"
+                  <%= filters.priceRange === "1000-4999"
+                    ? "checked"
+                    : "" %>
+                >
+
+                <span>
+                  ₹1,000 – ₹4,999
+                </span>
+
+              </label>
+
+
+              <label class="shop-filter-option">
+
+                <input
+                  type="radio"
+                  name="priceRange"
+                  value="5000-9999"
+                  form="shop-filter-form"
+                  <%= filters.priceRange === "5000-9999"
+                    ? "checked"
+                    : "" %>
+                >
+
+                <span>
+                  ₹5,000 – ₹9,999
+                </span>
+
+              </label>
+
+
+              <label class="shop-filter-option">
+
+                <input
+                  type="radio"
+                  name="priceRange"
+                  value="10000-plus"
+                  form="shop-filter-form"
+                  <%= filters.priceRange === "10000-plus"
+                    ? "checked"
+                    : "" %>
+                >
+
+                <span>
+                  ₹10,000+
+                </span>
+
+              </label>
+
+            </div>
+
+
+            <!-- ==============================================
+                 RATING
+            =============================================== -->
+
+            <div class="shop-filter-group">
+
+              <h3>
+                Rating
+              </h3>
+
+
+              <label class="shop-filter-option">
+
+                <input
+                  type="radio"
+                  name="rating"
+                  value=""
+                  form="shop-filter-form"
+                  <%= !filters.rating ? "checked" : "" %>
+                >
+
+                <span class="rating-filter-stars">
+
+                  All Ratings
+
+                </span>
+
+              </label>
+
+
+              <% [4, 3, 2, 1].forEach((rating) => { %>
+
+                <label class="shop-filter-option">
+
+                  <input
+                    type="radio"
+                    name="rating"
+                    value="<%= rating %>"
+                    form="shop-filter-form"
+                    <%= filters.rating === String(rating)
+                      ? "checked"
+                      : "" %>
+                  >
+
+                  <span class="rating-filter-stars">
+
+                    <% for (let i = 1; i <= 5; i++) { %>
+
+                      <i
+                        class="bi <%= i <= rating
+                          ? 'bi-star-fill'
+                          : 'bi-star' %>"
+                      ></i>
+
+                    <% } %>
+
+                    & up
+
+                  </span>
+
+                </label>
+
+              <% }) %>
+
+            </div>
+
+
+            <!-- ==============================================
+                 AVAILABILITY
+            =============================================== -->
+
+            <div class="shop-filter-group">
+
+              <h3>
+                Availability
+              </h3>
+
+
+              <label class="shop-filter-option">
+
+                <input
+                  type="radio"
+                  name="availability"
+                  value=""
+                  form="shop-filter-form"
+                  <%= !filters.availability ? "checked" : "" %>
+                >
+
+                <span>
+                  All
+                </span>
+
+              </label>
+
+
+              <label class="shop-filter-option">
+
+                <input
+                  type="radio"
+                  name="availability"
+                  value="in-stock"
+                  form="shop-filter-form"
+                  <%= filters.availability === "in-stock"
+                    ? "checked"
+                    : "" %>
+                >
+
+                <span>
+                  In Stock
+                </span>
+
+              </label>
+
+
+              <label class="shop-filter-option">
+
+                <input
+                  type="radio"
+                  name="availability"
+                  value="low-stock"
+                  form="shop-filter-form"
+                  <%= filters.availability === "low-stock"
+                    ? "checked"
+                    : "" %>
+                >
+
+                <span>
+                  Low Stock
+                </span>
+
+              </label>
+
+            </div>
+
+
+            <!-- ==============================================
+                 APPLY FILTERS
+            =============================================== -->
+
+            <form
+              id="shop-filter-form"
+              action="/shop"
+              method="GET"
+            >
+
+              <!-- Preserve search -->
+
+              <input
+                type="hidden"
+                name="search"
+                value="<%= filters.search %>"
+              >
+
+              <!-- Preserve current sort -->
+
+              <input
+                type="hidden"
+                name="sort"
+                value="<%= filters.sort %>"
+              >
+
+
+              <button
+                type="submit"
+                class="shop-apply-filter-btn"
+              >
+                Apply Filters
+              </button>
+
+            </form>
+
+          </div>
+
+        </aside>
+
+
+        <!-- ==================================================
+             PRODUCTS
+        =================================================== -->
+
+        <div class="col-lg-9">
+
+          <div class="shop-products-header">
+
+            <div>
+
+              <h2>
+                Shop Products
+              </h2>
+
+              <p>
+
+                <% if (pagination.totalProducts > 0) { %>
+
+                  <%= pagination.totalProducts %>
+                  products found
+
+                <% } else { %>
+
+                  No products found
+
+                <% } %>
+
+              </p>
+
+            </div>
+
+
+            <!-- ==============================================
+                 SORT
+            =============================================== -->
+
+            <form
+              action="/shop"
+              method="GET"
+              class="shop-sort-form"
+            >
+
+              <input
+                type="hidden"
+                name="search"
+                value="<%= filters.search %>"
+              >
+
+              <input
+                type="hidden"
+                name="category"
+                value="<%= filters.category %>"
+              >
+
+              <input
+                type="hidden"
+                name="brand"
+                value="<%= filters.brand %>"
+              >
+
+              <input
+                type="hidden"
+                name="priceRange"
+                value="<%= filters.priceRange %>"
+              >
+
+              <input
+                type="hidden"
+                name="rating"
+                value="<%= filters.rating %>"
+              >
+
+              <input
+                type="hidden"
+                name="availability"
+                value="<%= filters.availability %>"
+              >
+
+              <select
+                name="sort"
+                onchange="this.form.submit()"
+                aria-label="Sort products"
+              >
+
+                <option
+                  value="latest"
+                  <%= filters.sort === "latest"
+                    ? "selected"
+                    : "" %>
+                >
+                  Latest
+                </option>
+
+
+                <option
+                  value="popular"
+                  <%= filters.sort === "popular"
+                    ? "selected"
+                    : "" %>
+                >
+                  Popular
+                </option>
+
+
+                <option
+                  value="rating"
+                  <%= filters.sort === "rating"
+                    ? "selected"
+                    : "" %>
+                >
+                  Highest Rated
+                </option>
+
+
+                <option
+                  value="price-low"
+                  <%= filters.sort === "price-low"
+                    ? "selected"
+                    : "" %>
+                >
+                  Price: Low to High
+                </option>
+
+
+                <option
+                  value="price-high"
+                  <%= filters.sort === "price-high"
+                    ? "selected"
+                    : "" %>
+                >
+                  Price: High to Low
+                </option>
+
+              </select>
+
+            </form>
+
+          </div>
+
+
+          <!-- ==============================================
+               PRODUCT GRID
+          =============================================== -->
+
+          <% if (products.length > 0) { %>
+
+            <div class="row g-4">
+
+              <% products.forEach((product) => { %>
+
+                <div class="col-xl-4 col-md-6">
+
+                  <%- include("../partials/cards/productCard", {
+                    product,
+                    user
+                  }) %>
+
+                </div>
+
+              <% }) %>
+
+            </div>
+
+          <% } else { %>
+
+            <div class="shop-empty-state">
+
+              <i class="bi bi-flower1"></i>
+
+              <h3>
+                No products found
+              </h3>
+
+              <p>
+                Try changing your search or filters.
+              </p>
+
+              <a
+                href="/shop"
+                class="shop-empty-btn"
+              >
+                View All Products
+              </a>
+
+            </div>
+
+          <% } %>
+
+
+          <!-- ==============================================
+               PAGINATION
+          =============================================== -->
+
+          <% if (pagination.totalPages > 1) { %>
+
+            <nav
+              class="shop-pagination"
+              aria-label="Shop pagination"
+            >
+
+              <!-- Previous -->
+
+              <% if (pagination.hasPreviousPage) { %>
+
+                <a
+                  href="/shop?page=<%= pagination.page - 1 %>&search=<%= encodeURIComponent(filters.search) %>&category=<%= encodeURIComponent(filters.category) %>&brand=<%= encodeURIComponent(filters.brand) %>&priceRange=<%= encodeURIComponent(filters.priceRange) %>&rating=<%= encodeURIComponent(filters.rating) %>&availability=<%= encodeURIComponent(filters.availability) %>&sort=<%= encodeURIComponent(filters.sort) %>"
+                  aria-label="Previous page"
+                >
+
+                  <i class="bi bi-chevron-left"></i>
+
+                </a>
+
+              <% } %>
+
+
+              <!-- Page Numbers -->
+
+              <% for (
+                let page = 1;
+                page <= pagination.totalPages;
+                page++
+              ) { %>
+
+                <a
+                  href="/shop?page=<%= page %>&search=<%= encodeURIComponent(filters.search) %>&category=<%= encodeURIComponent(filters.category) %>&brand=<%= encodeURIComponent(filters.brand) %>&priceRange=<%= encodeURIComponent(filters.priceRange) %>&rating=<%= encodeURIComponent(filters.rating) %>&availability=<%= encodeURIComponent(filters.availability) %>&sort=<%= encodeURIComponent(filters.sort) %>"
+                  class="<%= page === pagination.page
+                    ? 'active'
+                    : '' %>"
+                  aria-label="Page <%= page %>"
+                  <%= page === pagination.page
+                    ? 'aria-current="page"'
+                    : '' %>
+                >
+
+                  <%= page %>
+
+                </a>
+
+              <% } %>
+
+
+              <!-- Next -->
+
+              <% if (pagination.hasNextPage) { %>
+
+                <a
+                  href="/shop?page=<%= pagination.page + 1 %>&search=<%= encodeURIComponent(filters.search) %>&category=<%= encodeURIComponent(filters.category) %>&brand=<%= encodeURIComponent(filters.brand) %>&priceRange=<%= encodeURIComponent(filters.priceRange) %>&rating=<%= encodeURIComponent(filters.rating) %>&availability=<%= encodeURIComponent(filters.availability) %>&sort=<%= encodeURIComponent(filters.sort) %>"
+                  aria-label="Next page"
+                >
+
+                  <i class="bi bi-chevron-right"></i>
+
+                </a>
+
+              <% } %>
+
+            </nav>
+
+          <% } %>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       FEATURED PRODUCTS
+       Same productCard.ejs
+       Same data
+       Same design
+       Up to 10 random featured products
+  ======================================================= -->
+
+  <% if (
+    featuredProducts &&
+    featuredProducts.length > 0
+  ) { %>
+
+    <section
+      class="featured-section shop-featured-section"
+    >
+
+      <div class="container">
+
+        <div class="featured-header">
+
+          <div>
+
+            <span class="featured-subtitle">
+              Featured Collection
+            </span>
+
+            <h2 class="featured-title">
+              Featured Products
+            </h2>
+
+          </div>
+
+
+          <a
+            href="/shop"
+            class="featured-view-all"
+          >
+
+            View All
+
+            <i class="bi bi-arrow-right"></i>
+
+          </a>
+
+        </div>
+
+
+        <!-- ==============================================
+             FEATURED SWIPER
+        =============================================== -->
+
+        <div class="swiper featured-swiper">
+
+          <div class="swiper-wrapper">
+
+            <% featuredProducts.forEach((product) => { %>
+
+              <div class="swiper-slide">
+
+                <%- include("../partials/cards/productCard", {
+                  product,
+                  user
+                }) %>
+
+              </div>
+
+            <% }) %>
+
+          </div>
+
+
+          <!-- Navigation -->
+
+          <div class="swiper-button-prev"></div>
+
+          <div class="swiper-button-next"></div>
+
+
+          <!-- Pagination -->
+
+          <div class="swiper-pagination"></div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  <% } %>
+
+
+</main>
+
+
+<%- include("../partials/main/footer") %>
+
+
+<!-- ======================================================
+     SWIPER
+======================================================= -->
+
+<script
+  src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+></script>
+
+
+<script src="/js/featured.js"></script>
+
+<script src="/js/shop.js"></script>
+
+

@@ -11,7 +11,7 @@ const httpStatusCode = require("../utils/httpStatusCode");
 const authMiddleware = async (req, res, next) => {
   try {
     // Get access token from cookies
-    const accessToken = req.cookies?.accessToken;
+    const accessToken = req.cookies?.[process.env.COOKIE_ACCESS_TOKEN];
 
     if (!accessToken) {
       return res.status(httpStatusCode.UNAUTHORIZED).json({

@@ -1,18 +1,18 @@
 const mongoose = require("mongoose");
 
-// Available review statuses
 const REVIEW_STATUS = ["pending", "approved", "rejected"];
 
-// Review image
+// ==========================================================
+// REVIEW IMAGE
+// ==========================================================
+
 const reviewImageSchema = new mongoose.Schema(
   {
-    // Cloudinary public ID
     publicId: {
       type: String,
       required: true,
     },
 
-    // Cloudinary image URL
     url: {
       type: String,
       required: true,
@@ -23,23 +23,27 @@ const reviewImageSchema = new mongoose.Schema(
   },
 );
 
+// ==========================================================
+// REVIEW SCHEMA
+// ==========================================================
+
 const reviewSchema = new mongoose.Schema(
   {
-    // Customer who wrote the review
+    // Customer / seller who wrote the review
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
 
-    // Reviewed product
+    // Product being reviewed
     product: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Product",
       required: true,
     },
 
-    // Star rating
+    // Rating
     rating: {
       type: Number,
       required: [true, "Rating is required."],
@@ -55,7 +59,7 @@ const reviewSchema = new mongoose.Schema(
       default: "",
     },
 
-    // Review description
+    // Review comment
     comment: {
       type: String,
       required: [true, "Review comment is required."],
@@ -73,6 +77,8 @@ const reviewSchema = new mongoose.Schema(
         },
         message: "Maximum 5 review images are allowed.",
       },
+
+      default: [],
     },
 
     // Verified purchase
@@ -81,14 +87,14 @@ const reviewSchema = new mongoose.Schema(
       default: false,
     },
 
-    // Review approval status
+    // Review status
     status: {
       type: String,
       enum: REVIEW_STATUS,
       default: "approved",
     },
 
-    // Administrator remark
+    // Admin remark
     adminRemark: {
       type: String,
       trim: true,
@@ -102,18 +108,6 @@ const reviewSchema = new mongoose.Schema(
       default: 0,
       min: 0,
     },
-
-    // Soft delete status
-    isDeleted: {
-      type: Boolean,
-      default: false,
-    },
-
-    // Soft delete timestamp
-    deletedAt: {
-      type: Date,
-      default: null,
-    },
   },
   {
     timestamps: true,
@@ -122,7 +116,10 @@ const reviewSchema = new mongoose.Schema(
   },
 );
 
-// Database indexes
+// ==========================================================
+// ONE REVIEW PER USER PER PRODUCT
+// ==========================================================
+
 reviewSchema.index(
   {
     user: 1,
@@ -133,10 +130,13 @@ reviewSchema.index(
   },
 );
 
+// ==========================================================
+// PRODUCT REVIEW QUERY
+// ==========================================================
+
 reviewSchema.index({
   product: 1,
   status: 1,
-  isDeleted: 1,
 });
 
 reviewSchema.index({

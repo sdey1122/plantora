@@ -1,0 +1,870 @@
+<%- include("../partials/main/head") %>
+
+<link rel="stylesheet" href="/css/cart.css">
+
+<%- include("../partials/main/announcementBar") %>
+
+<%- include("../partials/main/header") %>
+
+
+<main class="cart-page">
+
+    <div class="cart-container">
+
+
+        <!-- ======================================================
+             CART HEADER
+        ======================================================= -->
+
+        <div class="cart-page-header">
+
+            <div class="cart-page-title">
+
+                <span class="cart-page-icon">
+
+                    <i class="bi bi-cart3"></i>
+
+                </span>
+
+
+                <div>
+
+                    <h1>
+                        Shopping Cart
+                    </h1>
+
+                    <p>
+                        Review your products before checkout.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <% if (totalItems > 0) { %>
+
+                <div class="cart-item-count">
+
+                    <strong>
+                        <%= totalItems %>
+                    </strong>
+
+                    <span>
+                        <%= totalItems === 1 ? "item" : "items" %>
+                    </span>
+
+                </div>
+
+            <% } %>
+
+        </div>
+
+
+        <!-- ======================================================
+             EMPTY CART
+        ======================================================= -->
+
+        <% if (!cart || cart.length === 0) { %>
+
+
+            <section class="cart-empty">
+
+                <div class="cart-empty-icon">
+
+                    <i class="bi bi-cart-x"></i>
+
+                </div>
+
+
+                <h2>
+                    Your cart is empty
+                </h2>
+
+
+                <p>
+                    Looks like you haven't added anything to your cart yet.
+                </p>
+
+
+                <a
+                    href="/shop"
+                    class="cart-shop-btn"
+                >
+
+                    <i class="bi bi-shop"></i>
+
+                    Continue Shopping
+
+                </a>
+
+            </section>
+
+
+        <% } else { %>
+
+
+            <!-- ====================================================
+                 CART LAYOUT
+            ===================================================== -->
+
+            <div class="cart-layout">
+
+
+                <!-- ==================================================
+                     LEFT SIDE
+                =================================================== -->
+
+                <section class="cart-products-section">
+
+
+                    <!-- TOOLBAR -->
+
+                    <div class="cart-toolbar">
+
+                        <label class="cart-select-all">
+
+                            <input
+                                type="checkbox"
+                                id="select-all-cart"
+                            >
+
+                            <span>
+                                Select All
+                            </span>
+
+                        </label>
+
+
+                        <form
+                            action="/cart/clear"
+                            method="POST"
+                            class="cart-clear-form"
+                            data-confirm-clear
+                        >
+
+                            <button
+                                type="submit"
+                                class="cart-clear-btn"
+                            >
+
+                                <i class="bi bi-trash3"></i>
+
+                                Clear Cart
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
+
+                    <!-- ==================================================
+                         PRODUCTS
+                    =================================================== -->
+
+                    <div class="cart-products">
+
+
+                        <% cart.forEach(function(item) { %>
+
+
+                            <article
+  class="cart-product-card"
+  data-product-id="<%= item.productId %>"
+  data-price="<%= item.sellingPrice %>"
+  data-stock="<%= item.stock %>"
+>
+
+
+                                <!-- SELECT -->
+
+                                <div class="cart-product-select">
+
+                                    <input
+                                        type="checkbox"
+                                        class="cart-item-checkbox"
+                                        value="<%= item.productId %>"
+                                        <%= item.isSelected ? "checked" : "" %>
+                                    >
+
+                                </div>
+
+
+                                <!-- IMAGE -->
+
+                                <div class="cart-product-image">
+
+                                    <%
+                                        var primaryImage = null;
+
+                                        if (
+                                            item.images &&
+                                            item.images.length > 0
+                                        ) {
+
+                                            for (
+                                                var i = 0;
+                                                i < item.images.length;
+                                                i++
+                                            ) {
+
+                                                if (
+                                                    item.images[i].isPrimary
+                                                ) {
+
+                                                    primaryImage =
+                                                        item.images[i];
+
+                                                    break;
+
+                                                }
+
+                                            }
+
+
+                                            if (!primaryImage) {
+
+                                                primaryImage =
+                                                    item.images[0];
+
+                                            }
+
+                                        }
+                                    %>
+
+
+                                    <% if (
+                                        primaryImage &&
+                                        primaryImage.url
+                                    ) { %>
+
+                                        <img
+                                            src="<%= primaryImage.url %>"
+                                            alt="<%= item.name %>"
+                                            class="cart-product-img"
+                                            loading="lazy"
+                                        >
+
+                                    <% } else { %>
+
+                                        <img
+                                            src="/images/placeholder-product.jpg"
+                                            alt="Product image"
+                                            class="cart-product-img"
+                                        >
+
+                                    <% } %>
+
+                                </div>
+
+
+                                <!-- PRODUCT DETAILS -->
+
+                                <div class="cart-product-details">
+
+
+                                    <!-- PRODUCT NAME -->
+
+                                    <a
+                                        href="/shop/product/<%= item.slug %>"
+                                        class="cart-product-name"
+                                    >
+
+                                        <%= item.name %>
+
+                                    </a>
+
+
+                                    <!-- SKU -->
+
+                                    <% if (item.sku) { %>
+
+                                        <span class="cart-product-sku">
+
+                                            SKU:
+
+                                            <%= item.sku %>
+
+                                        </span>
+
+                                    <% } %>
+
+
+                                    <!-- PRICE -->
+
+                                    <div class="cart-product-pricing">
+
+
+                                        <% if (
+                                            item.discountPrice &&
+                                            item.discountPrice < item.price
+                                        ) { %>
+
+                                            <span class="cart-original-price">
+
+                                                ₹<%= Number(
+                                                    item.price
+                                                ).toLocaleString("en-IN") %>
+
+                                            </span>
+
+                                        <% } %>
+
+
+                                        <span class="cart-selling-price">
+
+                                            ₹<%= Number(
+                                                item.sellingPrice
+                                            ).toLocaleString("en-IN", {
+                                                minimumFractionDigits: 2,
+                                                maximumFractionDigits: 2
+                                            }) %>
+
+                                        </span>
+
+                                    </div>
+
+
+                                    <!-- STOCK -->
+
+                                    <% if (item.stock > 0) { %>
+
+                                        <span
+                                            class="cart-stock cart-stock-available"
+                                        >
+
+                                            <i class="bi bi-check-circle-fill"></i>
+
+                                            <%= item.stock %> available
+
+                                        </span>
+
+                                    <% } else { %>
+
+                                        <span
+                                            class="cart-stock cart-stock-unavailable"
+                                        >
+
+                                            <i class="bi bi-x-circle-fill"></i>
+
+                                            Out of stock
+
+                                        </span>
+
+                                    <% } %>
+
+
+                                    <!-- ACTIONS -->
+
+                                    <div class="cart-product-actions">
+
+
+                                        <!-- QUANTITY -->
+
+                                        <div class="cart-quantity-control">
+
+
+                                            <button
+                                                type="button"
+                                                class="cart-quantity-btn quantity-minus"
+                                                data-product-id="<%= item.productId %>"
+                                                aria-label="Decrease quantity"
+                                                <%= item.quantity <= 1 ? "disabled" : "" %>
+                                            >
+
+                                                −
+
+                                            </button>
+
+
+                                            <span
+                                                class="cart-quantity-value"
+                                            >
+
+                                                <%= item.quantity %>
+
+                                            </span>
+
+
+                                            <button
+                                                type="button"
+                                                class="cart-quantity-btn quantity-plus"
+                                                data-product-id="<%= item.productId %>"
+                                                aria-label="Increase quantity"
+                                                <%= item.quantity >= item.stock ? "disabled" : "" %>
+                                            >
+
+                                                +
+
+                                            </button>
+
+                                        </div>
+
+
+                                        <!-- REMOVE -->
+
+                                        <form
+                                            action="/cart/remove"
+                                            method="POST"
+                                            class="cart-remove-form"
+                                        >
+
+                                            <input
+                                                type="hidden"
+                                                name="productId"
+                                                value="<%= item.productId %>"
+                                            >
+
+
+                                            <button
+                                                type="submit"
+                                                class="cart-remove-btn"
+                                            >
+
+                                                <i class="bi bi-trash3"></i>
+
+                                                Remove
+
+                                            </button>
+
+                                        </form>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- ITEM TOTAL -->
+
+                                <div class="cart-product-total">
+
+                                    <span>
+                                        Item Total
+                                    </span>
+
+
+                                    <strong>
+
+                                        ₹<%= Number(
+                                            item.subtotal
+                                        ).toLocaleString("en-IN", {
+                                            minimumFractionDigits: 2,
+                                            maximumFractionDigits: 2
+                                        }) %>
+
+                                    </strong>
+
+                                </div>
+
+
+                            </article>
+
+
+                        <% }); %>
+
+
+                    </div>
+
+
+                    <!-- ==================================================
+                         PAGINATION
+                    =================================================== -->
+
+                    <% if (totalPages > 1) { %>
+
+                        <nav class="cart-pagination">
+
+
+                            <% if (currentPage > 1) { %>
+
+                                <a
+                                    href="/cart?page=<%= currentPage - 1 %>"
+                                    class="cart-page-btn"
+                                >
+
+                                    <i class="bi bi-chevron-left"></i>
+
+                                    Previous
+
+                                </a>
+
+                            <% } else { %>
+
+                                <span class="cart-page-btn disabled">
+
+                                    <i class="bi bi-chevron-left"></i>
+
+                                    Previous
+
+                                </span>
+
+                            <% } %>
+
+
+                            <div class="cart-page-numbers">
+
+
+                                <% for (
+                                    var page = 1;
+                                    page <= totalPages;
+                                    page++
+                                ) { %>
+
+
+                                    <a
+                                        href="/cart?page=<%= page %>"
+                                        class="cart-page-number <%= page === currentPage ? 'active' : '' %>"
+                                    >
+
+                                        <%= page %>
+
+                                    </a>
+
+
+                                <% } %>
+
+
+                            </div>
+
+
+                            <% if (currentPage < totalPages) { %>
+
+                                <a
+                                    href="/cart?page=<%= currentPage + 1 %>"
+                                    class="cart-page-btn"
+                                >
+
+                                    Next
+
+                                    <i class="bi bi-chevron-right"></i>
+
+                                </a>
+
+                            <% } else { %>
+
+                                <span class="cart-page-btn disabled">
+
+                                    Next
+
+                                    <i class="bi bi-chevron-right"></i>
+
+                                </span>
+
+                            <% } %>
+
+
+                        </nav>
+
+                    <% } %>
+
+
+                </section>
+
+
+                <!-- ==================================================
+                     RIGHT SIDE
+                =================================================== -->
+
+                <aside class="cart-summary-section">
+
+
+                    <div class="cart-summary-card">
+
+
+                        <!-- HEADER -->
+
+                        <div class="cart-summary-header">
+
+                            <h2>
+                                Order Summary
+                            </h2>
+
+                        </div>
+
+
+                        <!-- SELECTED ITEMS -->
+
+                        <div class="cart-summary-row">
+
+                            <span>
+                                Selected Items
+                            </span>
+
+                            <strong id="cart-summary-items">
+                                0
+                            </strong>
+
+                        </div>
+
+
+                        <!-- SUBTOTAL -->
+
+                        <div class="cart-summary-row">
+
+                            <span>
+                                Product Total
+                            </span>
+
+                            <strong id="cart-summary-subtotal">
+                                ₹0.00
+                            </strong>
+
+                        </div>
+
+
+                        <div class="cart-summary-divider"></div>
+
+
+                        <!-- SHIPPING -->
+
+                        <div class="cart-summary-row">
+
+                            <span>
+                                Shipping
+                            </span>
+
+                            <strong id="cart-summary-shipping">
+                                ₹0.00
+                            </strong>
+
+                        </div>
+
+
+                        <!-- GST -->
+
+                        <div class="cart-summary-row">
+
+                            <span>
+
+                                GST
+
+                                <small>
+                                    (18%)
+                                </small>
+
+                            </span>
+
+                            <strong id="cart-summary-tax">
+                                ₹0.00
+                            </strong>
+
+                        </div>
+
+
+                        <!-- PLATFORM -->
+
+                        <div class="cart-summary-row">
+
+                            <span>
+                                Platform Fee
+                            </span>
+
+                            <strong id="cart-summary-platform">
+                                ₹0.00
+                            </strong>
+
+                        </div>
+
+
+                        <div class="cart-summary-divider"></div>
+
+
+                        <!-- TOTAL -->
+
+                        <div class="cart-summary-total">
+
+                            <span>
+                                Total
+                            </span>
+
+                            <strong id="cart-summary-total">
+                                ₹0.00
+                            </strong>
+
+                        </div>
+
+
+                        <!-- CHECKOUT -->
+
+                        <a
+                            href="/checkout"
+                            class="cart-checkout-btn"
+                            id="cart-checkout-btn"
+                        >
+
+                            <span>
+                                Proceed to Checkout
+                            </span>
+
+                            <i class="bi bi-arrow-right"></i>
+
+                        </a>
+
+
+                        <!-- CONTINUE -->
+
+                        <a
+                            href="/shop"
+                            class="cart-continue-shopping"
+                        >
+
+                            <i class="bi bi-arrow-left"></i>
+
+                            Continue Shopping
+
+                        </a>
+
+
+                    </div>
+
+
+                    <!-- ==================================================
+                         BENEFITS
+                    =================================================== -->
+
+                    <div class="cart-benefits">
+
+
+                        <div class="cart-benefit">
+
+                            <i class="bi bi-truck"></i>
+
+                            <div>
+
+                                <strong>
+                                    Free Shipping
+                                </strong>
+
+                                <span>
+                                    On orders above ₹999
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="cart-benefit">
+
+                            <i class="bi bi-shield-check"></i>
+
+                            <div>
+
+                                <strong>
+                                    Secure Payment
+                                </strong>
+
+                                <span>
+                                    Powered by Razorpay
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="cart-benefit">
+
+                            <i class="bi bi-arrow-repeat"></i>
+
+                            <div>
+
+                                <strong>
+                                    Easy Returns
+                                </strong>
+
+                                <span>
+                                    Hassle-free shopping
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+        <% } %>
+
+    </div>
+
+</main>
+
+<!-- ==========================================================
+     CART CONFIRMATION MODAL
+     ========================================================== -->
+
+<div
+    class="cart-modal-overlay"
+    id="cart-modal"
+    aria-hidden="true"
+>
+
+    <div
+        class="cart-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="cart-modal-title"
+    >
+
+        <!-- ICON -->
+
+        <div
+            class="cart-modal-icon"
+            id="cart-modal-icon"
+        >
+            <i class="bi bi-trash3"></i>
+        </div>
+
+
+        <!-- CONTENT -->
+
+        <div class="cart-modal-content">
+
+            <h3 id="cart-modal-title">
+                Remove Product?
+            </h3>
+
+            <p id="cart-modal-message">
+                Are you sure you want to remove this product from your cart?
+            </p>
+
+        </div>
+
+
+        <!-- ACTIONS -->
+
+        <div class="cart-modal-actions">
+
+            <button
+                type="button"
+                class="cart-modal-btn cart-modal-cancel"
+                id="cart-modal-cancel"
+            >
+                Cancel
+            </button>
+
+            <button
+                type="button"
+                class="cart-modal-btn cart-modal-confirm"
+                id="cart-modal-confirm"
+            >
+                Yes, Remove
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<%- include("../partials/main/footer") %>
+
+
+<script src="/js/cart.js"></script>

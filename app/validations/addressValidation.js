@@ -1,140 +1,83 @@
 const Joi = require("joi");
 
-const {
-  validationOptions,
-  objectId,
-  phone,
-  postalCode,
-} = require("./commonValidation");
+const { objectId } = require("./commonValidation");
 
-// Available address types
-const ADDRESS_TYPES = ["home", "office", "other"];
+// ==========================================================
+// ADDRESS QUERY VALIDATION
+// ==========================================================
 
-// Address query validation
 const addressQueryValidation = Joi.object({
   page: Joi.number().integer().min(1).default(1),
 
-  limit: Joi.number().integer().min(1).max(20).default(10),
+  limit: Joi.number().integer().min(1).max(10).default(10),
 
-  search: Joi.string().trim().allow("").optional(),
+  search: Joi.string().trim().allow("").default(""),
 
   addressType: Joi.string()
-    .valid(...ADDRESS_TYPES)
-    .optional(),
+    .valid("home", "office", "other")
+    .allow("")
+    .default(""),
 
   isDefault: Joi.boolean().optional(),
 
   sortBy: Joi.string()
-    .valid("fullName", "city", "state", "country", "addressType", "createdAt")
+    .valid("createdAt", "fullName", "city")
     .default("createdAt"),
 
   sortOrder: Joi.string().valid("asc", "desc").default("desc"),
-})
-  .strict()
-  .options(validationOptions);
+});
 
-// Create address
+// ==========================================================
+// CREATE ADDRESS
+// ==========================================================
+
 const createAddressValidation = Joi.object({
-  fullName: Joi.string().trim().min(3).max(100).required().messages({
-    "any.required": "Full name is required.",
-    "string.empty": "Full name is required.",
-    "string.min": "Full name must be at least 3 characters long.",
-    "string.max": "Full name cannot exceed 100 characters.",
-  }),
+  fullName: Joi.string().trim().min(3).max(100).required(),
 
-  phone: phone.required().messages({
-    "any.required": "Phone number is required.",
-  }),
+  countryCode: Joi.string().trim().default("+91"),
 
-  addressLine1: Joi.string().trim().max(200).required().messages({
-    "any.required": "Address Line 1 is required.",
-    "string.empty": "Address Line 1 is required.",
-    "string.max": "Address Line 1 cannot exceed 200 characters.",
-  }),
+  phone: Joi.string().trim().min(10).max(15).required(),
 
-  addressLine2: Joi.string().trim().max(200).allow(""),
+  alternatePhone: Joi.string().trim().allow("").default(""),
 
-  city: Joi.string().trim().max(100).required().messages({
-    "any.required": "City is required.",
-    "string.empty": "City is required.",
-    "string.max": "City cannot exceed 100 characters.",
-  }),
+  addressLine1: Joi.string().trim().max(200).required(),
 
-  state: Joi.string().trim().max(100).required().messages({
-    "any.required": "State is required.",
-    "string.empty": "State is required.",
-    "string.max": "State cannot exceed 100 characters.",
-  }),
+  addressLine2: Joi.string().trim().max(200).allow("").default(""),
 
-  country: Joi.string().trim().max(100).required().messages({
-    "any.required": "Country is required.",
-    "string.empty": "Country is required.",
-    "string.max": "Country cannot exceed 100 characters.",
-  }),
+  area: Joi.string().trim().max(100).allow("").default(""),
 
-  postalCode: postalCode.required().messages({
-    "any.required": "Postal code is required.",
-  }),
+  landmark: Joi.string().trim().max(100).allow("").default(""),
 
-  countryCode: Joi.string().trim().max(10).default("+91"),
+  city: Joi.string().trim().max(100).required(),
 
-  alternatePhone: phone.allow("").optional(),
+  state: Joi.string().trim().max(100).required(),
 
-  area: Joi.string().trim().max(100).allow(""),
+  postalCode: Joi.string().trim().required(),
 
-  landmark: Joi.string().trim().max(100).allow(""),
+  country: Joi.string().trim().max(100).default("India"),
 
-  addressType: Joi.string()
-    .valid(...ADDRESS_TYPES)
-    .default("home"),
+  addressType: Joi.string().valid("home", "office", "other").default("home"),
 
   isDefault: Joi.boolean().default(false),
-})
-  .strict()
-  .options(validationOptions);
+});
 
-// Update address
-const updateAddressValidation = Joi.object({
-  fullName: Joi.string().trim().min(3).max(100),
+// ==========================================================
+// UPDATE ADDRESS
+// ==========================================================
 
-  phone,
+const updateAddressValidation = createAddressValidation;
 
-  addressLine1: Joi.string().trim().max(200),
+// ==========================================================
+// ADDRESS ID
+// ==========================================================
 
-  addressLine2: Joi.string().trim().max(200).allow(""),
-
-  city: Joi.string().trim().max(100),
-
-  state: Joi.string().trim().max(100),
-
-  country: Joi.string().trim().max(100),
-
-  postalCode,
-
-  countryCode: Joi.string().trim().max(10),
-
-  alternatePhone: phone.allow("").optional(),
-
-  area: Joi.string().trim().max(100).allow(""),
-
-  landmark: Joi.string().trim().max(100).allow(""),
-
-  addressType: Joi.string().valid(...ADDRESS_TYPES),
-
-  isDefault: Joi.boolean(),
-})
-  .min(1)
-  .strict()
-  .options(validationOptions);
-
-// Address ID
 const addressIdValidation = Joi.object({
-  addressId: objectId.required().messages({
-    "any.required": "Address ID is required.",
-  }),
-})
-  .strict()
-  .options(validationOptions);
+  addressId: objectId.required(),
+});
+
+// ==========================================================
+// EXPORT
+// ==========================================================
 
 module.exports = {
   addressQueryValidation,

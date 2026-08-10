@@ -1,23 +1,32 @@
 const mongoose = require("mongoose");
 
-const Model = require("../models/Model");
+const Address = require("../models/Address");
 const AuditLog = require("../models/AuditLog");
 
 const logger = require("../config/logger");
 
 const httpStatusCode = require("../utils/httpStatusCode");
 
-const { validationSchema } = require("../validations/modelValidation");
+const {
+  addressQueryValidation,
+  createAddressValidation,
+  updateAddressValidation,
+  addressIdValidation,
+} = require("../validations/addressValidation");
 
-class ModelController {
-  // Addresses Page
+class AddressController {
+  // ==========================================================
+  // ADDRESSES PAGE
+  // ==========================================================
+
   async showAddressesPage(req, res) {
     try {
-      // Validate query
       const { error, value } = addressQueryValidation.validate(req.query);
 
       if (error) {
-        req.flash("error", error.details[0].message);
+        logger.warn(
+          `Address query validation failed. User ID: ${req.user._id}, Error: ${error.details[0].message}`,
+        );
 
         return res.redirect("/addresses");
       }
@@ -33,52 +42,23 @@ class ModelController {
       // Search
       if (search) {
         matchStage.$or = [
-          {
-            fullName: {
-              $regex: search,
-              $options: "i",
-            },
-          },
-          {
-            phone: {
-              $regex: search,
-              $options: "i",
-            },
-          },
-          {
-            city: {
-              $regex: search,
-              $options: "i",
-            },
-          },
-          {
-            state: {
-              $regex: search,
-              $options: "i",
-            },
-          },
-          {
-            postalCode: {
-              $regex: search,
-              $options: "i",
-            },
-          },
+          { fullName: { $regex: search, $options: "i" } },
+          { phone: { $regex: search, $options: "i" } },
+          { city: { $regex: search, $options: "i" } },
+          { state: { $regex: search, $options: "i" } },
+          { postalCode: { $regex: search, $options: "i" } },
         ];
       }
 
-      // Filter by address type
+      // Address type
       if (addressType) {
         matchStage.addressType = addressType;
       }
 
-      // Filter by default address
+      // Default
       if (typeof isDefault === "boolean") {
         matchStage.isDefault = isDefault;
       }
-
-      const sortStage = {
-        [sortBy]: sortOrder === "asc" ? 1 : -1,
-      };
 
       const skip = (page - 1) * limit;
 
@@ -88,27 +68,10 @@ class ModelController {
         },
 
         {
-          $project: {
-            fullName: 1,
-            countryCode: 1,
-            phone: 1,
-            alternatePhone: 1,
-            addressLine1: 1,
-            addressLine2: 1,
-            area: 1,
-            landmark: 1,
-            city: 1,
-            state: 1,
-            postalCode: 1,
-            country: 1,
-            addressType: 1,
-            isDefault: 1,
-            createdAt: 1,
+          $sort: {
+            isDefault: -1,
+            [sortBy]: sortOrder === "asc" ? 1 : -1,
           },
-        },
-
-        {
-          $sort: sortStage,
         },
 
         {
@@ -122,11 +85,17 @@ class ModelController {
 
       const totalAddresses = await Address.countDocuments(matchStage);
 
-      const totalPages = Math.ceil(totalAddresses / limit);
+      const totalPages =
+        totalAddresses > 0 ? Math.ceil(totalAddresses / limit) : 0;
 
-      logger.info(
-        `Addresses page loaded successfully. User ID: ${req.user._id}`,
-      );
+      // Invalid page
+      if (totalPages > 0 && page > totalPages) {
+        logger.info(
+          `Invalid address page requested. Redirecting to last page. User ID: ${req.user._id}, Requested page: ${page}, Last page: ${totalPages}`,
+        );
+
+        return res.redirect(`/addresses?page=${totalPages}`);
+      }
 
       return res.status(httpStatusCode.OK).render("address/index", {
         title: "My Addresses",
@@ -138,7 +107,9 @@ class ModelController {
         filters: value,
       });
     } catch (error) {
-      logger.error(`Show addresses page failed: ${error.message}`);
+      logger.error(
+        `Show addresses page failed: ${error.stack || error.message}`,
+      );
 
       return res
         .status(httpStatusCode.INTERNAL_SERVER_ERROR)
@@ -147,18 +118,20 @@ class ModelController {
         });
     }
   }
-  // Create Address Page
+
+  // ==========================================================
+  // CREATE ADDRESS PAGE
+  // ==========================================================
+
   async showCreateAddressPage(req, res) {
     try {
-      logger.info(
-        `Create address page loaded successfully. User ID: ${req.user._id}`,
-      );
-
       return res.status(httpStatusCode.OK).render("address/create", {
         title: "Add Address",
       });
     } catch (error) {
-      logger.error(`Show create address page failed: ${error.message}`);
+      logger.error(
+        `Show create address page failed: ${error.stack || error.message}`,
+      );
 
       return res
         .status(httpStatusCode.INTERNAL_SERVER_ERROR)
@@ -167,44 +140,54 @@ class ModelController {
         });
     }
   }
-  // Create Address
+
+  // ==========================================================
+  // CREATE ADDRESS
+  // ==========================================================
+
   async createAddress(req, res) {
     try {
-      // Validate request body
       const { error, value } = createAddressValidation.validate(req.body);
 
       if (error) {
-        req.flash("error", error.details[0].message);
+        logger.warn(
+          `Create address validation failed. User ID: ${req.user._id}, Error: ${error.details[0].message}`,
+        );
 
         return res.redirect("/addresses/create");
       }
 
-      // Maximum address limit
+      // Maximum 10 addresses
       const totalAddresses = await Address.countDocuments({
         user: req.user._id,
         isDeleted: false,
       });
 
       if (totalAddresses >= 10) {
-        req.flash("error", "You can save a maximum of 10 addresses.");
+        logger.warn(
+          `Address creation limit reached. User ID: ${req.user._id}, Limit: 10`,
+        );
 
         return res.redirect("/addresses");
       }
 
-      // First address becomes default automatically
-      let isDefault = value.isDefault;
+      // First address automatically becomes default
+      let isDefault = value.isDefault || false;
 
       if (totalAddresses === 0) {
         isDefault = true;
+
+        logger.info(
+          `First address will be set as default. User ID: ${req.user._id}`,
+        );
       }
 
-      // Remove previous default address
+      // Remove previous default
       if (isDefault) {
         await Address.updateMany(
           {
             user: req.user._id,
             isDeleted: false,
-            isDefault: true,
           },
           {
             $set: {
@@ -214,7 +197,6 @@ class ModelController {
         );
       }
 
-      // Create address
       const address = await Address.create({
         user: req.user._id,
 
@@ -224,15 +206,15 @@ class ModelController {
 
         phone: value.phone,
 
-        alternatePhone: value.alternatePhone,
+        alternatePhone: value.alternatePhone || "",
 
         addressLine1: value.addressLine1,
 
-        addressLine2: value.addressLine2,
+        addressLine2: value.addressLine2 || "",
 
-        area: value.area,
+        area: value.area || "",
 
-        landmark: value.landmark,
+        landmark: value.landmark || "",
 
         city: value.city,
 
@@ -240,47 +222,57 @@ class ModelController {
 
         postalCode: value.postalCode,
 
-        country: value.country,
+        country: value.country || "India",
 
-        addressType: value.addressType,
+        addressType: value.addressType || "home",
 
         isDefault,
       });
 
-      // Audit log
       await AuditLog.create({
-        action: "CREATE_ADDRESS",
-        performedBy: req.user._id,
-        targetModel: "Address",
-        targetId: address._id,
-        description: `Created a new ${address.addressType} address.`,
+        module: "Address",
+        action: "Create",
+
+        actor: {
+          user: req.user._id,
+          name: req.user.name,
+          email: req.user.email,
+          role: req.user.role,
+        },
+
+        target: {
+          model: "Address",
+          id: address._id,
+          name: `${address.addressType} address`,
+        },
+
+        description: `Created ${address.addressType} address.`,
       });
 
       logger.info(
         `Address created successfully. Address ID: ${address._id}, User ID: ${req.user._id}`,
       );
 
-      req.flash("success", "Address added successfully.");
-
-      return res.status(httpStatusCode.CREATED).redirect("/addresses");
+      return res.redirect("/addresses");
     } catch (error) {
-      logger.error(`Create address failed: ${error.message}`);
+      logger.error(`Create address failed: ${error.stack || error.message}`);
 
-      req.flash("error", "Failed to create address.");
-
-      return res
-        .status(httpStatusCode.INTERNAL_SERVER_ERROR)
-        .redirect("/addresses/create");
+      return res.redirect("/addresses/create");
     }
   }
-  // Edit Address Page
+
+  // ==========================================================
+  // EDIT ADDRESS PAGE
+  // ==========================================================
+
   async showEditAddressPage(req, res) {
     try {
-      // Validate address ID
       const { error, value } = addressIdValidation.validate(req.params);
 
       if (error) {
-        req.flash("error", error.details[0].message);
+        logger.warn(
+          `Edit address ID validation failed. User ID: ${req.user._id}, Error: ${error.details[0].message}`,
+        );
 
         return res.redirect("/addresses");
       }
@@ -292,21 +284,21 @@ class ModelController {
       }).lean();
 
       if (!address) {
-        req.flash("error", "Address not found.");
+        logger.warn(
+          `Address not found while opening edit page. Address ID: ${value.addressId}, User ID: ${req.user._id}`,
+        );
 
         return res.redirect("/addresses");
       }
-
-      logger.info(
-        `Edit address page loaded successfully. Address ID: ${address._id}, User ID: ${req.user._id}`,
-      );
 
       return res.status(httpStatusCode.OK).render("address/edit", {
         title: "Edit Address",
         address,
       });
     } catch (error) {
-      logger.error(`Show edit address page failed: ${error.message}`);
+      logger.error(
+        `Show edit address page failed: ${error.stack || error.message}`,
+      );
 
       return res
         .status(httpStatusCode.INTERNAL_SERVER_ERROR)
@@ -315,30 +307,35 @@ class ModelController {
         });
     }
   }
-  // Update Address
+
+  // ==========================================================
+  // UPDATE ADDRESS
+  // ==========================================================
+
   async updateAddress(req, res) {
     try {
-      // Validate address ID
       const { error: idError, value: idValue } = addressIdValidation.validate(
         req.params,
       );
 
       if (idError) {
-        req.flash("error", idError.details[0].message);
+        logger.warn(
+          `Update address ID validation failed. User ID: ${req.user._id}, Error: ${idError.details[0].message}`,
+        );
 
         return res.redirect("/addresses");
       }
 
-      // Validate request body
       const { error, value } = updateAddressValidation.validate(req.body);
 
       if (error) {
-        req.flash("error", error.details[0].message);
+        logger.warn(
+          `Update address validation failed. Address ID: ${idValue.addressId}, User ID: ${req.user._id}, Error: ${error.details[0].message}`,
+        );
 
-        return res.redirect(`/addresses/edit/${idValue.addressId}`);
+        return res.redirect(`/addresses/${idValue.addressId}/edit`);
       }
 
-      // Check address
       const address = await Address.findOne({
         _id: idValue.addressId,
         user: req.user._id,
@@ -346,21 +343,23 @@ class ModelController {
       });
 
       if (!address) {
-        req.flash("error", "Address not found.");
+        logger.warn(
+          `Address not found while updating. Address ID: ${idValue.addressId}, User ID: ${req.user._id}`,
+        );
 
         return res.redirect("/addresses");
       }
 
-      // Only one default address
+      // ==========================================================
+      // DEFAULT ADDRESS
+      // ==========================================================
+
       if (value.isDefault) {
         await Address.updateMany(
           {
             user: req.user._id,
-            _id: {
-              $ne: address._id,
-            },
+            _id: { $ne: address._id },
             isDeleted: false,
-            isDefault: true,
           },
           {
             $set: {
@@ -368,32 +367,41 @@ class ModelController {
             },
           },
         );
+      } else if (address.isDefault) {
+        // Prevent the user from ending up with no default address
+        value.isDefault = true;
+
+        logger.info(
+          `Existing default address retained during update. Address ID: ${address._id}, User ID: ${req.user._id}`,
+        );
       }
 
-      // Update address
       address.fullName = value.fullName;
       address.countryCode = value.countryCode;
       address.phone = value.phone;
-      address.alternatePhone = value.alternatePhone;
+      address.alternatePhone = value.alternatePhone || "";
       address.addressLine1 = value.addressLine1;
-      address.addressLine2 = value.addressLine2;
-      address.area = value.area;
-      address.landmark = value.landmark;
+      address.addressLine2 = value.addressLine2 || "";
+      address.area = value.area || "";
+      address.landmark = value.landmark || "";
       address.city = value.city;
       address.state = value.state;
       address.postalCode = value.postalCode;
-      address.country = value.country;
-      address.addressType = value.addressType;
+      address.country = value.country || "India";
+      address.addressType = value.addressType || "home";
       address.isDefault = value.isDefault;
 
       await address.save();
 
-      // Audit log
       await AuditLog.create({
         action: "UPDATE_ADDRESS",
+
         performedBy: req.user._id,
+
         targetModel: "Address",
+
         targetId: address._id,
+
         description: `Updated ${address.addressType} address.`,
       });
 
@@ -401,32 +409,30 @@ class ModelController {
         `Address updated successfully. Address ID: ${address._id}, User ID: ${req.user._id}`,
       );
 
-      req.flash("success", "Address updated successfully.");
-
-      return res.status(httpStatusCode.OK).redirect("/addresses");
+      return res.redirect("/addresses");
     } catch (error) {
-      logger.error(`Update address failed: ${error.message}`);
+      logger.error(`Update address failed: ${error.stack || error.message}`);
 
-      req.flash("error", "Failed to update address.");
-
-      return res
-        .status(httpStatusCode.INTERNAL_SERVER_ERROR)
-        .redirect(`/addresses/edit/${req.params.addressId}`);
+      return res.redirect("/addresses");
     }
   }
-  // Set Default Address
+
+  // ==========================================================
+  // SET DEFAULT
+  // ==========================================================
+
   async setDefaultAddress(req, res) {
     try {
-      // Validate address ID
       const { error, value } = addressIdValidation.validate(req.params);
 
       if (error) {
-        req.flash("error", error.details[0].message);
+        logger.warn(
+          `Set default address validation failed. User ID: ${req.user._id}, Error: ${error.details[0].message}`,
+        );
 
         return res.redirect("/addresses");
       }
 
-      // Check address
       const address = await Address.findOne({
         _id: value.addressId,
         user: req.user._id,
@@ -434,24 +440,17 @@ class ModelController {
       });
 
       if (!address) {
-        req.flash("error", "Address not found.");
+        logger.warn(
+          `Address not found while setting default. Address ID: ${value.addressId}, User ID: ${req.user._id}`,
+        );
 
         return res.redirect("/addresses");
       }
 
-      // Already default
-      if (address.isDefault) {
-        req.flash("success", "This address is already your default address.");
-
-        return res.redirect("/addresses");
-      }
-
-      // Remove previous default
       await Address.updateMany(
         {
           user: req.user._id,
           isDeleted: false,
-          isDefault: true,
         },
         {
           $set: {
@@ -460,50 +459,52 @@ class ModelController {
         },
       );
 
-      // Set new default
       address.isDefault = true;
 
       await address.save();
 
-      // Audit log
       await AuditLog.create({
         action: "SET_DEFAULT_ADDRESS",
+
         performedBy: req.user._id,
+
         targetModel: "Address",
+
         targetId: address._id,
-        description: `Set ${address.addressType} address as default.`,
+
+        description: "Changed default delivery address.",
       });
 
       logger.info(
         `Default address updated successfully. Address ID: ${address._id}, User ID: ${req.user._id}`,
       );
 
-      req.flash("success", "Default address updated successfully.");
-
-      return res.status(httpStatusCode.OK).redirect("/addresses");
+      return res.redirect("/addresses");
     } catch (error) {
-      logger.error(`Set default address failed: ${error.message}`);
+      logger.error(
+        `Set default address failed: ${error.stack || error.message}`,
+      );
 
-      req.flash("error", "Failed to update default address.");
-
-      return res
-        .status(httpStatusCode.INTERNAL_SERVER_ERROR)
-        .redirect("/addresses");
+      return res.redirect("/addresses");
     }
   }
-  // Soft Delete Address
+
+  // ==========================================================
+  // SOFT DELETE
+  // ==========================================================
+
   async softDeleteAddress(req, res) {
     try {
-      // Validate address ID
       const { error, value } = addressIdValidation.validate(req.params);
 
       if (error) {
-        req.flash("error", error.details[0].message);
+        logger.warn(
+          `Delete address validation failed. User ID: ${req.user._id}, Error: ${error.details[0].message}`,
+        );
 
         return res.redirect("/addresses");
       }
 
-      // Check address
       const address = await Address.findOne({
         _id: value.addressId,
         user: req.user._id,
@@ -511,75 +512,115 @@ class ModelController {
       });
 
       if (!address) {
-        req.flash("error", "Address not found.");
+        logger.warn(
+          `Address not found while deleting. Address ID: ${value.addressId}, User ID: ${req.user._id}`,
+        );
 
         return res.redirect("/addresses");
       }
 
       const wasDefault = address.isDefault;
 
-      // Soft delete address
       address.isDeleted = true;
       address.deletedAt = new Date();
       address.isDefault = false;
 
       await address.save();
 
-      // Assign another default address
+      // Give another address default status
       if (wasDefault) {
-        const nextDefaultAddress = await Address.findOne({
+        const nextAddress = await Address.findOne({
           user: req.user._id,
           isDeleted: false,
         }).sort({
           createdAt: 1,
         });
 
-        if (nextDefaultAddress) {
-          nextDefaultAddress.isDefault = true;
+        if (nextAddress) {
+          nextAddress.isDefault = true;
 
-          await nextDefaultAddress.save();
+          await nextAddress.save();
+
+          logger.info(
+            `Previous default address deleted. New default assigned. New address ID: ${nextAddress._id}, User ID: ${req.user._id}`,
+          );
         }
       }
 
-      // Audit log
       await AuditLog.create({
         action: "SOFT_DELETE_ADDRESS",
+
         performedBy: req.user._id,
+
         targetModel: "Address",
+
         targetId: address._id,
-        description: `Soft deleted ${address.addressType} address.`,
+
+        description: "Soft deleted address.",
       });
 
       logger.info(
         `Address soft deleted successfully. Address ID: ${address._id}, User ID: ${req.user._id}`,
       );
 
-      req.flash("success", "Address deleted successfully.");
-
-      return res.status(httpStatusCode.OK).redirect("/addresses");
+      return res.redirect("/addresses");
     } catch (error) {
-      logger.error(`Soft delete address failed: ${error.message}`);
+      logger.error(
+        `Soft delete address failed: ${error.stack || error.message}`,
+      );
 
-      req.flash("error", "Failed to delete address.");
+      return res.redirect("/addresses");
+    }
+  }
+
+  // ==========================================================
+  // DELETED ADDRESSES
+  // ==========================================================
+
+  async showDeletedAddressesPage(req, res) {
+    try {
+      const addresses = await Address.find({
+        user: req.user._id,
+        isDeleted: true,
+      })
+        .sort({
+          deletedAt: -1,
+        })
+        .lean();
+
+      return res.status(httpStatusCode.OK).render("address/deleted", {
+        title: "Deleted Addresses",
+        addresses,
+      });
+    } catch (error) {
+      logger.error(
+        `Show deleted addresses failed: ${error.stack || error.message}`,
+      );
 
       return res
         .status(httpStatusCode.INTERNAL_SERVER_ERROR)
-        .redirect("/addresses");
+        .render("errors/500", {
+          title: "Server Error",
+        });
     }
   }
-  // Restore Address
+
+  // ==========================================================
+  // RESTORE
+  // ==========================================================
+
   async restoreAddress(req, res) {
     try {
-      // Validate address ID
       const { error, value } = addressIdValidation.validate(req.params);
 
       if (error) {
-        req.flash("error", error.details[0].message);
+        logger.warn(
+          `Restore address validation failed. User ID: ${req.user._id}, Error: ${error.details[0].message}`,
+        );
 
-        return res.redirect("/addresses/deleted");
+        return res.redirect("/addresses/trash");
       }
 
-      // Check address
       const address = await Address.findOne({
         _id: value.addressId,
         user: req.user._id,
@@ -587,31 +628,30 @@ class ModelController {
       });
 
       if (!address) {
-        req.flash("error", "Address not found.");
+        logger.warn(
+          `Deleted address not found while restoring. Address ID: ${value.addressId}, User ID: ${req.user._id}`,
+        );
 
-        return res.redirect("/addresses/deleted");
+        return res.redirect("/addresses/trash");
       }
 
-      // Maximum address limit
-      const totalAddresses = await Address.countDocuments({
+      const activeCount = await Address.countDocuments({
         user: req.user._id,
         isDeleted: false,
       });
 
-      if (totalAddresses >= 10) {
-        req.flash(
-          "error",
-          "You can only have a maximum of 10 active addresses.",
+      if (activeCount >= 10) {
+        logger.warn(
+          `Address restore blocked because maximum limit was reached. User ID: ${req.user._id}, Active addresses: ${activeCount}`,
         );
 
-        return res.redirect("/addresses/deleted");
+        return res.redirect("/addresses/trash");
       }
 
-      // Restore address
       address.isDeleted = false;
       address.deletedAt = null;
 
-      // Make restored address default if no active default exists
+      // If no default address exists
       const defaultAddress = await Address.findOne({
         user: req.user._id,
         isDeleted: false,
@@ -624,45 +664,46 @@ class ModelController {
 
       await address.save();
 
-      // Audit log
       await AuditLog.create({
         action: "RESTORE_ADDRESS",
+
         performedBy: req.user._id,
+
         targetModel: "Address",
+
         targetId: address._id,
-        description: `Restored ${address.addressType} address.`,
+
+        description: "Restored address.",
       });
 
       logger.info(
         `Address restored successfully. Address ID: ${address._id}, User ID: ${req.user._id}`,
       );
 
-      req.flash("success", "Address restored successfully.");
-
-      return res.status(httpStatusCode.OK).redirect("/addresses/deleted");
+      return res.redirect("/addresses/trash");
     } catch (error) {
-      logger.error(`Restore address failed: ${error.message}`);
+      logger.error(`Restore address failed: ${error.stack || error.message}`);
 
-      req.flash("error", "Failed to restore address.");
-
-      return res
-        .status(httpStatusCode.INTERNAL_SERVER_ERROR)
-        .redirect("/addresses/deleted");
+      return res.redirect("/addresses/trash");
     }
   }
-  // Delete Address
+
+  // ==========================================================
+  // PERMANENT DELETE
+  // ==========================================================
+
   async deleteAddress(req, res) {
     try {
-      // Validate address ID
       const { error, value } = addressIdValidation.validate(req.params);
 
       if (error) {
-        req.flash("error", error.details[0].message);
+        logger.warn(
+          `Permanent delete address validation failed. User ID: ${req.user._id}, Error: ${error.details[0].message}`,
+        );
 
-        return res.redirect("/addresses/deleted");
+        return res.redirect("/addresses/trash");
       }
 
-      // Check address
       const address = await Address.findOne({
         _id: value.addressId,
         user: req.user._id,
@@ -670,169 +711,42 @@ class ModelController {
       });
 
       if (!address) {
-        req.flash("error", "Address not found.");
+        logger.warn(
+          `Deleted address not found for permanent deletion. Address ID: ${value.addressId}, User ID: ${req.user._id}`,
+        );
 
-        return res.redirect("/addresses/deleted");
+        return res.redirect("/addresses/trash");
       }
 
-      // Permanently delete address
       await Address.deleteOne({
         _id: address._id,
       });
 
-      // Audit log
       await AuditLog.create({
         action: "DELETE_ADDRESS",
+
         performedBy: req.user._id,
+
         targetModel: "Address",
+
         targetId: address._id,
-        description: `Permanently deleted ${address.addressType} address.`,
+
+        description: "Permanently deleted address.",
       });
 
       logger.info(
-        `Address permanently deleted successfully. Address ID: ${address._id}, User ID: ${req.user._id}`,
+        `Address permanently deleted. Address ID: ${address._id}, User ID: ${req.user._id}`,
       );
 
-      req.flash("success", "Address permanently deleted successfully.");
-
-      return res.status(httpStatusCode.OK).redirect("/addresses/deleted");
+      return res.redirect("/addresses/trash");
     } catch (error) {
-      logger.error(`Delete address failed: ${error.message}`);
-
-      req.flash("error", "Failed to permanently delete address.");
-
-      return res
-        .status(httpStatusCode.INTERNAL_SERVER_ERROR)
-        .redirect("/addresses/deleted");
-    }
-  }
-  // Deleted Addresses Page
-  async showDeletedAddressesPage(req, res) {
-    try {
-      // Validate query
-      const { error, value } = addressQueryValidation.validate(req.query);
-
-      if (error) {
-        req.flash("error", error.details[0].message);
-
-        return res.redirect("/addresses/deleted");
-      }
-
-      const { page, limit, search, addressType, sortBy, sortOrder } = value;
-
-      const matchStage = {
-        user: new mongoose.Types.ObjectId(req.user._id),
-        isDeleted: true,
-      };
-
-      // Search
-      if (search) {
-        matchStage.$or = [
-          {
-            fullName: {
-              $regex: search,
-              $options: "i",
-            },
-          },
-          {
-            phone: {
-              $regex: search,
-              $options: "i",
-            },
-          },
-          {
-            city: {
-              $regex: search,
-              $options: "i",
-            },
-          },
-          {
-            state: {
-              $regex: search,
-              $options: "i",
-            },
-          },
-          {
-            postalCode: {
-              $regex: search,
-              $options: "i",
-            },
-          },
-        ];
-      }
-
-      // Filter by address type
-      if (addressType) {
-        matchStage.addressType = addressType;
-      }
-
-      const sortStage = {
-        [sortBy]: sortOrder === "asc" ? 1 : -1,
-      };
-
-      const skip = (page - 1) * limit;
-
-      const addresses = await Address.aggregate([
-        {
-          $match: matchStage,
-        },
-        {
-          $project: {
-            fullName: 1,
-            countryCode: 1,
-            phone: 1,
-            alternatePhone: 1,
-            addressLine1: 1,
-            addressLine2: 1,
-            area: 1,
-            landmark: 1,
-            city: 1,
-            state: 1,
-            postalCode: 1,
-            country: 1,
-            addressType: 1,
-            deletedAt: 1,
-            createdAt: 1,
-          },
-        },
-        {
-          $sort: sortStage,
-        },
-        {
-          $skip: skip,
-        },
-        {
-          $limit: limit,
-        },
-      ]);
-
-      const totalAddresses = await Address.countDocuments(matchStage);
-
-      const totalPages = Math.ceil(totalAddresses / limit);
-
-      logger.info(
-        `Deleted addresses page loaded successfully. User ID: ${req.user._id}`,
+      logger.error(
+        `Delete address permanently failed: ${error.stack || error.message}`,
       );
 
-      return res.status(httpStatusCode.OK).render("address/deleted", {
-        title: "Deleted Addresses",
-        addresses,
-        currentPage: page,
-        totalPages,
-        totalAddresses,
-        limit,
-        filters: value,
-      });
-    } catch (error) {
-      logger.error(`Show deleted addresses page failed: ${error.message}`);
-
-      return res
-        .status(httpStatusCode.INTERNAL_SERVER_ERROR)
-        .render("errors/500", {
-          title: "Server Error",
-        });
+      return res.redirect("/addresses/trash");
     }
   }
 }
 
-module.exports = new ModelController();
+module.exports = new AddressController();

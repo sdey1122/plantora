@@ -1,64 +1,20 @@
 const express = require("express");
 
+const router = express.Router();
+
 const PaymentController = require("../controllers/PaymentController");
 
 const authMiddleware = require("../middlewares/authMiddleware");
-const authorizeRoles = require("../middlewares/authorizeRoles");
 
-const router = express.Router();
+router.use(authMiddleware);
 
-// Customer routes
-router.get(
-  "/",
-  authMiddleware,
-  authorizeRoles("customer"),
-  PaymentController.showPaymentsPage,
-);
+// Payment page
+router.get("/:paymentId", PaymentController.showPaymentPage);
 
-router.get(
-  "/:paymentId",
-  authMiddleware,
-  authorizeRoles("customer"),
-  PaymentController.showPaymentDetailsPage,
-);
+// Verify Razorpay payment
+router.post("/verify", PaymentController.verifyPayment);
 
-router.post(
-  "/create",
-  authMiddleware,
-  authorizeRoles("customer"),
-  PaymentController.createPayment,
-);
-
-router.post(
-  "/verify",
-  authMiddleware,
-  authorizeRoles("customer"),
-  PaymentController.verifyPayment,
-);
-
-// Razorpay webhook
-router.post("/webhook", PaymentController.handleWebhook);
-
-// Admin routes
-router.get(
-  "/admin",
-  authMiddleware,
-  authorizeRoles("admin"),
-  PaymentController.showAdminPaymentsPage,
-);
-
-router.get(
-  "/admin/:paymentId",
-  authMiddleware,
-  authorizeRoles("admin"),
-  PaymentController.showAdminPaymentDetailsPage,
-);
-
-router.patch(
-  "/admin/:paymentId/refund",
-  authMiddleware,
-  authorizeRoles("admin"),
-  PaymentController.refundPayment,
-);
+// Successful payment
+router.get("/success/:orderId", PaymentController.showPaymentSuccess);
 
 module.exports = router;

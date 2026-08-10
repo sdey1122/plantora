@@ -1,0 +1,445 @@
+<%- include("../partials/main/head") %>
+
+<%- include("../partials/main/announcementBar") %>
+
+<%- include("../partials/main/header") %>
+
+
+<main class="address-page">
+
+  <div class="address-form-container">
+
+    <div class="address-form-header">
+
+      <a
+        href="/addresses"
+        class="address-back-link"
+      >
+        <i class="bi bi-arrow-left"></i>
+        Back to Addresses
+      </a>
+
+      <span class="address-eyebrow">
+        <i class="bi bi-geo-alt-fill"></i>
+        Delivery Details
+      </span>
+
+      <h1>
+        Add New Address
+      </h1>
+
+      <p>
+        Save your delivery information for faster checkout.
+      </p>
+
+    </div>
+
+
+    <form
+      action="/addresses/create"
+      method="POST"
+      class="address-form"
+      id="addressForm"
+    >
+
+      <!-- =================================================
+           RECIPIENT
+      ================================================== -->
+
+      <section class="address-form-section">
+
+        <div class="address-form-section-title">
+
+          <i class="bi bi-person"></i>
+
+          <div>
+
+            <h2>
+              Recipient Information
+            </h2>
+
+            <p>
+              Who should receive this order?
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="address-form-grid">
+
+          <div class="address-field full">
+
+            <label for="fullName">
+              Full Name
+            </label>
+
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              placeholder="Enter recipient's full name"
+              required
+            >
+
+          </div>
+
+
+          <div class="address-field">
+
+            <label for="countryCode">
+              Country Code
+            </label>
+
+            <select
+              id="countryCode"
+              name="countryCode"
+            >
+
+              <option value="+91">
+                +91 India
+              </option>
+
+              <option value="+1">
+                +1 USA / Canada
+              </option>
+
+              <option value="+44">
+                +44 UK
+              </option>
+
+              <option value="+61">
+                +61 Australia
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="address-field">
+
+            <label for="phone">
+              Phone Number
+            </label>
+
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="Enter phone number"
+              required
+            >
+
+          </div>
+
+
+          <div class="address-field full">
+
+            <label for="alternatePhone">
+              Alternate Phone
+              <span>Optional</span>
+            </label>
+
+            <input
+              type="tel"
+              id="alternatePhone"
+              name="alternatePhone"
+              placeholder="Optional alternate number"
+            >
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           ADDRESS
+      ================================================== -->
+
+      <section class="address-form-section">
+
+        <div class="address-form-section-title">
+
+          <i class="bi bi-house"></i>
+
+          <div>
+
+            <h2>
+              Address
+            </h2>
+
+            <p>
+              Where should we deliver your order?
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="address-form-grid">
+
+          <div class="address-field full">
+
+            <label for="addressLine1">
+              Address Line 1
+            </label>
+
+            <input
+              type="text"
+              id="addressLine1"
+              name="addressLine1"
+              placeholder="House / Flat / Building number"
+              required
+            >
+
+          </div>
+
+
+          <div class="address-field full">
+
+            <label for="addressLine2">
+              Address Line 2
+              <span>Optional</span>
+            </label>
+
+            <input
+              type="text"
+              id="addressLine2"
+              name="addressLine2"
+              placeholder="Apartment, floor, street etc."
+            >
+
+          </div>
+
+
+          <div class="address-field">
+
+            <label for="area">
+              Area / Locality
+            </label>
+
+            <input
+              type="text"
+              id="area"
+              name="area"
+              placeholder="Area or locality"
+            >
+
+          </div>
+
+
+          <div class="address-field">
+
+            <label for="landmark">
+              Landmark
+              <span>Optional</span>
+            </label>
+
+            <input
+              type="text"
+              id="landmark"
+              name="landmark"
+              placeholder="Nearby landmark"
+            >
+
+          </div>
+
+
+          <div class="address-field">
+
+            <label for="city">
+              City
+            </label>
+
+            <input
+              type="text"
+              id="city"
+              name="city"
+              placeholder="City"
+              required
+            >
+
+          </div>
+
+
+          <div class="address-field">
+
+            <label for="state">
+              State
+            </label>
+
+            <input
+              type="text"
+              id="state"
+              name="state"
+              placeholder="State"
+              required
+            >
+
+          </div>
+
+
+          <div class="address-field">
+
+            <label for="postalCode">
+              Postal Code
+            </label>
+
+            <input
+              type="text"
+              id="postalCode"
+              name="postalCode"
+              placeholder="PIN / ZIP code"
+              required
+            >
+
+          </div>
+
+
+          <div class="address-field">
+
+            <label for="country">
+              Country
+            </label>
+
+            <input
+              type="text"
+              id="country"
+              name="country"
+              value="India"
+              required
+            >
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           PREFERENCES
+      ================================================== -->
+
+      <section class="address-form-section">
+
+        <div class="address-form-section-title">
+
+          <i class="bi bi-sliders"></i>
+
+          <div>
+
+            <h2>
+              Address Preferences
+            </h2>
+
+            <p>
+              Choose how this address should be saved.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="address-form-grid">
+
+          <div class="address-field">
+
+            <label for="addressType">
+              Address Type
+            </label>
+
+            <select
+              id="addressType"
+              name="addressType"
+            >
+
+              <option value="home">
+                Home
+              </option>
+
+              <option value="office">
+                Office
+              </option>
+
+              <option value="other">
+                Other
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="address-default-option">
+
+            <label>
+
+              <input
+                type="checkbox"
+                name="isDefault"
+                value="true"
+              >
+
+              <span class="custom-checkbox">
+                <i class="bi bi-check"></i>
+              </span>
+
+              <span>
+
+                <strong>
+                  Make this my default address
+                </strong>
+
+                <small>
+                  This address will be selected automatically during checkout.
+                </small>
+
+              </span>
+
+            </label>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           ACTIONS
+      ================================================== -->
+
+      <div class="address-form-actions">
+
+        <a
+          href="/addresses"
+          class="address-secondary-button"
+        >
+          Cancel
+        </a>
+
+        <button
+          type="submit"
+          class="address-primary-button"
+        >
+          <i class="bi bi-check2-circle"></i>
+          Save Address
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</main>
+
+
+<%- include("../partials/main/footer") %>

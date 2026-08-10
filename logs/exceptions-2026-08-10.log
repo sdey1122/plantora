@@ -1,0 +1,292 @@
+2026-08-10 00:12:20 [ERROR]: TypeError: argument handler must be a function
+    at Route.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:228:15)
+    at Router.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:448:19)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\cartRoute.js:37:8)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+2026-08-10 00:13:35 [ERROR]: TypeError: argument handler must be a function
+    at Route.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\lib\route.js:228:15)
+    at Router.<computed> [as post] (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\node_modules\router\index.js:448:19)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\cartRoute.js:48:8)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+2026-08-10 03:42:47 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\OrderController.js:148
+  async showOrderDetails(req, res) {
+        ^^^^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier 'showOrderDetails'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\orderRoute.js:5:25)
+2026-08-10 04:26:10 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CheckoutController.js:409
+      }
+      ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\checkoutRoute.js:5:28)
+2026-08-10 04:40:37 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\AddressController.js:397
+  async setDefaultAddress(req, res) {
+        ^^^^^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier 'setDefaultAddress'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\addressRoute.js:5:27)
+2026-08-10 04:40:44 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\AddressController.js:392
+    }
+    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\addressRoute.js:5:27)
+2026-08-10 04:48:18 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\CartController.js:569
+      return res.status(httpStatusCode.OK).json({
+      ^^^^^^
+
+SyntaxError: Unexpected token 'return'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\cartRoute.js:5:24)
+2026-08-10 06:12:27 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ReviewController.js:23
+  const recalculateProductRating = async (productId) => {
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier 'recalculateProductRating'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\reviewRoute.js:3:26)
+2026-08-10 06:12:30 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ReviewController.js:23
+  const recalculateProductRating = async (productId) => {
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier 'recalculateProductRating'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\reviewRoute.js:3:26)
+2026-08-10 06:12:32 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ReviewController.js:23
+  const recalculateProductRating = async (productId) => {
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier 'recalculateProductRating'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\reviewRoute.js:3:26)
+2026-08-10 06:12:38 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ReviewController.js:23
+  const recalculateProductRating = async (productId) => {
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier 'recalculateProductRating'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\reviewRoute.js:3:26)
+2026-08-10 06:12:55 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ReviewController.js:69
+  async showProductReviewsPage(req, res) {
+        ^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier 'showProductReviewsPage'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\reviewRoute.js:3:26)
+2026-08-10 06:12:58 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\ReviewController.js:69
+  async showProductReviewsPage(req, res) {
+        ^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier 'showProductReviewsPage'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\reviewRoute.js:3:26)
+2026-08-10 07:32:00 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\HomeController.js:12
+       = await Product.aggregate([
+       ^
+
+SyntaxError: Unexpected token '='
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\homeRoutes.js:3:24)
+2026-08-10 07:32:05 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\HomeController.js:12
+      const featuredProducts;
+            ^^^^^^^^^^^^^^^^
+
+SyntaxError: Missing initializer in const declaration
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\homeRoutes.js:3:24)
+2026-08-10 07:32:32 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\HomeController.js:13
+        async getFeaturedProducts(req, res) {
+              ^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier 'getFeaturedProducts'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\homeRoutes.js:3:24)
+2026-08-10 07:32:32 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\HomeController.js:13
+        async getFeaturedProducts(req, res) {
+              ^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier 'getFeaturedProducts'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\homeRoutes.js:3:24)
+2026-08-10 07:32:42 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\HomeController.js:13
+        async getFeaturedProducts(req, res) {
+              ^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier 'getFeaturedProducts'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\homeRoutes.js:3:24)
+2026-08-10 07:32:44 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\HomeController.js:13
+        async getFeaturedProducts(req, res) {
+              ^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier 'getFeaturedProducts'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\homeRoutes.js:3:24)
+2026-08-10 07:32:45 [ERROR]: E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\controllers\HomeController.js:13
+        async getFeaturedProducts(req, res) {
+              ^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier 'getFeaturedProducts'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (E:\Webskitters_Academy\NODE JS\final_project_node\plantora_final_project_node_ejs\app\routes\homeRoutes.js:3:24)

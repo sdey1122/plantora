@@ -98,31 +98,26 @@ const paymentSchema = new mongoose.Schema(
       default: "razorpay",
     },
 
-    // Razorpay order ID
     gatewayOrderId: {
       type: String,
-      default: null,
-      trim: true,
+      default: "",
     },
 
-    // Razorpay payment ID
     gatewayPaymentId: {
       type: String,
-      default: null,
-      trim: true,
+      default: "",
     },
 
-    // Razorpay signature
     gatewaySignature: {
       type: String,
-      default: null,
-      trim: true,
+      default: "",
     },
 
-    // Payment status
     paymentStatus: {
       type: String,
-      enum: PAYMENT_STATUSES,
+
+      enum: ["pending", "paid", "failed", "refunded"],
+
       default: "pending",
     },
 

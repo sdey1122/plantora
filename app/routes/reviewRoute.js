@@ -7,52 +7,58 @@ const authorizeRoles = require("../middlewares/authorizeRoles");
 
 const router = express.Router();
 
-// Customer routes
+// ==========================================================
+// CUSTOMER / SELLER
+// ==========================================================
+
+// Product reviews page
 router.get("/product/:productId", ReviewController.showProductReviewsPage);
 
+// Create review
 router.post(
   "/product/:productId",
   authMiddleware,
-  authorizeRoles("customer"),
+  authorizeRoles("customer", "seller"),
   ReviewController.createReview,
 );
 
+// Edit own review page
 router.get(
   "/:reviewId/edit",
   authMiddleware,
-  authorizeRoles("customer"),
+  authorizeRoles("customer", "seller"),
   ReviewController.showEditReviewPage,
 );
 
+// Update own review
 router.put(
   "/:reviewId",
   authMiddleware,
-  authorizeRoles("customer"),
+  authorizeRoles("customer", "seller"),
   ReviewController.updateReview,
 );
 
-router.patch(
-  "/:reviewId/delete",
-  authMiddleware,
-  authorizeRoles("customer"),
-  ReviewController.deleteReview,
-);
-
+// Helpful
 router.post(
   "/:reviewId/helpful",
   authMiddleware,
-  authorizeRoles("customer"),
+  authorizeRoles("customer", "seller"),
   ReviewController.markReviewHelpful,
 );
 
+// Remove helpful
 router.delete(
   "/:reviewId/helpful",
   authMiddleware,
-  authorizeRoles("customer"),
+  authorizeRoles("customer", "seller"),
   ReviewController.removeHelpfulVote,
 );
 
-// Admin routes
+// ==========================================================
+// ADMIN
+// ==========================================================
+
+// Admin review list
 router.get(
   "/admin",
   authMiddleware,
@@ -60,6 +66,7 @@ router.get(
   ReviewController.showReviewsPage,
 );
 
+// Admin review details
 router.get(
   "/admin/:reviewId",
   authMiddleware,
@@ -67,6 +74,7 @@ router.get(
   ReviewController.showReviewDetailsPage,
 );
 
+// Admin approve/reject
 router.patch(
   "/admin/:reviewId/status",
   authMiddleware,
@@ -74,13 +82,7 @@ router.patch(
   ReviewController.updateReviewStatus,
 );
 
-router.patch(
-  "/admin/:reviewId/restore",
-  authMiddleware,
-  authorizeRoles("admin"),
-  ReviewController.restoreReview,
-);
-
+// Admin permanent delete
 router.delete(
   "/admin/:reviewId",
   authMiddleware,

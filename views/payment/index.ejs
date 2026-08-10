@@ -1,0 +1,184 @@
+<%- include("../partials/main/head") %>
+
+<link
+  rel="stylesheet"
+  href="/css/payment.css"
+/>
+
+
+<%- include("../partials/main/announcementBar") %>
+
+<%- include("../partials/main/header") %>
+
+
+<main class="payment-page">
+
+  <div class="payment-card">
+
+    <!-- Header -->
+
+    <div class="payment-header">
+
+      <div class="payment-icon">
+        <i class="bi bi-shield-lock-fill"></i>
+      </div>
+
+      <h1>Complete Your Payment</h1>
+
+      <p>
+        Your order is ready. Complete the payment securely using Razorpay.
+      </p>
+
+    </div>
+
+
+    <!-- Order Information -->
+
+    <div class="payment-order">
+
+      <div class="payment-order-row">
+
+        <span>Order Number</span>
+
+        <strong>
+          <%= order.orderNumber %>
+        </strong>
+
+      </div>
+
+
+      <div class="payment-order-row">
+
+        <span>Payment Status</span>
+
+        <span class="payment-status pending">
+          Pending
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- Amount -->
+
+    <div class="payment-total">
+
+      <span>Total Amount</span>
+
+      <strong>
+        ₹<%= Number(order.totalAmount).toLocaleString("en-IN", {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }) %>
+      </strong>
+
+    </div>
+
+
+    <!-- Pay Button -->
+
+    <button
+      type="button"
+      id="pay-now-btn"
+      class="payment-pay-btn"
+    >
+
+      <span class="payment-pay-btn-text">
+
+        <i class="bi bi-lock-fill"></i>
+
+        Pay Securely
+
+      </span>
+
+      <span
+        class="payment-pay-btn-loader"
+        id="payment-loader"
+      >
+
+        <span class="payment-spinner"></span>
+
+        Processing...
+
+      </span>
+
+    </button>
+
+
+    <!-- Security -->
+
+    <div class="payment-security">
+
+      <i class="bi bi-shield-check"></i>
+
+      <div>
+
+        <strong>Secure Payment</strong>
+
+        <p>
+          Your payment is securely processed by Razorpay.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- Payment Methods -->
+
+    <div class="payment-methods">
+
+      <span>
+        <i class="bi bi-credit-card"></i>
+        Cards
+      </span>
+
+      <span>
+        <i class="bi bi-bank"></i>
+        Net Banking
+      </span>
+
+      <span>
+        <i class="bi bi-phone"></i>
+        UPI
+      </span>
+
+    </div>
+
+  </div>
+
+</main>
+
+
+<!-- ======================================================
+     PAYMENT DATA
+====================================================== -->
+
+<script>
+  window.PAYMENT_DATA = {
+    keyId: "<%= razorpayKeyId %>",
+    amount: "<%= order.totalAmount %>",
+    currency: "<%= payment.currency || 'INR' %>",
+    razorpayOrderId: "<%= payment.gatewayOrderId %>",
+    paymentId: "<%= payment._id %>",
+    orderNumber: "<%= order.orderNumber %>"
+  };
+</script>
+
+
+<!-- ======================================================
+     RAZORPAY SDK
+====================================================== -->
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
+<!-- ======================================================
+     PAGE JS
+====================================================== -->
+
+<script src="/js/payment.js"></script>
+
+
+<%- include("../partials/main/footer") %>

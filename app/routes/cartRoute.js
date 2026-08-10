@@ -6,32 +6,59 @@ const CartController = require("../controllers/CartController");
 
 const authMiddleware = require("../middlewares/authMiddleware");
 
-const authorizeRoles = require("../middlewares/authorizeRoles");
+// ==========================================================
+// PROTECT ALL CART ROUTES
+// ==========================================================
 
-// Protect all routes
 router.use(authMiddleware);
 
-router.use(authorizeRoles("customer"));
+// ==========================================================
+// CART PAGE
+// GET /cart
+// ==========================================================
 
-// Cart Page
 router.get("/", CartController.showCartPage);
 
-// Cart Summary
+// ==========================================================
+// CART SUMMARY
+// GET /cart/summary
+// ==========================================================
+
 router.get("/summary", CartController.getCartSummary);
 
-// Add To Cart
+// ==========================================================
+// ADD TO CART
+// POST /cart/add
+// ==========================================================
+
 router.post("/add", CartController.addToCart);
 
-// Update Quantity
+// ==========================================================
+// UPDATE QUANTITY
+// POST /cart/quantity
+// ==========================================================
+
 router.post("/quantity", CartController.updateCartQuantity);
 
-// Toggle Item Selection
+// ==========================================================
+// TOGGLE SELECTION
+// POST /cart/toggle
+// ==========================================================
+
 router.post("/toggle", CartController.toggleCartItem);
 
-// Remove Item
+// ==========================================================
+// REMOVE PRODUCT
+// POST /cart/remove
+// ==========================================================
+
 router.post("/remove", CartController.removeFromCart);
 
-// Clear Cart
+// ==========================================================
+// CLEAR CART
+// POST /cart/clear
+// ==========================================================
+
 router.post("/clear", CartController.clearCart);
 
 module.exports = router;
