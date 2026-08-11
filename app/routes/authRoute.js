@@ -104,21 +104,21 @@ router.delete(
 // GOOGLE AUTHENTICATION
 // ==========================================================
 
-router.get(
-  "/google",
-  passport.authenticate("google", {
-    scope: ["profile", "email"],
-  }),
-);
+// router.get(
+//   "/google",
+//   passport.authenticate("google", {
+//     scope: ["profile", "email"],
+//   }),
+// );
 
-router.get(
-  "/google/callback",
-  passport.authenticate("google", {
-    session: false,
+// router.get(
+//   "/google/callback",
+//   passport.authenticate("google", {
+//     session: false,
 
-    failureRedirect: "/?type=error&message=Google%20authentication%20failed.",
-  }),
-  authController.googleLogin.bind(authController),
-);
+//     failureRedirect: "/?type=error&message=Google%20authentication%20failed.",
+//   }),
+//   authController.googleLogin.bind(authController),
+// );
 
 module.exports = router;
