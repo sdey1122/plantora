@@ -52,7 +52,7 @@ class NewsletterController {
 
       if (
         !process.env.EMAIL_USER ||
-        !process.env.EMAIL_PASSWORD ||
+        !process.env.EMAIL_PASS ||
         !process.env.ADMIN_EMAIL
       ) {
         logger.error("Newsletter email configuration is missing.");
@@ -72,7 +72,7 @@ class NewsletterController {
 
         auth: {
           user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASSWORD,
+          pass: process.env.EMAIL_PASS,
         },
       });
 
