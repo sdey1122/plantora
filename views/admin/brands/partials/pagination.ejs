@@ -1,165 +1,227 @@
 <%
 const query = new URLSearchParams();
 
-if(search){
+if (search) {
     query.set("search", search);
 }
 
-if(sort){
+if (sort) {
     query.set("sort", sort);
 }
 
-function pageLink(page){
-    query.set("page", page);
-    return "/admin/brands?" + query.toString();
+function pageLink(page) {
+    const params = new URLSearchParams(query);
+    params.set("page", page);
+
+    return "/admin/brands?" + params.toString();
 }
 
 const startPage = Math.max(1, currentPage - 2);
 const endPage = Math.min(totalPages, currentPage + 2);
 %>
 
-<% if(totalPages > 1){ %>
+<% if (totalPages > 1) { %>
 
-<div class="pagination-wrapper">
+<div class="pagination-container">
+
+    <!-- Pagination Information -->
 
     <div class="pagination-info">
 
         Showing
 
         <strong>
-
             <%= currentPage %>
-
         </strong>
 
         of
 
         <strong>
-
             <%= totalPages %>
-
         </strong>
 
         pages
 
-        |
+        <span class="pagination-divider">
+            |
+        </span>
 
         Total Brands
 
         <strong>
-
             <%= totalBrands %>
-
         </strong>
 
     </div>
 
-    <nav>
 
-        <ul class="pagination justify-content-end mb-0">
+    <!-- Pagination -->
+
+    <nav
+        class="custom-pagination"
+        aria-label="Brand pagination"
+    >
+
+        <ul class="pagination-list">
 
             <!-- First -->
 
-            <li class="page-item <%= currentPage===1 ? 'disabled' : '' %>">
+            <li>
 
-                <a
-                    class="page-link"
-                    href="<%= pageLink(1) %>"
-                >
+                <% if (currentPage === 1) { %>
 
-                    <i class="bi bi-chevron-double-left"></i>
+                    <span class="page-button disabled">
+                        <i class="bi bi-chevron-double-left"></i>
+                    </span>
 
-                </a>
+                <% } else { %>
+
+                    <a
+                        href="<%= pageLink(1) %>"
+                        class="page-button"
+                        title="First Page"
+                    >
+                        <i class="bi bi-chevron-double-left"></i>
+                    </a>
+
+                <% } %>
 
             </li>
+
 
             <!-- Previous -->
 
-            <li class="page-item <%= currentPage===1 ? 'disabled' : '' %>">
+            <li>
 
-                <a
-                    class="page-link"
-                    href="<%= pageLink(currentPage-1) %>"
-                >
+                <% if (currentPage === 1) { %>
 
-                    <i class="bi bi-chevron-left"></i>
+                    <span class="page-button disabled">
+                        <i class="bi bi-chevron-left"></i>
+                    </span>
 
-                </a>
+                <% } else { %>
+
+                    <a
+                        href="<%= pageLink(currentPage - 1) %>"
+                        class="page-button"
+                        title="Previous Page"
+                    >
+                        <i class="bi bi-chevron-left"></i>
+                    </a>
+
+                <% } %>
 
             </li>
 
-            <% if(startPage > 1){ %>
 
-                <li class="page-item disabled">
+            <!-- Left Ellipsis -->
 
-                    <span class="page-link">
+            <% if (startPage > 1) { %>
 
+                <li>
+
+                    <span class="page-dots">
                         ...
-
                     </span>
 
                 </li>
 
             <% } %>
 
-            <% for(let page = startPage; page <= endPage; page++){ %>
 
-                <li class="page-item <%= page===currentPage ? 'active' : '' %>">
+            <!-- Pages -->
 
-                    <a
-                        class="page-link"
-                        href="<%= pageLink(page) %>"
-                    >
+            <% for (
+                let page = startPage;
+                page <= endPage;
+                page++
+            ) { %>
 
-                        <%= page %>
+                <li>
 
-                    </a>
+                    <% if (page === currentPage) { %>
+
+                        <span class="page-button active">
+                            <%= page %>
+                        </span>
+
+                    <% } else { %>
+
+                        <a
+                            href="<%= pageLink(page) %>"
+                            class="page-button"
+                        >
+                            <%= page %>
+                        </a>
+
+                    <% } %>
 
                 </li>
 
             <% } %>
 
-            <% if(endPage < totalPages){ %>
 
-                <li class="page-item disabled">
+            <!-- Right Ellipsis -->
 
-                    <span class="page-link">
+            <% if (endPage < totalPages) { %>
 
+                <li>
+
+                    <span class="page-dots">
                         ...
-
                     </span>
 
                 </li>
 
             <% } %>
+
 
             <!-- Next -->
 
-            <li class="page-item <%= currentPage===totalPages ? 'disabled' : '' %>">
+            <li>
 
-                <a
-                    class="page-link"
-                    href="<%= pageLink(currentPage+1) %>"
-                >
+                <% if (currentPage === totalPages) { %>
 
-                    <i class="bi bi-chevron-right"></i>
+                    <span class="page-button disabled">
+                        <i class="bi bi-chevron-right"></i>
+                    </span>
 
-                </a>
+                <% } else { %>
+
+                    <a
+                        href="<%= pageLink(currentPage + 1) %>"
+                        class="page-button"
+                        title="Next Page"
+                    >
+                        <i class="bi bi-chevron-right"></i>
+                    </a>
+
+                <% } %>
 
             </li>
 
+
             <!-- Last -->
 
-            <li class="page-item <%= currentPage===totalPages ? 'disabled' : '' %>">
+            <li>
 
-                <a
-                    class="page-link"
-                    href="<%= pageLink(totalPages) %>"
-                >
+                <% if (currentPage === totalPages) { %>
 
-                    <i class="bi bi-chevron-double-right"></i>
+                    <span class="page-button disabled">
+                        <i class="bi bi-chevron-double-right"></i>
+                    </span>
 
-                </a>
+                <% } else { %>
+
+                    <a
+                        href="<%= pageLink(totalPages) %>"
+                        class="page-button"
+                        title="Last Page"
+                    >
+                        <i class="bi bi-chevron-double-right"></i>
+                    </a>
+
+                <% } %>
 
             </li>
 

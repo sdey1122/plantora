@@ -14,3 +14,12 @@
 @import url("./footer.css");
 @import url("./auth.css");
 @import url("./verify.css");
+
+/* Product card rating stars */
+.product-stars .bi-star-fill {
+  color: #f5a623;
+}
+
+.product-stars .bi-star {
+  color: #d1d5db;
+}

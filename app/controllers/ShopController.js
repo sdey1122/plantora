@@ -155,6 +155,77 @@ class ShopController {
         },
 
         // ----------------------------------------------------
+        // REVIEW RATING
+        // ----------------------------------------------------
+
+        {
+          $lookup: {
+            from: "reviews",
+
+            let: {
+              productId: "$_id",
+            },
+
+            pipeline: [
+              {
+                $match: {
+                  $expr: {
+                    $and: [
+                      {
+                        $eq: ["$product", "$$productId"],
+                      },
+
+                      {
+                        $ne: ["$isDeleted", true],
+                      },
+                    ],
+                  },
+                },
+              },
+            ],
+
+            as: "reviews",
+          },
+        },
+
+        {
+          $set: {
+            averageRating: {
+              $cond: [
+                {
+                  $gt: [
+                    {
+                      $size: "$reviews",
+                    },
+                    0,
+                  ],
+                },
+
+                {
+                  $round: [
+                    {
+                      $avg: "$reviews.rating",
+                    },
+
+                    1,
+                  ],
+                },
+
+                0,
+              ],
+            },
+
+            totalRatings: {
+              $size: "$reviews",
+            },
+          },
+        },
+
+        {
+          $unset: "reviews",
+        },
+
+        // ----------------------------------------------------
         // Effective selling price
         //
         // Valid discountPrice -> discountPrice
@@ -627,6 +698,76 @@ class ShopController {
 
             "brand.isDeleted": false,
           },
+        },
+
+        // ----------------------------------------------------
+        // REVIEW RATING
+        // ----------------------------------------------------
+
+        {
+          $lookup: {
+            from: "reviews",
+
+            let: {
+              productId: "$_id",
+            },
+
+            pipeline: [
+              {
+                $match: {
+                  $expr: {
+                    $and: [
+                      {
+                        $eq: ["$product", "$$productId"],
+                      },
+
+                      {
+                        $ne: ["$isDeleted", true],
+                      },
+                    ],
+                  },
+                },
+              },
+            ],
+
+            as: "reviews",
+          },
+        },
+
+        {
+          $set: {
+            averageRating: {
+              $cond: [
+                {
+                  $gt: [
+                    {
+                      $size: "$reviews",
+                    },
+                    0,
+                  ],
+                },
+
+                {
+                  $round: [
+                    {
+                      $avg: "$reviews.rating",
+                    },
+                    1,
+                  ],
+                },
+
+                0,
+              ],
+            },
+
+            totalRatings: {
+              $size: "$reviews",
+            },
+          },
+        },
+
+        {
+          $unset: "reviews",
         },
 
         {
@@ -1166,14 +1307,21 @@ class ShopController {
           $match: {
             product: product._id,
 
-            status: "approved",
-
-            isDeleted: false,
+            // Supports both:
+            // 1. New reviews with isDeleted: false
+            // 2. Existing reviews created before isDeleted existed
+            isDeleted: {
+              $ne: true,
+            },
           },
         },
 
         {
           $facet: {
+            // ====================================================
+            // REVIEWS
+            // ====================================================
+
             reviews: [
               {
                 $lookup: {
@@ -1237,6 +1385,10 @@ class ShopController {
                 $limit: 10,
               },
             ],
+
+            // ====================================================
+            // RATING SUMMARY
+            // ====================================================
 
             summary: [
               {
@@ -1327,8 +1479,13 @@ class ShopController {
         },
       ]);
 
+      // ======================================================
+      // SAFE REVIEW RESULT
+      // ======================================================
+
       const reviewData = reviewResult[0] || {
         reviews: [],
+
         summary: [],
       };
 
@@ -1351,12 +1508,27 @@ class ShopController {
       };
 
       // ======================================================
-      // RATING
+      // AVERAGE RATING
       // ======================================================
 
       reviewSummary.averageRating = Number(
         Number(reviewSummary.averageRating || 0).toFixed(1),
       );
+
+      // ======================================================
+      // TOTAL RATINGS
+      // ======================================================
+
+      reviewSummary.totalReviews = Number(reviewSummary.totalReviews || 0);
+
+      // ======================================================
+      // PRODUCT RATING
+      // ======================================================
+      //
+      // The product page should display the rating calculated
+      // from the actual approved reviews.
+      //
+      // ======================================================
 
       product.averageRating = reviewSummary.averageRating;
 
@@ -1365,58 +1537,94 @@ class ShopController {
       // ======================================================
       // RATING BREAKDOWN
       // ======================================================
+      //
+      // IMPORTANT:
+      // The EJS expects ratingBreakdown[5], ratingBreakdown[4],
+      // etc.
+      //
+      // Therefore this MUST be an object, not an array.
+      //
+      // ======================================================
 
-      const totalReviews = Number(reviewSummary.totalReviews || 0);
+      const totalReviews = reviewSummary.totalReviews;
 
-      reviewSummary.ratingBreakdown = [
-        {
-          star: 5,
+      reviewSummary.ratingBreakdown = {
+        5: {
           count: Number(reviewSummary.fiveStar || 0),
+
+          percentage:
+            totalReviews > 0
+              ? Math.round(
+                  (Number(reviewSummary.fiveStar || 0) / totalReviews) * 100,
+                )
+              : 0,
         },
 
-        {
-          star: 4,
+        4: {
           count: Number(reviewSummary.fourStar || 0),
+
+          percentage:
+            totalReviews > 0
+              ? Math.round(
+                  (Number(reviewSummary.fourStar || 0) / totalReviews) * 100,
+                )
+              : 0,
         },
 
-        {
-          star: 3,
+        3: {
           count: Number(reviewSummary.threeStar || 0),
+
+          percentage:
+            totalReviews > 0
+              ? Math.round(
+                  (Number(reviewSummary.threeStar || 0) / totalReviews) * 100,
+                )
+              : 0,
         },
 
-        {
-          star: 2,
+        2: {
           count: Number(reviewSummary.twoStar || 0),
+
+          percentage:
+            totalReviews > 0
+              ? Math.round(
+                  (Number(reviewSummary.twoStar || 0) / totalReviews) * 100,
+                )
+              : 0,
         },
 
-        {
-          star: 1,
+        1: {
           count: Number(reviewSummary.oneStar || 0),
-        },
-      ].map((item) => ({
-        ...item,
 
-        percentage:
-          totalReviews > 0 ? Math.round((item.count / totalReviews) * 100) : 0,
-      }));
+          percentage:
+            totalReviews > 0
+              ? Math.round(
+                  (Number(reviewSummary.oneStar || 0) / totalReviews) * 100,
+                )
+              : 0,
+        },
+      };
 
       // ======================================================
-      // EXISTING CUSTOMER REVIEW
+      // EXISTING USER REVIEW
       // ======================================================
 
       let existingReview = null;
 
-      if (currentUser) {
+      // Admin must never get a review form or review state.
+
+      if (
+        currentUser &&
+        (currentUser.role === "customer" || currentUser.role === "seller")
+      ) {
         existingReview = await Review.findOne({
           user: currentUser._id,
-
           product: product._id,
-
-          isDeleted: false,
+          isDeleted: {
+            $ne: true,
+          },
         })
-          .select(
-            "rating reviewTitle comment images status adminRemark createdAt updatedAt",
-          )
+          .select("rating reviewTitle comment images createdAt updatedAt")
           .lean();
       }
 

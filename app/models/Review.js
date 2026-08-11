@@ -1,123 +1,133 @@
 const mongoose = require("mongoose");
 
-const REVIEW_STATUS = ["pending", "approved", "rejected"];
-
-// ==========================================================
-// REVIEW IMAGE
-// ==========================================================
-
-const reviewImageSchema = new mongoose.Schema(
-  {
-    publicId: {
-      type: String,
-      required: true,
-    },
-
-    url: {
-      type: String,
-      required: true,
-    },
-  },
-  {
-    _id: false,
-  },
-);
-
-// ==========================================================
-// REVIEW SCHEMA
-// ==========================================================
-
 const reviewSchema = new mongoose.Schema(
   {
-    // Customer / seller who wrote the review
+    // ==========================================================
+    // USER
+    // ==========================================================
+
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
 
-    // Product being reviewed
+    // ==========================================================
+    // PRODUCT
+    // ==========================================================
+
     product: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Product",
       required: true,
     },
 
-    // Rating
+    // ==========================================================
+    // RATING
+    // ==========================================================
+
     rating: {
       type: Number,
-      required: [true, "Rating is required."],
+      required: true,
       min: 1,
       max: 5,
     },
 
-    // Review title
+    // ==========================================================
+    // REVIEW TITLE
+    // ==========================================================
+
     reviewTitle: {
       type: String,
       trim: true,
-      maxlength: [120, "Review title cannot exceed 120 characters."],
+      maxlength: 120,
       default: "",
     },
 
-    // Review comment
+    // ==========================================================
+    // COMMENT
+    // ==========================================================
+
     comment: {
       type: String,
-      required: [true, "Review comment is required."],
+      required: true,
       trim: true,
-      maxlength: [2000, "Review comment cannot exceed 2000 characters."],
+      maxlength: 2000,
     },
 
-    // Review images
-    images: {
-      type: [reviewImageSchema],
+    // ==========================================================
+    // DELETED
+    // ==========================================================
 
-      validate: {
-        validator(images) {
-          return images.length <= 5;
-        },
-        message: "Maximum 5 review images are allowed.",
-      },
-
-      default: [],
+    isDeleted: {
+      type: Boolean,
+      default: false,
     },
 
-    // Verified purchase
+    // ==========================================================
+    // STATUS
+    // ==========================================================
+
+    status: {
+      type: String,
+      enum: ["pending", "approved", "rejected"],
+      default: "approved",
+    },
+
+    // ==========================================================
+    // ADMIN REMARK
+    // ==========================================================
+
+    adminRemark: {
+      type: String,
+      trim: true,
+      default: "",
+    },
+
+    // ==========================================================
+    // VERIFIED PURCHASE
+    // ==========================================================
+
     isVerifiedPurchase: {
       type: Boolean,
       default: false,
     },
 
-    // Review status
-    status: {
-      type: String,
-      enum: REVIEW_STATUS,
-      default: "approved",
-    },
+    // ==========================================================
+    // HELPFUL COUNT
+    // ==========================================================
 
-    // Admin remark
-    adminRemark: {
-      type: String,
-      trim: true,
-      maxlength: [500, "Administrator remark cannot exceed 500 characters."],
-      default: "",
-    },
-
-    // Helpful votes
     helpfulCount: {
       type: Number,
       default: 0,
       min: 0,
     },
+
+    // ==========================================================
+    // REVIEW IMAGES
+    // ==========================================================
+
+    images: [
+      {
+        url: {
+          type: String,
+          trim: true,
+        },
+
+        alt: {
+          type: String,
+          trim: true,
+        },
+      },
+    ],
   },
   {
     timestamps: true,
-    versionKey: false,
-    minimize: false,
   },
 );
 
 // ==========================================================
-// ONE REVIEW PER USER PER PRODUCT
+// ONE USER = ONE REVIEW PER PRODUCT
 // ==========================================================
 
 reviewSchema.index(
@@ -129,18 +139,5 @@ reviewSchema.index(
     unique: true,
   },
 );
-
-// ==========================================================
-// PRODUCT REVIEW QUERY
-// ==========================================================
-
-reviewSchema.index({
-  product: 1,
-  status: 1,
-});
-
-reviewSchema.index({
-  user: 1,
-});
 
 module.exports = mongoose.model("Review", reviewSchema);

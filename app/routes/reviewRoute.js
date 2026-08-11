@@ -31,8 +31,8 @@ router.get(
 );
 
 // Update own review
-router.put(
-  "/:reviewId",
+router.post(
+  "/:reviewId/edit",
   authMiddleware,
   authorizeRoles("customer", "seller"),
   ReviewController.updateReview,

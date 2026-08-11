@@ -1,0 +1,357 @@
+<%- include("../partials/main/head") %>
+
+<%- include("../partials/main/announcementBar") %>
+
+<%- include("../partials/main/header") %>
+
+<style>
+  /* ==========================================================
+     EDIT REVIEW
+  ========================================================== */
+
+  .edit-review-rating-input {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .edit-review-star {
+    cursor: pointer;
+    position: relative;
+  }
+
+  .edit-review-star input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .edit-review-star i {
+    font-size: 28px;
+    color: #d1d5db;
+    transition: color 0.15s ease;
+  }
+
+  .edit-review-star.selected i {
+    color: #f5b301;
+  }
+
+  .edit-review-rating-text {
+    display: block;
+    margin-top: 8px;
+    font-size: 14px;
+    color: #6b7280;
+  }
+</style>
+
+  <link rel="stylesheet" href="/css/product-details.css" />
+
+
+<div class="container">
+
+  <div class="product-reviews">
+
+    <div class="product-reviews-header">
+
+      <span class="product-reviews-subtitle">
+        Update Your Feedback
+      </span>
+
+      <h2>
+        Edit Review
+      </h2>
+
+    </div>
+
+
+    <div class="write-review-card">
+
+      <form
+        action="/reviews/<%= review._id %>/edit"
+        method="POST"
+        class="write-review-form"
+      >
+
+
+        <!-- ==================================================
+             RATING
+        =================================================== -->
+
+        <div class="review-form-group">
+
+          <label>
+            Rating
+          </label>
+
+
+          <div
+            class="edit-review-rating-input"
+            id="edit-review-rating-input"
+          >
+
+            <% for (let i = 1; i <= 5; i++) { %>
+
+              <label
+                class="edit-review-star <%= Number(review.rating) === i ? 'selected' : '' %>"
+                data-rating="<%= i %>"
+                title="<%= i %> star<%= i > 1 ? 's' : '' %>"
+              >
+
+                <input
+                  type="radio"
+                  name="rating"
+                  value="<%= i %>"
+                  <%= Number(review.rating) === i ? "checked" : "" %>
+                  required
+                >
+
+                <i class="bi bi-star-fill"></i>
+
+              </label>
+
+            <% } %>
+
+          </div>
+
+
+          <span
+            class="edit-review-rating-text"
+            id="edit-review-rating-text"
+          >
+
+            <%= review.rating %> star<%= Number(review.rating) > 1 ? "s" : "" %>
+
+          </span>
+
+        </div>
+
+
+
+<!-- ==================================================
+     REVIEW TITLE
+=================================================== -->
+
+<div class="review-form-group">
+
+  <label for="reviewTitle">
+    Review Title
+  </label>
+
+  <div class="review-input-wrapper">
+
+    <input
+      type="text"
+      id="reviewTitle"
+      name="reviewTitle"
+      maxlength="120"
+      value="<%= review.reviewTitle || '' %>"
+      placeholder="Give your review a title"
+    >
+
+  </div>
+
+  <div class="review-input-meta">
+
+    <span>
+      Characters
+    </span>
+
+    <span id="edit-review-title-count">
+      <%= (review.reviewTitle || '').length %> / 120
+    </span>
+
+  </div>
+
+</div>
+
+
+
+        <!-- ==================================================
+             COMMENT
+        =================================================== -->
+
+        <div class="review-form-group">
+
+          <label for="comment">
+            Your Review
+          </label>
+
+
+          <div class="review-textarea-wrapper">
+
+            <textarea
+              id="comment"
+              name="comment"
+              rows="5"
+              maxlength="2000"
+              required
+            ><%= review.comment || '' %></textarea>
+
+          </div>
+
+
+          <div class="review-input-meta">
+
+            <span>
+              Characters
+            </span>
+
+            <span id="edit-review-comment-count">
+              <%= (review.comment || '').length %> / 2000
+            </span>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- ==================================================
+             BUTTONS
+        =================================================== -->
+
+        <div class="review-form-footer">
+
+          <a
+            href="/shop/product/<%= review.product.slug %>#product-reviews"
+            class="review-edit-btn"
+          >
+
+            <i class="bi bi-arrow-left"></i>
+
+            Cancel
+
+          </a>
+
+
+          <button
+            type="submit"
+            class="write-review-submit"
+          >
+
+            <i class="bi bi-check2"></i>
+
+            Update Review
+
+          </button>
+
+        </div>
+
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<script>
+
+  // ==========================================================
+  // EDIT REVIEW RATING
+  // ==========================================================
+
+  const editRatingInput =
+    document.getElementById("edit-review-rating-input");
+
+  const editRatingText =
+    document.getElementById("edit-review-rating-text");
+
+
+  if (editRatingInput) {
+
+    const stars =
+      editRatingInput.querySelectorAll(".edit-review-star");
+
+
+    stars.forEach((star) => {
+
+      star.addEventListener("click", () => {
+
+        const rating =
+          Number(star.dataset.rating);
+
+
+        stars.forEach((item) => {
+
+          const itemRating =
+            Number(item.dataset.rating);
+
+          item.classList.toggle(
+            "selected",
+            itemRating <= rating
+          );
+
+        });
+
+
+        const input =
+          star.querySelector('input[name="rating"]');
+
+        if (input) {
+          input.checked = true;
+        }
+
+
+        editRatingText.textContent =
+          `${rating} star${rating > 1 ? "s" : ""}`;
+
+      });
+
+    });
+
+  }
+
+
+  // ==========================================================
+  // TITLE CHARACTER COUNT
+  // ==========================================================
+
+  const titleInput =
+    document.getElementById("reviewTitle");
+
+  const titleCount =
+    document.getElementById("edit-review-title-count");
+
+
+  if (titleInput && titleCount) {
+
+    titleInput.addEventListener("input", () => {
+
+      titleCount.textContent =
+        `${titleInput.value.length} / 120`;
+
+    });
+
+  }
+
+
+  // ==========================================================
+  // COMMENT CHARACTER COUNT
+  // ==========================================================
+
+  const commentInput =
+    document.getElementById("comment");
+
+  const commentCount =
+    document.getElementById("edit-review-comment-count");
+
+
+  if (commentInput && commentCount) {
+
+    commentInput.addEventListener("input", () => {
+
+      commentCount.textContent =
+        `${commentInput.value.length} / 2000`;
+
+    });
+
+  }
+
+</script>
+
+
+<%- include("../partials/main/footer") %>

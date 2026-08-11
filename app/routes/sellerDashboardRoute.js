@@ -1,96 +1,164 @@
-// Import package
 const express = require("express");
 
-// Import controller
 const SellerDashboardController = require("../controllers/SellerDashboardController");
 
-// Import middlewares
 const authMiddleware = require("../middlewares/authMiddleware");
 const authorizeRoles = require("../middlewares/authorizeRoles");
-const sellerMiddleware = require("../middlewares/sellerMiddleware");
 
 const router = express.Router();
 
-// Dashboard
+// ==========================================================
+// DASHBOARD
+// ==========================================================
+
 router.get(
   "/",
   authMiddleware,
-  authorizeRoles("customer"),
-  sellerMiddleware,
+  authorizeRoles("seller"),
   SellerDashboardController.showDashboard,
 );
 
-// Statistics
+// ==========================================================
+// STATISTICS
+// ==========================================================
+
 router.get(
   "/statistics",
   authMiddleware,
-  authorizeRoles("customer"),
-  sellerMiddleware,
+  authorizeRoles("seller"),
   SellerDashboardController.getDashboardStatistics,
 );
 
-// Recent orders
+// ==========================================================
+// RECENT ORDERS
+// ==========================================================
+
 router.get(
   "/recent-orders",
   authMiddleware,
-  authorizeRoles("customer"),
-  sellerMiddleware,
+  authorizeRoles("seller"),
   SellerDashboardController.getRecentOrders,
 );
 
-// Revenue chart
+// ==========================================================
+// REVENUE CHART
+// ==========================================================
+
 router.get(
   "/revenue-chart",
   authMiddleware,
-  authorizeRoles("customer"),
-  sellerMiddleware,
+  authorizeRoles("seller"),
   SellerDashboardController.getRevenueChart,
 );
 
-// Orders chart
+// ==========================================================
+// ORDERS CHART
+// ==========================================================
+
 router.get(
   "/orders-chart",
   authMiddleware,
-  authorizeRoles("customer"),
-  sellerMiddleware,
+  authorizeRoles("seller"),
   SellerDashboardController.getOrdersChart,
 );
 
-// Inventory chart
+// ==========================================================
+// USERS CHART
+// ==========================================================
+
+router.get(
+  "/users-chart",
+  authMiddleware,
+  authorizeRoles("seller"),
+  SellerDashboardController.getUsersChart,
+);
+
+// ==========================================================
+// INVENTORY CHART
+// ==========================================================
+
 router.get(
   "/inventory-chart",
   authMiddleware,
-  authorizeRoles("customer"),
-  sellerMiddleware,
+  authorizeRoles("seller"),
   SellerDashboardController.getInventoryChart,
 );
 
-// Top selling products
+// ==========================================================
+// TOP PRODUCTS
+// ==========================================================
+
 router.get(
   "/top-products",
   authMiddleware,
-  authorizeRoles("customer"),
-  sellerMiddleware,
+  authorizeRoles("seller"),
   SellerDashboardController.getTopSellingProducts,
 );
 
-// Latest reviews
+// ==========================================================
+// TOP CATEGORIES
+// ==========================================================
+
 router.get(
-  "/latest-reviews",
+  "/top-categories",
   authMiddleware,
-  authorizeRoles("customer"),
-  sellerMiddleware,
-  SellerDashboardController.getLatestReviews,
+  authorizeRoles("seller"),
+  SellerDashboardController.getTopCategories,
 );
 
-// Revenue analytics
+// ==========================================================
+// TOP BRANDS
+// ==========================================================
+
 router.get(
-  "/revenue-analytics",
+  "/top-brands",
   authMiddleware,
-  authorizeRoles("customer"),
-  sellerMiddleware,
-  SellerDashboardController.getRevenueAnalytics,
+  authorizeRoles("seller"),
+  SellerDashboardController.getTopBrands,
 );
 
-// Export router
+// ==========================================================
+// TOP SELLERS
+// ==========================================================
+
+router.get(
+  "/top-sellers",
+  authMiddleware,
+  authorizeRoles("seller"),
+  SellerDashboardController.getTopSellers,
+);
+
+// ==========================================================
+// LATEST CUSTOMERS
+// ==========================================================
+
+router.get(
+  "/latest-customers",
+  authMiddleware,
+  authorizeRoles("seller"),
+  SellerDashboardController.getLatestCustomers,
+);
+
+// ==========================================================
+// PAYMENT METHODS
+// ==========================================================
+
+router.get(
+  "/payment-methods",
+  authMiddleware,
+  authorizeRoles("seller"),
+  SellerDashboardController.getPaymentMethodsChart,
+);
+
+// ==========================================================
+// REVENUE BREAKDOWN
+// ==========================================================
+
+router.get(
+  "/revenue-breakdown",
+  authMiddleware,
+  authorizeRoles("seller"),
+  SellerDashboardController.getRevenueBreakdown,
+);
+
 module.exports = router;

@@ -1,0 +1,67 @@
+<!-- ==========================================================
+     ADMIN SIDEBAR
+========================================================== -->
+
+<aside class="admin-sidebar">
+  <!-- ==========================================
+         Logo
+    =========================================== -->
+
+  <div class="admin-sidebar-header">
+    <a href="/" class="header-logo">
+      <img
+        src="/images/logo/plantora.png"
+        alt="Plantora"
+        class="admin-logo-image"
+      />
+    </a>
+  </div>
+
+  <!-- ==========================================
+     Navigation
+========================================== -->
+
+  <nav class="admin-sidebar-nav">
+    <ul class="sidebar-menu">
+      <li>
+        <a
+          href="/admin/products"
+          class="<%= currentRoute.startsWith('/admin/products') && !currentRoute.startsWith('/admin/products/trash') ? 'active' : '' %>"
+        >
+          <i class="bi bi-box-seam-fill"></i>
+          <span>Product Management</span>
+        </a>
+      </li>
+
+      <li>
+        <a
+          href="/admin/products/trash"
+          class="<%= currentRoute.startsWith('/admin/products/trash') ? 'active' : '' %>"
+        >
+          <i class="bi bi-trash-fill"></i>
+          <span>Product Trash</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- ==========================================
+         Footer
+    =========================================== -->
+
+  <div class="admin-sidebar-footer">
+    <a href="/" target="_blank" class="sidebar-footer-link">
+      <i class="bi bi-globe2"></i>
+
+      <span> Visit Website </span>
+    </a>
+
+    <form action="/auth/logout" method="POST">
+      <button type="submit" class="sidebar-logout-button">
+        <i class="bi bi-box-arrow-right"></i>
+
+        <span> Logout </span>
+      </button>
+    </form>
+  </div>
+</aside>

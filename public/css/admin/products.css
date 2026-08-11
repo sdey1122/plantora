@@ -3559,3 +3559,261 @@
     font-size: 12px;
   }
 }
+
+/* pagination */
+/* =========================================================
+   BRAND PAGINATION
+========================================================= */
+
+.pagination-container {
+  width: 100%;
+
+  margin-top: 28px;
+  margin-bottom: 10px;
+
+  padding: 22px 24px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background: #ffffff;
+
+  border: 1px solid #e7ebe8;
+
+  border-radius: 16px;
+
+  box-shadow: 0 5px 20px rgba(27, 67, 38, 0.06);
+
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   PAGINATION INFO
+========================================================= */
+
+.pagination-info {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  margin-bottom: 16px;
+
+  color: #7b8780;
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.1px;
+}
+
+.pagination-info strong {
+  color: #26332b;
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+.pagination-divider {
+  margin: 0 8px;
+
+  color: #c5cdc8;
+}
+
+/* =========================================================
+   PAGINATION NAV
+========================================================= */
+
+.custom-pagination {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+}
+
+/* =========================================================
+   PAGINATION LIST
+========================================================= */
+
+.pagination-list {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 0;
+  margin: 0;
+
+  list-style: none;
+}
+
+/* =========================================================
+   PAGE BUTTON
+========================================================= */
+
+.page-button {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  border: 1px solid #e1e7e3;
+
+  background: #ffffff;
+
+  color: #536159;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+a.page-button:hover {
+  color: #237b35;
+
+  background: #f1f8f2;
+
+  border-color: #b8d9be;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 5px 12px rgba(35, 123, 53, 0.12);
+}
+
+/* =========================================================
+   ACTIVE
+========================================================= */
+
+.page-button.active {
+  color: #ffffff;
+
+  background: linear-gradient(135deg, #267c35 0%, #176526 100%);
+
+  border-color: #267c35;
+
+  box-shadow: 0 6px 15px rgba(35, 123, 53, 0.25);
+
+  cursor: default;
+}
+
+/* =========================================================
+   ARROWS
+========================================================= */
+
+.page-button i {
+  font-size: 11px;
+}
+
+a.page-button:hover i {
+  transform: scale(1.1);
+}
+
+/* =========================================================
+   DISABLED
+========================================================= */
+
+.page-button.disabled {
+  color: #c7ceca;
+
+  background: #f7f9f8;
+
+  border-color: #edf0ee;
+
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   DOTS
+========================================================= */
+
+.page-dots {
+  width: 28px;
+  height: 40px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #89958e;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  user-select: none;
+}
+
+/* =========================================================
+   FOCUS
+========================================================= */
+
+.page-button:focus-visible {
+  outline: 3px solid rgba(35, 123, 53, 0.18);
+
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .pagination-container {
+    padding: 18px 12px;
+  }
+
+  .pagination-info {
+    flex-wrap: wrap;
+
+    text-align: center;
+
+    justify-content: center;
+
+    margin-bottom: 14px;
+  }
+
+  .pagination-list {
+    gap: 4px;
+
+    flex-wrap: wrap;
+  }
+
+  .page-button {
+    width: 36px;
+
+    height: 36px;
+
+    border-radius: 8px;
+  }
+
+  .page-dots {
+    width: 20px;
+
+    height: 36px;
+  }
+}

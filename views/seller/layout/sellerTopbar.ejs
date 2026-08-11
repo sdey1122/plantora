@@ -1,0 +1,141 @@
+<!-- ==========================================================
+     ADMIN TOPBAR
+========================================================== -->
+
+<header class="admin-topbar">
+
+<!-- ==========================================
+     Admin Information
+========================================== -->
+
+<div class="admin-topbar-left">
+
+    <div class="admin-user-card">
+
+        <div class="admin-user-details">
+
+            <h4>
+
+                <%= user.name %>
+
+            </h4>
+
+            <p class="plantora-topbar-email">
+
+                <%= user.email %>
+
+            </p>
+
+        </div>
+
+        <div class="admin-role-badge">
+
+                <i class="bi bi-shield-lock-fill"></i>
+
+                <%= user.role.toUpperCase() %>
+
+            </div>
+
+    </div>
+
+</div>
+
+    <!-- ==========================================
+         Right Actions
+    =========================================== -->
+
+    <div class="admin-topbar-right">
+
+        <!-- ==========================================
+             Notifications
+        =========================================== -->
+
+        <div class="dropdown">
+
+            <button
+                id="notificationDropdownButton"
+                class="admin-topbar-icon"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+            >
+
+                <i class="bi bi-bell-fill"></i>
+
+                <% if (notificationCount > 0) { %>
+
+                    <span
+                        class="header-badge"
+                        id="notificationBadge"
+                    >
+
+                        <%= notificationCount %>
+
+                    </span>
+
+                <% } %>
+
+            </button>
+
+            <div class="dropdown-menu dropdown-menu-end notification-dropdown">
+
+                <div class="notification-header">
+
+                    <h6>
+
+                        Notifications
+
+                    </h6>
+
+                    <a
+                        href="#"
+                        id="markAllNotificationsRead"
+                    >
+
+                        Mark all read
+
+                    </a>
+
+                </div>
+
+                <div
+                    class="notification-list"
+                    id="notificationList"
+                >
+
+                    <div class="text-center py-3 text-muted">
+
+                        Loading...
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ==========================================
+             Profile
+        =========================================== -->
+
+        <!-- ==========================================
+         Profile
+    =========================================== -->
+
+    <a
+        href="/auth/profile"
+        class="profile-button"
+        title="My Profile"
+    >
+
+        <img
+            src="<%= user.profileImage?.url || process.env.DEFAULT_PROFILE_IMAGE_URL %>"
+            alt="<%= user.name %>"
+        >
+
+    </a>
+
+    </div>
+
+</header>

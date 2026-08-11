@@ -4,42 +4,98 @@
 
 <%- include("../partials/main/header") %>
 
+<%
+    /*
+    =========================================================
+    USER ACCESS FLAGS
+    =========================================================
+
+    Admin:
+        role === "admin"
+
+    Approved Seller:
+        role === "customer"
+        seller.status === "approved"
+
+    Seller is NOT a separate role.
+    =========================================================
+    */
+
+    const isAdmin = user.role === "admin";
+
+    const isApprovedSeller =
+        user.role === "customer" &&
+        user.seller?.status === "approved";
+
+    const canAccessSellerDashboard =
+        isAdmin || isApprovedSeller;
+
+    const sellerStatus =
+        user.seller?.status || "none";
+%>
+
+
 <section class="profile-page">
 
     <div class="container">
 
-        <!-- Hero Section -->
+        <!-- =================================================
+             HERO
+        ================================================= -->
+
         <section class="profile-hero">
 
             <div class="profile-hero-content">
 
                 <span class="hero-tag">
+
                     <i class="bi bi-shield-check"></i>
+
                     Secure Account
+
                 </span>
 
                 <h1>
+
                     Welcome,
-                    <span><%= user.name %></span>
+
+                    <span>
+                        <%= user.name %>
+                    </span>
+
                 </h1>
 
                 <p>
-                    Manage your profile, security, seller account and personal information from one place.
+
+                    Manage your profile, security, seller account
+                    and personal information from one place.
+
                 </p>
 
             </div>
 
         </section>
 
-        <!-- Main Content -->
+
+        <!-- =================================================
+             MAIN CONTENT
+        ================================================= -->
+
         <div class="row g-4 mt-1">
 
-            <!-- Left Side -->
+
+            <!-- =================================================
+                 LEFT SIDE
+            ================================================= -->
+
             <div class="col-lg-4">
 
                 <div class="profile-card">
 
                     <div class="profile-cover"></div>
+
+
+                    <!-- PROFILE AVATAR -->
 
                     <div class="profile-avatar-wrapper">
 
@@ -49,7 +105,7 @@
                         >
 
                             <img
-                                src="<%= user.profileImage.url %>"
+                                src="<%= user.profileImage?.url || '/images/default-avatar.png' %>"
                                 alt="<%= user.name %>"
                                 id="profilePreview"
                             >
@@ -64,6 +120,9 @@
 
                     </div>
 
+
+                    <!-- PROFILE DETAILS -->
+
                     <div class="profile-details">
 
                         <h3>
@@ -74,142 +133,206 @@
                             <%= user.email %>
                         </p>
 
-                        <% if (user.role === "admin") { %>
+
+                        <% if (isAdmin) { %>
 
                             <span class="profile-badge admin">
+
                                 Administrator
+
                             </span>
 
-                        <% } else if (user.seller.status === "approved") { %>
+
+                        <% } else if (isApprovedSeller) { %>
 
                             <span class="profile-badge seller">
+
                                 Verified Seller
+
                             </span>
+
 
                         <% } else { %>
 
                             <span class="profile-badge customer">
+
                                 Customer
+
                             </span>
 
                         <% } %>
 
                     </div>
 
+
+                    <!-- =================================================
+                         PROFILE INFORMATION
+                    ================================================= -->
+
                     <div class="profile-information">
 
-    <div class="info-item">
 
-        <div class="info-icon">
-            <i class="bi bi-calendar-check-fill"></i>
-        </div>
+                        <!-- MEMBER SINCE -->
 
-        <div class="info-content">
+                        <div class="info-item">
 
-            <small>Member Since</small>
+                            <div class="info-icon">
 
-            <h6>
+                                <i class="bi bi-calendar-check-fill"></i>
 
-                <%= new Date(user.createdAt).toLocaleDateString("en-IN",{
-                    day:"2-digit",
-                    month:"long",
-                    year:"numeric"
-                }) %>
+                            </div>
 
-            </h6>
+                            <div class="info-content">
 
-        </div>
+                                <small>
+                                    Member Since
+                                </small>
 
-    </div>
+                                <h6>
 
-    <div class="info-item">
+                                    <%= new Date(user.createdAt).toLocaleDateString(
+                                        "en-IN",
+                                        {
+                                            day: "2-digit",
+                                            month: "long",
+                                            year: "numeric"
+                                        }
+                                    ) %>
 
-        <div class="info-icon">
-            <i class="bi bi-hourglass-split"></i>
-        </div>
+                                </h6>
 
-        <div class="info-content">
+                            </div>
 
-            <small>Account Age</small>
+                        </div>
 
-            <h6
-    class="profile-age"
-    id="profileAge"
-    data-created-at="<%= user.createdAt %>"
-></h6>
 
-        </div>
+                        <!-- ACCOUNT AGE -->
 
-    </div>
+                        <div class="info-item">
 
-    <div class="info-item">
+                            <div class="info-icon">
 
-        <div class="info-icon">
-            <i class="bi bi-patch-check-fill"></i>
-        </div>
+                                <i class="bi bi-hourglass-split"></i>
 
-        <div class="info-content">
+                            </div>
 
-            <small>Email</small>
+                            <div class="info-content">
 
-            <% if(user.isEmailVerified){ %>
+                                <small>
+                                    Account Age
+                                </small>
 
-                <span class="verify-badge verified">
+                                <h6
+                                    class="profile-age"
+                                    id="profileAge"
+                                    data-created-at="<%= user.createdAt %>"
+                                ></h6>
 
-                    <i class="bi bi-check-circle-fill"></i>
+                            </div>
 
-                    Verified
+                        </div>
 
-                </span>
 
-            <% } else { %>
+                        <!-- EMAIL -->
 
-                <span class="verify-badge pending">
+                        <div class="info-item">
 
-                    <i class="bi bi-clock-history"></i>
+                            <div class="info-icon">
 
-                    Pending
+                                <i class="bi bi-patch-check-fill"></i>
 
-                </span>
+                            </div>
 
-            <% } %>
+                            <div class="info-content">
 
-        </div>
+                                <small>
+                                    Email
+                                </small>
 
-    </div>
 
-    <div class="info-item">
+                                <% if (user.isEmailVerified) { %>
 
-        <div class="info-icon">
-            <i class="bi bi-shield-check"></i>
-        </div>
+                                    <span class="verify-badge verified">
 
-        <div class="info-content">
+                                        <i class="bi bi-check-circle-fill"></i>
 
-            <small>Status</small>
+                                        Verified
 
-            <h6>
+                                    </span>
 
-                <span class="status-dot online"></span>
 
-                <%= user.status.charAt(0).toUpperCase()+user.status.slice(1) %>
+                                <% } else { %>
 
-            </h6>
+                                    <span class="verify-badge pending">
 
-        </div>
+                                        <i class="bi bi-clock-history"></i>
 
-    </div>
+                                        Pending
 
-</div>
+                                    </span>
+
+                                <% } %>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ACCOUNT STATUS -->
+
+                        <div class="info-item">
+
+                            <div class="info-icon">
+
+                                <i class="bi bi-shield-check"></i>
+
+                            </div>
+
+                            <div class="info-content">
+
+                                <small>
+                                    Status
+                                </small>
+
+                                <h6>
+
+                                    <span class="status-dot online"></span>
+
+                                    <%= user.status
+                                        ? user.status.charAt(0).toUpperCase() +
+                                          user.status.slice(1)
+                                        : "Unknown"
+                                    %>
+
+                                </h6>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
 
                 </div>
 
             </div>
 
-            <!-- Right Side -->
+
+            <!-- =================================================
+                 RIGHT SIDE
+            ================================================= -->
+
             <div class="col-lg-8">
-                                <!-- Account Overview -->
+
+
+                <!-- =================================================
+                     ACCOUNT OVERVIEW
+                ================================================= -->
+
                 <div class="account-overview">
+
+
+                    <!-- EMAIL -->
 
                     <div class="overview-card overview-success">
 
@@ -225,13 +348,21 @@
                                 Email Verification
                             </span>
 
-<h5>
-    <%= user.isEmailVerified ? "Verified" : "Not Verified" %>
-</h5>
+                            <h5>
+
+                                <%= user.isEmailVerified
+                                    ? "Verified"
+                                    : "Not Verified"
+                                %>
+
+                            </h5>
 
                         </div>
 
                     </div>
+
+
+                    <!-- SELLER STATUS -->
 
                     <div class="overview-card overview-info">
 
@@ -248,20 +379,29 @@
                             </span>
 
                             <h5>
-    <% if (user.role === "admin" || user.seller.status === "approved") { %>
 
-        Approved
+                                <% if (isAdmin) { %>
 
-    <% } else { %>
+                                    Approved
 
-        Not Approved
+                                <% } else if (isApprovedSeller) { %>
 
-    <% } %>
-</h5>
+                                    Approved
+
+                                <% } else { %>
+
+                                    Not Approved
+
+                                <% } %>
+
+                            </h5>
 
                         </div>
 
                     </div>
+
+
+                    <!-- ROLE -->
 
                     <div class="overview-card overview-warning">
 
@@ -279,25 +419,28 @@
 
                             <h5>
 
-    <% if (user.role === "admin") { %>
+                                <% if (isAdmin) { %>
 
-        Admin
+                                    Admin
 
-    <% } else if (user.seller.status === "approved") { %>
+                                <% } else if (isApprovedSeller) { %>
 
-        Seller
+                                    Seller
 
-    <% } else { %>
+                                <% } else { %>
 
-        Customer
+                                    Customer
 
-    <% } %>
+                                <% } %>
 
-</h5>
+                            </h5>
 
                         </div>
 
                     </div>
+
+
+                    <!-- ACCOUNT STATUS -->
 
                     <div class="overview-card overview-danger">
 
@@ -315,7 +458,11 @@
 
                             <h5>
 
-                                <%= user.status.charAt(0).toUpperCase() + user.status.slice(1) %>
+                                <%= user.status
+                                    ? user.status.charAt(0).toUpperCase() +
+                                      user.status.slice(1)
+                                    : "Unknown"
+                                %>
 
                             </h5>
 
@@ -323,9 +470,14 @@
 
                     </div>
 
+
                 </div>
 
-                <!-- Profile Information -->
+
+                <!-- =================================================
+                     PERSONAL INFORMATION
+                ================================================= -->
+
                 <div class="profile-section">
 
                     <div class="section-header">
@@ -350,12 +502,14 @@
 
                     </div>
 
+
                     <form
                         action="/auth/profile?_method=PUT"
                         method="POST"
                         enctype="multipart/form-data"
                         id="profileForm"
                     >
+
 
                         <input
                             type="file"
@@ -365,7 +519,11 @@
                             hidden
                         >
 
+
                         <div class="row">
+
+
+                            <!-- NAME -->
 
                             <div class="col-md-6">
 
@@ -391,6 +549,9 @@
 
                             </div>
 
+
+                            <!-- EMAIL -->
+
                             <div class="col-md-6">
 
                                 <div class="profile-floating-group">
@@ -413,7 +574,11 @@
 
                             </div>
 
+
                         </div>
+
+
+                        <!-- BIO -->
 
                         <div class="profile-floating-group mt-4">
 
@@ -450,6 +615,9 @@
 
                         </div>
 
+
+                        <!-- SAVE -->
+
                         <div class="profile-actions mt-4">
 
                             <button
@@ -465,195 +633,335 @@
 
                         </div>
 
+
                     </form>
 
                 </div>
 
-                                <!-- Security -->
-                                 <% if (user.role !== "admin") { %>
-                <section class="profile-section mt-4">
 
-                    <div class="section-header">
+                <!-- =================================================
+                     SECURITY
+                ================================================= -->
 
-                        <div>
+                <% if (!isAdmin) { %>
 
-                            <h3>
+                    <section class="profile-section mt-4">
 
-                                <i class="bi bi-shield-lock-fill"></i>
+                        <div class="section-header">
 
-                                Security
+                            <div>
 
-                            </h3>
+                                <h3>
 
-                            <p>
+                                    <i class="bi bi-shield-lock-fill"></i>
 
-                                Keep your account protected with a strong password.
+                                    Security
 
-                            </p>
+                                </h3>
 
-                        </div>
+                                <p>
 
-                    </div>
+                                    Keep your account protected with a strong password.
 
-                    <form
-                        action="/auth/change-password?_method=PUT"
-                        method="POST"
-                        id="passwordForm"
-                    >
+                                </p>
 
-                        <div class="profile-floating-group">
-
-                            <i class="bi bi-lock-fill"></i>
-
-                            <input
-                                type="password"
-                                id="currentPassword"
-                                name="currentPassword"
-                                required
-                            >
-
-                            <label for="currentPassword">
-
-                                Current Password
-
-                            </label>
-
-                            <button
-                                type="button"
-                                class="profile-password-toggle"
-                                data-target="currentPassword"
-                            >
-
-                                <i class="bi bi-eye"></i>
-
-                            </button>
+                            </div>
 
                         </div>
 
-                        <div class="row mt-4">
 
-                            <div class="col-md-6">
+                        <form
+                            action="/auth/change-password?_method=PUT"
+                            method="POST"
+                            id="passwordForm"
+                        >
 
-                                <div class="profile-floating-group">
 
-                                    <i class="bi bi-key-fill"></i>
+                            <!-- CURRENT PASSWORD -->
 
-                                    <input
-                                        type="password"
-                                        id="newPassword"
-                                        name="newPassword"
-                                        required
-                                    >
+                            <div class="profile-floating-group">
 
-                                    <label for="newPassword">
+                                <i class="bi bi-lock-fill"></i>
 
-                                        New Password
+                                <input
+                                    type="password"
+                                    id="currentPassword"
+                                    name="currentPassword"
+                                    required
+                                >
 
-                                    </label>
+                                <label for="currentPassword">
 
-                                    <button
-                                        type="button"
-                                        class="profile-password-toggle"
-                                        data-target="newPassword"
-                                    >
+                                    Current Password
 
-                                        <i class="bi bi-eye"></i>
+                                </label>
 
-                                    </button>
+                                <button
+                                    type="button"
+                                    class="profile-password-toggle"
+                                    data-target="currentPassword"
+                                >
+
+                                    <i class="bi bi-eye"></i>
+
+                                </button>
+
+                            </div>
+
+
+                            <div class="row mt-4">
+
+
+                                <!-- NEW PASSWORD -->
+
+                                <div class="col-md-6">
+
+                                    <div class="profile-floating-group">
+
+                                        <i class="bi bi-key-fill"></i>
+
+                                        <input
+                                            type="password"
+                                            id="newPassword"
+                                            name="newPassword"
+                                            required
+                                        >
+
+                                        <label for="newPassword">
+
+                                            New Password
+
+                                        </label>
+
+                                        <button
+                                            type="button"
+                                            class="profile-password-toggle"
+                                            data-target="newPassword"
+                                        >
+
+                                            <i class="bi bi-eye"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- CONFIRM PASSWORD -->
+
+                                <div class="col-md-6">
+
+                                    <div class="profile-floating-group">
+
+                                        <i class="bi bi-check-circle-fill"></i>
+
+                                        <input
+                                            type="password"
+                                            id="confirmPassword"
+                                            name="confirmPassword"
+                                            required
+                                        >
+
+                                        <label for="confirmPassword">
+
+                                            Confirm Password
+
+                                        </label>
+
+                                        <button
+                                            type="button"
+                                            class="profile-password-toggle"
+                                            data-target="confirmPassword"
+                                        >
+
+                                            <i class="bi bi-eye"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+
+                            <!-- PASSWORD STRENGTH -->
+
+                            <div class="password-strength mt-4">
+
+                                <div class="strength-header">
+
+                                    <span>
+                                        Password Strength
+                                    </span>
+
+                                    <span id="strengthText">
+                                        Weak
+                                    </span>
+
+                                </div>
+
+                                <div class="strength-bar">
+
+                                    <span id="strengthProgress"></span>
 
                                 </div>
 
                             </div>
 
-                            <div class="col-md-6">
 
-                                <div class="profile-floating-group">
+                            <div
+                                class="password-match"
+                                id="passwordMatch"
+                            ></div>
 
-                                    <i class="bi bi-check-circle-fill"></i>
 
-                                    <input
-                                        type="password"
-                                        id="confirmPassword"
-                                        name="confirmPassword"
-                                        required
-                                    >
+                            <div class="profile-actions mt-4">
 
-                                    <label for="confirmPassword">
+                                <button
+                                    class="profile-btn"
+                                    type="submit"
+                                >
 
-                                        Confirm Password
+                                    <i class="bi bi-shield-check"></i>
 
-                                    </label>
+                                    Update Password
 
-                                    <button
-                                        type="button"
-                                        class="profile-password-toggle"
-                                        data-target="confirmPassword"
-                                    >
-
-                                        <i class="bi bi-eye"></i>
-
-                                    </button>
-
-                                </div>
+                                </button>
 
                             </div>
 
-                        </div>
 
-                        <div class="password-strength mt-4">
+                        </form>
 
-                            <div class="strength-header">
-
-                                <span>
-
-                                    Password Strength
-
-                                </span>
-
-                                <span id="strengthText">
-
-                                    Weak
-
-                                </span>
-
-                            </div>
-
-                            <div class="strength-bar">
-
-                                <span id="strengthProgress"></span>
-
-                            </div>
-
-                        </div>
-
-                        <div
-                            class="password-match"
-                            id="passwordMatch"
-                        ></div>
-
-                        <div class="profile-actions mt-4">
-
-                            <button
-                                class="profile-btn"
-                                type="submit"
-                            >
-
-                                <i class="bi bi-shield-check"></i>
-
-                                Update Password
-
-                            </button>
-
-                        </div>
-
-                    </form>
-
-                </section>
+                    </section>
 
                 <% } %>
 
-                <!-- Change Email -->
-                <% if (user.role !== "admin") { %>
+
+                <!-- =================================================
+                     CHANGE EMAIL
+                ================================================= -->
+
+                <% if (!isAdmin) { %>
+
+                    <section class="profile-section mt-4">
+
+                        <div class="section-header">
+
+                            <div>
+
+                                <h3>
+
+                                    <i class="bi bi-envelope-paper-fill"></i>
+
+                                    Email Address
+
+                                </h3>
+
+                                <p>
+
+                                    Change your login email securely.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <form
+                            action="/auth/change-email?_method=PUT"
+                            method="POST"
+                        >
+
+
+                            <div class="row">
+
+
+                                <!-- CURRENT EMAIL -->
+
+                                <div class="col-md-6">
+
+                                    <div class="profile-floating-group">
+
+                                        <i class="bi bi-envelope-fill"></i>
+
+                                        <input
+                                            type="email"
+                                            value="<%= user.email %>"
+                                            readonly
+                                        >
+
+                                        <label>
+
+                                            Current Email
+
+                                        </label>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- NEW EMAIL -->
+
+                                <div class="col-md-6">
+
+                                    <div class="profile-floating-group">
+
+                                        <i class="bi bi-envelope-plus-fill"></i>
+
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            required
+                                        >
+
+                                        <label for="email">
+
+                                            New Email Address
+
+                                        </label>
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="profile-actions mt-4">
+
+                                <button
+                                    class="profile-btn"
+                                    type="submit"
+                                >
+
+                                    <i class="bi bi-envelope-check-fill"></i>
+
+                                    Update Email
+
+                                </button>
+
+                            </div>
+
+
+                        </form>
+
+                    </section>
+
+                <% } %>
+
+
+                <!-- =================================================
+                     ADMIN / SELLER ACCOUNT
+                ================================================= -->
+
                 <section class="profile-section mt-4">
 
                     <div class="section-header">
@@ -662,15 +970,36 @@
 
                             <h3>
 
-                                <i class="bi bi-envelope-paper-fill"></i>
+                                <i class="bi bi-shop-window"></i>
 
-                                Email Address
+                                <% if (isAdmin) { %>
+
+                                    Admin Account
+
+                                <% } else { %>
+
+                                    Seller Account
+
+                                <% } %>
 
                             </h3>
 
+
                             <p>
 
-                                Change your login email securely.
+                                <% if (isAdmin) { %>
+
+                                    Manage your administrator account information.
+
+                                <% } else if (isApprovedSeller) { %>
+
+                                    Manage your seller account information.
+
+                                <% } else { %>
+
+                                    Apply to become a Plantora seller and start selling your products.
+
+                                <% } %>
 
                             </p>
 
@@ -678,131 +1007,12 @@
 
                     </div>
 
-                    <form
-                        action="/auth/change-email?_method=PUT"
-                        method="POST"
-                    >
 
-                        <div class="row">
+                    <!-- =================================================
+                         ADMIN
+                    ================================================= -->
 
-                            <div class="col-md-6">
-
-                                <div class="profile-floating-group">
-
-                                    <i class="bi bi-envelope-fill"></i>
-
-                                    <input
-                                        type="email"
-                                        value="<%= user.email %>"
-                                        readonly
-                                    >
-
-                                    <label>
-
-                                        Current Email
-
-                                    </label>
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-6">
-
-                                <div class="profile-floating-group">
-
-                                    <i class="bi bi-envelope-plus-fill"></i>
-
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        required
-                                    >
-
-                                    <label for="email">
-
-                                        New Email Address
-
-                                    </label>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="profile-actions mt-4">
-
-                            <button
-                                class="profile-btn"
-                                type="submit"
-                            >
-
-                                <i class="bi bi-envelope-check-fill"></i>
-
-                                Update Email
-
-                            </button>
-
-                        </div>
-
-                    </form>
-
-                </section>
-
-                 <% } %>
-
-                                <!-- Seller Account -->
-                <section class="profile-section mt-4">
-
-                    <div class="section-header">
-
-                        <div>
-
-                           <h3>
-
-    <i class="bi bi-envelope-paper-fill"></i>
-
-    <% if (user.role === "admin") { %>
-
-        Admin Account
-
-    <% } else if (user.seller.status === "approved") { %>
-
-        Seller Account
-
-    <% } else { %>
-
-        Email Address
-
-    <% } %>
-
-</h3>
-
-<p>
-
-    <% if (user.role === "admin") { %>
-
-        Manage your administrator account information.
-
-    <% } else if (user.seller.status === "approved") { %>
-
-        Manage your seller account information.
-
-    <% } else { %>
-
-        Change your login email securely.
-
-    <% } %>
-
-</p>
-
-                        </div>
-
-                    </div>
-
-                    <% if (user.role === "admin") { %>
+                    <% if (isAdmin) { %>
 
                         <div class="seller-banner admin">
 
@@ -811,6 +1021,7 @@
                                 <i class="bi bi-shield-fill-check"></i>
 
                             </div>
+
 
                             <div class="seller-banner-content">
 
@@ -828,6 +1039,7 @@
 
                             </div>
 
+
                             <a
                                 href="/admin/dashboard"
                                 class="seller-btn"
@@ -841,7 +1053,12 @@
 
                         </div>
 
-                    <% } else if (user.seller.status === "approved") { %>
+
+                    <!-- =================================================
+                         APPROVED SELLER
+                    ================================================= -->
+
+                    <% } else if (isApprovedSeller) { %>
 
                         <div class="seller-banner approved">
 
@@ -850,6 +1067,7 @@
                                 <i class="bi bi-patch-check-fill"></i>
 
                             </div>
+
 
                             <div class="seller-banner-content">
 
@@ -867,6 +1085,7 @@
 
                             </div>
 
+
                             <a
                                 href="/seller/dashboard"
                                 class="seller-btn"
@@ -880,7 +1099,12 @@
 
                         </div>
 
-                    <% } else if (user.seller.status === "pending") { %>
+
+                    <!-- =================================================
+                         PENDING
+                    ================================================= -->
+
+                    <% } else if (sellerStatus === "pending") { %>
 
                         <div class="seller-banner pending">
 
@@ -889,6 +1113,7 @@
                                 <i class="bi bi-hourglass-split"></i>
 
                             </div>
+
 
                             <div class="seller-banner-content">
 
@@ -901,11 +1126,12 @@
                                 <p>
 
                                     Our team is reviewing your seller application.
-You will receive an email once it has been approved or rejected.
+                                    You will receive an email once it has been approved or rejected.
 
                                 </p>
 
                             </div>
+
 
                             <button
                                 class="seller-btn disabled"
@@ -918,80 +1144,106 @@ You will receive an email once it has been approved or rejected.
 
                         </div>
 
-                    <% } else if (user.seller.status === "rejected") { %>
 
-<%
-const canApplyAgain =
-!user.seller.requestedAt ||
-(Date.now() - new Date(user.seller.requestedAt).getTime()) >=
-7 * 24 * 60 * 60 * 1000;
-%>
+                    <!-- =================================================
+                         REJECTED
+                    ================================================= -->
 
-<div class="seller-banner rejected">
+                    <% } else if (sellerStatus === "rejected") { %>
 
-    <div class="seller-banner-icon">
+                        <%
+                            const canApplyAgain =
+                                !user.seller?.requestedAt ||
+                                (
+                                    Date.now() -
+                                    new Date(user.seller.requestedAt).getTime()
+                                ) >=
+                                7 * 24 * 60 * 60 * 1000;
+                        %>
 
-        <i class="bi bi-x-circle-fill"></i>
 
-    </div>
+                        <div class="seller-banner rejected">
 
-    <div class="seller-banner-content">
+                            <div class="seller-banner-icon">
 
-        <h4>
+                                <i class="bi bi-x-circle-fill"></i>
 
-            Application Rejected
+                            </div>
 
-        </h4>
 
-       <% if(user.seller.adminRemark){ %>
+                            <div class="seller-banner-content">
 
-<div class="alert alert-danger mt-3">
+                                <h4>
 
-    <strong>Admin Remark</strong>
+                                    Application Rejected
 
-    <p class="mb-0 mt-2">
+                                </h4>
 
-        <%= user.seller.adminRemark %>
 
-    </p>
+                                <% if (user.seller?.adminRemark) { %>
 
-</div>
+                                    <div class="alert alert-danger mt-3">
 
-<% } %>
+                                        <strong>
+                                            Admin Remark
+                                        </strong>
 
-    </div>
+                                        <p class="mb-0 mt-2">
 
-    <% if(canApplyAgain){ %>
+                                            <%= user.seller.adminRemark %>
 
-        <form action="/auth/become-seller" method="POST">
+                                        </p>
 
-            <input
-                type="hidden"
-                name="confirm"
-                value="true"
-            >
+                                    </div>
 
-            <button
-                class="seller-btn"
-                type="submit"
-            >
-                Apply Again
-            </button>
+                                <% } %>
 
-        </form>
+                            </div>
 
-    <% } else { %>
 
-        <button
-            class="seller-btn disabled"
-            disabled
-        >
-            Apply Again After 7 Days
-        </button>
+                            <% if (canApplyAgain) { %>
 
-    <% } %>
+                                <form
+                                    action="/auth/become-seller"
+                                    method="POST"
+                                >
 
-</div>
+                                    <input
+                                        type="hidden"
+                                        name="confirm"
+                                        value="true"
+                                    >
+
+                                    <button
+                                        class="seller-btn"
+                                        type="submit"
+                                    >
+
+                                        Apply Again
+
+                                    </button>
+
+                                </form>
+
+                            <% } else { %>
+
+                                <button
+                                    class="seller-btn disabled"
+                                    disabled
+                                >
+
+                                    Apply Again After 7 Days
+
+                                </button>
+
+                            <% } %>
+
+                        </div>
+
+
+                    <!-- =================================================
+                         CUSTOMER
+                    ================================================= -->
 
                     <% } else { %>
 
@@ -1003,6 +1255,7 @@ const canApplyAgain =
 
                             </div>
 
+
                             <div class="seller-banner-content">
 
                                 <h4>
@@ -1013,28 +1266,35 @@ const canApplyAgain =
 
                                 <p>
 
-                                    Create your own store and sell products to thousands of customers.
+                                    Create your own store and sell products
+                                    to thousands of customers.
 
                                 </p>
 
                             </div>
 
-                            <form action="/auth/become-seller" method="POST">
 
-    <input
-        type="hidden"
-        name="confirm"
-        value="true"
-    >
+                            <form
+                                action="/auth/become-seller"
+                                method="POST"
+                            >
 
-    <button
-        class="seller-btn"
-        type="submit"
-    >
-        Become Seller
-    </button>
+                                <input
+                                    type="hidden"
+                                    name="confirm"
+                                    value="true"
+                                >
 
-</form>
+                                <button
+                                    class="seller-btn"
+                                    type="submit"
+                                >
+
+                                    Become Seller
+
+                                </button>
+
+                            </form>
 
                         </div>
 
@@ -1042,7 +1302,11 @@ const canApplyAgain =
 
                 </section>
 
-                <!-- Quick Actions -->
+
+                <!-- =================================================
+                     QUICK ACTIONS
+                ================================================= -->
+
                 <section class="profile-section mt-4 mb-5">
 
                     <div class="section-header">
@@ -1067,7 +1331,11 @@ const canApplyAgain =
 
                     </div>
 
+
                     <div class="quick-grid">
+
+
+                        <!-- ORDERS -->
 
                         <a
                             href="/orders"
@@ -1094,6 +1362,9 @@ const canApplyAgain =
 
                         </a>
 
+
+                        <!-- WISHLIST -->
+
                         <a
                             href="/wishlist"
                             class="quick-card"
@@ -1119,6 +1390,9 @@ const canApplyAgain =
 
                         </a>
 
+
+                        <!-- ADDRESSES -->
+
                         <a
                             href="/addresses"
                             class="quick-card"
@@ -1143,6 +1417,9 @@ const canApplyAgain =
                             </span>
 
                         </a>
+
+
+                        <!-- LOGOUT -->
 
                         <form
                             action="/auth/logout"
@@ -1177,9 +1454,11 @@ const canApplyAgain =
 
                         </form>
 
+
                     </div>
 
                 </section>
+
 
             </div>
 
@@ -1188,6 +1467,7 @@ const canApplyAgain =
     </div>
 
 </section>
+
 
 <script src="/js/profile.js"></script>
 

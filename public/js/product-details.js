@@ -305,10 +305,49 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ==========================================================
-  // WRITE REVIEW FORM
+  // WRITE REVIEW
   // ==========================================================
 
   const reviewForm = document.getElementById("write-review-form");
+
+  const showReviewFormButton = document.getElementById("show-review-form-btn");
+
+  // ==========================================================
+  // SHOW / HIDE REVIEW FORM
+  // ==========================================================
+
+  if (reviewForm && showReviewFormButton) {
+    showReviewFormButton.addEventListener("click", () => {
+      const isHidden = reviewForm.hidden;
+
+      reviewForm.hidden = !isHidden;
+
+      showReviewFormButton.setAttribute("aria-expanded", String(isHidden));
+
+      if (isHidden) {
+        showReviewFormButton.innerHTML = `
+          <i class="bi bi-x-lg"></i>
+          Hide Review Form
+        `;
+
+        requestAnimationFrame(() => {
+          reviewForm.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
+        });
+      } else {
+        showReviewFormButton.innerHTML = `
+          <i class="bi bi-pencil-square"></i>
+          Give Your Review
+        `;
+      }
+    });
+  }
+
+  // ==========================================================
+  // REVIEW FORM
+  // ==========================================================
 
   if (reviewForm) {
     // ========================================================
@@ -358,9 +397,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
-      // ====================================================
+      // ======================================================
       // CLICK
-      // ====================================================
+      // ======================================================
 
       star.addEventListener("click", () => {
         const rating = Number(star.dataset.rating || 0);
@@ -432,7 +471,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (comment && commentCount) {
       const updateCommentCount = () => {
-        commentCount.textContent = `${comment.value.length} / 2000`;
+        commentCount.textContent = `${comment.value.length} / 1000`;
       };
 
       comment.addEventListener("input", updateCommentCount);
@@ -451,7 +490,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const commentValue = comment?.value.trim() || "";
 
-      // Rating
+      // ----------------------------------------------------
+      // RATING
+      // ----------------------------------------------------
 
       if (!checkedRating) {
         event.preventDefault();
@@ -470,7 +511,9 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // Comment
+      // ----------------------------------------------------
+      // COMMENT
+      // ----------------------------------------------------
 
       if (!commentValue) {
         event.preventDefault();
@@ -480,7 +523,23 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // Submitting state
+      // ----------------------------------------------------
+      // COMMENT LENGTH
+      // ----------------------------------------------------
+
+      if (commentValue.length > 1000) {
+        event.preventDefault();
+
+        if (comment) {
+          comment.focus();
+        }
+
+        return;
+      }
+
+      // ----------------------------------------------------
+      // SUBMITTING STATE
+      // ----------------------------------------------------
 
       const submitButton = reviewForm.querySelector(".write-review-submit");
 

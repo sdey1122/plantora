@@ -1,14 +1,14 @@
-<%- include("../layout/adminHeader", {
-  pageTitle: "Admin Dashboard"
+<%- include("../layout/sellerHeader", {
+  pageTitle: "Seller Dashboard"
 }) %>
 
 <div class="admin-wrapper">
 
-  <%- include("../layout/adminSidebar") %>
+  <%- include("../layout/sellerSidebar") %>
 
   <div class="admin-main">
 
-    <%- include("../layout/adminTopbar") %>
+    <%- include("../layout/sellerTopbar") %>
 
     <main class="admin-content dashboard-page">
 
@@ -30,7 +30,7 @@
           </h1>
 
           <p class="dashboard-description">
-            Monitor revenue, orders, customers, products and overall
+            Monitor revenue, orders, products and overall
             business performance from one place.
           </p>
 
@@ -1051,4 +1051,4 @@
 </div>
 
 
-<%- include("../layout/adminFooter") %>
+<%- include("../layout/sellerFooter") %>

@@ -1117,19 +1117,15 @@
               rating--
             ) {
 
-              const reviewRatingCount =
-                Number(
-                  reviewRatingBreakdown[rating] || 0
-                );
+              
+  const ratingData =
+    reviewRatingBreakdown[rating] || {};
 
+  const reviewRatingCount =
+    Number(ratingData.count || 0);
 
-              const reviewRatingPercentage =
-                productTotalRatings > 0
-                  ? (
-                      reviewRatingCount /
-                      productTotalRatings
-                    ) * 100
-                  : 0;
+  const reviewRatingPercentage =
+    Number(ratingData.percentage || 0);
 
             %>
 
@@ -1303,55 +1299,78 @@
         ) { %>
 
 
-          <!-- ==================================================
-               WRITE REVIEW
-          =================================================== -->
+         <!-- ==================================================
+     WRITE REVIEW
+=================================================== -->
 
-          <div class="write-review-card">
-
-
-            <div class="write-review-header">
+<div class="write-review-card">
 
 
-              <div>
+  <!-- ==================================================
+       WRITE REVIEW HEADER
+  =================================================== -->
 
-                <span class="product-reviews-subtitle">
-
-                  Share Your Experience
-
-                </span>
+  <div class="write-review-header">
 
 
-                <h3>
+    <div>
 
-                  Write a Review
+      <span class="product-reviews-subtitle">
 
-                </h3>
+        Share Your Experience
 
-              </div>
-
-
-              <div class="write-review-header-icon">
-
-                <i class="bi bi-chat-heart"></i>
-
-              </div>
+      </span>
 
 
-            </div>
+      <h3>
+
+        Write a Review
+
+      </h3>
+
+    </div>
+
+
+    <div class="write-review-header-icon">
+
+      <i class="bi bi-chat-heart"></i>
+
+    </div>
+
+
+  </div>
 
 
 
-            <!-- ==================================================
-                 REVIEW FORM
-            =================================================== -->
+  <!-- ==================================================
+       WRITE REVIEW BUTTON
+  =================================================== -->
 
-            <form
-              id="write-review-form"
-              action="/reviews/product/<%= product._id %>"
-              method="POST"
-              class="write-review-form"
-            >
+  <button
+    type="button"
+    id="show-review-form-btn"
+    class="write-review-submit"
+  >
+
+    <i class="bi bi-pencil-square"></i>
+
+    Give Your Review
+
+  </button>
+
+
+
+  <!-- ==================================================
+       REVIEW FORM
+  =================================================== -->
+
+  <form
+    id="write-review-form"
+    action="/reviews/product/<%= product._id %>"
+    method="POST"
+    class="write-review-form"
+    hidden
+  >
 
 
               <!-- ==================================================
