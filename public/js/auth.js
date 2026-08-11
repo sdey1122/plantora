@@ -479,8 +479,6 @@
 
       showAlert("success", result.message);
 
-      showAlert("success", result.message);
-
       setTimeout(() => {
         window.location.reload();
       }, 1000);

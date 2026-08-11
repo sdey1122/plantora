@@ -31,3 +31,37 @@ const sendEmail = async ({ to, subject, html, text }) => {
 
 // Export utility
 module.exports = sendEmail;
+
+// const { resend } = require("../config/email");
+
+// const logger = require("../config/logger");
+
+// const sendEmail = async ({ to, subject, html, text }) => {
+//   try {
+//     const { data, error } = await resend.emails.send({
+//       from: process.env.EMAIL_FROM,
+//       to,
+//       subject,
+//       html,
+//       text,
+//     });
+
+//     if (error) {
+//       throw new Error(error.message);
+//     }
+
+//     logger.info(
+//       `Email sent successfully to '${to}'. Subject: '${subject}'. Email ID: '${data?.id}'.`,
+//     );
+
+//     return data;
+//   } catch (error) {
+//     logger.error(
+//       `Failed to send email to '${to}'. Subject: '${subject}'. ${error.message}`,
+//     );
+
+//     throw error;
+//   }
+// };
+
+// module.exports = sendEmail;

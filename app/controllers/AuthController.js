@@ -93,6 +93,149 @@ class AuthController {
     }
   }
 
+  // ==========================================================
+  // GOOGLE LOGIN
+  // ==========================================================
+
+  async googleLogin(req, res, next) {
+    try {
+      const user = req.user;
+
+      if (!user) {
+        return res.redirect(
+          `/?type=error&message=${encodeURIComponent(
+            "Google authentication failed.",
+          )}`,
+        );
+      }
+
+      if (user.isDeleted) {
+        return res.redirect(
+          `/?type=error&message=${encodeURIComponent(
+            "This account has been deleted.",
+          )}`,
+        );
+      }
+
+      if (user.status === "blocked") {
+        return res.redirect(
+          `/?type=error&message=${encodeURIComponent(
+            "This account has been blocked.",
+          )}`,
+        );
+      }
+
+      // ----------------------------------------------------------
+      // GOOGLE ACCOUNTS ARE ALREADY VERIFIED
+      // ----------------------------------------------------------
+
+      user.isEmailVerified = true;
+      user.status = "active";
+
+      user.lastLogin = new Date();
+      user.lastActive = new Date();
+
+      await user.save();
+
+      // ----------------------------------------------------------
+      // JWT PAYLOAD
+      // ----------------------------------------------------------
+
+      const tokenPayload = {
+        id: user._id,
+        role: user.role,
+        email: user.email,
+      };
+
+      // ----------------------------------------------------------
+      // ACCESS TOKEN
+      // ----------------------------------------------------------
+
+      const accessToken = generateAccessToken(tokenPayload);
+
+      // ----------------------------------------------------------
+      // REFRESH TOKEN
+      // ----------------------------------------------------------
+
+      const refreshToken = generateRefreshToken(tokenPayload);
+
+      const hashedRefreshToken = hashToken(refreshToken);
+
+      // Remove old refresh tokens
+
+      await Token.deleteMany({
+        user: user._id,
+        type: "refresh-token",
+      });
+
+      // Store new refresh token
+
+      await Token.create({
+        user: user._id,
+        token: hashedRefreshToken,
+        type: "refresh-token",
+        expiresAt: new Date(
+          Date.now() + ms(process.env.JWT_REFRESH_EXPIRES_IN),
+        ),
+      });
+
+      // ----------------------------------------------------------
+      // ACCESS COOKIE
+      // ----------------------------------------------------------
+
+      res.cookie(process.env.COOKIE_ACCESS_TOKEN, accessToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+        maxAge: ms(process.env.JWT_ACCESS_EXPIRES_IN),
+      });
+
+      // ----------------------------------------------------------
+      // REFRESH COOKIE
+      // ----------------------------------------------------------
+
+      res.cookie(process.env.COOKIE_REFRESH_TOKEN, refreshToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+        maxAge: ms(process.env.JWT_REFRESH_EXPIRES_IN),
+      });
+
+      // ----------------------------------------------------------
+      // AUDIT LOG
+      // ----------------------------------------------------------
+
+      await createAuditLog({
+        req,
+
+        actor: user,
+
+        module: "Authentication",
+
+        action: "Google Login",
+
+        severity: "info",
+
+        target: {
+          id: user._id,
+          model: "User",
+        },
+
+        description: "User logged in successfully using Google.",
+      });
+
+      logger.info(`Google login successful : ${user.email}`);
+
+      // ----------------------------------------------------------
+      // REDIRECT
+      // ----------------------------------------------------------
+
+      return res.redirect("/");
+    } catch (error) {
+      next(error);
+    }
+  }
+
   // Profile Page
   async showProfilePage(req, res, next) {
     try {
@@ -510,6 +653,14 @@ class AuthController {
         });
       }
 
+      if (user.authProvider === "google") {
+        return res.status(httpStatusCode.FORBIDDEN).json({
+          success: false,
+          message:
+            "This account was created with Google. Please continue with Google.",
+        });
+      }
+
       if (user.isDeleted) {
         return res.status(httpStatusCode.FORBIDDEN).json({
           success: false,
@@ -865,6 +1016,14 @@ class AuthController {
         });
       }
 
+      if (user.authProvider === "google") {
+        return res.status(httpStatusCode.BAD_REQUEST).json({
+          success: false,
+          message:
+            "This account uses Google Sign-In. Please continue with Google to access your account.",
+        });
+      }
+
       if (!user.isEmailVerified) {
         return res.status(httpStatusCode.BAD_REQUEST).json({
           success: false,
@@ -966,6 +1125,16 @@ class AuthController {
 
       const user = await User.findById(resetToken.user).select("+password");
 
+      if (user.authProvider === "google") {
+        await Token.findByIdAndDelete(resetToken._id);
+
+        return res.status(httpStatusCode.FORBIDDEN).json({
+          success: false,
+          message:
+            "Google accounts do not use a Plantora password. Please continue with Google.",
+        });
+      }
+
       if (!user) {
         await Token.findByIdAndDelete(resetToken._id);
 
@@ -1041,6 +1210,14 @@ class AuthController {
       }
 
       const user = await User.findById(req.user._id).select("+password");
+
+      if (user.authProvider === "google") {
+        return res.redirect(
+          `/auth/profile?type=error&message=${encodeURIComponent(
+            "Google accounts do not use a Plantora password.",
+          )}`,
+        );
+      }
 
       if (!user) {
         return res.redirect(

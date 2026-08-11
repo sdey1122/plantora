@@ -34,3 +34,28 @@ module.exports = {
   transporter,
   verifyEmailConnection,
 };
+
+// const { Resend } = require("resend");
+
+// const logger = require("./logger");
+
+// const resend = new Resend(process.env.RESEND_API_KEY);
+
+// const verifyEmailConnection = async () => {
+//   try {
+//     if (!process.env.RESEND_API_KEY) {
+//       throw new Error("RESEND_API_KEY is not configured.");
+//     }
+
+//     logger.info("Resend email service configured successfully.");
+//   } catch (error) {
+//     logger.error(`Resend email service configuration failed: ${error.message}`);
+
+//     process.exit(1);
+//   }
+// };
+
+// module.exports = {
+//   resend,
+//   verifyEmailConnection,
+// };

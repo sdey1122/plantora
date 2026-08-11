@@ -7,9 +7,14 @@ const USER_STATUS = ["inactive", "active", "blocked"];
 
 const SELLER_STATUS = ["none", "pending", "approved", "rejected"];
 
+const AUTH_PROVIDERS = ["local", "google"];
+
 const userSchema = new mongoose.Schema(
   {
-    // Basic Information
+    // ==========================================================
+    // BASIC INFORMATION
+    // ==========================================================
+
     name: {
       type: String,
       required: [true, "Name is required."],
@@ -27,11 +32,51 @@ const userSchema = new mongoose.Schema(
       match: [/^\S+@\S+\.\S+$/, "Please enter a valid email address."],
     },
 
+    // ==========================================================
+    // AUTHENTICATION PROVIDER
+    // ==========================================================
+
+    authProvider: {
+      type: String,
+      enum: AUTH_PROVIDERS,
+      default: "local",
+    },
+
+    // ==========================================================
+    // GOOGLE AUTHENTICATION
+    // ==========================================================
+
+    googleId: {
+      type: String,
+      unique: true,
+      sparse: true,
+      default: null,
+    },
+
+    // ==========================================================
+    // PASSWORD
+    // ==========================================================
+
+    /*
+     * Local accounts require a password.
+     *
+     * Google accounts do NOT require a password because
+     * authentication is handled by Google.
+     */
+
     password: {
       type: String,
-      required: [true, "Password is required."],
+
+      required: function () {
+        return this.authProvider === "local";
+      },
+
       select: false,
     },
+
+    // ==========================================================
+    // PROFILE IMAGE
+    // ==========================================================
 
     profileImage: {
       publicId: {
@@ -45,7 +90,10 @@ const userSchema = new mongoose.Schema(
       },
     },
 
-    // Bio
+    // ==========================================================
+    // BIO
+    // ==========================================================
+
     bio: {
       type: String,
       trim: true,
@@ -53,7 +101,10 @@ const userSchema = new mongoose.Schema(
       default: "",
     },
 
-    // Role & Status
+    // ==========================================================
+    // ROLE & STATUS
+    // ==========================================================
+
     role: {
       type: String,
       enum: USER_ROLES,
@@ -71,7 +122,10 @@ const userSchema = new mongoose.Schema(
       default: false,
     },
 
-    // Seller Information
+    // ==========================================================
+    // SELLER INFORMATION
+    // ==========================================================
+
     seller: {
       status: {
         type: String,
@@ -102,7 +156,10 @@ const userSchema = new mongoose.Schema(
       },
     },
 
-    // Terms & Conditions
+    // ==========================================================
+    // TERMS & CONDITIONS
+    // ==========================================================
+
     termsAccepted: {
       type: Boolean,
       default: false,
@@ -113,7 +170,10 @@ const userSchema = new mongoose.Schema(
       default: null,
     },
 
-    // Login Security
+    // ==========================================================
+    // LOGIN SECURITY
+    // ==========================================================
+
     failedLoginAttempts: {
       type: Number,
       default: 0,
@@ -136,7 +196,10 @@ const userSchema = new mongoose.Schema(
       default: null,
     },
 
-    // Activity
+    // ==========================================================
+    // ACTIVITY
+    // ==========================================================
+
     lastLogin: {
       type: Date,
       default: null,
@@ -157,7 +220,10 @@ const userSchema = new mongoose.Schema(
       default: null,
     },
 
-    // Soft Delete
+    // ==========================================================
+    // SOFT DELETE
+    // ==========================================================
+
     isDeleted: {
       type: Boolean,
       default: false,
@@ -174,7 +240,10 @@ const userSchema = new mongoose.Schema(
   },
 );
 
-// Indexes
+// ============================================================
+// INDEXES
+// ============================================================
+
 userSchema.index({ role: 1 });
 
 userSchema.index({ status: 1 });
@@ -183,7 +252,21 @@ userSchema.index({ "seller.status": 1 });
 
 userSchema.index({ isDeleted: 1 });
 
-// Virtuals
+userSchema.index({ authProvider: 1 });
+
+/*
+ * googleId already has:
+ *
+ * unique: true
+ * sparse: true
+ *
+ * so MongoDB will create the appropriate unique sparse index.
+ */
+
+// ============================================================
+// VIRTUALS
+// ============================================================
+
 userSchema.virtual("isSeller").get(function () {
   return this.seller?.status === "approved";
 });
@@ -192,8 +275,23 @@ userSchema.virtual("isLocked").get(function () {
   return this.accountLockedUntil && this.accountLockedUntil > new Date();
 });
 
-// Password Hashing
+// ============================================================
+// PASSWORD HASHING
+// ============================================================
+
 userSchema.pre("save", async function () {
+  /*
+   * Google accounts don't have a password.
+   */
+
+  if (this.authProvider === "google") {
+    return;
+  }
+
+  /*
+   * Only hash when password has actually changed.
+   */
+
   if (!this.isModified("password")) {
     return;
   }
@@ -203,12 +301,26 @@ userSchema.pre("save", async function () {
   this.passwordChangedAt = new Date();
 });
 
-// Compare Password
+// ============================================================
+// COMPARE PASSWORD
+// ============================================================
+
 userSchema.methods.comparePassword = async function (enteredPassword) {
+  /*
+   * Google accounts don't have a Plantora password.
+   */
+
+  if (this.authProvider === "google" || !this.password) {
+    return false;
+  }
+
   return bcrypt.compare(enteredPassword, this.password);
 };
 
-// JSON Settings
+// ============================================================
+// JSON SETTINGS
+// ============================================================
+
 userSchema.set("toJSON", {
   virtuals: true,
 });
@@ -216,5 +328,9 @@ userSchema.set("toJSON", {
 userSchema.set("toObject", {
   virtuals: true,
 });
+
+// ============================================================
+// EXPORT
+// ============================================================
 
 module.exports = mongoose.model("User", userSchema);

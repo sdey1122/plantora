@@ -2,6 +2,8 @@ const express = require("express");
 
 const authController = require("../controllers/authController");
 
+const passport = require("../config/passport");
+
 const authMiddleware = require("../middlewares/authMiddleware");
 
 const {
@@ -96,6 +98,27 @@ router.delete(
   "/profile/image",
   authMiddleware,
   authController.deleteProfileImage,
+);
+
+// ==========================================================
+// GOOGLE AUTHENTICATION
+// ==========================================================
+
+router.get(
+  "/google",
+  passport.authenticate("google", {
+    scope: ["profile", "email"],
+  }),
+);
+
+router.get(
+  "/google/callback",
+  passport.authenticate("google", {
+    session: false,
+
+    failureRedirect: "/?type=error&message=Google%20authentication%20failed.",
+  }),
+  authController.googleLogin.bind(authController),
 );
 
 module.exports = router;

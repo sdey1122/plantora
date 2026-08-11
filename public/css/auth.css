@@ -432,3 +432,154 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ===========================================================
+   Google Login Button
+=========================================================== */
+
+.google-login-btn {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+
+  width: 100%;
+  min-height: 50px;
+
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(100deg, #4285f4, #34a853 35%, #fbbc05 68%, #ea4335)
+      border-box;
+
+  color: #212529 !important;
+
+  font-weight: 600;
+  text-decoration: none !important;
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+/* Google Icon */
+
+.google-login-btn .google-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 22px;
+  height: 22px;
+
+  flex-shrink: 0;
+}
+
+.google-login-btn .google-icon svg {
+  width: 22px;
+  height: 22px;
+
+  display: block;
+
+  transition: transform 0.25s ease;
+}
+
+.google-login-btn:hover .google-icon svg {
+  transform: scale(1.06);
+}
+
+/* Text */
+
+.google-login-btn > span:last-child {
+  color: #212529;
+
+  font-size: 0.98rem;
+}
+
+/* Hover */
+
+.google-login-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 6px 18px rgba(66, 133, 244, 0.12),
+    0 2px 6px rgba(0, 0, 0, 0.08);
+
+  color: #212529 !important;
+}
+
+.google-login-btn:hover .google-icon {
+  transform: scale(1.08);
+
+  filter: drop-shadow(0 2px 4px rgba(66, 133, 244, 0.18));
+}
+
+/* Active */
+
+.google-login-btn:active {
+  transform: translateY(0);
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Keyboard focus */
+
+.google-login-btn:focus-visible {
+  outline: none;
+
+  box-shadow:
+    0 0 0 3px rgba(66, 133, 244, 0.15),
+    0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ===========================================================
+   Divider
+=========================================================== */
+
+.auth-form-wrapper hr {
+  margin: 2rem 0 1.5rem;
+  opacity: 0.15;
+}
+
+.auth-divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem 0;
+  color: #6c757d;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #dee2e6;
+}
+
+.auth-divider span {
+  padding: 0 1rem;
+  color: #6c757d;
+  background: #fff;
+}
+
+.auth-account-switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.creatr-account-link-modal {
+  margin-left: 5px;
+}
