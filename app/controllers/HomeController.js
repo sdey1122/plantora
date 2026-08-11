@@ -8,7 +8,6 @@ class HomeController {
 
   static async showHomePage(req, res, next) {
     try {
-      // Featured products
       const featuredProducts = await Product.aggregate([
         {
           $match: {
@@ -75,15 +74,15 @@ class HomeController {
   // ABOUT PAGE
   // ==========================================================
 
-  static async showAboutPage(req, res, next) {
-    try {
-      return res.status(httpStatusCode.OK).render("home/about", {
-        title: "About Us | Plantora",
-      });
-    } catch (error) {
-      return next(error);
-    }
-  }
+  // static async showAboutPage(req, res, next) {
+  //   try {
+  //     return res.status(httpStatusCode.OK).render("/about", {
+  //       title: "About Us | Plantora",
+  //     });
+  //   } catch (error) {
+  //     return next(error);
+  //   }
+  // }
 
   // ==========================================================
   // CONTACT PAGE

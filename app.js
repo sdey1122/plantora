@@ -21,10 +21,13 @@ const ShopController = require("./app/controllers/ShopController");
 
 // Import routes
 const homeRoutes = require("./app/routes/homeRoutes");
+const newsletterRoute = require("./app/routes/newsletterRoute");
 const shopRoutes = require("./app/routes/shopRoute");
 
 const authRoutes = require("./app/routes/authRoute");
 const userRoutes = require("./app/routes/userRoute");
+const aboutRoutes = require("./app/routes/aboutRoute");
+const contactRoutes = require("./app/routes/contactRoute");
 const categoryRoutes = require("./app/routes/categoryRoute");
 const brandRoutes = require("./app/routes/brandRoute");
 const productRoutes = require("./app/routes/productRoute");
@@ -114,6 +117,13 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(globalMiddleware);
 
 // Home page
+app.use("/newsletter", newsletterRoute);
+// About
+app.use("/about", aboutRoutes);
+
+// Contact
+
+app.use("/contact", contactRoutes);
 
 // Public Website
 app.use("/", homeRoutes);

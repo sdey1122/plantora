@@ -7,180 +7,193 @@
     <div class="container">
 
         <!-- Logo -->
-
         <div class="footer-logo">
-
             <a href="/">
-
                 <img
                     src="/images/logo/plantora-orgn-white.png"
                     alt="Plantora Logo"
                 >
-
             </a>
-
         </div>
+
 
         <!-- Description -->
-
         <p class="footer-description">
-
             Bringing nature closer to every home with premium indoor plants,
             expert care, and beautifully curated greenery for every lifestyle.
-
         </p>
 
+
         <!-- Navigation -->
-
         <nav class="footer-nav">
-
             <a href="/">Home</a>
-
             <a href="/shop">Shop</a>
-
             <a href="/about">About</a>
-
             <a href="/contact">Contact</a>
-
         </nav>
 
-        <!-- Social -->
 
+        <!-- Social -->
         <div class="footer-social">
 
-            <a href="https://www.facebook.com/">
-
+            <a
+                href="https://www.facebook.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+            >
                 <i class="bi bi-facebook"></i>
-
             </a>
 
-            <a href="https://www.instagram.com/">
-
+            <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+            >
                 <i class="bi bi-instagram"></i>
-
             </a>
 
-            <a href="https://x.com/">
-
+            <a
+                href="https://x.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="X"
+            >
                 <i class="bi bi-twitter-x"></i>
-
             </a>
 
-            <a href="https://www.youtube.com/">
-
+            <a
+                href="https://www.youtube.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube"
+            >
                 <i class="bi bi-youtube"></i>
-
             </a>
 
-            <a href="https://www.pinterest.com/">
-
+            <a
+                href="https://www.pinterest.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Pinterest"
+            >
                 <i class="bi bi-pinterest"></i>
-
             </a>
 
         </div>
 
-        <!-- Newsletter -->
 
-        <div class="footer-newsletter">
+<!-- =======================================================
+     NEWSLETTER
+======================================================== -->
 
-            <h3>
+<div class="footer-newsletter">
 
-                Stay Connected
+    <h3>
+        Stay Connected
+    </h3>
 
-            </h3>
+    <p>
+        Get exclusive offers, plant care tips and latest arrivals.
+    </p>
 
-            <p>
+    <form
+        id="plantoraNewsletterForm"
+    >
 
-                Get exclusive offers, plant care tips and latest arrivals.
+        <input
+            type="email"
+            id="newsletterEmail"
+            name="email"
+            placeholder="Enter your email address"
+            maxlength="254"
+            autocomplete="email"
+            required
+        >
 
-            </p>
+        <button
+            type="submit"
+            id="newsletterSubmitButton"
+        >
 
-            <form action="#">
+            <span class="newsletter-button-text">
+                Subscribe
+            </span>
 
-                <input
-                    type="email"
-                    placeholder="Enter your email address"
-                >
+            <span class="newsletter-button-loading">
 
-                <button>
+                <i class="bi bi-arrow-repeat"></i>
 
-                    Subscribe
+                Subscribing...
 
-                    <i class="bi bi-arrow-right"></i>
+            </span>
 
-                </button>
+            <i
+                class="bi bi-arrow-right newsletter-button-arrow"
+            ></i>
 
-            </form>
+        </button>
 
-        </div>
+    </form>
 
-        <!-- Trust -->
+</div>
+
+
+        <!-- =======================================================
+             TRUST
+        ======================================================== -->
 
         <div class="footer-trust">
 
             <span>
-
                 <i class="bi bi-flower1"></i>
-
                 Healthy Plants
-
             </span>
 
             <span>
-
                 <i class="bi bi-truck"></i>
-
                 Fast Delivery
-
             </span>
 
             <span>
-
                 <i class="bi bi-shield-check"></i>
-
                 Secure Payment
-
             </span>
 
             <span>
-
                 <i class="bi bi-recycle"></i>
-
                 Eco Friendly
-
             </span>
 
         </div>
 
-        <!-- Bottom -->
+
+        <!-- =======================================================
+             FOOTER BOTTOM
+        ======================================================== -->
 
         <div class="footer-bottom">
 
             <p>
-
-               <a href="/"> © 2026 Plantora</a>. Crafted with 🌿 for plant lovers.
-
+                <a href="/">
+                    © 2026 Plantora
+                </a>
+                . Crafted with 🌿 for plant lovers.
             </p>
 
             <div>
 
                 <a href="#">
-
                     Privacy
-
                 </a>
 
                 <a href="#">
-
                     Terms
-
                 </a>
 
                 <a href="#">
-
                     Cookies
-
                 </a>
 
             </div>
@@ -191,39 +204,194 @@
 
 </footer>
 
+
+<!-- =======================================================
+     NEWSLETTER SUCCESS MODAL
+======================================================== -->
+
+<div
+    class="newsletter-modal"
+    id="newsletterSuccessModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="newsletter-modal-overlay"
+        id="newsletterModalOverlay"
+    ></div>
+
+
+    <div
+        class="newsletter-modal-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="newsletterModalTitle"
+    >
+
+        <!-- Close -->
+
+        <button
+            type="button"
+            class="newsletter-modal-close"
+            id="newsletterSuccessClose"
+            aria-label="Close"
+        >
+
+            <i class="bi bi-x-lg"></i>
+
+        </button>
+
+
+        <!-- Icon -->
+
+        <div class="newsletter-modal-icon">
+
+            <div class="newsletter-modal-icon-glow"></div>
+
+            <div class="newsletter-modal-icon-inner">
+
+                <i class="bi bi-envelope-heart"></i>
+
+            </div>
+
+        </div>
+
+
+        <!-- Kicker -->
+
+        <span class="newsletter-modal-kicker">
+            PLANTORA NEWSLETTER
+        </span>
+
+
+        <!-- Heading -->
+
+        <h2 id="newsletterModalTitle">
+
+            You're officially
+            <span>connected.</span>
+
+        </h2>
+
+
+        <!-- Description -->
+
+        <p>
+
+            Thank you for joining the Plantora community.
+
+            From now on, you'll receive beautiful plant inspiration,
+            helpful care tips, exclusive offers and new arrivals
+            directly in your inbox.
+
+        </p>
+
+
+        <!-- Highlights -->
+
+        <div class="newsletter-modal-highlights">
+
+            <div>
+
+                <i class="bi bi-flower1"></i>
+
+                <span>
+                    Plant Care
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <i class="bi bi-stars"></i>
+
+                <span>
+                    Exclusive Updates
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <i class="bi bi-tag"></i>
+
+                <span>
+                    Special Offers
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Footer -->
+
+        <div class="newsletter-modal-footer">
+
+            <i class="bi bi-shield-check"></i>
+
+            Welcome to Plantora.
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =======================================================
+     JAVASCRIPT
+======================================================== -->
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="/socket.io/socket.io.js"></script>
 
 <script src="/js/header.js"></script>
-
+<script src="/js/about.js"></script>
 <script src="/js/order.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script src="/js/featured.js"></script>
-
 <script src="/js/why-choose.js"></script>
-
 <script src="/js/hero.js"></script>
-
 <script src="/js/notification.js"></script>
-
 <script src="/js/wishlist.js"></script>
-
 <script src="/js/auth.js"></script>
 
+<!-- Footer -->
 <script src="/js/footer.js"></script>
 
-<script src="/js/address.js"></script>
+<!-- Newsletter -->
+<script src="/js/footer-newsletter.js"></script>
 
+<script src="/js/address.js"></script>
 <script src="/js/checkout.js"></script>
 
-<link rel="stylesheet" href="/css/payment-success.css" />
 
-<!-- <script src="/js/verify.js"></script> -->
+<!-- Payment Success CSS -->
+<link
+    rel="stylesheet"
+    href="/css/payment-success.css"
+/>
 
+
+<!-- Leaflet -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script src="/js/contact.js"></script>
+
+<!--
+<script src="/js/verify.js"></script>
+-->
+
+
+<!-- Toast -->
 <%- include("../toast.ejs") %>
+
 
 </body>
 

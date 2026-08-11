@@ -1,0 +1,222 @@
+<%- include("./announcementBar") %> <%- include("./head") %>
+
+<link rel="stylesheet" href="/css/about.css" />
+
+<%- include("./header") %>
+
+<main class="plantora-about-page">
+  <!-- ====================================================
+         HERO
+    ==================================================== -->
+
+  <section class="plantora-about-hero">
+    <div class="container">
+      <div class="plantora-about-hero-content">
+        <div class="plantora-about-eyebrow">
+          <span class="plantora-eyebrow-line"></span>
+
+          <span> THE PLANTORA GUIDE </span>
+
+          <span class="plantora-eyebrow-line"></span>
+        </div>
+
+        <h1 class="plantora-about-title">
+          Discover
+
+          <span> Plantora. </span>
+        </h1>
+
+        <p class="plantora-about-description">
+          Everything you need to know about Plantora, from discovering beautiful
+          plants to shopping, delivery, sellers and plant care — all through
+          your personal Plantora AI Guide.
+        </p>
+
+        <div class="plantora-ai-status">
+          <span class="plantora-ai-status-dot"></span>
+
+          Plantora AI Guide is ready
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+         AI GUIDE
+    ==================================================== -->
+
+  <section class="plantora-guide-section">
+    <div class="container">
+      <div class="plantora-guide-heading">
+        <div class="plantora-guide-heading-left">
+          <span class="plantora-section-kicker">
+            <i class="bi bi-stars"></i>
+
+            INTELLIGENT PLANTORA GUIDE
+          </span>
+
+          <h2>
+            Ask Plantora.
+
+            <span> Discover more. </span>
+          </h2>
+        </div>
+
+        <p>
+          Choose a question created specifically around the Plantora experience.
+          Our AI will generate a helpful answer based only on Plantora-related
+          knowledge.
+        </p>
+      </div>
+
+      <!-- ==================================================
+                 AI SHELL
+            ================================================== -->
+
+      <div class="plantora-ai-shell">
+        <!-- ==================================================
+                     QUESTION PANEL
+                ================================================== -->
+
+        <div class="plantora-question-panel">
+          <div class="plantora-question-header">
+            <div class="plantora-question-header-icon">
+              <i class="bi bi-question-lg"></i>
+            </div>
+
+            <div>
+              <span class="plantora-panel-label"> EXPLORE </span>
+
+              <h3>Plantora Questions</h3>
+            </div>
+          </div>
+
+          <p class="plantora-question-subtitle">
+            Select something you're curious about.
+          </p>
+
+          <div class="plantora-question-list" id="plantoraQuestionList">
+            <div class="plantora-ai-loading">
+              <div class="plantora-loading-orbit"></div>
+
+              <div>
+                <strong> Growing your questions... </strong>
+
+                <small> Preparing Plantora topics for you. </small>
+              </div>
+            </div>
+          </div>
+
+          <div id="plantoraQuestionError" class="plantora-ai-error"></div>
+        </div>
+
+        <!-- ==================================================
+                     ANSWER PANEL
+                ================================================== -->
+
+        <div class="plantora-answer-panel" id="plantoraAnswerPanel">
+          <div class="plantora-answer-empty">
+            <div class="plantora-answer-orb">
+              <div class="plantora-answer-orb-inner">
+                <i class="bi bi-stars"></i>
+              </div>
+            </div>
+
+            <span class="plantora-answer-kicker"> YOUR PLANTORA GUIDE </span>
+
+            <h3>
+              Your questions,
+
+              <br />
+
+              beautifully answered.
+            </h3>
+
+            <p>
+              Select a question from the left and our AI will create a helpful
+              response specifically around Plantora.
+            </p>
+
+            <div class="plantora-answer-feature">
+              <span>
+                <i class="bi bi-flower1"></i>
+
+                Plantora Knowledge
+              </span>
+
+              <span>
+                <i class="bi bi-stars"></i>
+
+                AI Guided
+              </span>
+
+              <span>
+                <i class="bi bi-shield-check"></i>
+
+                Plantora Focused
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================================================
+                 TRUST NOTE
+            ================================================== -->
+
+      <div class="plantora-ai-trust">
+        <div class="plantora-ai-trust-icon">
+          <i class="bi bi-shield-check"></i>
+        </div>
+
+        <div>
+          <strong> Plantora-focused AI </strong>
+
+          <p>
+            Answers are generated specifically around Plantora and its products,
+            shopping experience, services, sellers and plant-related guidance.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+         BRAND STATEMENT
+    ==================================================== -->
+
+  <section class="plantora-about-statement">
+    <div class="container">
+      <div class="plantora-statement-card">
+        <div class="plantora-statement-decoration">
+          <i class="bi bi-flower1"></i>
+        </div>
+
+        <span class="plantora-statement-kicker"> MORE THAN A PLANT STORE </span>
+
+        <h2>
+          Bringing nature
+
+          <em> closer to you. </em>
+        </h2>
+
+        <p>
+          Plantora exists to make discovering, choosing and caring for plants a
+          simpler, more beautiful experience.
+        </p>
+
+        <div class="plantora-statement-signature">
+          <span class="plantora-signature-line"></span>
+
+          PLANTORA
+
+          <span class="plantora-signature-line"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="/js/about.js"></script>
+
+<%- include("./footer") %>

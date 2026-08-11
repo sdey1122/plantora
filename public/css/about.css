@@ -1,0 +1,1342 @@
+/* ============================================================
+   PLANTORA ABOUT PAGE
+   Luxury AI Guide
+============================================================ */
+
+:root {
+  --plantora-green: #163f2b;
+  --plantora-green-dark: #0d2b1d;
+  --plantora-green-soft: #2d6a4f;
+  --plantora-sage: #dce9df;
+  --plantora-cream: #f7f5ee;
+  --plantora-white: #ffffff;
+  --plantora-gold: #b89b5e;
+  --plantora-gold-light: #d8c58d;
+  --plantora-text: #183126;
+  --plantora-muted: #718078;
+  --plantora-border: rgba(22, 63, 43, 0.1);
+  --plantora-shadow: 0 30px 80px rgba(18, 48, 34, 0.12);
+}
+
+/* ============================================================
+   PAGE
+============================================================ */
+
+.plantora-about-page {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #fbfaf6 0%, #f7f5ee 48%, #ffffff 100%);
+  color: var(--plantora-text);
+}
+
+/* ============================================================
+   HERO
+============================================================ */
+
+.plantora-about-hero {
+  position: relative;
+  min-height: 620px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 82% 28%,
+      rgba(184, 155, 94, 0.18),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 10% 80%,
+      rgba(45, 106, 79, 0.13),
+      transparent 32%
+    ),
+    linear-gradient(135deg, #fbfaf6 0%, #f4f0e5 100%);
+}
+
+.plantora-about-hero::before {
+  content: "";
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  right: -180px;
+  top: -180px;
+  border: 1px solid rgba(184, 155, 94, 0.22);
+  border-radius: 50%;
+}
+
+.plantora-about-hero::after {
+  content: "";
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  left: -180px;
+  bottom: -200px;
+  border: 1px solid rgba(45, 106, 79, 0.12);
+  border-radius: 50%;
+}
+
+.plantora-about-hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+.plantora-about-hero-content {
+  max-width: 850px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ============================================================
+   HERO EYEBROW
+============================================================ */
+
+.plantora-about-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+
+  margin-bottom: 30px;
+
+  color: var(--plantora-gold);
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.plantora-eyebrow-line {
+  width: 45px;
+  height: 1px;
+  background: var(--plantora-gold);
+  opacity: 0.7;
+}
+
+/* ============================================================
+   HERO TITLE
+============================================================ */
+
+.plantora-about-title {
+  margin: 0;
+
+  color: var(--plantora-green-dark);
+
+  font-size: clamp(52px, 7vw, 94px);
+  line-height: 0.98;
+  font-weight: 700;
+  letter-spacing: -4px;
+}
+
+.plantora-about-title span {
+  color: var(--plantora-green-soft);
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* ============================================================
+   HERO DESCRIPTION
+============================================================ */
+
+.plantora-about-description {
+  max-width: 670px;
+
+  margin: 35px auto 0;
+
+  color: var(--plantora-muted);
+
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+/* ============================================================
+   AI STATUS
+============================================================ */
+
+.plantora-ai-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: 34px;
+  padding: 10px 18px;
+
+  border: 1px solid rgba(22, 63, 43, 0.1);
+  border-radius: 100px;
+
+  background: rgba(255, 255, 255, 0.62);
+
+  box-shadow: 0 10px 30px rgba(22, 63, 43, 0.06);
+
+  color: var(--plantora-green);
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+
+  backdrop-filter: blur(12px);
+}
+
+.plantora-ai-status-dot {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #4f9d69;
+
+  box-shadow: 0 0 0 5px rgba(79, 157, 105, 0.12);
+
+  animation: plantoraPulse 2s infinite;
+}
+
+@keyframes plantoraPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 4px rgba(79, 157, 105, 0.1);
+  }
+
+  50% {
+    box-shadow: 0 0 0 8px rgba(79, 157, 105, 0.02);
+  }
+}
+
+/* ============================================================
+   GUIDE SECTION
+============================================================ */
+
+.plantora-guide-section {
+  position: relative;
+  padding: 110px 0 100px;
+
+  background: linear-gradient(180deg, #f7f5ee 0%, #ffffff 100%);
+}
+
+/* ============================================================
+   GUIDE HEADING
+============================================================ */
+
+.plantora-guide-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 60px;
+
+  margin-bottom: 48px;
+}
+
+.plantora-guide-heading-left {
+  flex: 1;
+}
+
+.plantora-section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  margin-bottom: 16px;
+
+  color: var(--plantora-gold);
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.plantora-section-kicker i {
+  font-size: 15px;
+}
+
+.plantora-guide-heading h2 {
+  margin: 0;
+
+  color: var(--plantora-green-dark);
+
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 1;
+  letter-spacing: -2.5px;
+}
+
+.plantora-guide-heading h2 span {
+  color: var(--plantora-green-soft);
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.plantora-guide-heading > p {
+  width: 390px;
+
+  margin: 0;
+
+  color: var(--plantora-muted);
+
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* ============================================================
+   AI SHELL
+============================================================ */
+
+.plantora-ai-shell {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 390px 1fr;
+
+  min-height: 650px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(22, 63, 43, 0.1);
+  border-radius: 28px;
+
+  background: var(--plantora-white);
+
+  box-shadow: var(--plantora-shadow);
+}
+
+/* ============================================================
+   QUESTION PANEL
+============================================================ */
+
+.plantora-question-panel {
+  position: relative;
+
+  padding: 38px 30px;
+
+  background: linear-gradient(160deg, #f3f7f2 0%, #e9f0ea 100%);
+
+  border-right: 1px solid var(--plantora-border);
+}
+
+/* ============================================================
+   QUESTION HEADER
+============================================================ */
+
+.plantora-question-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  margin-bottom: 12px;
+}
+
+.plantora-question-header-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 14px;
+
+  background: var(--plantora-green);
+
+  color: white;
+
+  font-size: 20px;
+
+  box-shadow: 0 12px 25px rgba(22, 63, 43, 0.18);
+}
+
+.plantora-panel-label {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: var(--plantora-gold);
+
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.plantora-question-header h3 {
+  margin: 0;
+
+  color: var(--plantora-green-dark);
+
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.plantora-question-subtitle {
+  margin: 0 0 28px 63px;
+
+  color: var(--plantora-muted);
+
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   QUESTION LIST
+============================================================ */
+
+.plantora-question-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  max-height: 485px;
+  overflow-y: auto;
+
+  padding-right: 7px;
+}
+
+/* Custom scrollbar */
+
+.plantora-question-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.plantora-question-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.plantora-question-list::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background: rgba(22, 63, 43, 0.16);
+}
+
+/* ============================================================
+   QUESTION BUTTON
+============================================================ */
+
+.plantora-question {
+  position: relative;
+
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  padding: 15px 17px;
+
+  border: 1px solid rgba(22, 63, 43, 0.08);
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.72);
+
+  color: var(--plantora-text);
+
+  text-align: left;
+
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.plantora-question:hover {
+  transform: translateX(5px);
+
+  border-color: rgba(45, 106, 79, 0.25);
+
+  background: white;
+
+  box-shadow: 0 12px 25px rgba(22, 63, 43, 0.08);
+}
+
+.plantora-question.active {
+  transform: translateX(5px);
+
+  border-color: var(--plantora-green);
+
+  background: var(--plantora-green);
+
+  color: white;
+
+  box-shadow: 0 15px 30px rgba(22, 63, 43, 0.18);
+}
+
+.plantora-question-icon {
+  width: 31px;
+  height: 31px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 9px;
+
+  background: rgba(45, 106, 79, 0.1);
+
+  color: var(--plantora-green);
+
+  font-size: 13px;
+}
+
+.plantora-question.active .plantora-question-icon {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.plantora-question-arrow {
+  margin-left: auto;
+
+  color: #9aa9a0;
+
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease;
+}
+
+.plantora-question:hover .plantora-question-arrow {
+  transform: translateX(3px);
+}
+
+.plantora-question.active .plantora-question-arrow {
+  color: white;
+}
+
+/* ============================================================
+   ANSWER PANEL
+============================================================ */
+
+.plantora-answer-panel {
+  position: relative;
+
+  min-width: 0;
+
+  display: flex;
+
+  padding: 60px;
+
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(184, 155, 94, 0.11),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 15% 90%,
+      rgba(45, 106, 79, 0.08),
+      transparent 28%
+    ),
+    #ffffff;
+}
+
+/* ============================================================
+   EMPTY ANSWER STATE
+============================================================ */
+
+.plantora-answer-empty {
+  width: 100%;
+  max-width: 650px;
+
+  margin: auto;
+
+  text-align: center;
+}
+
+.plantora-answer-orb {
+  width: 120px;
+  height: 120px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 28px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(184, 155, 94, 0.18),
+    rgba(45, 106, 79, 0.04) 65%,
+    transparent 70%
+  );
+
+  box-shadow:
+    0 0 0 1px rgba(184, 155, 94, 0.12),
+    0 20px 50px rgba(22, 63, 43, 0.08);
+}
+
+.plantora-answer-orb-inner {
+  width: 72px;
+  height: 72px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--plantora-green);
+
+  color: white;
+
+  font-size: 29px;
+
+  box-shadow: 0 15px 30px rgba(22, 63, 43, 0.2);
+}
+
+.plantora-answer-kicker {
+  display: block;
+
+  margin-bottom: 13px;
+
+  color: var(--plantora-gold);
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.plantora-answer-empty h3 {
+  margin: 0;
+
+  color: var(--plantora-green-dark);
+
+  font-size: clamp(30px, 4vw, 45px);
+  line-height: 1.15;
+  letter-spacing: -1.5px;
+}
+
+.plantora-answer-empty p {
+  max-width: 520px;
+
+  margin: 20px auto 0;
+
+  color: var(--plantora-muted);
+
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+/* ============================================================
+   ANSWER FEATURES
+============================================================ */
+
+.plantora-answer-feature {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  margin-top: 28px;
+}
+
+.plantora-answer-feature span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 8px 13px;
+
+  border: 1px solid rgba(22, 63, 43, 0.08);
+  border-radius: 100px;
+
+  background: #f7f9f6;
+
+  color: var(--plantora-muted);
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.plantora-answer-feature i {
+  color: var(--plantora-green-soft);
+}
+
+/* ============================================================
+   GENERATED ANSWER
+============================================================ */
+
+.plantora-generated-answer {
+  width: 100%;
+
+  animation: plantoraAnswerIn 0.45s ease both;
+}
+
+@keyframes plantoraAnswerIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.plantora-generated-kicker {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  margin-bottom: 18px;
+
+  color: var(--plantora-gold);
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+}
+
+.plantora-generated-kicker i {
+  font-size: 16px;
+}
+
+.plantora-generated-answer h3 {
+  margin: 0 0 22px;
+
+  color: var(--plantora-green-dark);
+
+  font-size: clamp(28px, 3vw, 42px);
+  line-height: 1.18;
+  letter-spacing: -1.2px;
+}
+
+.plantora-generated-content {
+  color: #5f7067;
+
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.plantora-generated-content p {
+  margin-bottom: 17px;
+}
+
+.plantora-generated-content strong {
+  color: var(--plantora-green);
+}
+
+.plantora-answer-divider {
+  width: 70px;
+  height: 2px;
+
+  margin: 25px 0;
+
+  background: linear-gradient(90deg, var(--plantora-gold), transparent);
+}
+
+.plantora-answer-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 25px;
+  padding: 9px 14px;
+
+  border-radius: 100px;
+
+  background: #f3f7f3;
+
+  color: var(--plantora-muted);
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+}
+
+.plantora-answer-source i {
+  color: var(--plantora-green-soft);
+}
+
+/* ============================================================
+   ANSWER LOADING
+============================================================ */
+
+.plantora-answer-loading {
+  width: 100%;
+  margin: auto;
+
+  text-align: center;
+}
+
+.plantora-answer-loading-orbit {
+  position: relative;
+
+  width: 75px;
+  height: 75px;
+
+  margin: 0 auto 25px;
+
+  border: 1px solid rgba(184, 155, 94, 0.25);
+
+  border-radius: 50%;
+
+  animation: plantoraRotate 2.5s linear infinite;
+}
+
+.plantora-answer-loading-orbit::before {
+  content: "";
+
+  position: absolute;
+
+  width: 11px;
+  height: 11px;
+
+  top: -5px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background: var(--plantora-gold);
+}
+
+.plantora-answer-loading-orbit::after {
+  content: "";
+
+  position: absolute;
+
+  width: 45px;
+  height: 45px;
+
+  top: 14px;
+  left: 14px;
+
+  border: 1px solid rgba(45, 106, 79, 0.18);
+
+  border-radius: 50%;
+}
+
+@keyframes plantoraRotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.plantora-answer-loading strong {
+  display: block;
+
+  color: var(--plantora-green-dark);
+
+  font-size: 17px;
+}
+
+.plantora-answer-loading span {
+  display: block;
+
+  margin-top: 7px;
+
+  color: var(--plantora-muted);
+
+  font-size: 12px;
+}
+
+/* ============================================================
+   QUESTION LOADING
+============================================================ */
+
+.plantora-ai-loading {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  padding: 20px;
+
+  border-radius: 15px;
+
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.plantora-loading-orbit {
+  position: relative;
+
+  width: 38px;
+  height: 38px;
+
+  flex-shrink: 0;
+
+  border: 2px solid rgba(45, 106, 79, 0.13);
+
+  border-top-color: var(--plantora-green-soft);
+
+  border-radius: 50%;
+
+  animation: plantoraRotate 1s linear infinite;
+}
+
+.plantora-ai-loading strong {
+  display: block;
+
+  color: var(--plantora-green-dark);
+
+  font-size: 12px;
+}
+
+.plantora-ai-loading small {
+  display: block;
+
+  margin-top: 3px;
+
+  color: var(--plantora-muted);
+
+  font-size: 10px;
+}
+
+/* ============================================================
+   ERROR
+============================================================ */
+
+.plantora-ai-error {
+  display: none;
+
+  margin-top: 15px;
+  padding: 13px 15px;
+
+  border: 1px solid rgba(180, 60, 60, 0.12);
+  border-radius: 12px;
+
+  background: rgba(180, 60, 60, 0.06);
+
+  color: #9a4141;
+
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.plantora-ai-error.show {
+  display: block;
+}
+
+/* ============================================================
+   TRUST NOTE
+============================================================ */
+
+.plantora-ai-trust {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+
+  max-width: 800px;
+
+  margin: 28px auto 0;
+  padding: 20px 25px;
+
+  border: 1px solid rgba(22, 63, 43, 0.08);
+  border-radius: 16px;
+
+  background: rgba(247, 249, 246, 0.8);
+}
+
+.plantora-ai-trust-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 12px;
+
+  background: rgba(45, 106, 79, 0.1);
+
+  color: var(--plantora-green-soft);
+
+  font-size: 18px;
+}
+
+.plantora-ai-trust strong {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: var(--plantora-green-dark);
+
+  font-size: 12px;
+}
+
+.plantora-ai-trust p {
+  margin: 0;
+
+  color: var(--plantora-muted);
+
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   BRAND STATEMENT
+============================================================ */
+
+.plantora-about-statement {
+  padding: 0 0 110px;
+
+  background: white;
+}
+
+.plantora-statement-card {
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 90px 50px;
+
+  border-radius: 28px;
+
+  background:
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(184, 155, 94, 0.16),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 10% 90%,
+      rgba(255, 255, 255, 0.08),
+      transparent 25%
+    ),
+    linear-gradient(135deg, #102f20, #1c4b34);
+
+  color: white;
+
+  text-align: center;
+
+  box-shadow: 0 30px 70px rgba(16, 47, 32, 0.2);
+}
+
+.plantora-statement-card::before {
+  content: "";
+
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  right: -180px;
+  top: -180px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  border-radius: 50%;
+}
+
+.plantora-statement-card::after {
+  content: "";
+
+  position: absolute;
+
+  width: 300px;
+  height: 300px;
+
+  left: -160px;
+  bottom: -170px;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+
+  border-radius: 50%;
+}
+
+.plantora-statement-decoration {
+  position: relative;
+  z-index: 2;
+
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 25px;
+
+  border: 1px solid rgba(216, 197, 141, 0.35);
+  border-radius: 50%;
+
+  color: var(--plantora-gold-light);
+
+  font-size: 23px;
+}
+
+.plantora-statement-kicker {
+  position: relative;
+  z-index: 2;
+
+  display: block;
+
+  margin-bottom: 18px;
+
+  color: var(--plantora-gold-light);
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 3.5px;
+}
+
+.plantora-statement-card h2 {
+  position: relative;
+  z-index: 2;
+
+  max-width: 850px;
+
+  margin: 0 auto;
+
+  font-size: clamp(35px, 5vw, 62px);
+  line-height: 1.1;
+  letter-spacing: -2px;
+}
+
+.plantora-statement-card h2 em {
+  color: var(--plantora-gold-light);
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+}
+
+.plantora-statement-card > p {
+  position: relative;
+  z-index: 2;
+
+  max-width: 650px;
+
+  margin: 25px auto 0;
+
+  color: rgba(255, 255, 255, 0.7);
+
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.plantora-statement-signature {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+
+  margin-top: 38px;
+
+  color: rgba(255, 255, 255, 0.65);
+
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 4px;
+}
+
+.plantora-signature-line {
+  width: 45px;
+  height: 1px;
+
+  background: rgba(216, 197, 141, 0.45);
+}
+
+/* ============================================================
+   RESPONSIVE — TABLET
+============================================================ */
+
+@media (max-width: 991px) {
+  .plantora-about-hero {
+    min-height: 540px;
+  }
+
+  .plantora-guide-heading {
+    display: block;
+  }
+
+  .plantora-guide-heading > p {
+    width: auto;
+    max-width: 650px;
+
+    margin-top: 20px;
+  }
+
+  .plantora-ai-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .plantora-question-panel {
+    border-right: 0;
+    border-bottom: 1px solid var(--plantora-border);
+  }
+
+  .plantora-question-list {
+    max-height: 360px;
+  }
+
+  .plantora-answer-panel {
+    min-height: 560px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE
+============================================================ */
+
+@media (max-width: 767px) {
+  .plantora-about-hero {
+    min-height: 500px;
+    padding: 70px 0;
+  }
+
+  .plantora-about-eyebrow {
+    gap: 10px;
+
+    font-size: 9px;
+    letter-spacing: 2.5px;
+  }
+
+  .plantora-eyebrow-line {
+    width: 25px;
+  }
+
+  .plantora-about-title {
+    font-size: clamp(46px, 14vw, 68px);
+    letter-spacing: -3px;
+  }
+
+  .plantora-about-description {
+    margin-top: 25px;
+
+    padding: 0 10px;
+
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  .plantora-guide-section {
+    padding: 70px 0;
+  }
+
+  .plantora-guide-heading h2 {
+    font-size: 40px;
+  }
+
+  .plantora-ai-shell {
+    border-radius: 20px;
+  }
+
+  .plantora-question-panel {
+    padding: 25px 20px;
+  }
+
+  .plantora-question-subtitle {
+    margin-left: 0;
+  }
+
+  .plantora-answer-panel {
+    min-height: 500px;
+
+    padding: 40px 25px;
+  }
+
+  .plantora-answer-empty h3 {
+    font-size: 31px;
+  }
+
+  .plantora-answer-feature {
+    gap: 7px;
+  }
+
+  .plantora-answer-feature span {
+    font-size: 9px;
+  }
+
+  .plantora-ai-trust {
+    align-items: flex-start;
+
+    padding: 17px;
+  }
+
+  .plantora-statement-card {
+    padding: 65px 25px;
+
+    border-radius: 20px;
+  }
+
+  .plantora-statement-card h2 {
+    font-size: 38px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — SMALL MOBILE
+============================================================ */
+
+@media (max-width: 480px) {
+  .plantora-about-hero {
+    min-height: 470px;
+  }
+
+  .plantora-about-title {
+    font-size: 43px;
+  }
+
+  .plantora-ai-status {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+
+  .plantora-question-header-icon {
+    width: 43px;
+    height: 43px;
+  }
+
+  .plantora-question-header h3 {
+    font-size: 19px;
+  }
+
+  .plantora-question {
+    padding: 13px;
+    font-size: 12px;
+  }
+
+  .plantora-answer-orb {
+    width: 95px;
+    height: 95px;
+  }
+
+  .plantora-answer-orb-inner {
+    width: 59px;
+    height: 59px;
+
+    font-size: 23px;
+  }
+
+  .plantora-generated-answer h3 {
+    font-size: 27px;
+  }
+
+  .plantora-statement-card h2 {
+    font-size: 33px;
+  }
+}
+
+/* ============================================================
+   ACCESSIBILITY
+============================================================ */
+
+.plantora-question:focus-visible {
+  outline: 3px solid rgba(184, 155, 94, 0.35);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

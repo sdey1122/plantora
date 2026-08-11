@@ -7,9 +7,6 @@ const router = express.Router();
 // Home
 router.get("/", HomeController.showHomePage);
 
-// About
-router.get("/about", HomeController.showAboutPage);
-
 // Contact
 router.get("/contact", HomeController.showContactPage);
 

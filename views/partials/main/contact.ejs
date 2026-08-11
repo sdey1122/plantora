@@ -1,0 +1,521 @@
+<%- include("./announcementBar") %> <%- include("./head") %> <%-
+include("./header") %>
+
+<!-- ============================================================
+     PLANTORA CONTACT PAGE
+============================================================= -->
+
+<main class="plantora-contact-page">
+  <!-- ========================================================
+         HERO
+    ========================================================= -->
+
+  <section class="contact-hero">
+    <div class="container">
+      <div class="contact-hero-inner">
+        <div class="contact-hero-content">
+          <span class="contact-eyebrow">
+            <i class="bi bi-flower1"></i>
+
+            CONNECT WITH PLANTORA
+          </span>
+
+          <h1>
+            Let's grow
+            <span>something beautiful.</span>
+          </h1>
+
+          <p>
+            Whether you have a question about an order, need help choosing a
+            plant, or simply want to reach the Plantora team, we're always happy
+            to hear from you.
+          </p>
+
+          <div class="contact-hero-meta">
+            <span>
+              <i class="bi bi-shield-check"></i>
+
+              Professional Support
+            </span>
+
+            <span>
+              <i class="bi bi-clock"></i>
+
+              Mon – Sat · 9:00 AM – 6:00 PM
+            </span>
+          </div>
+        </div>
+
+        <!-- Decorative botanical element -->
+
+        <div class="contact-hero-decoration">
+          <span></span>
+
+          <span></span>
+
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+         SECTION 01
+         CONTACT FORM + IMAGE
+    ========================================================= -->
+
+  <section class="contact-main-section">
+    <div class="container">
+      <div class="contact-main-grid">
+        <!-- ==================================================
+                     LEFT — CONTACT FORM
+                ================================================== -->
+
+        <div class="contact-form-card">
+          <!-- Card heading -->
+
+          <div class="contact-form-heading">
+            <div>
+              <span class="contact-small-label"> SEND A MESSAGE </span>
+
+              <h2>
+                How can we
+                <span>help?</span>
+              </h2>
+
+              <p>
+                Send us a message and our team will get back to you as soon as
+                possible.
+              </p>
+            </div>
+          </div>
+
+          <!-- ==================================================
+                         FORM
+                    ================================================== -->
+
+          <form
+            id="plantoraContactForm"
+            class="plantora-contact-form"
+            novalidate
+          >
+            <!-- ==============================================
+                             NAME
+                        =============================================== -->
+
+            <div class="contact-field">
+              <label for="contactName">
+                Your name
+
+                <span>*</span>
+              </label>
+
+              <div class="contact-input-wrapper">
+                <i class="bi bi-person"></i>
+
+                <input
+                  type="text"
+                  id="contactName"
+                  name="name"
+                  placeholder="Enter your full name"
+                  minlength="3"
+                  maxlength="32"
+                  autocomplete="name"
+                  required
+                />
+              </div>
+
+              <div class="contact-field-error" id="contactNameError"></div>
+            </div>
+
+            <!-- ==============================================
+                             EMAIL
+                        =============================================== -->
+
+            <div class="contact-field">
+              <label for="contactEmail">
+                Email address
+
+                <span>*</span>
+              </label>
+
+              <div class="contact-input-wrapper">
+                <i class="bi bi-envelope"></i>
+
+                <input
+                  type="email"
+                  id="contactEmail"
+                  name="email"
+                  placeholder="you@example.com"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+
+              <div class="contact-field-error" id="contactEmailError"></div>
+            </div>
+
+            <!-- ==============================================
+                             MESSAGE
+                        =============================================== -->
+
+            <div class="contact-field">
+              <div class="contact-message-label">
+                <label for="contactMessage">
+                  Your message
+
+                  <span>*</span>
+                </label>
+
+                <span
+                  class="contact-character-count"
+                  id="contactCharacterCount"
+                >
+                  0 / 500
+                </span>
+              </div>
+
+              <div class="contact-textarea-wrapper">
+                <i class="bi bi-chat-left-text"></i>
+
+                <textarea
+                  id="contactMessage"
+                  name="message"
+                  maxlength="500"
+                  placeholder="Tell us how we can help..."
+                  required
+                ></textarea>
+              </div>
+
+              <div class="contact-field-error" id="contactMessageError"></div>
+            </div>
+
+            <!-- ==============================================
+                             GENERAL FORM ERROR
+                        =============================================== -->
+
+            <div class="contact-form-error" id="contactFormError"></div>
+
+            <!-- ==============================================
+                             SUBMIT
+                        =============================================== -->
+
+            <button
+              type="submit"
+              class="contact-submit-button"
+              id="contactSubmitButton"
+            >
+              <span class="contact-submit-content">
+                <span> Send Message </span>
+
+                <i class="bi bi-arrow-up-right"></i>
+              </span>
+
+              <span class="contact-submit-loading">
+                <span class="contact-button-spinner"></span>
+
+                Sending message...
+              </span>
+            </button>
+
+            <!-- Security note -->
+
+            <div class="contact-form-security">
+              <i class="bi bi-lock-fill"></i>
+
+              Your information is securely transmitted to the Plantora team.
+            </div>
+          </form>
+        </div>
+
+        <!-- ==================================================
+                     RIGHT — IMAGE / CONTACT INFORMATION
+                ================================================== -->
+
+        <div class="contact-visual-column">
+          <!-- ==============================================
+                         IMAGE
+                    =============================================== -->
+
+          <div class="contact-image-card">
+            <img
+              src="/images/hero/beautiful_indoor_plant.jpg"
+              alt="Beautiful indoor plant"
+              loading="lazy"
+            />
+
+            <!-- Image overlay -->
+
+            <div class="contact-image-overlay">
+              <span>
+                <i class="bi bi-flower1"></i>
+
+                PLANTORA
+              </span>
+
+              <p>Bringing nature closer to home.</p>
+            </div>
+          </div>
+
+          <!-- ==============================================
+                         CONTACT DETAILS
+                    =============================================== -->
+
+          <div class="contact-details-card">
+            <div class="contact-detail-item">
+              <div class="contact-detail-icon">
+                <i class="bi bi-telephone"></i>
+              </div>
+
+              <div>
+                <span> CALL US </span>
+
+                <a href="tel:+919000012345"> +91 90000 12345 </a>
+
+                <small> Mobile support </small>
+              </div>
+            </div>
+
+            <div class="contact-detail-divider"></div>
+
+            <div class="contact-detail-item">
+              <div class="contact-detail-icon">
+                <i class="bi bi-telephone-forward"></i>
+              </div>
+
+              <div>
+                <span> LANDLINE </span>
+
+                <a href="tel:+913340001234"> 033 4000 1234 </a>
+
+                <small> Plantora office </small>
+              </div>
+            </div>
+
+            <div class="contact-detail-divider"></div>
+
+            <div class="contact-detail-item">
+              <div class="contact-detail-icon">
+                <i class="bi bi-envelope"></i>
+              </div>
+
+              <div>
+                <span> EMAIL </span>
+
+                <a href="mailto:support@plantora.com"> support@plantora.com </a>
+
+                <small> General enquiries </small>
+              </div>
+            </div>
+
+            <div class="contact-detail-divider"></div>
+
+            <div class="contact-detail-item">
+              <div class="contact-detail-icon">
+                <i class="bi bi-geo-alt"></i>
+              </div>
+
+              <div>
+                <span> PLANTORA OFFICE </span>
+
+                <strong> Sector V, Salt Lake </strong>
+
+                <small> Kolkata, West Bengal 700091 </small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+         SECTION 02
+         FIND PLANTORA
+    ========================================================= -->
+
+  <section class="contact-location-section">
+    <div class="container">
+      <!-- ==================================================
+                 LOCATION HEADER
+            ================================================== -->
+
+      <div class="contact-location-header">
+        <div>
+          <span class="contact-small-label"> FIND PLANTORA </span>
+
+          <h2>
+            Come say
+            <span>hello.</span>
+          </h2>
+        </div>
+
+        <p>
+          Our office is located in the heart of Salt Lake Sector V, Kolkata —
+          one of the city's major business and technology districts.
+        </p>
+      </div>
+
+      <!-- ==================================================
+                 MAP
+            ================================================== -->
+
+      <div class="contact-map-wrapper">
+        <!-- Map -->
+
+        <div
+          id="plantoraMap"
+          class="plantora-contact-map"
+          data-lat="22.5726"
+          data-lng="88.4331"
+        ></div>
+
+        <!-- ==============================================
+                     MAP LOCATION CARD
+                =============================================== -->
+
+        <div class="contact-map-card">
+          <div class="contact-map-card-icon">
+            <i class="bi bi-flower1"></i>
+          </div>
+
+          <div>
+            <span> PLANTORA OFFICE </span>
+
+            <strong> Salt Lake Sector V </strong>
+
+            <p>Kolkata, West Bengal 700091, India</p>
+          </div>
+
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Salt+Lake+Sector+V+Kolkata"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-map-directions"
+          >
+            <i class="bi bi-arrow-up-right"></i>
+          </a>
+        </div>
+
+        <!-- ==============================================
+                     MAP CONTROLS LABEL
+                =============================================== -->
+
+        <div class="contact-map-hint">
+          <i class="bi bi-layers"></i>
+
+          Explore map views
+        </div>
+      </div>
+
+      <!-- ==================================================
+                 LOCATION FEATURES
+            ================================================== -->
+
+      <div class="contact-location-features">
+        <div>
+          <i class="bi bi-building"></i>
+
+          <span>
+            <strong> Plantora Office </strong>
+
+            Salt Lake Sector V
+          </span>
+        </div>
+
+        <div>
+          <i class="bi bi-clock"></i>
+
+          <span>
+            <strong> Office Hours </strong>
+
+            Monday – Saturday · 9 AM – 6 PM
+          </span>
+        </div>
+
+        <div>
+          <i class="bi bi-signpost-2"></i>
+
+          <span>
+            <strong> Location </strong>
+
+            Kolkata, West Bengal
+          </span>
+        </div>
+
+        <div>
+          <i class="bi bi-headset"></i>
+
+          <span>
+            <strong> Customer Support </strong>
+
+            We're happy to help
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+         SUCCESS MODAL
+    ========================================================= -->
+
+  <div
+    class="contact-success-modal"
+    id="contactSuccessModal"
+    aria-hidden="true"
+  >
+    <div class="contact-success-backdrop" data-close-contact-modal></div>
+
+    <div
+      class="contact-success-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="contactSuccessTitle"
+    >
+      <!-- Success icon -->
+
+      <div class="contact-success-icon">
+        <div class="contact-success-ring">
+          <i class="bi bi-check-lg"></i>
+        </div>
+      </div>
+
+      <span class="contact-success-label"> MESSAGE RECEIVED </span>
+
+      <h2 id="contactSuccessTitle">Thank you for reaching out.</h2>
+
+      <p>
+        Your message has been successfully delivered to the Plantora team.
+
+        <br />
+
+        We'll review your enquiry and get back to you as soon as possible.
+      </p>
+
+      <div class="contact-success-status">
+        <span>
+          <i class="bi bi-check-circle-fill"></i>
+
+          Message sent successfully
+        </span>
+      </div>
+
+      <button
+        type="button"
+        class="contact-success-close"
+        id="contactSuccessClose"
+      >
+        Continue browsing
+
+        <i class="bi bi-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+</main>
+
+<!-- ============================================================
+     CONTACT PAGE SCRIPTS
+============================================================= -->
+
+<%- include("./footer") %>
