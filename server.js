@@ -48,7 +48,7 @@ const startServer = async () => {
     socketHandler(io);
 
     // Start HTTP server
-    server = httpServer.listen(PORT, () => {
+    server = httpServer.listen(PORT, "0.0.0.0", () => {
       logger.info(`Server is running on port ${PORT}.`);
     });
   } catch (error) {
