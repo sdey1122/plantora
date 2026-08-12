@@ -17,7 +17,7 @@ dotenv.config();
 const logger = require("./app/config/logger");
 
 // Passport
-// const passport = require("./app/config/passport");
+const passport = require("./app/config/passport");
 
 const globalMiddleware = require("./app/middlewares/globalMiddleware");
 const ShopController = require("./app/controllers/ShopController");
@@ -120,7 +120,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(globalMiddleware);
 
 // Passport
-// app.use(passport.initialize());
+app.use(passport.initialize());
 
 // Home page
 app.use("/newsletter", newsletterRoute);
