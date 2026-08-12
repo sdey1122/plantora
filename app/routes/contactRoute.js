@@ -6,7 +6,7 @@ PLANTORA CONTACT ROUTES
 
 const express = require("express");
 
-const ContactController = require("../controllers/ContactController");
+const ContactController = require("../controllers/contactController");
 
 const router = express.Router();
 
