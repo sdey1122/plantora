@@ -264,42 +264,10 @@ class ShopController {
           ? [
               {
                 $match: {
-                  $or: [
-                    {
-                      name: {
-                        $regex: escapedSearch,
-                        $options: "i",
-                      },
-                    },
-
-                    {
-                      shortDescription: {
-                        $regex: escapedSearch,
-                        $options: "i",
-                      },
-                    },
-
-                    {
-                      sku: {
-                        $regex: escapedSearch,
-                        $options: "i",
-                      },
-                    },
-
-                    {
-                      "category.name": {
-                        $regex: escapedSearch,
-                        $options: "i",
-                      },
-                    },
-
-                    {
-                      "brand.name": {
-                        $regex: escapedSearch,
-                        $options: "i",
-                      },
-                    },
-                  ],
+                  name: {
+                    $regex: escapedSearch,
+                    $options: "i",
+                  },
                 },
               },
             ]
@@ -487,15 +455,9 @@ class ShopController {
           ? [
               {
                 $match: {
-                  $expr: {
-                    $and: [
-                      {
-                        $gt: ["$stock", 0],
-                      },
-                      {
-                        $lte: ["$stock", "$lowStockThreshold"],
-                      },
-                    ],
+                  stock: {
+                    $gt: 0,
+                    $lte: 5,
                   },
                 },
               },
