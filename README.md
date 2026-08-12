@@ -255,7 +255,7 @@ This project is open-source and free to use (experimental purpose only)
 
 ## 🌐 Live Demo
 
-**Website:** https://your-app.onrender.com
+**Website:** https://plantora-e6f4.onrender.com
 
 **Repository:** https://github.com/your-username/plantora
 
