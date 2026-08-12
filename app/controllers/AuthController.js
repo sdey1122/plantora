@@ -48,7 +48,10 @@ const httpStatusCode = require("../utils/httpStatusCode");
 const sendNotification = require("../utils/sendNotification");
 
 class AuthController {
-  // Register Page
+  // ==========================================================
+  // REGISTER PAGE
+  // ==========================================================
+
   async showRegisterPage(req, res, next) {
     try {
       return res.render("auth/register", {
@@ -59,7 +62,10 @@ class AuthController {
     }
   }
 
-  // Login Page
+  // ==========================================================
+  // LOGIN PAGE
+  // ==========================================================
+
   async showLoginPage(req, res, next) {
     try {
       return res.render("auth/login", {
@@ -70,7 +76,10 @@ class AuthController {
     }
   }
 
-  // Forgot Password Page
+  // ==========================================================
+  // FORGOT PASSWORD PAGE
+  // ==========================================================
+
   async showForgotPasswordPage(req, res, next) {
     try {
       return res.render("auth/forgot-password", {
@@ -81,7 +90,10 @@ class AuthController {
     }
   }
 
-  // Reset Password Page
+  // ==========================================================
+  // RESET PASSWORD PAGE
+  // ==========================================================
+
   async showResetPasswordPage(req, res, next) {
     try {
       return res.render("auth/reset-password", {
@@ -125,9 +137,7 @@ class AuthController {
         );
       }
 
-      // ----------------------------------------------------------
-      // GOOGLE ACCOUNTS ARE ALREADY VERIFIED
-      // ----------------------------------------------------------
+      // Google accounts are already verified.
 
       user.isEmailVerified = true;
       user.status = "active";
@@ -137,9 +147,7 @@ class AuthController {
 
       await user.save();
 
-      // ----------------------------------------------------------
-      // JWT PAYLOAD
-      // ----------------------------------------------------------
+      // JWT payload
 
       const tokenPayload = {
         id: user._id,
@@ -147,15 +155,11 @@ class AuthController {
         email: user.email,
       };
 
-      // ----------------------------------------------------------
-      // ACCESS TOKEN
-      // ----------------------------------------------------------
+      // Access token
 
       const accessToken = generateAccessToken(tokenPayload);
 
-      // ----------------------------------------------------------
-      // REFRESH TOKEN
-      // ----------------------------------------------------------
+      // Refresh token
 
       const refreshToken = generateRefreshToken(tokenPayload);
 
@@ -179,9 +183,7 @@ class AuthController {
         ),
       });
 
-      // ----------------------------------------------------------
-      // ACCESS COOKIE
-      // ----------------------------------------------------------
+      // Access cookie
 
       res.cookie(process.env.COOKIE_ACCESS_TOKEN, accessToken, {
         httpOnly: true,
@@ -190,9 +192,7 @@ class AuthController {
         maxAge: ms(process.env.JWT_ACCESS_EXPIRES_IN),
       });
 
-      // ----------------------------------------------------------
-      // REFRESH COOKIE
-      // ----------------------------------------------------------
+      // Refresh cookie
 
       res.cookie(process.env.COOKIE_REFRESH_TOKEN, refreshToken, {
         httpOnly: true,
@@ -201,34 +201,22 @@ class AuthController {
         maxAge: ms(process.env.JWT_REFRESH_EXPIRES_IN),
       });
 
-      // ----------------------------------------------------------
-      // AUDIT LOG
-      // ----------------------------------------------------------
+      // Audit log
 
       await createAuditLog({
         req,
-
         actor: user,
-
         module: "Authentication",
-
         action: "Google Login",
-
         severity: "info",
-
         target: {
           id: user._id,
           model: "User",
         },
-
         description: "User logged in successfully using Google.",
       });
 
       logger.info(`Google login successful : ${user.email}`);
-
-      // ----------------------------------------------------------
-      // REDIRECT
-      // ----------------------------------------------------------
 
       return res.redirect("/");
     } catch (error) {
@@ -236,7 +224,10 @@ class AuthController {
     }
   }
 
-  // Profile Page
+  // ==========================================================
+  // PROFILE PAGE
+  // ==========================================================
+
   async showProfilePage(req, res, next) {
     try {
       return res.render("auth/profile", {
@@ -248,10 +239,12 @@ class AuthController {
     }
   }
 
-  // Register
+  // ==========================================================
+  // REGISTER
+  // ==========================================================
+
   async register(req, res, next) {
     try {
-      // Validate request body
       const { error, value } = registerValidation.validate(req.body);
 
       if (error) {
@@ -263,7 +256,8 @@ class AuthController {
 
       const { name, email, password, termsAccepted } = value;
 
-      // Terms & Conditions validation
+      // Terms validation
+
       if (!termsAccepted) {
         return res.status(httpStatusCode.BAD_REQUEST).json({
           success: false,
@@ -272,7 +266,11 @@ class AuthController {
       }
 
       // Admin account cannot be registered
-      if (email.toLowerCase() === process.env.ADMIN_EMAIL.toLowerCase()) {
+
+      if (
+        process.env.ADMIN_EMAIL &&
+        email.toLowerCase() === process.env.ADMIN_EMAIL.toLowerCase()
+      ) {
         return res.status(httpStatusCode.FORBIDDEN).json({
           success: false,
           message: "Administrator account cannot be registered.",
@@ -280,6 +278,7 @@ class AuthController {
       }
 
       // Check duplicate email
+
       const existingUser = await User.findOne({
         email: email.toLowerCase(),
       });
@@ -292,6 +291,7 @@ class AuthController {
       }
 
       // Create customer account
+
       const user = await User.create({
         name,
         email: email.toLowerCase(),
@@ -331,17 +331,20 @@ class AuthController {
       });
 
       // Remove previous verification tokens
+
       await Token.deleteMany({
         user: user._id,
         type: "verify-email",
       });
 
       // Generate verification token
+
       const verificationToken = generateVerificationToken();
 
       const hashedVerificationToken = hashToken(verificationToken);
 
       // Save verification token
+
       await Token.create({
         user: user._id,
         token: hashedVerificationToken,
@@ -351,16 +354,19 @@ class AuthController {
         ),
       });
 
-      // Build verification url
+      // Build verification URL
+
       const verificationUrl = `${process.env.APP_URL}/auth/verify-email/${verificationToken}`;
 
-      // Generate email template
+      // Generate email
+
       const { subject, html, text } = getVerificationEmail(
         user.name,
         verificationUrl,
       );
 
-      // Send verification email
+      // SMTP email
+
       await sendEmail({
         to: user.email,
         subject,
@@ -368,23 +374,18 @@ class AuthController {
         text,
       });
 
-      // Create audit log
+      // Audit log
+
       await createAuditLog({
         req,
-
         actor: user,
-
         module: "Authentication",
-
         action: "Register",
-
         severity: "info",
-
         target: {
           id: user._id,
           model: "User",
         },
-
         description: "New customer account registered successfully.",
       });
 
@@ -399,7 +400,11 @@ class AuthController {
       next(error);
     }
   }
-  // Verify Email
+
+  // ==========================================================
+  // VERIFY EMAIL
+  // ==========================================================
+
   async verifyEmail(req, res, next) {
     try {
       const { token } = req.params;
@@ -506,7 +511,10 @@ class AuthController {
     }
   }
 
-  // Resend Verification Email
+  // ==========================================================
+  // RESEND VERIFICATION EMAIL
+  // ==========================================================
+
   async resendVerificationEmail(req, res, next) {
     try {
       const { error, value } = resendVerificationValidation.validate(req.body);
@@ -514,8 +522,8 @@ class AuthController {
       if (error) {
         return res.render("auth/resend-verification", {
           title: "Resend Verification Email",
-          message: null,
-          type: null,
+          message: error.details[0].message,
+          type: "error",
           email: "",
         });
       }
@@ -531,7 +539,7 @@ class AuthController {
           title: "Resend Verification Email",
           type: "error",
           message: "No account found with this email address.",
-          email: email || "",
+          email,
         });
       }
 
@@ -540,7 +548,7 @@ class AuthController {
           title: "Resend Verification Email",
           type: "error",
           message: "This account has been deleted.",
-          email: email || "",
+          email,
         });
       }
 
@@ -549,7 +557,7 @@ class AuthController {
           title: "Resend Verification Email",
           type: "error",
           message: "Your account has been blocked.",
-          email: email || "",
+          email,
         });
       }
 
@@ -559,10 +567,14 @@ class AuthController {
         });
       }
 
+      // Delete old verification tokens
+
       await Token.deleteMany({
         user: user._id,
         type: "verify-email",
       });
+
+      // Generate new verification token
 
       const verificationToken = generateVerificationToken();
 
@@ -577,12 +589,16 @@ class AuthController {
         ),
       });
 
+      // Verification URL
+
       const verificationUrl = `${process.env.APP_URL}/auth/verify-email/${verificationToken}`;
 
       const { subject, html, text } = getVerificationEmail(
         user.name,
         verificationUrl,
       );
+
+      // SMTP email
 
       await sendEmail({
         to: user.email,
@@ -611,22 +627,34 @@ class AuthController {
         type: "success",
         message:
           "A new verification email has been sent. Please check your inbox.",
-        email: email || "",
+        email,
       });
     } catch (error) {
       next(error);
     }
   }
 
-  async showResendVerificationPage(req, res) {
-    return res.render("auth/resend-verification", {
-      title: "Resend Verification Email",
-      message: null,
-      type: null,
-      email: email || "",
-    });
+  // ==========================================================
+  // RESEND VERIFICATION PAGE
+  // ==========================================================
+
+  async showResendVerificationPage(req, res, next) {
+    try {
+      return res.render("auth/resend-verification", {
+        title: "Resend Verification Email",
+        message: null,
+        type: null,
+        email: "",
+      });
+    } catch (error) {
+      next(error);
+    }
   }
-  // Login
+
+  // ==========================================================
+  // LOGIN
+  // ==========================================================
+
   async login(req, res, next) {
     try {
       const { error, value } = loginValidation.validate(req.body);
@@ -753,6 +781,7 @@ class AuthController {
       };
 
       const accessToken = generateAccessToken(tokenPayload);
+
       const refreshToken = generateRefreshToken(tokenPayload);
 
       const hashedRefreshToken = hashToken(refreshToken);
@@ -770,6 +799,9 @@ class AuthController {
           Date.now() + ms(process.env.JWT_REFRESH_EXPIRES_IN),
         ),
       });
+
+      // Currently both paths use the configured JWT expiration.
+      // Keeping your existing remember-me behavior.
 
       const accessCookieAge = rememberMe
         ? ms(process.env.JWT_ACCESS_EXPIRES_IN)
@@ -816,7 +848,11 @@ class AuthController {
       next(error);
     }
   }
-  // Refresh Access Token
+
+  // ==========================================================
+  // REFRESH ACCESS TOKEN
+  // ==========================================================
+
   async refreshAccessToken(req, res, next) {
     try {
       const refreshToken = req.cookies[process.env.COOKIE_REFRESH_TOKEN];
@@ -842,9 +878,10 @@ class AuthController {
       const user = await User.findById(decoded.id);
 
       if (!user) {
-        return res.redirect(
-          `/auth/profile?type=error&message=${encodeURIComponent("User not found.")}`,
-        );
+        return res.status(httpStatusCode.UNAUTHORIZED).json({
+          success: false,
+          message: "User not found.",
+        });
       }
 
       if (user.isDeleted) {
@@ -899,9 +936,15 @@ class AuthController {
         });
       }
 
-      const newAccessToken = generateAccessToken(user);
+      const tokenPayload = {
+        id: user._id,
+        role: user.role,
+        email: user.email,
+      };
 
-      const newRefreshToken = generateRefreshToken(user);
+      const newAccessToken = generateAccessToken(tokenPayload);
+
+      const newRefreshToken = generateRefreshToken(tokenPayload);
 
       const hashedNewRefreshToken = hashToken(newRefreshToken);
 
@@ -942,7 +985,10 @@ class AuthController {
     }
   }
 
-  // Logout
+  // ==========================================================
+  // LOGOUT
+  // ==========================================================
+
   async logout(req, res, next) {
     try {
       const refreshToken = req.cookies[process.env.COOKIE_REFRESH_TOKEN];
@@ -981,17 +1027,16 @@ class AuthController {
         logger.info(`Logout successful : ${req.user.email}`);
       }
 
-      // return res.status(httpStatusCode.OK).json({
-      //   success: true,
-      //   message: "Logout successful.",
-      // });
       return res.redirect("/");
     } catch (error) {
       next(error);
     }
   }
 
-  // Forgot Password
+  // ==========================================================
+  // FORGOT PASSWORD
+  // ==========================================================
+
   async forgotPassword(req, res, next) {
     try {
       const { error, value } = forgotPasswordValidation.validate(req.body);
@@ -1056,6 +1101,8 @@ class AuthController {
         resetUrl,
       );
 
+      // SMTP email
+
       await sendEmail({
         to: user.email,
         subject,
@@ -1086,7 +1133,11 @@ class AuthController {
       next(error);
     }
   }
-  // Reset Password
+
+  // ==========================================================
+  // RESET PASSWORD
+  // ==========================================================
+
   async resetPassword(req, res, next) {
     try {
       const { token } = req.params;
@@ -1125,6 +1176,19 @@ class AuthController {
 
       const user = await User.findById(resetToken.user).select("+password");
 
+      // IMPORTANT:
+      // Check user before accessing user.authProvider.
+
+      if (!user) {
+        await Token.findByIdAndDelete(resetToken._id);
+
+        return res.redirect(
+          `/auth/login?type=error&message=${encodeURIComponent(
+            "User not found.",
+          )}`,
+        );
+      }
+
       if (user.authProvider === "google") {
         await Token.findByIdAndDelete(resetToken._id);
 
@@ -1133,14 +1197,6 @@ class AuthController {
           message:
             "Google accounts do not use a Plantora password. Please continue with Google.",
         });
-      }
-
-      if (!user) {
-        await Token.findByIdAndDelete(resetToken._id);
-
-        return res.redirect(
-          `/auth/login?type=error&message=${encodeURIComponent("User not found.")}`,
-        );
       }
 
       if (user.isDeleted) {
@@ -1198,30 +1254,40 @@ class AuthController {
     }
   }
 
-  // Change Password
+  // ==========================================================
+  // CHANGE PASSWORD
+  // ==========================================================
+
   async changePassword(req, res, next) {
     try {
       const { error, value } = changePasswordValidation.validate(req.body);
 
       if (error) {
         return res.redirect(
-          `/auth/profile?type=error&passwordError=${encodeURIComponent(error.details[0].message)}`,
+          `/auth/profile?type=error&passwordError=${encodeURIComponent(
+            error.details[0].message,
+          )}`,
         );
       }
 
       const user = await User.findById(req.user._id).select("+password");
+
+      // IMPORTANT:
+      // Check user before accessing user.authProvider.
+
+      if (!user) {
+        return res.redirect(
+          `/auth/profile?type=error&message=${encodeURIComponent(
+            "User not found.",
+          )}`,
+        );
+      }
 
       if (user.authProvider === "google") {
         return res.redirect(
           `/auth/profile?type=error&message=${encodeURIComponent(
             "Google accounts do not use a Plantora password.",
           )}`,
-        );
-      }
-
-      if (!user) {
-        return res.redirect(
-          `/auth/profile?type=error&message=${encodeURIComponent("User not found.")}`,
         );
       }
 
@@ -1238,7 +1304,9 @@ class AuthController {
 
       if (!isPasswordMatched) {
         return res.redirect(
-          `/auth/profile?type=error&message=${encodeURIComponent("Current password is incorrect.")}`,
+          `/auth/profile?type=error&message=${encodeURIComponent(
+            "Current password is incorrect.",
+          )}`,
         );
       }
 
@@ -1246,7 +1314,9 @@ class AuthController {
 
       if (isSamePassword) {
         return res.redirect(
-          `/auth/profile?type=error&message=${encodeURIComponent("New password must be different from current password.")}`,
+          `/auth/profile?type=error&message=${encodeURIComponent(
+            "New password must be different from current password.",
+          )}`,
         );
       }
 
@@ -1283,23 +1353,28 @@ class AuthController {
       logger.info(`Password changed : ${user.email}`);
 
       return res.redirect(
-        `/?type=success&message=${encodeURIComponent("Password changed successfully. Please login again.")}`,
+        `/?type=success&message=${encodeURIComponent(
+          "Password changed successfully. Please login again.",
+        )}`,
       );
-
-      return res.redirect("/");
     } catch (error) {
       next(error);
     }
   }
 
-  // My Profile
+  // ==========================================================
+  // GET MY PROFILE
+  // ==========================================================
+
   async getMyProfile(req, res, next) {
     try {
       const user = await User.findById(req.user._id).select("-password").lean();
 
       if (!user) {
         return res.redirect(
-          `/auth/profile?type=error&message=${encodeURIComponent("User not found.")}`,
+          `/auth/profile?type=error&message=${encodeURIComponent(
+            "User not found.",
+          )}`,
         );
       }
 
@@ -1311,7 +1386,11 @@ class AuthController {
       next(error);
     }
   }
-  // Update Profile
+
+  // ==========================================================
+  // UPDATE PROFILE
+  // ==========================================================
+
   async updateProfile(req, res, next) {
     try {
       const { error, value } = updateProfileValidation.validate(req.body);
@@ -1335,7 +1414,9 @@ class AuthController {
         }
 
         return res.redirect(
-          `/auth/profile?type=error&message=${encodeURIComponent("User not found.")}`,
+          `/auth/profile?type=error&message=${encodeURIComponent(
+            "User not found.",
+          )}`,
         );
       }
 
@@ -1384,7 +1465,9 @@ class AuthController {
       logger.info(`Profile updated : ${user.email}`);
 
       return res.redirect(
-        `/auth/profile?type=success&message=${encodeURIComponent("Profile updated successfully.")}`,
+        `/auth/profile?type=success&message=${encodeURIComponent(
+          "Profile updated successfully.",
+        )}`,
       );
     } catch (error) {
       if (req.file) {
@@ -1395,10 +1478,12 @@ class AuthController {
     }
   }
 
-  // Become Seller
+  // ==========================================================
+  // BECOME SELLER
+  // ==========================================================
+
   async becomeSeller(req, res, next) {
     try {
-      // Validate request
       const { error } = becomeSellerValidation.validate(req.body);
 
       if (error) {
@@ -1408,16 +1493,18 @@ class AuthController {
         });
       }
 
-      // Find customer
       const user = await User.findById(req.user._id);
 
       if (!user) {
         return res.redirect(
-          `/auth/profile?type=error&message=${encodeURIComponent("User not found.")}`,
+          `/auth/profile?type=error&message=${encodeURIComponent(
+            "User not found.",
+          )}`,
         );
       }
 
       // Prevent admin
+
       if (user.role === "admin") {
         return res.status(httpStatusCode.FORBIDDEN).json({
           success: false,
@@ -1426,6 +1513,7 @@ class AuthController {
       }
 
       // Already approved
+
       if (user.seller.status === "approved") {
         return res.status(httpStatusCode.BAD_REQUEST).json({
           success: false,
@@ -1434,6 +1522,7 @@ class AuthController {
       }
 
       // Already pending
+
       if (user.seller.status === "pending") {
         return res.redirect(
           `/auth/profile?type=error&message=${encodeURIComponent(
@@ -1443,6 +1532,7 @@ class AuthController {
       }
 
       // Rejected -> wait 7 days
+
       if (
         user.seller.status === "rejected" &&
         user.seller.approvedAt &&
@@ -1456,9 +1546,8 @@ class AuthController {
         );
       }
 
-      // Request seller account
+      // Create seller request
 
-      // Request seller account
       user.seller.status = "pending";
       user.seller.requestedAt = new Date();
       user.seller.adminRemark = "";
@@ -1466,6 +1555,7 @@ class AuthController {
       await user.save();
 
       // Find admin
+
       const admin = await User.findOne({
         role: "admin",
         isDeleted: false,
@@ -1473,6 +1563,7 @@ class AuthController {
 
       if (admin) {
         // Notification
+
         await sendNotification({
           recipient: admin._id,
           sender: user._id,
@@ -1485,6 +1576,7 @@ class AuthController {
         });
 
         // Email
+
         const reviewUrl = `${process.env.APP_URL}/admin/users/seller-request/${user._id}`;
 
         const { subject, html, text } = getSellerRequestEmail(
@@ -1492,6 +1584,8 @@ class AuthController {
           user.email,
           reviewUrl,
         );
+
+        // SMTP email
 
         await sendEmail({
           to: admin.email,
@@ -1502,6 +1596,7 @@ class AuthController {
       }
 
       // Audit log
+
       await createAuditLog({
         req,
         actor: user,
@@ -1518,14 +1613,19 @@ class AuthController {
       logger.info(`Seller request submitted: ${user.email}`);
 
       return res.redirect(
-        `/auth/profile?type=success&message=${encodeURIComponent("Seller request submitted successfully.")}`,
+        `/auth/profile?type=success&message=${encodeURIComponent(
+          "Seller request submitted successfully.",
+        )}`,
       );
     } catch (error) {
       next(error);
     }
   }
 
-  // Change Email
+  // ==========================================================
+  // CHANGE EMAIL
+  // ==========================================================
+
   async changeEmail(req, res, next) {
     try {
       const { email } = req.body;
@@ -1537,13 +1637,19 @@ class AuthController {
         });
       }
 
+      const normalizedEmail = email.toLowerCase().trim();
+
       const user = await User.findById(req.user._id);
 
       if (!user) {
         return res.redirect(
-          `/auth/profile?type=error&message=${encodeURIComponent("User not found.")}`,
+          `/auth/profile?type=error&message=${encodeURIComponent(
+            "User not found.",
+          )}`,
         );
       }
+
+      // Admin email cannot be changed
 
       if (user.role === "admin") {
         return res.status(httpStatusCode.FORBIDDEN).json({
@@ -1552,8 +1658,10 @@ class AuthController {
         });
       }
 
+      // Check duplicate email
+
       const existingUser = await User.findOne({
-        email: email.toLowerCase(),
+        email: normalizedEmail,
       });
 
       if (existingUser && existingUser._id.toString() !== user._id.toString()) {
@@ -1563,22 +1671,28 @@ class AuthController {
         });
       }
 
-      user.email = email.toLowerCase();
+      user.email = normalizedEmail;
       user.isEmailVerified = false;
       user.status = "inactive";
       user.emailChangedAt = new Date();
 
       await user.save();
 
+      // Remove refresh tokens
+
       await Token.deleteMany({
         user: user._id,
         type: "refresh-token",
       });
 
+      // Remove old verification tokens
+
       await Token.deleteMany({
         user: user._id,
         type: "verify-email",
       });
+
+      // Generate new verification token
 
       const verificationToken = generateVerificationToken();
 
@@ -1600,12 +1714,16 @@ class AuthController {
         verificationUrl,
       );
 
+      // SMTP email
+
       await sendEmail({
         to: user.email,
         subject,
         html,
         text,
       });
+
+      // Clear authentication cookies
 
       res.clearCookie(process.env.COOKIE_ACCESS_TOKEN);
 
@@ -1631,21 +1749,28 @@ class AuthController {
       logger.info(`Email changed : ${user.email}`);
 
       return res.redirect(
-        `/?type=success&message=${encodeURIComponent("Email changed successfully. Please verify your new email before logging in again.")}`,
+        `/?type=success&message=${encodeURIComponent(
+          "Email changed successfully. Please verify your new email before logging in again.",
+        )}`,
       );
     } catch (error) {
       next(error);
     }
   }
 
-  // Delete Profile Image
+  // ==========================================================
+  // DELETE PROFILE IMAGE
+  // ==========================================================
+
   async deleteProfileImage(req, res, next) {
     try {
       const user = await User.findById(req.user._id);
 
       if (!user) {
         return res.redirect(
-          `/auth/profile?type=success&message=${encodeURIComponent("Profile image removed successfully.")}`,
+          `/auth/profile?type=error&message=${encodeURIComponent(
+            "User not found.",
+          )}`,
         );
       }
 
@@ -1680,7 +1805,9 @@ class AuthController {
       logger.info(`Profile image deleted : ${user.email}`);
 
       return res.redirect(
-        `/auth/profile?type=error&message=${encodeURIComponent("User not found.")}`,
+        `/auth/profile?type=success&message=${encodeURIComponent(
+          "Profile image removed successfully.",
+        )}`,
       );
     } catch (error) {
       next(error);
