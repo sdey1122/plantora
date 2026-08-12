@@ -1,10 +1,7 @@
-// Import mongoose
 const mongoose = require("mongoose");
 
-// Import custom logger
 const logger = require("./logger");
 
-// Connect to MongoDB
 const databaseConnection = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URI);
@@ -13,9 +10,8 @@ const databaseConnection = async () => {
   } catch (error) {
     logger.error(`MongoDB connection failed: ${error.message}`);
 
-    process.exit(1);
+    throw error;
   }
 };
 
-// Export database connection
 module.exports = databaseConnection;

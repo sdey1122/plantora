@@ -1,66 +1,83 @@
-// Import package
 const dotenv = require("dotenv");
 const http = require("http");
 
-// Load environment variables
+console.log("server.js started");
+
 dotenv.config();
 
-// Import application
+console.log("dotenv loaded");
+
 const app = require("./app");
 
-// Import configurations
+console.log("app loaded");
+
 const logger = require("./app/config/logger");
+
+console.log("logger loaded");
+
 const databaseConnection = require("./app/config/database");
-// const { redisConnection } = require("./app/config/redis");
+
+console.log("database config loaded");
+
 const { verifyEmailConnection } = require("./app/config/email");
 
-// Import Socket.IO
+console.log("email config loaded");
+
 const { initializeSocket } = require("./app/socket/socket");
 const socketHandler = require("./app/socket/socketHandler");
 
-// Server port
+console.log("socket config loaded");
+
 const PORT = process.env.PORT || 5132;
 
-// Server instances
 let server;
-
 let httpServer;
 
-// Start application
 const startServer = async () => {
   try {
-    // Connect MongoDB
+    console.log("Starting MongoDB connection...");
+
     await databaseConnection();
 
-    // Connect Redis
-    // await redisConnection();
+    console.log("MongoDB connected");
 
-    // Verify email connection
+    console.log("Checking Resend configuration...");
+
     await verifyEmailConnection();
 
-    // Create HTTP server
+    console.log("Resend configured");
+
+    console.log("Creating HTTP server...");
+
     httpServer = http.createServer(app);
 
-    // Initialize Socket.IO
+    console.log("Initializing Socket.IO...");
+
     const io = initializeSocket(httpServer);
 
-    // Register socket events
+    console.log("Registering socket handlers...");
+
     socketHandler(io);
 
-    // Start HTTP server
+    console.log("Starting HTTP server...");
+
     server = httpServer.listen(PORT, "0.0.0.0", () => {
+      console.log(`Server running on port ${PORT}`);
       logger.info(`Server is running on port ${PORT}.`);
     });
   } catch (error) {
+    console.error("APPLICATION STARTUP FAILED");
+    console.error("MESSAGE:", error.message);
+    console.error("STACK:", error.stack);
+
     logger.error(`Application startup failed: ${error.message}`);
 
     process.exit(1);
   }
 };
 
-// Graceful shutdown
 const gracefulShutdown = (signal) => {
-  logger.info(`${signal} received. Shutting down server...`);
+  console.log(`${signal} received. Shutting down server...`);
 
   if (!server) {
     process.exit(0);
@@ -68,29 +85,32 @@ const gracefulShutdown = (signal) => {
 
   server.close(() => {
     logger.info("HTTP server closed.");
-
     process.exit(0);
   });
 };
 
-// Handle process termination
 process.on("SIGINT", () => gracefulShutdown("SIGINT"));
 
 process.on("SIGTERM", () => gracefulShutdown("SIGTERM"));
 
-// Handle unhandled promise rejections
 process.on("unhandledRejection", (error) => {
+  console.error("UNHANDLED PROMISE REJECTION");
+  console.error(error);
+  console.error(error.stack);
+
   logger.error(`Unhandled Promise Rejection: ${error.message}`);
 
   gracefulShutdown("Unhandled Promise Rejection");
 });
 
-// Handle uncaught exceptions
 process.on("uncaughtException", (error) => {
+  console.error("UNCAUGHT EXCEPTION");
+  console.error(error);
+  console.error(error.stack);
+
   logger.error(`Uncaught Exception: ${error.message}`);
 
   process.exit(1);
 });
 
-// Start server
 startServer();
