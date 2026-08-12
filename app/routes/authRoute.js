@@ -2,7 +2,7 @@ const express = require("express");
 
 const authController = require("../controllers/authController");
 
-const passport = require("../config/passport");
+// const passport = require("../config/passport");
 
 const authMiddleware = require("../middlewares/authMiddleware");
 
