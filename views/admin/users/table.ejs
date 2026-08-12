@@ -56,24 +56,6 @@
 
                     <th class="text-center">
 
-                        Purchases
-
-                    </th>
-
-                    <th class="text-center">
-
-                        Added Products
-
-                    </th>
-
-                    <th class="text-center">
-
-                        Sold Products
-
-                    </th>
-
-                    <th class="text-center">
-
                         Actions
 
                     </th>
@@ -272,72 +254,6 @@
                                     year: "numeric"
 
                                 }) %>
-
-                            </td>
-
-                            <!-- ==========================================================
-                                 PURCHASES
-                            =========================================================== -->
-
-                            <td class="text-center">
-
-                                <strong>
-
-                                    <%= user.totalPurchases || 0 %>
-
-                                </strong>
-
-                            </td>
-
-                            <!-- ==========================================================
-                                 ADDED PRODUCTS
-                            =========================================================== -->
-
-                            <td class="text-center">
-
-                                <% if (user.role === "seller") { %>
-
-                                    <strong>
-
-                                        <%= user.totalProducts || 0 %>
-
-                                    </strong>
-
-                                <% } else { %>
-
-                                    <span class="not-applicable">
-
-                                        N/A
-
-                                    </span>
-
-                                <% } %>
-
-                            </td>
-
-                            <!-- ==========================================================
-                                 SOLD PRODUCTS
-                            =========================================================== -->
-
-                            <td class="text-center">
-
-                                <% if (user.role === "seller") { %>
-
-                                    <strong>
-
-                                        <%= user.totalSoldProducts || 0 %>
-
-                                    </strong>
-
-                                <% } else { %>
-
-                                    <span class="not-applicable">
-
-                                        N/A
-
-                                    </span>
-
-                                <% } %>
 
                             </td>
 
