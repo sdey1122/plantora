@@ -713,7 +713,7 @@ const allowedOrigins = [
   "http://localhost:5174",
   "http://localhost:3000",
   "http://localhost:3001",
-  "https://your-plantora-frontend.vercel.app",
+  "https://plantora-nine.vercel.app/",
   "https://plantora-oenw.onrender.com",
   ...(process.env.CLIENT_URL || "")
     .split(",")
