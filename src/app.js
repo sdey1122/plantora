@@ -1,206 +1,206 @@
-// Import core packages
-const express = require("express");
-const path = require("path");
-const dotenv = require("dotenv");
-const morgan = require("morgan");
-const cors = require("cors");
-const compression = require("compression");
-const cookieParser = require("cookie-parser");
-const mongoSanitize = require("express-mongo-sanitize");
-const hpp = require("hpp");
-const methodOverride = require("method-override");
+// // Import core packages
+// const express = require("express");
+// const path = require("path");
+// const dotenv = require("dotenv");
+// const morgan = require("morgan");
+// const cors = require("cors");
+// const compression = require("compression");
+// const cookieParser = require("cookie-parser");
+// const mongoSanitize = require("express-mongo-sanitize");
+// const hpp = require("hpp");
+// const methodOverride = require("method-override");
 
-// Load environment variables
-dotenv.config();
+// // Load environment variables
+// dotenv.config();
 
-// Import logger
-const logger = require("./app/config/logger");
+// // Import logger
+// const logger = require("./app/config/logger");
 
-// Passport
-const passport = require("./app/config/passport");
+// // Passport
+// const passport = require("./app/config/passport");
 
-const globalMiddleware = require("./app/middlewares/globalMiddleware");
-const ShopController = require("./app/controllers/ShopController");
+// const globalMiddleware = require("./app/middlewares/globalMiddleware");
+// const ShopController = require("./app/controllers/ShopController");
 
-// Import routes
-const homeRoutes = require("./app/routes/homeRoutes");
-const newsletterRoute = require("./app/routes/newsletterRoute");
-const shopRoutes = require("./app/routes/shopRoute");
+// // Import routes
+// const homeRoutes = require("./app/routes/homeRoutes");
+// const newsletterRoute = require("./app/routes/newsletterRoute");
+// const shopRoutes = require("./app/routes/shopRoute");
 
-const authRoutes = require("./app/routes/authRoute");
-const userRoutes = require("./app/routes/userRoute");
-const aboutRoutes = require("./app/routes/aboutRoute");
-const contactRoutes = require("./app/routes/contactRoute");
-const categoryRoutes = require("./app/routes/categoryRoute");
-const brandRoutes = require("./app/routes/brandRoute");
-const productRoutes = require("./app/routes/productRoute");
-const reviewRoutes = require("./app/routes/reviewRoute");
-const wishlistRoutes = require("./app/routes/wishlistRoute");
-const cartRoutes = require("./app/routes/cartRoute");
-const checkoutRoutes = require("./app/routes/checkoutRoute");
-const addressRoutes = require("./app/routes/addressRoute");
+// const authRoutes = require("./app/routes/authRoute");
+// const userRoutes = require("./app/routes/userRoute");
+// const aboutRoutes = require("./app/routes/aboutRoute");
+// const contactRoutes = require("./app/routes/contactRoute");
+// const categoryRoutes = require("./app/routes/categoryRoute");
+// const brandRoutes = require("./app/routes/brandRoute");
+// const productRoutes = require("./app/routes/productRoute");
+// const reviewRoutes = require("./app/routes/reviewRoute");
+// const wishlistRoutes = require("./app/routes/wishlistRoute");
+// const cartRoutes = require("./app/routes/cartRoute");
+// const checkoutRoutes = require("./app/routes/checkoutRoute");
+// const addressRoutes = require("./app/routes/addressRoute");
 
-const paymentRoutes = require("./app/routes/paymentRoute");
-const couponRoutes = require("./app/routes/couponRoute");
-const orderRoutes = require("./app/routes/orderRoute");
+// const paymentRoutes = require("./app/routes/paymentRoute");
+// const couponRoutes = require("./app/routes/couponRoute");
+// const orderRoutes = require("./app/routes/orderRoute");
 
-// const adminRoutes = require("./app/routes/adminRoute");
-const adminDashboardRoute = require("./app/routes/adminDashboardRoute");
-const sellerDashboardRoute = require("./app/routes/sellerDashboardRoute");
-const notificationRoute = require("./app/routes/notificationRoute");
+// // const adminRoutes = require("./app/routes/adminRoute");
+// const adminDashboardRoute = require("./app/routes/adminDashboardRoute");
+// const sellerDashboardRoute = require("./app/routes/sellerDashboardRoute");
+// const notificationRoute = require("./app/routes/notificationRoute");
 
-// Import middlewares
-const notFoundMiddleware = require("./app/middlewares/notFoundMiddleware");
-const errorMiddleware = require("./app/middlewares/errorMiddleware");
+// // Import middlewares
+// const notFoundMiddleware = require("./app/middlewares/notFoundMiddleware");
+// const errorMiddleware = require("./app/middlewares/errorMiddleware");
 
-// Create Express application
-const app = express();
+// // Create Express application
+// const app = express();
 
-// Trust proxy
-app.set("trust proxy", 1);
+// // Trust proxy
+// app.set("trust proxy", 1);
 
-// Configure EJS
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+// // Configure EJS
+// app.set("view engine", "ejs");
+// app.set("views", path.join(__dirname, "views"));
 
-// HTTP request logging
-if (process.env.NODE_ENV !== "production") {
-  app.use(
-    morgan("dev", {
-      stream: {
-        write: (message) => logger.info(message.trim()),
-      },
-    }),
-  );
-}
+// // HTTP request logging
+// if (process.env.NODE_ENV !== "production") {
+//   app.use(
+//     morgan("dev", {
+//       stream: {
+//         write: (message) => logger.info(message.trim()),
+//       },
+//     }),
+//   );
+// }
 
-// Parse JSON requests
-app.use(express.json());
+// // Parse JSON requests
+// app.use(express.json());
 
-// Parse form requests
-app.use(
-  express.urlencoded({
-    extended: true,
-  }),
-);
+// // Parse form requests
+// app.use(
+//   express.urlencoded({
+//     extended: true,
+//   }),
+// );
 
-app.use(methodOverride("_method"));
+// app.use(methodOverride("_method"));
 
-// Parse cookies
-app.use(cookieParser());
+// // Parse cookies
+// app.use(cookieParser());
 
-// Global EJS variables
-app.use((req, res, next) => {
-  res.locals.currentRoute = req.path;
-  next();
-});
+// // Global EJS variables
+// app.use((req, res, next) => {
+//   res.locals.currentRoute = req.path;
+//   next();
+// });
 
-// Compress responses
-app.use(compression());
+// // Compress responses
+// app.use(compression());
 
-// Prevent MongoDB query injection
-// app.use(mongoSanitize());
+// // Prevent MongoDB query injection
+// // app.use(mongoSanitize());
 
-// Prevent HTTP parameter pollution
-app.use(hpp());
+// // Prevent HTTP parameter pollution
+// app.use(hpp());
 
-// Enable CORS
-app.use(
-  cors({
-    origin: process.env.CLIENT_URL,
-    credentials: true,
-  }),
-);
+// // Enable CORS
+// app.use(
+//   cors({
+//     origin: process.env.CLIENT_URL,
+//     credentials: true,
+//   }),
+// );
 
-// Serve static files
-app.use(express.static(path.join(__dirname, "public")));
+// // Serve static files
+// app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+// app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-app.use(globalMiddleware);
+// app.use(globalMiddleware);
 
-// Passport
-app.use(passport.initialize());
+// // Passport
+// app.use(passport.initialize());
 
-// Home page
-app.use("/newsletter", newsletterRoute);
+// // Home page
+// app.use("/newsletter", newsletterRoute);
 
-// About
-app.use("/about", aboutRoutes);
+// // About
+// app.use("/about", aboutRoutes);
 
-// Contact
+// // Contact
 
-app.use("/contact", contactRoutes);
+// app.use("/contact", contactRoutes);
 
-// Public Website
-app.use("/", homeRoutes);
+// // Public Website
+// app.use("/", homeRoutes);
 
-// Shop page
-app.use("/shop", shopRoutes);
+// // Shop page
+// app.use("/shop", shopRoutes);
 
-// Product details
-app.get("/products/:slug", ShopController.showProductDetails);
+// // Product details
+// app.get("/products/:slug", ShopController.showProductDetails);
 
-// Authentication
-app.use("/auth", authRoutes);
+// // Authentication
+// app.use("/auth", authRoutes);
 
-// Admin User Management
-app.use("/admin/users", userRoutes);
+// // Admin User Management
+// app.use("/admin/users", userRoutes);
 
-// Category
-app.use("/admin/categories", categoryRoutes);
+// // Category
+// app.use("/admin/categories", categoryRoutes);
 
-// Brand
-app.use("/admin/brands", brandRoutes);
+// // Brand
+// app.use("/admin/brands", brandRoutes);
 
-// Admin Product Management
-app.use("/admin/products", productRoutes);
+// // Admin Product Management
+// app.use("/admin/products", productRoutes);
 
-// Review
-app.use("/reviews", reviewRoutes);
+// // Review
+// app.use("/reviews", reviewRoutes);
 
-// Wishlist
-app.use("/wishlist", wishlistRoutes);
+// // Wishlist
+// app.use("/wishlist", wishlistRoutes);
 
-// Cart
-app.use("/cart", cartRoutes);
+// // Cart
+// app.use("/cart", cartRoutes);
 
-// Addresses
-app.use("/addresses", addressRoutes);
+// // Addresses
+// app.use("/addresses", addressRoutes);
 
-// Checkout
-app.use("/checkout", checkoutRoutes);
+// // Checkout
+// app.use("/checkout", checkoutRoutes);
 
-// Coupon
-app.use("/coupons", couponRoutes);
+// // Coupon
+// app.use("/coupons", couponRoutes);
 
-// Payment
-// Order
-app.use("/payment", paymentRoutes);
+// // Payment
+// // Order
+// app.use("/payment", paymentRoutes);
 
-// Order
-app.use("/orders", orderRoutes);
+// // Order
+// app.use("/orders", orderRoutes);
 
-// Admin
-// app.use("/admin", adminRoutes);
+// // Admin
+// // app.use("/admin", adminRoutes);
 
-// Admin Dashboard
-app.use("/admin/dashboard", adminDashboardRoute);
+// // Admin Dashboard
+// app.use("/admin/dashboard", adminDashboardRoute);
 
-// Seller Dashboard
-app.use("/seller/dashboard", sellerDashboardRoute);
+// // Seller Dashboard
+// app.use("/seller/dashboard", sellerDashboardRoute);
 
-// Notification
-app.use("/", notificationRoute);
+// // Notification
+// app.use("/", notificationRoute);
 
-// Handle unknown routes
-app.use(notFoundMiddleware);
+// // Handle unknown routes
+// app.use(notFoundMiddleware);
 
-// Handle errors
-app.use(errorMiddleware);
+// // Handle errors
+// app.use(errorMiddleware);
 
-// Export application
-module.exports = app;
+// // Export application
+// module.exports = app;
 
 // // ==========================================================
 // // DIAGNOSTIC APP.JS
@@ -619,3 +619,202 @@ module.exports = app;
 // module.exports = app;
 
 // console.log("🎉 APP: SUCCESSFULLY EXPORTED");
+
+const express = require("express");
+const path = require("path");
+const dotenv = require("dotenv");
+const morgan = require("morgan");
+const cors = require("cors");
+const compression = require("compression");
+const cookieParser = require("cookie-parser");
+const hpp = require("hpp");
+const methodOverride = require("method-override");
+
+dotenv.config();
+
+// Configuration
+const logger = require("./config/logger");
+const passport = require("./config/passport");
+
+// Middleware
+const globalMiddleware = require("./middlewares/globalMiddleware");
+const notFoundMiddleware = require("./middlewares/notFoundMiddleware");
+const errorMiddleware = require("./middlewares/errorMiddleware");
+
+// Controllers
+const ShopController = require("./controllers/ShopController");
+
+// Routes
+const homeRoutes = require("./routes/homeRoutes");
+const newsletterRoute = require("./routes/newsletterRoute");
+const shopRoutes = require("./routes/shopRoute");
+const authRoutes = require("./routes/authRoute");
+const userRoutes = require("./routes/userRoute");
+const aboutRoutes = require("./routes/aboutRoute");
+const contactRoutes = require("./routes/contactRoute");
+const categoryRoutes = require("./routes/categoryRoute");
+const brandRoutes = require("./routes/brandRoute");
+const productRoutes = require("./routes/productRoute");
+const reviewRoutes = require("./routes/reviewRoute");
+const wishlistRoutes = require("./routes/wishlistRoute");
+const cartRoutes = require("./routes/cartRoute");
+const checkoutRoutes = require("./routes/checkoutRoute");
+const addressRoutes = require("./routes/addressRoute");
+const paymentRoutes = require("./routes/paymentRoute");
+const couponRoutes = require("./routes/couponRoute");
+const orderRoutes = require("./routes/orderRoute");
+const adminDashboardRoute = require("./routes/adminDashboardRoute");
+const sellerDashboardRoute = require("./routes/sellerDashboardRoute");
+const notificationRoute = require("./routes/notificationRoute");
+
+const app = express();
+
+// Trust the proxy used by Render.
+app.set("trust proxy", 1);
+
+// EJS configuration.
+// Plantora's views folder is in the project root, outside src/.
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "../views"));
+
+// Request logging
+if (process.env.NODE_ENV !== "production") {
+  app.use(
+    morgan("dev", {
+      stream: {
+        write: (message) => logger.info(message.trim()),
+      },
+    }),
+  );
+}
+
+// Request body parsing
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
+app.use(cookieParser());
+
+// Global EJS variables
+app.use((req, res, next) => {
+  res.locals.currentRoute = req.path;
+  next();
+});
+
+// Security and performance middleware
+app.use(compression());
+app.use(hpp());
+
+// CORS configuration
+// Add your deployed frontend URL to CLIENT_URL.
+// Multiple URLs can be separated by commas.
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "http://localhost:3000",
+  "http://localhost:3001",
+  "https://your-plantora-frontend.vercel.app",
+  ...(process.env.CLIENT_URL || "")
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean),
+];
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+  }),
+);
+
+// Plantora's static files are in the root-level public/ directory.
+app.use(express.static(path.join(__dirname, "../public")));
+
+// Serve uploaded files.
+app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
+
+// Existing global middleware and Passport setup.
+app.use(globalMiddleware);
+app.use(passport.initialize());
+
+// Health check for Render.
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Plantora server is running",
+  });
+});
+
+// Newsletter
+app.use("/newsletter", newsletterRoute);
+
+// About
+app.use("/about", aboutRoutes);
+
+// Contact
+app.use("/contact", contactRoutes);
+
+// Public website
+app.use("/", homeRoutes);
+
+// Shop
+app.use("/shop", shopRoutes);
+
+// Product details
+app.get("/products/:slug", ShopController.showProductDetails);
+
+// Authentication
+app.use("/auth", authRoutes);
+
+// Admin user management
+app.use("/admin/users", userRoutes);
+
+// Categories
+app.use("/admin/categories", categoryRoutes);
+
+// Brands
+app.use("/admin/brands", brandRoutes);
+
+// Products
+app.use("/admin/products", productRoutes);
+
+// Reviews
+app.use("/reviews", reviewRoutes);
+
+// Wishlist
+app.use("/wishlist", wishlistRoutes);
+
+// Cart
+app.use("/cart", cartRoutes);
+
+// Addresses
+app.use("/addresses", addressRoutes);
+
+// Checkout
+app.use("/checkout", checkoutRoutes);
+
+// Coupons
+app.use("/coupons", couponRoutes);
+
+// Payments
+app.use("/payment", paymentRoutes);
+
+// Orders
+app.use("/orders", orderRoutes);
+
+// Admin dashboard
+app.use("/admin/dashboard", adminDashboardRoute);
+
+// Seller dashboard
+app.use("/seller/dashboard", sellerDashboardRoute);
+
+// Notifications
+app.use("/", notificationRoute);
+
+// 404 handler
+app.use(notFoundMiddleware);
+
+// Global error handler
+app.use(errorMiddleware);
+
+module.exports = app;

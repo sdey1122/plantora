@@ -12,6 +12,12 @@ A production-ready e-commerce platform for buying and selling plants, built usin
 
 ## 📖 About
 
+Website link (through render) : https://plantora-e6f4.onrender.com 
+
+**For admin use : email:admin-plantora@yopmail.com, password: 123456789Pt@**
+
+**For customer and seller you can use google login or any email (yopmail, gmail etc.)**
+
 PLANTORA is a full-stack e-commerce web application designed to provide a seamless online marketplace for plants and gardening products. The project follows modern software engineering practices and implements a scalable MVC architecture with a strong emphasis on security, maintainability, and performance.
 
 It includes dedicated interfaces for customers, sellers, and administrators, making it suitable as a production-ready backend and a comprehensive portfolio project.
@@ -253,7 +259,7 @@ This project is open-source and free to use (experimental purpose only)
 
 ## 🌐 Live Demo
 
-**Website:** https://your-app.onrender.com
+**Website:** https://plantora-e6f4.onrender.com
 
 **Repository:** https://github.com/your-username/plantora
 

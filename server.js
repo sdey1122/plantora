@@ -115,149 +115,230 @@
 
 // startServer();
 
-console.log("1️⃣ server.js started");
+// console.log("1️⃣ server.js started");
 
-const dotenv = require("dotenv");
+// const dotenv = require("dotenv");
 
-console.log("2️⃣ dotenv package loaded");
+// console.log("2️⃣ dotenv package loaded");
 
-dotenv.config();
+// dotenv.config();
 
-console.log("3️⃣ dotenv loaded");
+// console.log("3️⃣ dotenv loaded");
 
-console.log("4️⃣ Before requiring app.js");
+// console.log("4️⃣ Before requiring app.js");
 
-let app;
+// let app;
 
-try {
-  app = require("./app");
-  console.log("5️⃣ app.js loaded successfully");
-} catch (error) {
-  console.error("❌ APP.JS FAILED TO LOAD");
-  console.error(error);
-  console.error(error.stack);
-  process.exit(1);
-}
+// try {
+//   app = require("./app");
+//   console.log("5️⃣ app.js loaded successfully");
+// } catch (error) {
+//   console.error("❌ APP.JS FAILED TO LOAD");
+//   console.error(error);
+//   console.error(error.stack);
+//   process.exit(1);
+// }
 
-console.log("6️⃣ Before requiring logger");
+// console.log("6️⃣ Before requiring logger");
 
-let logger;
+// let logger;
 
-try {
-  logger = require("./app/config/logger");
-  console.log("7️⃣ logger loaded");
-} catch (error) {
-  console.error("❌ LOGGER FAILED");
-  console.error(error);
-  console.error(error.stack);
-  process.exit(1);
-}
+// try {
+//   logger = require("./app/config/logger");
+//   console.log("7️⃣ logger loaded");
+// } catch (error) {
+//   console.error("❌ LOGGER FAILED");
+//   console.error(error);
+//   console.error(error.stack);
+//   process.exit(1);
+// }
 
-console.log("8️⃣ Before requiring database");
+// console.log("8️⃣ Before requiring database");
 
-let databaseConnection;
+// let databaseConnection;
 
-try {
-  databaseConnection = require("./app/config/database");
-  console.log("9️⃣ database loaded");
-} catch (error) {
-  console.error("❌ DATABASE MODULE FAILED");
-  console.error(error);
-  console.error(error.stack);
-  process.exit(1);
-}
+// try {
+//   databaseConnection = require("./app/config/database");
+//   console.log("9️⃣ database loaded");
+// } catch (error) {
+//   console.error("❌ DATABASE MODULE FAILED");
+//   console.error(error);
+//   console.error(error.stack);
+//   process.exit(1);
+// }
 
-console.log("🔟 Before requiring email");
+// console.log("🔟 Before requiring email");
 
-let verifyEmailConnection;
+// let verifyEmailConnection;
 
-try {
-  ({ verifyEmailConnection } = require("./app/config/email"));
-  console.log("1️⃣1️⃣ email module loaded");
-} catch (error) {
-  console.error("❌ EMAIL MODULE FAILED");
-  console.error(error);
-  console.error(error.stack);
-  process.exit(1);
-}
+// try {
+//   ({ verifyEmailConnection } = require("./app/config/email"));
+//   console.log("1️⃣1️⃣ email module loaded");
+// } catch (error) {
+//   console.error("❌ EMAIL MODULE FAILED");
+//   console.error(error);
+//   console.error(error.stack);
+//   process.exit(1);
+// }
 
-console.log("1️⃣2️⃣ Before requiring socket");
+// console.log("1️⃣2️⃣ Before requiring socket");
 
-let initializeSocket;
-let socketHandler;
+// let initializeSocket;
+// let socketHandler;
 
-try {
-  ({ initializeSocket } = require("./app/socket/socket"));
-  socketHandler = require("./app/socket/socketHandler");
+// try {
+//   ({ initializeSocket } = require("./app/socket/socket"));
+//   socketHandler = require("./app/socket/socketHandler");
 
-  console.log("1️⃣3️⃣ socket modules loaded");
-} catch (error) {
-  console.error("❌ SOCKET MODULE FAILED");
-  console.error(error);
-  console.error(error.stack);
-  process.exit(1);
-}
+//   console.log("1️⃣3️⃣ socket modules loaded");
+// } catch (error) {
+//   console.error("❌ SOCKET MODULE FAILED");
+//   console.error(error);
+//   console.error(error.stack);
+//   process.exit(1);
+// }
+
+// const http = require("http");
+
+// console.log("1️⃣4️⃣ http loaded");
+
+// const PORT = process.env.PORT || 5132;
+
+// console.log("1️⃣5️⃣ PORT =", PORT);
+
+// const startServer = async () => {
+//   try {
+//     console.log("1️⃣6️⃣ Connecting MongoDB...");
+
+//     await databaseConnection();
+
+//     console.log("1️⃣7️⃣ MongoDB connected");
+
+//     console.log("1️⃣8️⃣ Verifying email configuration...");
+
+//     await verifyEmailConnection();
+
+//     console.log("1️⃣9️⃣ Email configuration verified");
+
+//     const httpServer = http.createServer(app);
+
+//     console.log("2️⃣0️⃣ HTTP server created");
+
+//     const io = initializeSocket(httpServer);
+
+//     console.log("2️⃣1️⃣ Socket initialized");
+
+//     socketHandler(io);
+
+//     console.log("2️⃣2️⃣ Socket handlers registered");
+
+//     const server = httpServer.listen(PORT, "0.0.0.0", () => {
+//       console.log(`🚀 SERVER RUNNING ON PORT ${PORT}`);
+//     });
+
+//     process.on("SIGTERM", () => {
+//       console.log("SIGTERM received");
+
+//       server.close(() => {
+//         process.exit(0);
+//       });
+//     });
+
+//     process.on("SIGINT", () => {
+//       console.log("SIGINT received");
+
+//       server.close(() => {
+//         process.exit(0);
+//       });
+//     });
+//   } catch (error) {
+//     console.error("🔥 STARTUP FAILED");
+//     console.error(error);
+//     console.error(error.stack);
+
+//     process.exit(1);
+//   }
+// };
+
+// startServer();
+
+require("dotenv").config();
 
 const http = require("http");
-
-console.log("1️⃣4️⃣ http loaded");
+const app = require("./src/app");
+const databaseConnection = require("./src/config/database");
+const logger = require("./src/config/logger");
+const { verifyEmailConnection } = require("./src/config/email");
+const { initializeSocket } = require("./src/socket/socket");
+const socketHandler = require("./src/socket/socketHandler");
 
 const PORT = process.env.PORT || 5132;
 
-console.log("1️⃣5️⃣ PORT =", PORT);
+let httpServer;
 
 const startServer = async () => {
   try {
-    console.log("1️⃣6️⃣ Connecting MongoDB...");
-
+    // 1. Connect to MongoDB before accepting requests.
     await databaseConnection();
+    console.log("MongoDB connected successfully.");
 
-    console.log("1️⃣7️⃣ MongoDB connected");
+    // 2. Create the HTTP server.
+    httpServer = http.createServer(app);
 
-    console.log("1️⃣8️⃣ Verifying email configuration...");
-
-    await verifyEmailConnection();
-
-    console.log("1️⃣9️⃣ Email configuration verified");
-
-    const httpServer = http.createServer(app);
-
-    console.log("2️⃣0️⃣ HTTP server created");
-
+    // 3. Initialize Socket.IO.
     const io = initializeSocket(httpServer);
-
-    console.log("2️⃣1️⃣ Socket initialized");
-
     socketHandler(io);
 
-    console.log("2️⃣2️⃣ Socket handlers registered");
+    // 4. Listen on the port provided by Render.
+    httpServer.listen(PORT, "0.0.0.0", () => {
+      console.log(`Plantora server running on port ${PORT}`);
+      logger.info(`Plantora server running on port ${PORT}`);
 
-    const server = httpServer.listen(PORT, "0.0.0.0", () => {
-      console.log(`🚀 SERVER RUNNING ON PORT ${PORT}`);
-    });
-
-    process.on("SIGTERM", () => {
-      console.log("SIGTERM received");
-
-      server.close(() => {
-        process.exit(0);
-      });
-    });
-
-    process.on("SIGINT", () => {
-      console.log("SIGINT received");
-
-      server.close(() => {
-        process.exit(0);
-      });
+      // SMTP verification must not prevent the website from starting.
+      verifyEmailConnection()
+        .then(() => {
+          console.log("SMTP connection verified successfully.");
+        })
+        .catch((error) => {
+          console.error("SMTP connection verification failed:", error.message);
+          logger.error(`SMTP verification failed: ${error.message}`);
+        });
     });
   } catch (error) {
-    console.error("🔥 STARTUP FAILED");
-    console.error(error);
-    console.error(error.stack);
+    console.error("Plantora startup failed:", error.message);
+    logger.error(`Plantora startup failed: ${error.message}`);
 
     process.exit(1);
   }
 };
+
+// Gracefully close the HTTP server during shutdown.
+const gracefulShutdown = (signal) => {
+  console.log(`${signal} received. Shutting down Plantora...`);
+
+  if (!httpServer) {
+    process.exit(0);
+    return;
+  }
+
+  httpServer.close(() => {
+    console.log("HTTP server closed.");
+    process.exit(0);
+  });
+};
+
+process.once("SIGINT", () => gracefulShutdown("SIGINT"));
+process.once("SIGTERM", () => gracefulShutdown("SIGTERM"));
+
+process.on("unhandledRejection", (error) => {
+  console.error("Unhandled promise rejection:", error);
+  logger.error(`Unhandled promise rejection: ${error.message}`);
+});
+
+process.on("uncaughtException", (error) => {
+  console.error("Uncaught exception:", error);
+  logger.error(`Uncaught exception: ${error.message}`);
+  process.exit(1);
+});
 
 startServer();
